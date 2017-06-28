@@ -20,3 +20,12 @@ res.render('terms-of-service',{
       pagetitle: 'Terms of Service | '+sitename+'',
 })
 }; 
+
+//////////////////////////////////////
+/////  INSTALL INSTRUCTIONST    ///// 
+////////////////////////////////////
+exports.install = function(req, res) {
+res.render('install',{
+      pagetitle: 'Terms of Service | '+sitename+'',
+})
+}; 

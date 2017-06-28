@@ -148,6 +148,7 @@ app.locals.repo = 'https://github.com/Isithelo/Fraternate';
 ///////////////////////////////
 app.get('/privacy', userInterfaceController.privacy);
 app.get('/terms', userInterfaceController.terms);
+app.get('/install', userInterfaceController.install);
 
 
 app.get('/', HomeController.index);
