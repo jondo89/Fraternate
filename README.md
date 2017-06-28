@@ -1,10 +1,10 @@
-<h2>{{sitename}} Installation Instructions</h2>
+<h2>Fraternate Installation Instructions</h2>
   
-<p>In summary {{sitename}} requires the following: </p>
+<p>In summary Fraternate requires the following: </p>
 <ul>
   <li>Node.js</li>
   <li>Mongodb</li>
-  <li>The GitHub {{sitename}} repo</li>
+  <li>The GitHub Fraternate repo</li>
   <li>NPM</li>
   <li>serve-favicon</li>
   <li>express</li>
@@ -26,18 +26,18 @@ Download and install from the mongodb homepage.
 <a href="https://www.mongodb.com/" target="_blank">https://www.mongodb.com/</a>  
 </pre>
 
-<li>Step 3 - Sign up for Github , install the windows gihub client then clone the {{sitename}} repository.</li>
-<p>Clone the repository on your hard drive, using the "clone or download" button on the GitHub front page for {{sitename}}.</p>
+<li>Step 3 - Sign up for Github , install the windows gihub client then clone the Fraternate repository.</li>
+<p>Clone the repository on your hard drive, using the "clone or download" button on the GitHub front page for Fraternate.</p>
 <p>Once downloaded, extract to the directory of your choice. For example: </p>
 
 <pre>
-C:\ {{sitename}}
+C:\Fraternate
 </pre>
 
-<li>Step 4 - With node.js installed, the use of the NPM service is now available from your command prompt, go into the directory where {{sitename}} was cloned using your preferred command prompt (DOS interface). For example: </li>
+<li>Step 4 - With node.js installed, the use of the NPM service is now available from your command prompt, go into the directory where Fraternate was cloned using your preferred command prompt (DOS interface). For example: </li>
 
 <pre>
-cd\ {{sitename}}
+cd\Fraternate
 </pre>
 <p>When you are at the command prompt in the correct directory, type in the following:</p>
 
