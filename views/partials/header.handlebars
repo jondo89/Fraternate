@@ -25,15 +25,9 @@
    
       <ul class="nav navbar-nav navbar-left"  >
         <li >
-          <a href="/database" style="color: rgba(255,255,255,0.75)">Database</a>
+          <a href="/database" style="color: rgba(255,255,255,0.75)">Your Custom Website Goes Here</a>
         </li>
-        <li>
-          <a href="/store" style="color: rgba(255,255,255,0.75)">Store</a>
-        </li>
-        <li>
-          <a href="/components" style="color: rgba(255,255,255,0.75)">Components</a>
-        </li>
-
+ 
          
         </ul>
        
@@ -48,16 +42,7 @@
           <a href="/help" style="color: rgba(255,255,255,0.75)">Help</a>
         </li> 
 
-        {{#if user}}
-        <li class="dropdown" data-toggle="tooltip" data-placement="right" title="Create new.">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus" aria-hidden="true"></i> <span class="caret"></span></a>
-          <ul class="dropdown-menu" id="component">  
-            <li><a href="/organizations/new">New Organization</a></li>
-            <li><a href="/component/new">New Component</a></li>
-            <li><a href="/assembly/new">New Assembly</a></li>
-          </ul>
-        </li>
-        {{/if}}
+
         {{#if user}}
         <li class="dropdown" data-toggle="tooltip" data-placement="right" title="View profile and more.">
           <a href="#" data-toggle="dropdown" class="navbar-avatar dropdown-toggle" >
@@ -88,16 +73,3 @@
   </div>
   <!-- /.container-fluid -->
 </nav>
-{{#if user}}
-<script type="text/javascript">
- var user = JSON.parse(JSON.stringify('{{user.permission}}'))
-///////////////////////////// 
-//////  INITIALISE    //////
-/////////////////////////// 
-$( document ).ready(function() {
-  if (user=='superadmin') {
-    $("#usermenu").append('<li class="divider"></li> <li><a href="/configuration"><i class="fa fa-cog" aria-hidden="true"></i> Configuration</a></li><li><a href="/forms"><i class="fa fa-cog" aria-hidden="true"></i> Forms</a></li><li><a href="/admin"><i class="fa fa-cog" aria-hidden="true"></i> Admin Panel</a></li><li><a href="/users"><i class="fa fa-cog" aria-hidden="true"></i> Users</a></li><li><a href="/organizations"><i class="fa fa-cog" aria-hidden="true"></i> Organizations</a></li><li><a href="/componentssuperadmin"><i class="fa fa-cog" aria-hidden="true"></i> Components</a></li>')
-  }
-});
-</script>
-{{/if}}
