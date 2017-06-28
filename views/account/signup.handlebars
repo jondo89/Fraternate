@@ -1,0 +1,46 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<div class="login-container container">
+     <div style="text-align: center">
+       <img src="/img/Logo square 300x300.png" style="height: 55px">  
+     </div>
+    <div style="text-align: center;padding-bottom: 15px">
+         <h2>Sign up to {{sitename}}</h2>
+     </div>
+<div class="panel panel-default">
+    <div class="panel-body">
+      {{#if messages.error}}
+        <div role="alert" class="alert alert-danger">
+          {{#each messages.error}}
+            <div>{{msg}}</div>
+          {{/each}}
+        </div>
+      {{/if}}
+      <form method="POST" action="/signup">
+        <div class="form-group">   
+          <input type="text" name="name" id="name" placeholder="Pick a username" class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" id="email" placeholder="Email" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+        </div>
+           <div class="form-group" >  
+            <div class="g-recaptcha" data-sitekey="6Ld74SEUAAAAAEk-ZDWZbVw6Bcvb8zQQxgT4Tyqr"></div>
+        </div>
+        <div class="form-group">
+          <small class="text-muted">By signing up, you agree to the <a href="/terms">Terms of Service</a> and <a href="/Privacy">Privacy Statment</a>.</small>
+        </div>
+        <button type="submit" class="btn btn-success">Sign up</button>
+      </form>
+      <div class="hr-title"><span>or</span></div>
+      <div class="btn-toolbar text-center">
+        <a href="/auth/google" class="btn btn-default">Sign in with Google</a>
+        <a href="/auth/github" class="btn btn-default">Sign in with Github</a>
+      </div>
+    </div>
+  </div>
+  <p class="text-center">
+    Already have an account? <a href="/signin"><strong >Sign in</strong></a>
+  </p>
+</div>

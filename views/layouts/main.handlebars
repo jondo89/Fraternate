@@ -1,0 +1,47 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{pagetitle}}</title>
+  {{> css}}
+
+</head>
+<body>
+  {{> javascript}}
+
+  {{> header}}
+  <style type="text/css">
+    .dt-buttons {
+      padding-top: 15px;
+    }
+  </style>
+  <div class="container" >
+   {{{body}}}
+ </div>
+ {{#if user}}
+ <!-- Modal -->
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+       <div id="modal-body"></div>
+       <div id="formAreaModal">
+        <div style="text-align: center">
+          <pre><i class="fa fa-spinner fa-spin fa-fw"></i><span class=" ">Loading...</span></pre>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div> 
+{{/if}}
+{{> footer}}
+{{> analytics}}
+</body>
+</html>
+

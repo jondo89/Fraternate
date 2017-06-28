@@ -1,0 +1,36 @@
+{
+  "name": "throbbing-mountain",
+  "version": "1.0.0",
+  "description": "My app description",
+  "scripts": {
+    "deploy": "npm test && git push heroku master",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "compression": "^1.6.2",
+    "crypto": "0.0.3",
+    "dotenv": "^2.0.0",
+    "express": "^4.15.3",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^3.0.0",
+    "express-recaptcha": "^2.1.0",
+    "express-session": "^1.15.3",
+    "express-validator": "^2.21.0",
+    "flash": "^1.1.0",
+    "method-override": "^2.3.9",
+    "mongoose": "^4.11.0",
+    "morgan": "^1.8.2",
+    "nodemailer": "^2.7.2",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.4.3"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "6.1.0"
+  }
+}

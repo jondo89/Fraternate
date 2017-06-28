@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{sitename}}</title>
+  {{> css}}
+    <style type="text/css">
+    .outer{
+      background-color: rgba(0,0,0,0.5);
+      filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
+      -ms-filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
+    }
+
+  </style>
+</head>
+<body>
+  {{> javascript}}
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  {{> header}}
+  <div class="full-page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7" style="padding-top: 95px">
+          
+         <div class="well outer"  >
+           <h1> 
+           {{sitename}} is a design platform for Engineers.
+         </h1>
+         <h3  > 
+          Use {{sitename}} to build, design and create projects, support your business, and work together. From <strong>open source </strong> to <strong>business </strong>engineering databases. You can host and review designs, manage projects, and build engineering systems alongside millions of other developers.
+        </h3>  
+         
+        <div style="padding-top: 35px" style="text-align:center;">
+          <div class="btn-group" role="group" aria-label="...">
+           <a  href="/database" class="btn btn-default btn-lg">Database</a>
+           <a  href="/store" class="btn btn-default btn-lg">Store</a>
+           <a  href="/help" class="btn btn-default btn-lg">Help</a>
+         </div>
+       </div>
+
+       </div>
+         
+     </div>
+     <div class="col-md-5" style="padding-top: 95px">
+      {{> signuphomepage}}
+    </div>
+  </div>
+</div>
+</div>
+{{> analytics}}
+</body>
+</html>
