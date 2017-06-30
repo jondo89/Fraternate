@@ -131,12 +131,16 @@ app.use(function(req, res, next) {
 });
 app.use(express.static(path.join(__dirname, 'public')));
 
-//////////////////////////////////////////
-////     SET YOUR APP DETAILS        //// 
-////////////////////////////////////////
-app.locals.sitename = 'Fraternate';
-app.locals.website = 'https://fraternate.herokuapp.com/';
-app.locals.repo = 'https://github.com/Isithelo/Fraternate';
+///////////////////////////////////////////////
+////     SET YOUR APP.JSON DETAILS        //// 
+/////////////////////////////////////////////
+var myModule = require('./app.json');
+var sitename = myModule.sitename
+var website = myModule.website
+var repo = myModule.repo
+app.locals.sitename = sitename
+app.locals.website = website
+app.locals.repo = repo
 
 /////////////////////////////
 ////     ROUTING        //// 

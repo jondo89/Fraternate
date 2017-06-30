@@ -1,6 +1,9 @@
 {
   "name": "Fraternate",
   "description": "",
+  "sitename" : "Fraternate",
+  "website" : "https://fraternate.herokuapp.com/",
+  "repo" : "https://github.com/Isithelo/Fraternate",
   "scripts": {
   },
   "env": {

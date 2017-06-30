@@ -312,9 +312,10 @@ overflow: auto;
 z-index: -10;
  }
 
+.navbar {
+   border-radius: 0px !important;  
+ }
 
- .navbar {
-     border-radius: 0px !important;  
-   }
-
- 
+.navbar-toggle {
+  color: white;
+ }
