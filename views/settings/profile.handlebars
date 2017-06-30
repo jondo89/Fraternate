@@ -1,0 +1,155 @@
+<style type="text/css">
+  .cropit-preview {
+    /* You can specify preview size in CSS */
+    width: 200px;
+    height: 200px;
+  }
+</style> 
+<div class="row" style="padding-top: 25px">
+  <div class="col-md-3" id="navMenuPanel">       
+    {{> usernav profile=true}}
+  </div>  
+  <div class="col-md-9" id="browserArea">
+    <div class="col-sm-12">
+      {{#if messages.success}}
+      <div role="alert" class="alert alert-success">
+        {{#each messages.success}}
+        <div>{{msg}}</div>
+        {{/each}}
+      </div>
+      {{/if}}
+      {{#if messages.error}}
+      <div role="alert" class="alert alert-danger">
+        {{#each messages.error}}
+        <div>{{msg}}</div>
+        {{/each}}
+      </div>
+      {{/if}}
+      <h2>Public Profile</h2>
+      <hr>
+      <form method="POST" action="/account?_method=PUT" class="form-horizontal >
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="username" class="col-md-12">Username</label>
+              <div class="col-md-11">
+                <input type="username" name="username" id="username" class="form-control" value="{{user.username}}" disabled>
+                <p class="help-block">Changing your username can have unforeseen consequences. <a class="btn btn-default btn-xs"  onclick="activate()">Change</a></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-md-12">Email</label>
+              <div class="col-md-11">
+                <input type="email" name="email" id="email" class="form-control" value="{{user.email}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-md-12">Name</label>
+              <div class="col-md-11">
+                <input type="text" name="name" id="name" class="form-control" value="{{user.name}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-md-12">Bio</label>
+              <div class="col-md-11">
+                <textarea type="text" rows="3" name="bio" id="bio" class="form-control"  >{{user.bio}}</textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="location" class="col-md-12">Location</label>
+              <div class="col-md-11">
+                <input type="text" name="location" id="location" class="form-control" value="{{user.location}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="website" class="col-md-12">Website</label>
+              <div class="col-md-11">
+                <input type="text" name="website" id="website" class="form-control" value="{{user.website}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="company" class="col-md-12">Company</label>
+              <div class="col-md-11">
+                <input type="text" name="company" id="company" class="form-control" value="{{user.company}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class=" col-sm-4">
+                <button type="submit" onclick="updates()" id="export" class="btn btn-default">Update Profile</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <h4  >Profile Picture</h4>
+                <!-- This wraps the whole cropper -->
+                <div id="image-cropper" >
+                  <!-- This is where the preview image is displayed -->
+                  <div class="cropit-preview"  style="border: 1px solid #eee;position: relative;"></div>
+                  <!-- This range input controls zoom -->
+                  <!-- You can add additional elements here, e.g. the image icons -->
+                  <input type="range" class="cropit-image-zoom-input" style="width: 200px" />
+                  <p></p>
+                  <!-- This is where user selects new image -->
+                  <input type="file" class="cropit-image-input"  />
+
+<input style="display: none;"  name="croppedImg" id="croppedImg"/>
+
+  <!-- The cropit- classes above are needed
+  so cropit can identify these elements -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+
+  function activate(){
+    $('#username').prop('disabled', false);
+  }
+
+
+  {{#if user.picture}}
+  var imageSrc = '{{{user.picture}}}'
+  {{else}}
+  var imageSrc = '{{{user.gravatar}}}'
+  {{/if}}
+  $('#image-cropper').cropit({ imageState: { src: imageSrc  } });
+
+
+////////////////////////////////
+///// LISTEN FOR CHANGES //////
+//////////////////////////////
+$('#image-cropper').change(function() {
+  var imageData = $('#image-cropper').cropit('export', {
+    type: 'image/jpeg',
+    quality: .4,
+    originalSize: true
+  });
+  $('#croppedImg').val(imageData);
+});
+
+
+////////////////////////
+///// INITIALIZE //////
+//////////////////////
+    $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+        var input = $(this).parents('.input-group').find(':text'),
+        log = numFiles > 1 ? numFiles + ' files selected' : label;
+        if( input.length ) {
+          input.val(log);
+        } else {
+          if( log ) alert(log);
+        }
+      });
+    });
+
+
+  </script>

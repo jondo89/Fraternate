@@ -13,9 +13,12 @@ var userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true},
   password: String,
+  bio: String,
+  username: String,
   passwordResetToken: String,
+  permission: String,
   passwordResetExpires: Date,
-  gender: String,
+  company: String,
   location: String,
   website: String,
   picture: String,
@@ -27,7 +30,10 @@ var userSchema = new mongoose.Schema({
 }, schemaOptions);
 
 userSchema.pre('save', function(next) {
-  var user = this;
+var user = this;
+if (!user.username) {
+  user.username = user.name.replace(/\s/g,'')
+}
   if (!user.isModified('password')) { return next(); }
   bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(user.password, salt, null, function(err, hash) {

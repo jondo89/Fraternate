@@ -1,3 +1,5 @@
+var User = require('../models/User');
+
 ///////////////////////////////////////////////
 ////     SET YOUR APP.JSON DETAILS        //// 
 /////////////////////////////////////////////
@@ -8,11 +10,18 @@ var website = myModule.website
 var repo = myModule.repo
  
 
-/**
- * GET /
- */
+///////////////////////////////////////
+////       HOME CONTROLLER        //// 
+/////////////////////////////////////
 exports.index = function(req, res) {
+//Perform Routing for Varios user type on the home page.
+if (req.user) {
+    res.render('splash', {
+
+    });
+} else {
   res.render('home', {
     layout: false
   });
+}
 };

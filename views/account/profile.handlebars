@@ -1,122 +1,414 @@
-<div class="container">
-  <div class="panel">
-    <div class="panel-body">
-      {{#if messages.success}}
-        <div role="alert" class="alert alert-success">
-          {{#each messages.success}}
-            <div>{{msg}}</div>
-          {{/each}}
-        </div>
-      {{/if}}
-      {{#if messages.error}}
-        <div role="alert" class="alert alert-danger">
-          {{#each messages.error}}
-            <div>{{msg}}</div>
-          {{/each}}
-        </div>
-      {{/if}}
-      <form method="POST" action="/account?_method=PUT" class="form-horizontal">
-        <legend>Profile Information</legend>
-        <div class="form-group">
-          <label for="email" class="col-sm-3">Email</label>
-          <div class="col-sm-7">
-            <input type="email" name="email" id="email" class="form-control" value="{{user.email}}">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="name" class="col-sm-3">Name</label>
-          <div class="col-sm-7">
-            <input type="text" name="name" id="name" class="form-control" value="{{user.name}}">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3">Gender</label>
-          <div class="col-sm-4">
-            <label class="radio-inline radio col-sm-4">
-              <input type="radio" name="gender" value="male" {{#ifeq user.gender 'male'}}checked{{/ifeq}}><span>Male</span>
-            </label>
-            <label class="radio-inline col-sm-4">
-              <input type="radio" name="gender" value="female" {{#ifeq user.gender 'female'}}checked{{/ifeq}}><span>Female</span>
-            </label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="location" class="col-sm-3">Location</label>
-          <div class="col-sm-7">
-            <input type="text" name="location" id="location" class="form-control" value="{{user.location}}">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="website" class="col-sm-3">Website</label>
-          <div class="col-sm-7">
-            <input type="text" name="website" id="website" class="form-control" value="{{user.website}}">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3">Gravatar</label>
-          <div class="col-sm-4">
-            <img src="{{user.gravatar}}" class="profile" width="100" height="100">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-3 col-sm-4">
-            <button type="submit" class="btn btn-success">Update Profile</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="panel">
-    <div class="panel-body">
-      <form method="POST" action="/account?_method=PUT" class="form-horizontal">
-        <legend>Change Password</legend>
-        <div class="form-group">
-          <label for="password" class="col-sm-3">New Password</label>
-          <div class="col-sm-7">
-            <input type="password" name="password" id="password" class="form-control">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="confirm" class="col-sm-3">Confirm Password</label>
-          <div class="col-sm-7">
-            <input type="password" name="confirm" id="confirm" class="form-control">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-4 col-sm-offset-3">
-            <button type="submit" class="btn btn-success">Change Password</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="panel">
-    <div class="panel-body">
-      <div class="form-horizontal">
-        <legend>Linked Accounts</legend>
-        <div class="form-group">
-          <div class="col-sm-offset-3 col-sm-4">
-          {{#if user.google}}
-            <p><a href="/unlink/google" class="text-danger">Unlink your Google account</a></p>
+<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+
+
+<div class="row" style="padding-top: 35px">
+  <div class="col-md-4">
+    <div class="media">
+      <div class="media-left" >  
+        <a href="#">
+          {{#if userload.picture}}
+          <div id="googlepic"></div>
           {{else}}
-            <p><a href="/auth/google">Link your Google account</a></p>
+          <img src="{{userload.gravatar}}" class="media-object">
           {{/if}}
-          </div>
-        </div>
+        </a>
       </div>
     </div>
-  </div>
-  <div class="panel">
-    <div class="panel-body">
-      <form method="POST" action="/account?_method=DELETE" class="form-horizontal">
-        <legend>Delete Account</legend>
-        <div class="form-group">
-          <p class="col-sm-offset-3 col-sm-9">You can delete your account, but keep in mind this action is irreversible.</p>
-          <div class="col-sm-offset-3 col-sm-9">
-            <button type="submit" class="btn btn-danger">Delete my account</button>
-          </div>
-        </div>
-      </form>
+    <h1>{{userload.name}}  <small>{{userload.username}}</small></h1>
+    <p>{{userload.bio}}</p>
+    {{#if userload.company}}
+    <div class="row">
+      <div class="col-sm-2" style="text-align: center;">
+        <i class="fa fa-users" aria-hidden="true"></i>
+      </div>
+      <div class="col-sm-8">
+        {{dotdotdot userload.company}}
+      </div>
+    </div>
+    {{/if}}
+    {{#if userload.location}}
+    <div class="row">
+      <div class="col-sm-2" style="text-align: center;">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+      </div>
+      <div class="col-sm-8">
+        {{userload.location}}
+      </div>
+    </div>
+    {{/if}}
+    {{#if userload.email}}
+    <div class="row">
+      <div class="col-sm-2" style="text-align: center;">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      </div>
+      <div class="col-sm-8">
+        <a href="mailto:{{userload.email}}">{{userload.email}}</a>
+      </div>
+    </div>
+    {{/if}}
+    {{#if userload.website}}
+    <div class="row">
+      <div class="col-sm-2" style="text-align: center;">
+        <i class="fa fa-link" aria-hidden="true"></i>
+      </div>
+      <div class="col-sm-8">
+        <a href="http://{{userload.website}}" target="_blank">{{userload.website}}</a>
+      </div>
+    </div>
+    {{/if}}
+    {{#if userload.permission}}
+    <div class="row">
+      <div class="col-sm-2" style="text-align: center;">
+        <i class="fa fa-key" aria-hidden="true"></i>
+      </div>
+      <div class="col-sm-8">
+        {{userload.permission}}
+      </div>
+    </div>
+    {{/if}}
+    <hr>
+    <h3>Organizations</h3>
+    <div class="row">
+      {{#each organizations}}
+      <div class="col-md-2">
+        <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
+          <img src="{{this.entry.picture}}" class="media-object" style="max-width: 45px">
+        </a>
+      </div>
+      {{/each}}
     </div>
   </div>
+  <div class="col-md-8">
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="Summary">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Components <small>you contribute to <span class="badge" id="compcount">0</span></small></h3>
+            <div class="panel panel-default"  id="components" style="display: none;">
+              <div class="panel-body">
+                <div>
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">All</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Public</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Private</a></li>
+                  </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                      <p></p>
+                      <table class="table table-bordered table-condensed" id="componentstable" > 
+                        <thead>
+                          <tr>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                      </div>
+                      <div role="tabpanel" class="tab-pane" id="profile"> <p></p>
+                                             <table class="table table-bordered table-condensed" id="componentstablePublic" > 
+                        <thead>
+                          <tr>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table> 
+
+                      </div>
+                      <div role="tabpanel" class="tab-pane" id="messages"> <p></p>
+                                             <table class="table table-bordered table-condensed" id="componentstablePrivate" > 
+                        <thead>
+                          <tr>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table> 
+
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <a href="/component/new" class="btn btn-default" href="#" role="button">Create Component</a>
+            </div>
+            <div class="col-md-6">
+              <h3>Assemblies <small>you contribute to <span class="badge">31</span></small></h3>
+              <div class="panel panel-default"  id="assemblies">
+                <div class="panel-body">
+                 <div>
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist" style="">
+                    <li role="presentation" class="active"><a href="#home1" aria-controls="home1" role="tab" data-toggle="tab">All</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Public</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Private</a></li>
+                  </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home1">
+                      <p></p>
+                      <table class="table table-bordered table-condensed" id="assystable" > 
+                        <thead>
+                          <tr>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a>  <span class="label label-success">Private</span></td>
+                          </tr>
+                          <tr>
+                            <td><a>Conveyor Belt  </a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Idler Arrangements</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Equipment Relocation  </a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Operations</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Idler Rolls</a>  <span class="label label-success">Private</span></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a>  <span class="label label-success">Private</span></td>
+                          </tr>
+                          <tr>
+                            <td><a>Conveyor Belt</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Idler Arrangements</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Operations</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a>  <span class="label label-success">Private</span></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
+                          </tr>
+                          <tr>
+                            <td><a>Idler Rolls</a></td>
+                          </tr>
+                        </tbody>
+                      </table></div>
+                      <div role="tabpanel" class="tab-pane" id="profile"></div>
+                      <div role="tabpanel" class="tab-pane" id="messages"></div>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+               <a href="/assembly/new" class="btn btn-default" href="#" role="button">Create Assembly</a>
+            </div>
+          </div>
+          <h3>Recent Contributions.</h3>
+          <div class="panel panel-default">
+            <div class="panel-body">
+             <div id="cal-heatmap"></div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+
 </div>
+
+<script type="text/javascript">
+
+  var itemsParse = {{{itemsParse}}}
+  var componentlistParse = {{{componentlistParse}}}
+  var componentlistParseall = {{{componentlistParseall}}}
+  var userorgcomplistParse = {{{userorgcomplistParse}}}
+
+  function componentList(){
+
+
+
+
+
+    //User Components innto table
+    var temp = []
+    var count =0
+ 
+    var html = ''
+    var htmlpublic = ''
+    var htmlprivate = ''
+    for (var i = 0; i < componentlistParse.length; i++) {
+      for (var j = 0; j < componentlistParseall.length; j++) {
+        if (componentlistParse[i].elementID == componentlistParseall[j].parentid) {
+          if (componentlistParseall[j].visibility == 'private') {
+            html += '<tr><td><a>'+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
+            htmlprivate += '<tr><td><a>'+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
+          } else {
+            html += '<tr><td><a>'+componentlistParse[i].name+'</a></td></tr>'
+            htmlpublic += '<tr><td><a>'+componentlistParse[i].name+'</a></td></tr>'
+          }
+          temp.push(componentlistParseall[j]+' / '+componentlistParse[i].name)
+        }
+      }
+    }
+ 
+count = temp.length
+$('#componentstable').append(html)
+$('#componentstablePublic').append(htmlpublic)
+$('#componentstablePrivate').append(htmlprivate)
+
+
+    //org componentns by user into form
+    var temp = []
+    var html = ''
+    var htmlpublic = ''
+    var htmlprivate = ''
+    for (var i = 0; i < componentlistParse.length; i++) {
+      for (var j = 0; j < userorgcomplistParse.length; j++) {
+        if (componentlistParse[i].elementID == userorgcomplistParse[j].parentid) {
+          if (userorgcomplistParse[j].visibility == 'private') {
+            html += '<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
+            htmlprivate +='<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
+          } else {
+            html += '<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a></td></tr>'
+             htmlpublic +='<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a></td></tr>'
+          }
+          temp.push(userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name)
+        }
+      }
+    }
+    if (count + temp.length == 0) {       
+        var html = '<tr><td><a>No Components</a></td></tr>'
+        var htmlpublic = '<tr><td><a>No Components</a></td></tr>'
+        var htmlprivate = '<tr><td><a>No Components</a></td></tr>'
+       }  else {
+    $('#components').show();
+    }
+    $('#componentstable').append(html)
+    $('#componentstablePublic').append(htmlpublic)
+    $('#componentstablePrivate').append(htmlprivate)
+    //component count
+    $('#compcount').html(count + temp.length)
+ 
+
+  var table = jQuery('#componentstable').DataTable({
+    'destroy':true,
+    "pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
+  //  'order': [[ 2, 'asc' ]] ,
+  });
+
+
+ 
+
+
+  var table = jQuery('#componentstablePublic').DataTable({
+    'destroy':true,
+    "pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
+  //  'order': [[ 2, 'asc' ]] ,
+});
+  var table = jQuery('#componentstablePrivate').DataTable({
+    'destroy':true,
+    "pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
+  //  'order': [[ 2, 'asc' ]] ,
+});
+  }
+  var username = JSON.stringify('{{userload.username}}')
+  var user = JSON.stringify('{{user.username}}')
+  var text = '{{userload.picture}}'
+  text =text.replace("sz&#x3D;50", "sz&#x3D;200");
+  $('#googlepic').html('<img src="'+text+'" style="max-width: 100%" class="media-object">')
+
+ 
+///////////////////////////// 
+//////  HEAT MAP      //////
+/////////////////////////// 
+function heatmap(){
+ var parserData = function (data) {
+  var dataJSON = {};
+  for(var i=0; i<data.length; i++) {
+    var date = new Date(data[i].created); // Date of activity 
+    var sec = date.getTime()/1000; // Convert to sec
+    // Pair "Key-Value" for calendar data
+    if(dataJSON[sec]) {
+      dataJSON[sec]++;
+    } else {
+      dataJSON[sec] = 1;
+    }
+  }
+
+  return dataJSON;
+}
+var cal = new CalHeatMap();
+cal.init({
+   itemSelector: "#cal-heatmap",
+  domain: "month",
+  subDomain: "day",
+ // cellSize: 20,
+  //subDomainTextFormat: "%d",
+  range: 11,
+start: new Date(2016, 10),
+   data: itemsParse, // Dates Array
+   afterLoadData: parserData      // Parser function
+});
+}
+////////////////////////////////////
+////        INITIALIZE         //// 
+//////////////////////////////////
+$('document').ready(function(){
+  var username = JSON.stringify('{{userload.username}}')
+  //var calender =  {{calender}}
+  //console.log(calender)
+  heatmap()
+  if (username == user) {
+  }
+  componentList()
+
+  
+   
+
+
+
+
+
+
+  var tables = jQuery('#assystable').DataTable({
+    'destroy':true,
+    "pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
+  //  'order': [[ 2, 'asc' ]] ,
+});
+})
+</script>
+

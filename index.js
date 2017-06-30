@@ -147,12 +147,27 @@ app.locals.repo = repo
 ///////////////////////////
 
 
+
 /////////////////////////////////
 ////       TEMPALTES        //// 
 ///////////////////////////////
 app.get('/privacy', userInterfaceController.privacy);
 app.get('/terms', userInterfaceController.terms);
-app.get('/install', userInterfaceController.install);
+app.get('/introduction', userInterfaceController.introduction);
+app.get('/testing', userInterfaceController.testing);
+app.get('/installation', userInterfaceController.installation);
+app.get('/integration', userInterfaceController.integration);
+ 
+
+///////////////////////////////////////////////////
+////        USER INTERFACE CONTROLLER         //// 
+/////////////////////////////////////////////////
+app.get('/users/', userInterfaceController.users);
+app.get('/users/:username/',userInterfaceController.profile);
+app.get('/users/:username/settings/',userInterfaceController.settings);
+app.get('/users/:username/settings/:page', userInterfaceController.page);
+app.get('/usersearch', userInterfaceController.usersearch);
+
 
 
 app.get('/', HomeController.index);

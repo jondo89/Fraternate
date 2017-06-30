@@ -1,0 +1,74 @@
+ 
+<div class="row" style="padding-top: 25px">
+  <div class="col-md-3" id="navMenuPanel">       
+    {{> usernav account=true}}
+  </div>  
+  <div class="col-md-9" id="browserArea">
+   {{#if messages.success}}
+   <div role="alert" class="alert alert-success">
+    {{#each messages.success}}
+    <div>{{msg}}</div>
+    {{/each}}
+  </div>
+  {{/if}}
+  {{#if messages.error}}
+  <div role="alert" class="alert alert-danger">
+    {{#each messages.error}}
+    <div>{{msg}}</div>
+    {{/each}}
+  </div>
+  {{/if}} 
+  <h2>Change password</h2>
+  <hr>
+  <form method="POST" action="/account?_method=PUT" class="form-horizontal">
+    <div class="form-group">
+      <label for="password" class="col-md-12">New Password</label>
+      <div class="col-md-5">
+        <input type="password" name="password" id="password" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirm" class="col-md-12">Confirm Password</label>
+      <div class="col-md-5">
+        <input type="password" name="confirm" id="confirm" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <button type="submit" class="btn btn-default">Change Password</button>
+      </div>
+    </div>
+  </form>
+  <h2>Change External Account Settings</h2>
+  <hr>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <div class=" col-sm-4">
+        {{#if user.google}}
+        <p><a href="/unlink/google" class="text-danger">Unlink your Google account</a></p>
+        {{else}}
+        <p><a href="/auth/google">Link your Google account</a></p>
+        {{/if}}
+        {{#if user.github}}
+        <p><a href="/unlink/github" class="text-danger">Unlink your Github account</a></p>
+        {{else}}
+        <p><a href="/auth/github">Link your Github account</a></p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <h2  style="color:#d9534f">Delete Account</h2>
+  <hr  style="color:#d9534f">
+  <form method="POST" action="/account?_method=DELETE" class="form-horizontal">
+    <div class="form-group">
+      <p class=" col-sm-9">You can delete your account, but keep in mind this action is irreversible.</p>
+      <div class=" col-sm-9">
+        <button type="submit" class="btn btn-danger">Delete my account</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+<script type="text/javascript">
+</script>
+
