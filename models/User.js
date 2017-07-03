@@ -34,6 +34,10 @@ var user = this;
 if (!user.username) {
   user.username = user.name.replace(/\s/g,'')
 }
+//issues with Github and google blank usernames
+if (user.username =="") {
+  user.username = user.name.replace(/\s/g,'')
+}
   if (!user.isModified('password')) { return next(); }
   bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(user.password, salt, null, function(err, hash) {

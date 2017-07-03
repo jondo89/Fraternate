@@ -188,7 +188,8 @@ app.get('/signout', userController.signout);
 app.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink);
 app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/signin' }));
-
+app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email profile repo' ] }));
+app.get('/auth/github/callback', passport.authenticate('github', { successRedirect: '/', failureRedirect: '/signin' }));
 
 /////////////////////////////
 ////       404          //// 
