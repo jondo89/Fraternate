@@ -2,14 +2,13 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
 
-
 <div class="row" style="padding-top: 35px">
   <div class="col-md-4">
     <div class="media">
       <div class="media-left" >  
         <a href="#">
           {{#if userload.picture}}
-          <div id="googlepic"></div>
+           <div id="googlepic" style="min-width: 100%"></div>
           {{else}}
           <img src="{{userload.gravatar}}" class="media-object">
           {{/if}}
@@ -69,182 +68,37 @@
     </div>
     {{/if}}
     <hr>
+    {{#if organizations}}
     <h3>Organizations</h3>
     <div class="row">
       {{#each organizations}}
       <div class="col-md-2">
         <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
-          <img src="{{this.entry.picture}}" class="media-object" style="max-width: 45px">
+          <img src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
         </a>
       </div>
       {{/each}}
     </div>
+    {{else}}
+    <div  class="row" style="text-align: center">
+      <a class="btn btn-default btn-sm" href="">Create an Organization</a>
+    </div>
+    {{/if}}
   </div>
   <div class="col-md-8">
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="Summary">
-        <div class="row">
-          <div class="col-md-6">
-            <h3>Components <small>you contribute to <span class="badge" id="compcount">0</span></small></h3>
-            <div class="panel panel-default"  id="components" style="display: none;">
-              <div class="panel-body">
-                <div>
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">All</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Public</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Private</a></li>
-                  </ul>
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home">
-                      <p></p>
-                      <table class="table table-bordered table-condensed" id="componentstable" > 
-                        <thead>
-                          <tr>
-                            <th>Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                      </table>
-                      </div>
-                      <div role="tabpanel" class="tab-pane" id="profile"> <p></p>
-                                             <table class="table table-bordered table-condensed" id="componentstablePublic" > 
-                        <thead>
-                          <tr>
-                            <th>Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                      </table> 
-
-                      </div>
-                      <div role="tabpanel" class="tab-pane" id="messages"> <p></p>
-                                             <table class="table table-bordered table-condensed" id="componentstablePrivate" > 
-                        <thead>
-                          <tr>
-                            <th>Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                      </table> 
-
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-              <a href="/component/new" class="btn btn-default" href="#" role="button">Create Component</a>
-            </div>
-            <div class="col-md-6">
-              <h3>Assemblies <small>you contribute to <span class="badge">31</span></small></h3>
-              <div class="panel panel-default"  id="assemblies">
-                <div class="panel-body">
-                 <div>
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist" style="">
-                    <li role="presentation" class="active"><a href="#home1" aria-controls="home1" role="tab" data-toggle="tab">All</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Public</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Private</a></li>
-                  </ul>
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home1">
-                      <p></p>
-                      <table class="table table-bordered table-condensed" id="assystable" > 
-                        <thead>
-                          <tr>
-                            <th>Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a>  <span class="label label-success">Private</span></td>
-                          </tr>
-                          <tr>
-                            <td><a>Conveyor Belt  </a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Idler Arrangements</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Equipment Relocation  </a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Operations</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Idler Rolls</a>  <span class="label label-success">Private</span></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a>  <span class="label label-success">Private</span></td>
-                          </tr>
-                          <tr>
-                            <td><a>Conveyor Belt</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Idler Arrangements</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Operations</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a>  <span class="label label-success">Private</span></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Heavy-lifting\</a><a>Equipment Relocation</a></td>
-                          </tr>
-                          <tr>
-                            <td><a>Idler Rolls</a></td>
-                          </tr>
-                        </tbody>
-                      </table></div>
-                      <div role="tabpanel" class="tab-pane" id="profile"></div>
-                      <div role="tabpanel" class="tab-pane" id="messages"></div>
-                    </div>
-                   
-                  </div>
-                </div>
-              </div>
-               <a href="/assembly/new" class="btn btn-default" href="#" role="button">Create Assembly</a>
-            </div>
-          </div>
-          <h3>Recent Contributions.</h3>
-          <div class="panel panel-default">
-            <div class="panel-body">
-             <div id="cal-heatmap"></div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+    <h3>Custom Site Details</h3>
+    <div style="border-width: 1px; border-style: dashed; border-color: grey;padding:155px;text-align: center;border-radius: 5px;"><strong> Heads up!</strong> This is where your custom content and user interaction detail will be added. 
+    </div>
+    <p></p>  <h3>User Contributions</h3>
+    <div class="panel panel-default">
+      <div class="panel-body">
+       <div id="cal-heatmap"></div>
+       <p>To get more details on the user contributions map visit : 
+        <a href="http://cal-heatmap.com/" target="_blank">Cal-heatmap</a></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -252,163 +106,22 @@
 
 <script type="text/javascript">
 
-  var itemsParse = {{{itemsParse}}}
-  var componentlistParse = {{{componentlistParse}}}
-  var componentlistParseall = {{{componentlistParseall}}}
-  var userorgcomplistParse = {{{userorgcomplistParse}}}
 
-  function componentList(){
-
-
-
-
-
-    //User Components innto table
-    var temp = []
-    var count =0
- 
-    var html = ''
-    var htmlpublic = ''
-    var htmlprivate = ''
-    for (var i = 0; i < componentlistParse.length; i++) {
-      for (var j = 0; j < componentlistParseall.length; j++) {
-        if (componentlistParse[i].elementID == componentlistParseall[j].parentid) {
-          if (componentlistParseall[j].visibility == 'private') {
-            html += '<tr><td><a>'+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
-            htmlprivate += '<tr><td><a>'+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
-          } else {
-            html += '<tr><td><a>'+componentlistParse[i].name+'</a></td></tr>'
-            htmlpublic += '<tr><td><a>'+componentlistParse[i].name+'</a></td></tr>'
-          }
-          temp.push(componentlistParseall[j]+' / '+componentlistParse[i].name)
-        }
-      }
-    }
- 
-count = temp.length
-$('#componentstable').append(html)
-$('#componentstablePublic').append(htmlpublic)
-$('#componentstablePrivate').append(htmlprivate)
-
-
-    //org componentns by user into form
-    var temp = []
-    var html = ''
-    var htmlpublic = ''
-    var htmlprivate = ''
-    for (var i = 0; i < componentlistParse.length; i++) {
-      for (var j = 0; j < userorgcomplistParse.length; j++) {
-        if (componentlistParse[i].elementID == userorgcomplistParse[j].parentid) {
-          if (userorgcomplistParse[j].visibility == 'private') {
-            html += '<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
-            htmlprivate +='<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
-          } else {
-            html += '<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a></td></tr>'
-             htmlpublic +='<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a></td></tr>'
-          }
-          temp.push(userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name)
-        }
-      }
-    }
-    if (count + temp.length == 0) {       
-        var html = '<tr><td><a>No Components</a></td></tr>'
-        var htmlpublic = '<tr><td><a>No Components</a></td></tr>'
-        var htmlprivate = '<tr><td><a>No Components</a></td></tr>'
-       }  else {
-    $('#components').show();
-    }
-    $('#componentstable').append(html)
-    $('#componentstablePublic').append(htmlpublic)
-    $('#componentstablePrivate').append(htmlprivate)
-    //component count
-    $('#compcount').html(count + temp.length)
- 
-
-  var table = jQuery('#componentstable').DataTable({
-    'destroy':true,
-    "pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
-  //  'order': [[ 2, 'asc' ]] ,
-  });
-
-
- 
-
-
-  var table = jQuery('#componentstablePublic').DataTable({
-    'destroy':true,
-    "pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
-  //  'order': [[ 2, 'asc' ]] ,
-});
-  var table = jQuery('#componentstablePrivate').DataTable({
-    'destroy':true,
-    "pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
-  //  'order': [[ 2, 'asc' ]] ,
-});
-  }
   var username = JSON.stringify('{{userload.username}}')
   var user = JSON.stringify('{{user.username}}')
   var text = '{{userload.picture}}'
   text =text.replace("sz&#x3D;50", "sz&#x3D;200");
   $('#googlepic').html('<img src="'+text+'" style="max-width: 100%" class="media-object">')
 
- 
-///////////////////////////// 
-//////  HEAT MAP      //////
-/////////////////////////// 
-function heatmap(){
- var parserData = function (data) {
-  var dataJSON = {};
-  for(var i=0; i<data.length; i++) {
-    var date = new Date(data[i].created); // Date of activity 
-    var sec = date.getTime()/1000; // Convert to sec
-    // Pair "Key-Value" for calendar data
-    if(dataJSON[sec]) {
-      dataJSON[sec]++;
-    } else {
-      dataJSON[sec] = 1;
-    }
-  }
+  var cal = new CalHeatMap();
+  cal.init({
 
-  return dataJSON;
-}
-var cal = new CalHeatMap();
-cal.init({
-   itemSelector: "#cal-heatmap",
-  domain: "month",
-  subDomain: "day",
- // cellSize: 20,
-  //subDomainTextFormat: "%d",
-  range: 11,
-start: new Date(2016, 10),
-   data: itemsParse, // Dates Array
-   afterLoadData: parserData      // Parser function
-});
-}
-////////////////////////////////////
-////        INITIALIZE         //// 
-//////////////////////////////////
-$('document').ready(function(){
-  var username = JSON.stringify('{{userload.username}}')
-  //var calender =  {{calender}}
-  //console.log(calender)
-  heatmap()
-  if (username == user) {
-  }
-  componentList()
+    domain: "day",
+    range: 12,
+    legendVerticalPosition: "center",
+    legendOrientation: "vertical",
+    legendMargin: [0, 10, 0, 0]
+  });
 
-  
-   
-
-
-
-
-
-
-  var tables = jQuery('#assystable').DataTable({
-    'destroy':true,
-    "pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
-  //  'order': [[ 2, 'asc' ]] ,
-});
-})
 </script>
 

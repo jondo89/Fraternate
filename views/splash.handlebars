@@ -1,12 +1,55 @@
-<h1>Congratulations you are logged in.</h1>	
-<hr>
-<div class="row">
-	<div class="col-md-6">
-		<h2>You own the following organizations</h2>
-	</div>
-	<div class="col-md-6">
-		<h2>You are a member of the following.</h2>
-	</div>
+ 
+<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
 
-	
+<div class="row">
+	<div class="col-md-7">
+		<p></p>
+		{{#if organizations}}
+		<h3>Organizations <small>All user organizations are listed below.</small></h3>
+    <div class="row">
+      {{#each organizations}}
+      <div class="col-md-1">
+        <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}"  >
+          <img src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+        </a>
+      </div>
+      {{/each}}
+    </div>
+		{{else}}
+		<h3>Organizations <small>Get started by creating your organization.</small></h3>
+		<div style="border-width: 1px; border-style: dashed; border-color: grey;padding:15px;border-radius: 5px;">
+			<p>No organizations found </p>
+			<a class="btn btn-success btn-xl" href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 
+		</div>
+		{{/if}}
+		<h3>Recent Contributions. <small>Click on the item to view the days contributions.</small></h3>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div id="cal-heatmap"></div>
+			</div>
+		</div>
+		<div>
+			<h3>Recent activity <small>Details of your interaction on the site are shown below.</small></h3> 
+			<div style="border-width: 1px; border-style: dashed; border-color: grey;padding:55px;text-align: center;border-radius: 5px;"><strong>Welcome!</strong> You are just getting started, setup you profile, create an organization then get started with your custom site content.</div>
+		</div>
+	</div>
+	<div class="col-md-5">
+		<h3>Custom Site Details <small>Add your content here.</small></h3>
+		<div style="height:355px;border-width: 1px;border-style: dashed; border-color: grey;padding:55px;text-align: center;border-radius: 5px;"><strong> Heads up!</strong> This is where your custom content and user interaction detail will be added. 
+		</div>
+		<p></p>  
+	</div>
 </div>
+
+<script type="text/javascript">
+	var cal = new CalHeatMap();
+	cal.init({
+		domain: "day",
+		range: 12,
+		legendVerticalPosition: "center",
+		legendOrientation: "vertical",
+		legendMargin: [0, 10, 0, 0]
+	});
+</script>

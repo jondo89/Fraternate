@@ -14,12 +14,29 @@
 		</ul>
 	</div>
 	<div class="col-md-9">
+			
+<h3>Recaptch</h3>
 		
-		Recaptch
 		use the recaptch admin area (browse and find with google) , ensure that all of the repactch deployment points are changed to your new registered domain.
 		Add the localhost option to the recaptch domain to allow for local testing.
 
-		Google authorizations
+	
+<h3>Google Oauth</h3>
+
+<p>You will need to use the Google API credential manager to allow your website to use the Google Signin. Change the .env file in the root directory value for Client ID and Client Secret. For your site you will need to change the heroku dashboard keys to suit your new site values.</p>
+
+<p>You will need to set up the localhost host signin permission for testing as well as your hosted domain.</p>
+<p>Here is the Authorized redirect URIs example that work for this site.</p>
+<pre>https:// --- your domain here ----  /auth/google/callback</pre>
+<p>In the event of challenges with activation on the site, the use of http rather than https could be the problem.</p>
+
+
+
 
 </div>
+
+
+
+
 </div>
+
