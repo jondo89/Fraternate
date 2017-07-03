@@ -1,0 +1,47 @@
+ <h1>{{sitename}} Users</h1>
+<p></p>
+<table class="table table-bordered" id="User">
+  <thead>
+    <tr>
+      <th>Users</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each username}}
+ <tr>
+<td>
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img src="/uploads/{{this.id}}.jpg " style="max-width: 85px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+    </a>
+  </div>
+  <div class="media-body">
+<div class="row">
+  <div class="col-md-3">
+     <a href="/organizations/{{this.username}}"><h4>{{this.username}}</h4></a>
+    <a style="color:grey" href="/users/{{this.username}}">View Public Profile</a>
+  </div>
+  <div class="col-md-9">
+{{dotdotdotdot this.bio}}
+  </div>
+</div>
+  </div>
+</div>
+</td>
+   </tr>
+ {{/each}}
+</tbody>
+</table>
+
+<script type="text/javascript">
+////////////////////////////////////
+////        INITIALIZE         //// 
+//////////////////////////////////
+$('document').ready(function(){
+var table = jQuery('#User').DataTable({
+  'destroy':true,
+  "pagingType": "numbers",    
+});
+})
+</script>

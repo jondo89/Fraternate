@@ -115,20 +115,12 @@ exports.page = function(req, res) {
 //////////  USERS ////////////
 ////////////////////////////
 exports.users = function(req, res) {
-  if (req.user) {
-    if (req.user.permission=="superadmin") {
       User.find(  function(err, username) {
         res.render('userlist',{
           username : username,
           pagetitle: 'Users | '+sitename+'',
         });
       });
-    } else {
-     res.redirect('/signin');
-   }  
- } else {
-   res.redirect('/signin');
- }
 };
 
 ////////////////////////////////
