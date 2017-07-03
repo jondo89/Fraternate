@@ -81,13 +81,31 @@ exports.settings = function(req, res) {
 ////////// PROFILE PAGE ////////////
 ///////////////////////////////////
 exports.profile = function(req, res) {
-   if (req.user) {
+ //There is a requirement to limit the form size  , as such send the find and send the headings from the parent.
+ var query1 = User.findOne(
+ {
+  "username" : req.params.username
+})
+ query1.exec(function (err, user) { 
+  if(err){console.log('Error Here query1'); return;}
+  if (user) {
+ 
+ 
+      user.password = 'Kwakwakwa'
       res.render('account/profile', {
-        userload : req.user,
+        userload : user,
+     
+ 
+        items:req.items, //list of all '+sitename+' DB entires
+        itemsParse:req.itemsParse,//list of all '+sitename+' DB entires
+        pagetitle: user.username+' | '+sitename+'',
       });
+  
   } else {
    res.redirect('/');
  }
+ //Query end
+})
  };
 
 //////////////////////////////
