@@ -1,60 +1,58 @@
-<nav id="mainNav" class="navbar navbar-inverse ">
+<nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top ">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
       </button>
-          <a class="navbar-brand" href="/" style="padding: 8px 0px 5px 11px">
-            <img alt="{{sitename}}" src="/img/Logo square inverse 50x50.png" style="height: 35px;padding: 5px"> 
-          </a> 
-        <a class="navbar-brand" href="/">{{sitename}}</a>
+      <a class="navbar-brand" href="/" style="padding: 8px 0px 5px 11px">
+        <img alt="{{sitename}}" src="/img/Logo square inverse 50x50.png" style="height: 35px;padding: 5px"> 
+      </a> 
+      <a class="navbar-brand" href="/">{{sitename}}</a>
     </div>
-
-
-
-   
- 
-      
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right" id="deploy">
-      <li>
-          <a href="/introduction" style="color: rgba(255,255,255,0.75)">Instructions</a>
-        </li> 
-      <li>
-          <a href="/users" >Users</a>
-        </li> 
-      <li>
-          <a href="/organizations">Organizations</a>
-        </li> 
-
-
-        {{#if user}}
-        <li class="dropdown" data-toggle="tooltip" data-placement="right" title="View profile and more.">
-          <a href="#" data-toggle="dropdown" class="navbar-avatar dropdown-toggle" >
-            {{#if user.picture}}
-            <img src="{{user.picture}}" class="navbar-avatar-pic" style="border-radius: 5px">
-            {{else}}
-            <img src="{{user.gravatar}}" class="navbar-avatar-pic" style="border-radius: 5px">
-            {{/if}}
-            <i class="caret"></i>
-          </a>
-          <ul class="dropdown-menu"  id="usermenu"> 
-            <li><a >Logged in as <strong>{{user.username}}</strong>  </a></li>
-            <li class="divider"></li>    
-            <li><a href="/users/{{user.username}}">Your Profile</a></li>
-            <li><a href="/users/{{user.username}}/settings/profile">Settings</a></li>
-            <li><a href="/help">Help</a></li>
-            <li class="divider"></li>  
-            <li><a href="/signout">Sign out</a></li>
-          </ul>
-        </li>
-        {{else}}
-        <li class=""><a href="/signin">Sign in</a></li>
-        <li class=""><a href="/signup">Sign up</a></li>
-        {{/if}}
-      </ul>
+    <!-- Expanded navigation -->
+    <div class="navbar-collapse collapse in" aria-expanded="true">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!-- Main navigation -->
+        <ul class="nav navbar-nav">
+        <li>
+            <a href="/users" >Users</a>
+          </li> 
+          <li>
+            <a href="/organizations">Organizations</a>
+          </li> 
+        </ul>
+        <ul class="nav navbar-nav navbar-right" id="deploy">
+          <li>
+            <a href="/introduction">Instructions</a>
+          </li> 
+          {{#if user}}
+          <li class="dropdown" data-toggle="tooltip" data-placement="right" title="View profile and more.">
+            <a href="#" data-toggle="dropdown" class="navbar-avatar dropdown-toggle" >
+              {{#if user.picture}}
+              <img src="{{user.picture}}" class="navbar-avatar-pic" style="border-radius: 5px">
+              {{else}}
+              <img src="{{user.gravatar}}" class="navbar-avatar-pic" style="border-radius: 5px">
+              {{/if}}
+              <i class="caret"></i>
+            </a>
+            <ul class="dropdown-menu"  id="usermenu"> 
+              <li><a >Logged in as <strong>{{user.username}}</strong>  </a></li>
+              <li class="divider"></li>    
+              <li><a href="/users/{{user.username}}">Your Profile</a></li>
+              <li><a href="/users/{{user.username}}/settings/profile">Settings</a></li>
+              <li><a href="/help">Help</a></li>
+              <li class="divider"></li>  
+              <li><a href="/signout">Sign out</a></li>
+            </ul>
+          </li>
+          {{else}}
+          <li class=""><a href="/signin">Sign in</a></li>
+          <li class=""><a href="/signup">Sign up</a></li>
+          {{/if}}
+        </ul>
+      </div>
     </div>
     <!-- /.navbar-collapse -->
   </div>
