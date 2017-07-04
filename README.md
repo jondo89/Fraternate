@@ -1,6 +1,8 @@
 <h2>Fraternate Installation Instructions</h2>
   <h1><a href="https://fraternate.herokuapp.com/" target="_blank">DEMO</a></h1>
 
+<h3>Fraternate Installation Instructions</h3>
+  
 <p>In summary Fraternate requires the following: </p>
 <ul>
   <li>Node.js</li>
@@ -32,13 +34,13 @@ Download and install from the mongodb homepage.
 <p>Once downloaded, extract to the directory of your choice. For example: </p>
 
 <pre>
-C:\Fraternate
+C:\ Fraternate
 </pre>
 
 <li>Step 4 - With node.js installed, the use of the NPM service is now available from your command prompt, go into the directory where Fraternate was cloned using your preferred command prompt (DOS interface). For example: </li>
 
 <pre>
-cd\Fraternate
+cd\ Fraternate
 </pre>
 <p>When you are at the command prompt in the correct directory, type in the following:</p>
 
@@ -65,6 +67,9 @@ The NPM service will now download and install into the cloned directory. The NPM
 </li>
 <pre>npm install express</pre>
 
+<li>In order to send mails from the signup and contact page , nodemailer needs to be installed. type into the cmd prompt 
+</li>
+<pre>npm install nodemailer</pre>
 
 <li>Robomongo is a very useful tool for viewing the mongodb database structure. Install from their website.
 <pre>
@@ -97,6 +102,7 @@ npm install crypto
 npm install bcrypt-nodejs
 npm install passport-google-oauth
 npm install passport-local
+npm install passport-github
 </pre>
 
 
@@ -106,7 +112,3 @@ npm install passport-local
  
 
 <p>If you are getting stuck , this is a port of the quality work done on Megaboilerplate. Here are the installation instructions for <a href="https://github.com/sahat/megaboilerplate#express" target="_blank">Megaboilerplate</a></p>
-
-
- <div style="padding-bottom:45px"></div>
-

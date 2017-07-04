@@ -15,52 +15,7 @@ var sitename = myModule.sitename
 var website = myModule.website
 var repo = myModule.repo
  
-///////////////////////////////////////
-////     SIGN UP EMAIL SEND       //// 
-/////////////////////////////////////
-function signupEmail(username , email){
-  var port = process.env.MAIL_PORT
-  var useremail = process.env.MAIL_USERNAME
-  var passwords = process.env.MAIL_PASSWORD
-  var temp = {}
-  'use strict';
-  var nodemailer = require('nodemailer');
-// create reusable transporter object using the default SMTP transport
-var transporter = nodemailer.createTransport({
-  host: 'mail.isithelo.com',
-  tls: {
-    rejectUnauthorized: false
-  },
-    secure: false, // secure:true for port 465, secure:false for port 587
-    auth: {
-      user: useremail,
-      pass: passwords,
-    }
-  }); 
-var mailOptions = {
-  from: username + ' ' + '<'+ email + '>', // sender address
-  to: process.env.MAIL_USERNAME, // list of receivers
-  subject: '✔ Sign in successfully completed | '+ sitename, // Subject line
-  html:  'New user signup :' + username + ' email : ' +  email,
-}
-// send mail with defined transport object
-transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-    return console.log(error);
-  }
-  var mailOptions = {
-  from: 'The '+sitename+' Team' + ' ' + '<'+ process.env.MAIL_USERNAME + '>', // sender address
-  to: email, // list of receivers
-  subject: '✔ Sign in successfully completed | '+sitename, // Subject line
-  html:  'Thanks for signing up for '+sitename+' , please complete you profile and account settings when you get a chance!',
-}
-transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-    return console.log(error);
-  }
-});
-});
-}
+
 
 /**
  * Login required middleware
@@ -165,7 +120,7 @@ transporter.sendMail(mailOptions, (error, info) => {
             permission : 'user'
           });
           user.save(function(err) {
-            signupEmail(req.body.username,req.body.email)
+             
             req.logIn(user, function(err) {
               res.redirect('/');
             });
