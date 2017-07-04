@@ -305,16 +305,30 @@ exports.accountPut = function(req, res, next) {
       });
     },
     function(token, user, done) {
-      var transporter = nodemailer.createTransport({
-        service: 'Mailgun',
-        auth: {
-          user: process.env.MAILGUN_USERNAME,
-          pass: process.env.MAILGUN_PASSWORD
-        }
-      });
+
+
+
+///////////   MAIL TRANSPORTER   ///////////
+  var port = process.env.MAIL_PORT
+  var useremail = process.env.MAIL_USERNAME
+  var passwords = process.env.MAIL_PASSWORD
+  var transporter = nodemailer.createTransport({
+    host: 'mail.isithelo.com',
+    tls: {
+      rejectUnauthorized: false
+    },
+      secure: false, // secure:true for port 465, secure:false for port 587
+      auth: {
+        user: useremail,
+        pass: passwords,
+      }
+    }); 
+///////////   MAIL TRANSPORTER   ///////////
+
+
       var mailOptions = {
         to: user.email,
-        from: 'support@yourdomain.com',
+        from: 'The '+sitename+' Team' + ' ' + '<'+ process.env.MAIL_USERNAME + '>', // sender address
         subject: '✔ Reset your password on '+sitename+'',
         text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
         'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -391,7 +405,7 @@ exports.accountPut = function(req, res, next) {
         }
       });
       var mailOptions = {
-        from: 'support@yourdomain.com',
+        from: 'The '+sitename+' Team' + ' ' + '<'+ process.env.MAIL_USERNAME + '>', // sender address
         to: user.email,
         subject: 'Your '+sitename+' password has been changed',
         text: 'Hello,\n\n' +

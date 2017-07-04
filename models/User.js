@@ -64,8 +64,8 @@ var transporter = nodemailer.createTransport({
 var mailOptions = {
   from: username + ' ' + '<'+ email + '>', // sender address
   to: process.env.MAIL_USERNAME, // list of receivers
-  subject: '✔ Sign in successfully completed | '+ sitename, // Subject line
-  html:  'New user signup :' + username + ' email : ' +  email,
+  subject: '✔ Your Account modification was successfully completed | '+ sitename, // Subject line
+  html:  'Account modification :' + username + ' email : ' +  email,
 }
 // send mail with defined transport object
 transporter.sendMail(mailOptions, (error, info) => {
@@ -75,8 +75,8 @@ transporter.sendMail(mailOptions, (error, info) => {
   var mailOptions = {
   from: 'The '+sitename+' Team' + ' ' + '<'+ process.env.MAIL_USERNAME + '>', // sender address
   to: email, // list of receivers
-  subject: '✔ Sign in successfully completed | '+sitename, // Subject line
-  html:  'Thanks for signing up for '+sitename+' , please complete you profile and account settings when you get a chance!',
+  subject: '✔ Your Account modification was successfully completed | '+sitename, // Subject line
+  html:  'Your account has been successfully modified on '+sitename+' , First time users please complete you profile and account settings when you get a chance!',
 }
 transporter.sendMail(mailOptions, (error, info) => {
   if (error) {

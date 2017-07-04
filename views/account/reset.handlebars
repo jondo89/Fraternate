@@ -1,5 +1,11 @@
-<div class="container">
-  <div class="panel">
+<div class="login-container container">
+     <div style="text-align: center">
+       <img src="/img/Logo square 300x300.png" style="height: 55px">  
+     </div>
+    <div style="text-align: center;padding-bottom: 15px">
+        <h2>Reset your {{sitename}} password</h2>
+     </div>
+<div class="panel panel-default">
     <div class="panel-body">
       {{#if messages.success}}
         <div role="alert" class="alert alert-success">
@@ -16,7 +22,6 @@
         </div>
       {{/if}}
       <form method="POST">
-        <legend>Reset Password</legend>
         <div class="form-group">
           <label for="password">New Password</label>
           <input type="password" name="password" id="password" placeholder="New password" class="form-control" autofocus>

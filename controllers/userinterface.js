@@ -89,13 +89,9 @@ exports.profile = function(req, res) {
  query1.exec(function (err, user) { 
   if(err){console.log('Error Here query1'); return;}
   if (user) {
- 
- 
       user.password = 'Kwakwakwa'
       res.render('account/profile', {
         userload : user,
-     
- 
         items:req.items, //list of all '+sitename+' DB entires
         itemsParse:req.itemsParse,//list of all '+sitename+' DB entires
         pagetitle: user.username+' | '+sitename+'',

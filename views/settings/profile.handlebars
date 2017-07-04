@@ -43,9 +43,6 @@
                 <input type="email" name="email" id="email" class="form-control" value="{{user.email}}">
               </div>
             </div>
-  
-
-
             <div class="form-group">
               <label for="name" class="col-md-12">Name</label>
               <div class="col-md-11">
@@ -62,9 +59,7 @@
               <label for="location" class="col-md-12">Location</label>
               <div class="col-md-11">
                 <input type="text" name="location" id="location" class="form-control" value="{{user.location}}">
-  <p class="help-block">We store your personal data in South Africa. See our <a href="/privacy">privacy policy</a> for more information. </p>
-
-
+                <p class="help-block">We store your personal data in South Africa. See our <a href="/privacy">privacy policy</a> for more information. </p>
               </div>
             </div>
             <div class="form-group">
@@ -89,44 +84,52 @@
             <div class="form-group">
               <div class="col-sm-12">
                 <h4>Profile Picture</h4>
-                  <!-- This wraps the whole cropper -->
-                  <div id="image-cropper" >
+                <!-- This wraps the whole cropper -->
+                <div id="image-cropper" >
                   <!-- This is where the preview image is displayed -->
                   <div class="cropit-preview"  style="border: 1px solid #eee;position: relative;text-align: center;"><img src="/img/defaults/default-user.png" style="padding-top: 15px"></div>
                   <!-- This range input controls zoom -->
                   <!-- You can add additional elements here, e.g. the image icons -->
-                  <input type="range" class="cropit-image-zoom-input" style="width: 200px" />
+                  <input type="range" id="slideritem" class="cropit-image-zoom-input" style="width: 200px" />
                   <p></p>
                   <!-- This is where user selects new image -->
                   <input type="file" class="cropit-image-input"  />
-                  <input style="display: none;"  name="croppedImg" id="croppedImg"/>
+                  <input  name="croppedImg" id="croppedImg"/>
                   <!-- The cropit- classes above are needed
                   so cropit can identify these elements -->
-                  </div>
+                </div>
+              </div>
             </div>
-</div>
-</div>
-</div>
-</form>
-</div>
-</div>
-
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
-
 
   function activate(){
     $('#username').prop('disabled', false);
   }
-
 
   {{#if user.picture}}
   var imageSrc = '{{{user.picture}}}'
   {{else}}
   var imageSrc = '{{{user.gravatar}}}'
   {{/if}}
-  $('#image-cropper').cropit({ imageState: { src: imageSrc  } });
+  
+  $('#image-cropper').cropit({ 
+    imageState: { src: imageSrc  },
+    onImageLoaded : function(){
+      var imageData = $('#image-cropper').cropit('export', {
+        type: 'image/jpeg',
+        quality: .4,
+        originalSize: true,
 
+      });
+      $('#croppedImg').val(imageData);
+    }
+  });
 
 ////////////////////////////////
 ///// LISTEN FOR CHANGES //////
@@ -135,26 +138,24 @@ $('#image-cropper').change(function() {
   var imageData = $('#image-cropper').cropit('export', {
     type: 'image/jpeg',
     quality: .4,
-    originalSize: true
+    originalSize: true,
+
   });
   $('#croppedImg').val(imageData);
 });
 
-
 ////////////////////////
 ///// INITIALIZE //////
 //////////////////////
-    $(document).ready( function() {
-      $(':file').on('fileselect', function(event, numFiles, label) {
-        var input = $(this).parents('.input-group').find(':text'),
-        log = numFiles > 1 ? numFiles + ' files selected' : label;
-        if( input.length ) {
-          input.val(log);
-        } else {
-          if( log ) alert(log);
-        }
-      });
-    });
-
-
-  </script>
+$(document).ready( function() {
+  $(':file').on('fileselect', function(event, numFiles, label) {
+    var input = $(this).parents('.input-group').find(':text'),
+    log = numFiles > 1 ? numFiles + ' files selected' : label;
+    if( input.length ) {
+      input.val(log);
+    } else {
+      if( log ) alert(log);
+    }
+  });
+});
+</script>

@@ -17,7 +17,7 @@ exports.index = function(req, res) {
 //Perform Routing for Varios user type on the home page.
 if (req.user) {
     res.render('splash', {
-
+    	pagetitle: req.user.username +' | '+sitename+'',
     });
 } else {
   res.render('home', {
