@@ -66,7 +66,7 @@ transporter.sendMail(mailOptions, (error, info) => {
   }
 var mailOptions = {
   from: 'The '+sitename+' Team' + ' ' + '<'+ process.env.MAIL_USERNAME + '>', // sender address
-  to: useremail, // list of receivers
+  to: req.body.email , // list of receivers
   subject: '✔ Contact form submission | '+sitename, // Subject line
   html:  'Thanks for getting in touch , we will get right back to you!',
     }
