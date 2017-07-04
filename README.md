@@ -1,5 +1,6 @@
 <h2>Fraternate Installation Instructions</h2>
-  
+  <h1><a href="https://fraternate.herokuapp.com/" target="_blank">DEMO</a></h1>
+
 <p>In summary Fraternate requires the following: </p>
 <ul>
   <li>Node.js</li>
