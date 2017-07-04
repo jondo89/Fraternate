@@ -6,7 +6,7 @@
  <div style="text-align: center;padding-bottom: 15px">
   <h2>Contact the {{sitename}} Team</h2>
 </div>
-<div class="panel panel-default" >
+<div class="panel panel-default" id="sendingarea" >
   <div class="panel-body">
     <p></p>
     {{#if messages.success}}
@@ -59,7 +59,7 @@
 
 
 <script type="text/javascript">
-  document.getElementById("button1").disabled = true;
+ document.getElementById("button1").disabled = true;
   function enableBtn(){
     document.getElementById("button1").disabled = false;
   }
