@@ -1,5 +1,12 @@
-<div class="container">
-  <div class="panel">
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<div class="login-container container">
+     <div style="text-align: center">
+       <img src="/img/Logo square 300x300.png" style="height: 55px">  
+     </div>
+    <div style="text-align: center;padding-bottom: 15px">
+        <h2>Forgot Password</h2>
+     </div>
+<div class="panel panel-default">
     <div class="panel-body">
       {{#if messages.info}}
         <div role="alert" class="alert alert-info">
@@ -16,14 +23,22 @@
         </div>
       {{/if}}
       <form method="POST">
-        <legend>Forgot Password</legend>
         <div class="form-group">
           <p>Enter your email address below and we'll send you password reset instructions.</p>
           <label for="email">Email</label>
           <input type="email" name="email" id="email" placeholder="Email" class="form-control" autofocus>
+        </div><div class="form-group" >  
+            <div class="g-recaptcha" data-callback="enableBtn" data-sitekey="6Le2aCcUAAAAAO8g693E9uMACIv7L-DeAbDZc67-"></div>
         </div>
-        <button type="submit" class="btn btn-success">Reset Password</button>
+        <button type="submit" id="button1" class="btn btn-success">Reset Password</button>
       </form>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+document.getElementById("button1").disabled = true;
+  function enableBtn(){
+    document.getElementById("button1").disabled = false;
+   }
+</script>

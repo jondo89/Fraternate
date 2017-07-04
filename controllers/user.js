@@ -264,9 +264,6 @@ exports.accountPut = function(req, res, next) {
  * GET /forgot
  */
  exports.forgotGet = function(req, res) {
-  if (req.isAuthenticated()) {
-    return res.redirect('/');
-  }
   res.render('account/forgot', {
     pagetitle: 'Forgot Password | '+sitename+''
   });

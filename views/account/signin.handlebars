@@ -1,42 +1,48 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="login-container container">
-     <div style="text-align: center">
-       <img src="/img/Logo square 300x300.png" style="height: 55px">  
-     </div>
-    <div style="text-align: center;padding-bottom: 15px">
-        <h2>Sign in to {{sitename}}</h2>
-     </div>
+ <div style="text-align: center">
+   <img src="/img/Logo square 300x300.png" style="height: 55px">  
+ </div>
+ <div style="text-align: center;padding-bottom: 15px">
+  <h2>Sign in to {{sitename}}</h2>
+</div>
 <div class="panel panel-default">
-    <div class="panel-body">
-      {{#if messages.error}}
-        <div role="alert" class="alert alert-danger">
-          {{#each messages.error}}
-            <div>{{msg}}</div>
-          {{/each}}
-        </div>
-      {{/if}}
-      <form method="POST">
- 
-        <div class="form-group">
-        
-          <input type="email" name="email" id="email" placeholder="Email" class="form-control" autofocus>
-        </div>
-        <div class="form-group">
- 
-          <input type="password" name="password" id="password" placeholder="Password" class="form-control">
-        </div>            
-        <div class="form-group"><a href="/forgot"><strong>Forgot your password?</strong></a></div>
-        <button type="submit" class="btn btn-success">Log in</button>
-      </form>
-      <div class="hr-title"><span>or</span></div>
-      <div class="btn-toolbar text-center">
-        <a href="/auth/google" class="btn btn-default">Sign in with Google</a>
-        <a href="/auth/github" class="btn btn-default">Sign in with Github</a>
+  <div class="panel-body">
+    {{#if messages.error}}
+    <div role="alert" class="alert alert-danger">
+      {{#each messages.error}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+    <form method="POST">
+      <div class="form-group">
+        <input type="email" name="email" id="email" placeholder="Email" class="form-control" autofocus>
       </div>
+      <div class="form-group">
+        <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+      </div>            
+      <div class="form-group"><a href="/forgot"><strong>Forgot your password?</strong></a></div>
+      <div class="form-group" >  
+        <div class="g-recaptcha" data-callback="enableBtn" data-sitekey="6Le2aCcUAAAAAO8g693E9uMACIv7L-DeAbDZc67-"></div>
+      </div>
+      <button type="submit" id="button1" class="btn btn-primary">Log in</button>
+    </form>
+    <div class="hr-title"><span>or</span></div>
+    <div class="btn-toolbar text-center">
+      <a href="/auth/google" class="btn btn-default">Sign in with Google</a>
+      <a href="/auth/github" class="btn btn-default">Sign in with Github</a>
     </div>
   </div>
-  <p class="text-center">
-    Don't have an account? <a href="/signup"><strong>Sign up</strong></a>
-  </p>
 </div>
- 
- 
+<p class="text-center">
+  Don't have an account? <a href="/signup"><strong>Sign up</strong></a>
+</p>
+</div>
+
+<script type="text/javascript">
+  document.getElementById("button1").disabled = true;
+  function enableBtn(){
+    document.getElementById("button1").disabled = false;
+  }
+</script>

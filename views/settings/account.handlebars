@@ -18,9 +18,9 @@
     {{/each}}
   </div>
   {{/if}} 
-  <h2>Change password</h2>
+  <h3>Change password</h3>
   <hr>
-  <form method="POST" action="/account?_method=PUT" class="form-horizontal">
+  <form method="POST" action="/account?_method=PUT"  class="form-horizontal">
     <div class="form-group">
       <label for="password" class="col-md-12">New Password</label>
       <div class="col-md-5">
@@ -34,37 +34,52 @@
       </div>
     </div>
     <div class="form-group">
-      <div class="col-sm-4">
-        <button type="submit" class="btn btn-default">Change Password</button>
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-default">Change Password</button> <a href="/forgot">I forgot my password.</a>
       </div>
     </div>
   </form>
-  <h2>Change External Account Settings</h2>
+  <h3>Change External Account Settings</h3>
   <hr>
   <div class="form-horizontal">
     <div class="form-group">
       <div class=" col-sm-4">
         {{#if user.google}}
-        <p><a href="/unlink/google" class="text-danger">Unlink your Google account</a></p>
+        <p><a href="/unlink/google" class="text-danger"><i class="fa fa-chain-broken" aria-hidden="true"></i>  Unlink your Google account</a></p>
         {{else}}
-        <p><a href="/auth/google">Link your Google account</a></p>
+        <p><a href="/auth/google"><i class="fa fa-link" aria-hidden="true"></i>  Link your Google account</a></p>
         {{/if}}
         {{#if user.github}}
-        <p><a href="/unlink/github" class="text-danger">Unlink your Github account</a></p>
+        <p><a href="/unlink/github" class="text-danger"><i class="fa fa-chain-broken" aria-hidden="true"></i>  Unlink your Github account</a></p>
         {{else}}
-        <p><a href="/auth/github">Link your Github account</a></p>
+        <p><a href="/auth/github"><i class="fa fa-link" aria-hidden="true"></i>  Link your Github account</a></p>
         {{/if}}
       </div>
     </div>
   </div>
-  <h2  style="color:#d9534f">Delete Account</h2>
+  <h3  style="color:#d9534f">Delete Account</h3>
   <hr  style="color:#d9534f">
   <form method="POST" action="/account?_method=DELETE" class="form-horizontal">
     <div class="form-group">
-      <p class=" col-sm-9">You can delete your account, but keep in mind this action is irreversible.</p>
+
+    {{#if organizations}}
+    <h3>Organizations</h3>
+    <div class="row">
+      {{#each organizations}}
+      <div class="col-md-2">
+      <p>Your account is currently owner of the following organizations :</p>
+        <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
+          <img src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+        </a>
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+      <p class=" col-sm-9" style="color:#d9534f">You can delete your account, but keep in mind this action is irreversible.</p>
       <div class=" col-sm-9">
         <button type="submit" class="btn btn-danger">Delete my account</button>
       </div>
+    {{/if}}
     </div>
   </form>
 </div>
