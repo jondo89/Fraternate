@@ -1,0 +1,39 @@
+    <!-- Single button -->
+    <div class="btn-group">
+    	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="/uploads/{{user.id}}.jpg " style="max-width: 30px">
+            {{user.username}}  <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu ">
+          <li>
+           <a href="/users/{{user.username}}"  style="text-align: right; ">
+            <span class="media">
+                {{user.username}} 
+                <img src="/uploads/{{user.id}}.jpg " style="max-width: 25px">    
+            </span>
+        </a>
+    </li>
+    {{#each organizations}}
+    <li>
+        <a href="/organizations/{{this.entry.name}}" > 
+            <span class="media">
+              {{#if this.entry.picture}}
+              <img src="{{this.entry.picture}}"  style="max-width: 25px">
+              {{else}}
+              <img src="{{this.gravatar}}"  style="max-width: 25px">
+              {{/if}}
+              {{#if this.entry.displayname}}
+                {{this.entry.displayname}}
+              {{else}}
+                {{this.entry.name}}
+              {{/if}}
+          </span>
+      </a>
+  </li>
+  {{/each}}
+  <li role="separator" class="divider"></li>
+  <li><a href="/users/{{user.username}}/settings/organizations"><i class="fa fa-users" aria-hidden="true"></i> Manage Organizations</a></li>
+  <li><a href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create Organizations</a></li>
+</ul>
+</div>
+

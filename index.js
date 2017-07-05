@@ -21,6 +21,7 @@ var HomeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
 var userInterfaceController = require('./controllers/userinterface');
+var organizationController = require('./controllers/organization');
 
 // Passport OAuth strategies
 require('./config/passport');
@@ -142,11 +143,9 @@ app.locals.sitename = sitename
 app.locals.website = website
 app.locals.repo = repo
 
-/////////////////////////////
-////     ROUTING        //// 
-///////////////////////////
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////                                                            ROUTING                                                                     //// 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////
 ////       TEMPALTES        //// 
@@ -158,19 +157,43 @@ app.get('/troubleshooting', userInterfaceController.troubleshooting);
 app.get('/installation', userInterfaceController.installation);
 app.get('/integration', userInterfaceController.integration);
  
-
 ///////////////////////////////////////////////////
 ////        USER INTERFACE CONTROLLER         //// 
 /////////////////////////////////////////////////
+//Static
 app.get('/users/', userInterfaceController.users);
-app.get('/users/:username/',userInterfaceController.profile);
+app.get('/users/:username/',   organizationController.userorganizations,  userInterfaceController.profile);
 app.get('/users/:username/settings/',userInterfaceController.settings);
-app.get('/users/:username/settings/:page', userInterfaceController.page);
+app.get('/users/:username/settings/:page',   organizationController.userorganizations, userInterfaceController.page);
 app.get('/usersearch', userInterfaceController.usersearch);
 
 
+/////////////////////////////////////
+////       ORGANIZATION         //// 
+///////////////////////////////////
+//Static
+app.get('/organizations', organizationController.orglist);
+app.get('/organizations/new', organizationController.neworg);
+app.post('/organizations/new', organizationController.createorgstatic);
+app.get('/organizations/:orgname/', organizationController.ajaxorguserread ,organizationController.orgprofile);
+app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.settings);
+app.get('/organizations/:orgname/components', organizationController.ajaxorguserread ,organizationController.components);
+app.get('/organizations/:orgname/assemblies',organizationController.ajaxorguserread , organizationController.assemblies);
+app.get('/organizations/:orgname/people', organizationController.ajaxorguserread ,organizationController.people);
+app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.settings);
+app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread , organizationController.page);
+app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.orgPut);
 
-app.get('/', HomeController.index);
+//Ajax
+app.get('/orguserread', organizationController.orguserread); // Get the active user organizations , owner and member.
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////                                                            USER                                                                        //// 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.get('/',   organizationController.userorganizations,  HomeController.index);
+
 app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
@@ -190,6 +213,10 @@ app.get('/auth/google', passport.authenticate('google', { scope: 'profile email'
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/signin' }));
 app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email profile repo' ] }));
 app.get('/auth/github/callback', passport.authenticate('github', { successRedirect: '/', failureRedirect: '/signin' }));
+
+
+
+
 
 /////////////////////////////
 ////       404          //// 

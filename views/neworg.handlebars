@@ -1,0 +1,329 @@
+<div class="container">
+  <h1 >Sign up your team</h1>
+  <table class="table table-bordered" style="border-radius: 5px">
+    <tr>
+      <td style="padding-bottom: 22px;width: 33%;text-align: center" class="success">
+       <h3><i class="fa fa-check" aria-hidden="true" style="color: #5cb85c"></i> <strong class="step" style="font-size:24px">Completed</strong></h3>
+       Create personal account  
+     </td>
+     <td style="padding-bottom: 22px;width: 33%;text-align: center">
+      <h3><i class="fa fa-users" aria-hidden="true" style="color: #337ab7"></i> <strong class="step" style="font-size:24px">Step 2</strong></h3>
+      Create organization
+    </td>
+    <td style="padding-bottom: 22px;width: 33%;text-align: center">
+     <h3><strong class="step" style="font-size:24px">Step 3</strong></h3>
+     Invite members 
+   </td>
+ </tr>
+</table>
+{{#if messages.success}}
+<div role="alert" class="alert alert-success">
+  {{#each messages.success}}
+  <div>{{msg}}</div>
+  {{/each}}
+</div>
+{{/if}}
+{{#if messages.error}}
+<div role="alert" class="alert alert-danger">
+  {{#each messages.error}}
+  <div>{{msg}}</div>
+  {{/each}}
+</div>
+{{/if}}
+
+<h3>Create an organization account.</h3>
+<hr>
+<form method="POST" action="/organizations/new" class="form-horizontal">
+  <div class="row">
+    <div class="col-md-7">
+      <div class="form-group" id="nameGroup">
+        <label for="name" class="col-md-12">Organization name </label>
+        <div class="col-md-12">
+        <div id="errmsg" style="font-size: 12px;color: red"></div> 
+          <input type="text" name="name" id="name" class="form-control" value="">
+          <p class="help-block"><small>The organization account will live at {{website}}organizations/<span id="insert"></span></small></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+     <div style="padding-top: 30px"></div>
+     <div   >
+      <samp>Organization accounts allow your team to plan, build, review, and ship your system design — all while tracking changes and discussing ideas.</samp>
+    </div>
+  </div>
+</div><hr>
+<div class="row">
+  <div class="col-md-7">
+    <div class="form-group">
+      <label for="email" class="col-md-12">Billing email</label>
+      <div class="col-md-12">
+        <input type="email" name="email" id="email" class="form-control" value="">
+        <p class="help-block"><small>Receipts will be sent here</small></p>
+      </div>
+    </div>
+  </div>
+</div> <hr>
+<div class="row">
+  <div class="col-md-7">
+    <!-- Multiple Radios -->
+    <div class="form-group">
+      <label for="radios" class="col-md-12">Choose your plan</label>
+      <div class="col-md-12">
+        <ul class="list-group">
+          <div class="list-group-item">
+            <input type="radio" name="radios" id="radios-0" value="1" checked="checked" class="free" >
+            <strong>Free</strong>
+            <div class="row">
+              <div class="col-md-9">
+               <p class="help-block">Unlimited users, public components and assemblies.</p>
+             </div>
+             <div class="col-md-12" style="text-align: right;">
+              $0
+            </div>
+          </div>
+        </div>
+        <div class="list-group-item">
+          <input type="radio" name="radios" id="radios-1" value="2"  class="teampay">
+          <strong>Team</strong>
+          <div class="row">
+            <div class="col-md-12">
+             <p class="help-block">Starts at $25 / month which includes your first 5 users.</p>
+             <p class="help-block">Unlimited public components and assemblies.</p>
+             <p class="help-block">Unlimited private components and assemblies.</p>
+           </div>
+           <div class="col-md-12" style="text-align: right;">
+            $9
+            per user
+            / month
+          </div>
+        </div>
+        <br/><div class="hiddenInput">  
+        <div class="form-group">
+          <div class="col-md-2">
+            <input  name="users" id="users" class="form-control" value="5">
+          </div>
+          <label for="users" class="col-md-10">users in this Team plan</label>
+        </div>
+        <hr>
+        <table class="table table-bordered">
+          <tr>
+            <td>5 base users <small>(minimum)</small></td>
+            <td class="success">$25.00
+              /month</td>
+            </tr>
+            <tr id="extrauser">
+            </tr>
+            <tr id="total">
+              <td><strong> For 5 users, you’ll pay</strong></td>
+              <td class="success"><strong>$25.00
+                / month</strong></td>
+              </tr>
+            </table>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div >
+      <samp>The credit card and plan you choose will be billed to the organization — not <strong>{{user.username}}</strong> (your user account).</samp>
+    </div>
+  </div> 
+</div> 
+
+<div class="row">
+  <div class="col-md-7">
+    <div id="payment">
+
+      <h5>Choose your payment method</h5>
+      <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#Credit" aria-controls="Credit" role="tab" data-toggle="tab">Credit Card</a></li>
+          <li role="presentation"><a href="#Paypal" aria-controls="Paypal" role="tab" data-toggle="tab">Paypal</a></li>
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="Credit">
+
+           <p></p>
+
+           <legend>Credit Card Information</legend>
+           <!-- Text input-->
+           <div class="form-group">
+            <label class="col-md-4 control-label" for="AccountNo" id="AccountNo_label">* Card Number</label>
+            <div class="col-md-8">
+              <input id="AccountNo" name="AccountNo" type="tel" value="1234123412341234" placeholder="Debit / Credit Card Number" class="form-control input-md" required=""> <span class="help-block" style="display: none;">Enter a valid debit or credit card number. Spaces will be shown automatically.</span> 
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="CCMonth">* Card Expiration</label>
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-6">
+                  <select class="form-control col-sm-2" name="CCMonth" id="CCMonth">
+                    <option>Month</option>
+                    <option value="01" Selected>Jan (01)</option>
+                    <option value="02">Feb (02)</option>
+                    <option value="03">Mar (03)</option>
+                    <option value="04">Apr (04)</option>
+                    <option value="05">May (05)</option>
+                    <option value="06">June (06)</option>
+                    <option value="07">July (07)</option>
+                    <option value="08">Aug (08)</option>
+                    <option value="09">Sep (09)</option>
+                    <option value="10">Oct (10)</option>
+                    <option value="11">Nov (11)</option>
+                    <option value="12">Dec (12)</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <select class="form-control" name="CCYear">
+                    <option>Year</option>
+                    <option value="15" selected>2015</option>
+                    <option value="16">2016</option>
+                    <option value="17">2017</option>
+                    <option value="18">2018</option>
+                    <option value="19">2019</option>
+                    <option value="20">2020</option>
+                    <option value="21">2021</option>
+                    <option value="22">2022</option>
+                    <option value="23">2023</option>
+                    <option value="24">2024</option>
+                    <option value="25">2025</option>
+                    <option value="26">2026</option>
+                    <option value="27">2027</option>
+                    <option value="28">2028</option>
+                    <option value="29">2029</option>
+                  </select>
+                </div>
+              </div> <span class="help-block" style="display: none;">Select the card expiration date month and year.</span> 
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="Paypal">
+
+          <div style="padding-top: 35px;padding-bottom: 35px">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+</div> 
+<hr>
+<div class="row">
+  <div class="col-md-7">
+    <div class="form-group">
+      <div class="col-sm-12">
+        <input type="checkbox" name="chkBox1" id="chkBox1" class="showHideCheck" />This account is owned by a business (see the Terms of Service for details)
+        <br/><div class="hiddenInput">  
+        <br>
+        <p>What is the name of the business that owns this account?</p>
+        <input type="email" name="business_email" id="business_email" class="form-control" >
+        <p class="help-block">e.g, Acme, Inc.</p>
+      </div>
+    </div>
+  </div>
+  
+</div> 
+<div class="col-md-5">
+  <div  >
+   <samp>This business — not <strong>{{user.username}}</strong> (your user account), will own and/or control any content posted to the organization account </samp>
+ </div>
+</div> 
+</div> <hr>
+<div class="row">
+  <div class="col-md-7">
+    <p>
+      By clicking on "Create organization" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.
+    </p>
+  </div>
+</div><hr>
+<div style="padding-bottom: 55px">
+  <button type="submit" id="submits" class="btn btn-success">Create Organization</button>
+</div>
+</form>
+</div>
+
+<script type="text/javascript">
+  $(".hiddenInput").hide();
+  $("#payment").hide();
+  $(".showHideCheck").on("change", function() {
+    $this = $(this);
+    $input = $this.parent().find(".hiddenInput");
+    if($this.is(":checked")) {
+      $input.slideDown();
+    } else {
+      $input.slideUp();
+    }
+  });
+
+  $(".teampay").on("change", function() {
+    $this = $(this);
+    $input = $this.parent().find(".hiddenInput");
+    if($this.is(":checked")) {
+      $input.slideDown();
+      $('#payment').slideDown();
+    } else {
+      $input.slideUp();
+      $('#payment').slideUp();
+    }
+  });
+
+  $(".free").on("change", function() {
+    $this = $(this);
+    $input = $(".teampay").parent().find(".hiddenInput");
+    $input.slideUp();
+    $('#payment').slideUp();
+
+  });
+
+    jQuery.fn.extend({
+        disable: function(state) {
+            return this.each(function() {
+                var $this = $(this);
+                $this.toggleClass('disabled', state);
+            });
+        }
+    });
+
+    $("#name").on("keyup", function() {
+      var value = $( this ).val();
+      var invalidChars = [  ];
+      var name = new RegExp('^[A-Za-z]+$');
+      if(value.match(name)) {
+        $("#insert").html($("#name").val())
+        $('#submits').prop('disabled', false);
+        $("#nameGroup").removeClass('has-error')
+        $('#errmsg').html('')
+      } else {
+        $("#nameGroup").addClass('has-error')
+        $('#submits').prop('disabled', true);
+        $('#errmsg').html('Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.')
+      }
+    })
+
+    $("#name").on("change", function() {
+      var value = $( this ).val();
+      var invalidChars = [  ];
+      var name = new RegExp('^[A-Za-z]+$');
+      if(value.match(name)) {
+        $("#insert").html($("#name").val())
+        $('#submits').prop('disabled', false);
+        $("#nameGroup").removeClass('has-error')
+        $('#errmsg').html('')
+      } else {
+        $("#nameGroup").addClass('has-error')
+        $('#submits').prop('disabled', true);
+        $('#errmsg').html('Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.')
+      }
+    })
+
+
+</script>
+
+

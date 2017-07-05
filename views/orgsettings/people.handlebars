@@ -1,0 +1,102 @@
+{{> orgheader}}
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
+	<li role="presentation"><a href="/organizations/{{organization.entry.name}}/components" role="tab">Components</a></li>
+	<li role="presentation"><a href="/organizations/{{organization.entry.name}}/assemblies" role="tab">Assemblies</a></li>
+	<li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+	<li role="presentation"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
+</ul>
+<div style="padding-top: 25px">
+	<button class="btn btn-success" data-toggle="modal" data-target="#myModal">Invite member</button>
+</div>
+
+<div class="row" style="padding-top: 25px" >
+<p>Add username , password and smtp to node server to get this working.</p>
+	<div class="col-md-2">
+		 
+	<button class="btn btn-success" onclick="emailtest()"  >Email Test</button>
+ 
+	</div>
+	<div class="col-md-2">
+		<pre id="testmails"></pre>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div style="text-align: center">
+					<h1>
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					</h1>
+					<h3>
+						Invite members to {{organization.entry.displayname}}
+					</h3>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<form autocomplete="off" >
+								<input value="" type="text" name="search" id="search" class="form-control" placeholder="Search by username, full name or email address">
+							</form>
+							<div id="users" style="padding-top: 25px"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('#search').keyup(function(){
+		var searchField = $('#search').val();
+		jQuery.ajax({
+			'async': true,
+			'global': false,
+			'url': '/usersearch?item='+searchField,
+			'success': function (dataSchemaObject) {
+				jQuery('#users').html("")
+				if (dataSchemaObject) {
+					var html = '<ul class="list-group">'
+					for (var i = 0; i < dataSchemaObject.users.length; i++) {
+						html+='<li class="list-group-item"><div class="media"><div class="media-left media-middle" > <img src="/uploads/'+dataSchemaObject.users[i]._id+'.jpg " style="max-width: 45px"> </div><div class="media-body" style="text-align: left;"><strong>'+dataSchemaObject.users[i].username+'</strong> '+dataSchemaObject.users[i].username+' <a class="btn btn-default" href="#" role="button" ><i class="fa fa-plus" aria-hidden="true"></i></a>   </div></li>'
+					}
+					html += '</ul>'
+					jQuery('#users').html(html)
+
+				} else {
+					jQuery('#users').html("No users found")
+				}
+			}
+		});
+	});
+
+
+function emailtest(){
+	console.log('Working')
+
+
+		jQuery.ajax({
+			'async': true,
+			'global': false,
+			'url': '/testmail',
+			'success': function (dataSchemaObject) {
+				console.log('returning success')-
+				$('#testmails').html(dataSchemaObject)
+			}
+		});
+
+
+}
+
+
+</script>

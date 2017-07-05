@@ -17,6 +17,8 @@ exports.index = function(req, res) {
 //Perform Routing for Varios user type on the home page.
 if (req.user) {
     res.render('splash', {
+		organizations : req.organizations,
+		organizationsParse:req.organizationsParse,
     	pagetitle: req.user.username +' | '+sitename+'',
     });
 } else {

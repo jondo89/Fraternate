@@ -1,0 +1,78 @@
+<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+{{> orgheader}}
+<div>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
+    <li role="presentation" ><a href="/organizations/{{organization.entry.name}}/components" role="tab">Components</a></li>
+    <li role="presentation"><a href="/organizations/{{organization.entry.name}}/assemblies" role="tab">Assemblies</a></li>
+    <li role="presentation" ><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+    <li role="presentation"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="Summary">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Components</h3>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div id="components">
+                <p>No public components are visible for this organization.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3>Assemblies</h3>
+          <div class="panel panel-default">
+            <div class="panel-body">
+             <div id="assemblies">
+              <p>No public assemblies are visible for this organization.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3>Contributions in the last year.</h3>
+    <div class="panel panel-default">
+      <div class="panel-body">
+       <div id="cal-heatmap"></div>
+     </div>
+   </div>
+ </div>
+</div>
+</div>
+
+<script type="text/javascript">
+  var username = JSON.stringify('{{organization.entry.username}}')
+  var user = JSON.stringify('{{user.username}}')
+  var text = '{{organization.entry.picture}}'
+  text =text.replace("sz&#x3D;50", "sz&#x3D;200");
+  $('#googlepic').html('<img src="'+text+'" class="media-object">')
+///////////////////////////// 
+//////  INITIALISE    //////
+/////////////////////////// 
+$( document ).ready(function() {
+  var username = JSON.stringify('{{organization.entry.username}}')
+  //var calender =  {{calender}}
+  //console.log(calender)
+  heatmap()
+  if (username == user) {
+    $('#assemblies').html('Loggedin as '+user)
+    $('#components').html('Loggedin as '+user)
+    
+  }
+});
+///////////////////////////// 
+//////  HEAT MAP      //////
+/////////////////////////// 
+function heatmap(){
+  var cal = new CalHeatMap();
+  cal.init({
+    domain: "month",
+    range: 12,
+  });
+}
+</script>

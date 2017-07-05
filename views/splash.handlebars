@@ -8,15 +8,23 @@
 		<p></p>
 		{{#if organizations}}
 		<h3>Organizations <small>All user organizations are listed below.</small></h3>
-    <div class="row">
-      {{#each organizations}}
-      <div class="col-md-1">
-        <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}"  >
-          <img src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
-        </a>
-      </div>
-      {{/each}}
-    </div>
+		<div class="row">
+			{{#each organizations}}
+			<div class="col-md-1">
+				<a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}"  >
+					{{#if this.entry.picture}}
+					<img src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+					{{else}}
+					<img src="{{this.gravatar}}" class="media-object" style="max-width: 45px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+					{{/if}}       
+				</a>
+			</div>
+			{{/each}}
+			<div class="col-md-12" style="text-align: right;">
+				<p></p>
+				<a class="btn btn-default " href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 	
+			</div>
+		</div>
 		{{else}}
 		<h3>Organizations <small>Get started by creating your organization.</small></h3>
 		<div style="border-width: 1px; border-style: dashed; border-color: grey;padding:15px;border-radius: 5px;">

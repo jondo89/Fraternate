@@ -1,0 +1,66 @@
+{{> orgheader}}
+
+
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
+	<li role="presentation"><a href="/organizations/{{organization.entry.name}}/components" role="tab">Components</a></li>
+	<li role="presentation"><a href="/organizations/{{organization.entry.name}}/assemblies" role="tab">Assemblies</a></li>
+	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+	<li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
+</ul>
+
+
+<div class="row" style="padding-top: 25px">
+	<div class="col-md-3" id="navMenuPanel">       
+		<div class="list-group">
+			<a href="/organizations/{{organization.entry.name}}/settings/profile" class="list-group-item">Profile</a>
+			<a href="/organizations/{{organization.entry.name}}/settings/member_privileges" class="list-group-item active">Member privileges</a>
+		</div>
+	</div>  
+	<div class="col-md-9" id="browserArea">
+
+
+
+
+
+Repository creation
+Outside collaborators can never create repositories.
+
+ Allow members to create repositories for this organization
+Allowing your organization’s members to create repositories lets them share and work on projects more openly. If enabled, members will be able to create public and private repositories.
+Save
+Repository deletion
+ Allow members to delete or transfer repositories for this organization
+If enabled, members with admin permissions for the repository will be able to delete or transfer public and private repositories. If disabled, only organization owners can delete or transfer repositories.
+Save
+Default repository permission
+Choose the default permission level for organization members. The default repository permission only applies to organization members, not to outside collaborators.
+
+ Admin
+Members will be able to clone, pull, push, and add new collaborators to all repositories.
+ Write
+Members will be able to clone, pull, and push all repositories.
+ Read
+Members will be able to clone and pull all repositories.
+ None
+Members will only be able to clone and pull public repositories. To give a member additional access, you’ll need to add them to teams or make them collaborators on individual repositories.
+Save
+
+
+
+
+
+
+
+
+
+
+
+	
+	</div>
+</div>
+
+<script type="text/javascript">
+
+</script>
+

@@ -1,69 +1,76 @@
-
-
-{{> adminheader}}
-
- <h1>Organization List     <span><a class="btn btn-success btn-xs" href="/organizations/new" >New Organization</a>  </span></h1>
-
-<p></p>
-<table class="table table-bordered" id="Organization">
+ <h1>Organization List</h1>
+ <p></p>
+ <table class="table table-bordered" id="Organization">
   <thead>
     <tr>
-    <th>Organizations</th>
+      <th>Organizations</th>
     </tr>
   </thead>
   <tbody>
     {{#each username}}
-
- <tr>
-<td>
-<div class="media">
-  <div class="media-left">
-    <a href="#">
-<img src="{{this.entry.picture}}" class="media-object" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
-    </a>
-  </div>
-  <div class="media-body">
-<div class="row">
-  <div class="col-md-3">
-     <a href="/organizations/{{this.entry.name}}"><h4>{{this.entry.displayname}}</h4></a>
-    Owned by : <a style="color:grey" href="/users/{{this.entry.owner}}">{{this.entry.owner}}   </a>
-  </div>
-  <div class="col-md-9">
-{{dotdotdotdot this.entry.description}}
-  </div>
-</div>
-  </div>
-</div>
+    <tr>
+      <td>
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              {{#if this.entry.picture}}
+              <div class="media-left">
+                <a href="#">
+                  <a href="/organizations/{{this.entry.name}}">
+                    <img src="{{this.entry.picture}}" class="media-object" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+                  </a>
+                </a>
+              </div>
+              {{else}}
+              <div class="media-left">
+                <a href="#">
+                  <a href="/organizations/{{this.entry.name}}">
+                    <img src="{{this.gravatar}}" class="media-object" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+                  </a>
+                </a>
+              </div>
+              {{/if}}
+            </a>
+          </div>
+          <div class="media-body">
+            <div class="row">
+              <div class="col-md-3">
+                {{#if this.entry.displayname}}
+                <a href="/organizations/{{this.entry.name}}"><h4>{{this.entry.displayname}}</h4></a>
+                {{else}}
+                <a href="/organizations/{{this.entry.name}}"><h4>{{this.entry.name}}</h4></a>
+                {{/if}}
+                Owned by : <a style="color:grey" href="/users/{{this.entry.owner}}">{{this.entry.owner}}</a>
+              </div>
+              <div class="col-md-9">
+                {{dotdotdotdot this.entry.description}}
+                {{#if this.entry.url}}
+                <p style="text-align: right;">
+                  <a href="{{this.entry.url}}" target="_blank">url</a>
+                </p>  
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </td>
 </td>
-   </tr>
-
- 
-     </td>
-     
-   </td>
- </tr>
- {{/each}}
+</tr>
+{{/each}}
 </tbody>
 </table>
 
 <script type="text/javascript">
-  
 ////////////////////////////////////
 ////        INITIALIZE         //// 
 //////////////////////////////////
 $('document').ready(function(){
-var table = jQuery('#Organization').DataTable({
-  'destroy':true,
-  "pagingType": "numbers",        dom: 'Bfrtip',
-        buttons: [
-             { extend: 'csv', text: 'Export to CSV' ,className:'btn btn-default btn-sm' ,filename: 'Data export' ,title: 'Table export'}, { extend: 'pdf', text: 'Export PDF' ,className:'btn btn-default btn-sm' ,filename: 'Data export' ,title: 'Table export'}
-        ]
+  var table = jQuery('#Organization').DataTable({
+    'destroy':true,
+    "pagingType": "numbers"
   //  'order': [[ 2, 'asc' ]] ,
 });
 })
-
-
-
-
-
 </script>

@@ -1,0 +1,57 @@
+<div class="row" style="padding-top: 25px">
+  <div class="col-md-3" id="navMenuPanel">       
+    {{> usernav organizations=true}}
+  </div>  
+  <div class="col-md-9" id="browserArea">
+   <h2>Organizations</h2>
+   <hr>
+   <table class="table table-bordered" id="Organization">
+    <thead>
+      <tr>
+        <th>Organizations</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each organizations}}
+      <tr>
+        <td>
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+              <img src="{{this.entry.picture}}" class="media-object" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+              </a>
+            </div>
+            <div class="media-body">
+              <div class="row">
+                <div class="col-md-3">
+                 <a href="/organizations/{{this.entry.name}}"><h4>{{this.entry.name}}</h4></a>
+                 Owned by : <a style="color: grey" href="/users/{{this.entry.owner}}">{{this.entry.owner}}   </a>
+               </div>
+               <div class="col-md-9">
+                {{dotdotdotdot this.entry.description}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<a class="btn btn-success" href="/organizations/new" >New Organization</a>  
+<p></p>
+</div>
+</div>
+<script type="text/javascript">
+////////////////////////////////////
+////        INITIALIZE         //// 
+//////////////////////////////////
+$('document').ready(function(){
+  var table = jQuery('#Organization').DataTable({
+    'destroy':true,
+    "pagingType": "numbers",   
+  //  'order': [[ 2, 'asc' ]] ,
+});
+})
+</script>
+
