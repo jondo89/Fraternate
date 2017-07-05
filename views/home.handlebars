@@ -22,8 +22,20 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+                 <!-- Place this tag in your head or just before your close body tag. -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
         {{> javascript}}
       </head>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
       <body id="page-top">
         {{> header}}
         <header>
@@ -38,8 +50,11 @@
                          </h1>  
                      <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user management system. It is <strong style="color: white">open-source</strong> and <strong style="color: white">light weight</strong>.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
                      <div style="text-align: center;">
- 
+  <a class="github-button" href="https://github.com/Isithelo/Fraternate" data-size="large" data-show-count="true" aria-label="Star Isithelo/Fraternate on GitHub">Star</a>  <p>Dont forget to star on GithHub if you like this project.</p>
                     </div>
+
+
+
                     <div style="padding-top: 35px" style="text-align:center;">
                       <p></p>
                     </div>
@@ -215,7 +230,7 @@
                       <div class="feature-item">
                         <i class="icon-lock-open text-primary"></i>
                         <h3>Security</h3>
-                        <p class="text-muted">Bcrypt , Passport and Recaptcha integration.</p>
+                        <p class="text-muted">Bcrypt , Passport.js and Recaptcha integration.</p>
                       </div>
                     </div>
                   </div>
@@ -258,7 +273,15 @@
               <li class="social-facebook">
                 <a href="{{repo}}">GitHub Repo</a>
               </li>
-            </ul>
+            </ul>       <p>
+          <a class="github-button" href="https://github.com/jondo89" aria-label="Follow @jondo89 on GitHub">Follow @jondo89</a>
+          <div class="fb-like" data-href="https://fraternate.herokuapp.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+        </p>
+        <p>
+<a class="github-button" href="https://github.com/Isithelo/Fraternate" data-size="large" data-show-count="true" aria-label="Star Isithelo/Fraternate on GitHub">Star</a>
+</p>  <p>
+<div class="g-plusone"></div>
+</p>
           </div>
         </section>
         {{> analytics}}
