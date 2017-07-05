@@ -40,7 +40,9 @@
                 {{else}}
                 <a href="/organizations/{{this.entry.name}}"><h4>{{this.entry.name}}</h4></a>
                 {{/if}}
-                Owned by : <a style="color:grey" href="/users/{{this.entry.owner}}">{{this.entry.owner}}</a>
+                {{#if this.entry.owner}}
+                 Owned by : <a style="color:grey" href="/users/{{this.entry.owner}}">{{this.entry.owner}}</a>
+                {{/if}}
               </div>
               <div class="col-md-9">
                 {{dotdotdotdot this.entry.description}}

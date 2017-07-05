@@ -270,6 +270,7 @@ temp.displayname = req.body.displayname
         temp.location = req.body.location
         temp.url = req.body.url
         temp.email = req.body.email
+        temp.displayemail = req.body.displayemail
         orgid.entry = temp    
         orgid.save(function(err,doc) {
           req.flash('success', { msg: 'Your profile information has been updated.' });
@@ -283,7 +284,6 @@ temp.displayname = req.body.displayname
   })
 };
 
-
 ///////////////////////////////////////////
 //////////  ORGaNIZATION LIST ////////////
 /////////////////////////////////////////
@@ -295,6 +295,38 @@ exports.orglist = function(req, res) {
         });
       });
 };
+
+////////////////////////////////////////////
+//////////  ORGaNIZATION LEAVE ////////////
+//////////////////////////////////////////
+exports.leaveorganiztion = function(req, res) {
+  if (req.user) {
+    organizationalModel.findOne( {"entry.name" : req.params.ids}, function(err, organization) {
+      var temp = JSON.parse(JSON.stringify(organization.entry))
+      if (temp.owner == req.user.username) {
+        temp.owner = ''
+      }
+      var tempArry =[]  
+      for (var i = 0; i < temp.members.length; i++) {
+        if (temp.members[i] == req.user.username) {
+        } else {
+          tempArry.push(temp.members[i])
+        }
+      }
+      temp.members = tempArry
+      organization.entry = temp    
+      organization.save(function(err) {
+        req.flash('success', { msg: 'You are no longer a member of the organization '+organization.entry.name+'.' });
+        res.redirect('/users/'+req.user.username+'/settings/organizations');
+      });
+    });
+  } else {
+    return res.redirect('/');
+  }
+};
+
+
+
 
 
 

@@ -183,6 +183,7 @@ app.get('/organizations/:orgname/people', organizationController.ajaxorguserread
 app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.settings);
 app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread , organizationController.page);
 app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.orgPut);
+app.get('/leaveorganiztion/:ids',  organizationController.leaveorganiztion);
 
 //Ajax
 app.get('/orguserread', organizationController.orguserread); // Get the active user organizations , owner and member.

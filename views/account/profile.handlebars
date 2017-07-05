@@ -99,29 +99,21 @@
     </div>
   </div>
 </div>
-
-
-
 </div>
 
 <script type="text/javascript">
-
-
   var username = JSON.stringify('{{userload.username}}')
   var user = JSON.stringify('{{user.username}}')
   var text = '{{userload.picture}}'
   text =text.replace("sz&#x3D;50", "sz&#x3D;200");
   $('#googlepic').html('<img src="'+text+'" style="max-width: 100%" class="media-object">')
-
   var cal = new CalHeatMap();
   cal.init({
-
     domain: "day",
     range: 12,
     legendVerticalPosition: "center",
     legendOrientation: "vertical",
     legendMargin: [0, 10, 0, 0]
   });
-
 </script>
 

@@ -1,6 +1,11 @@
-<div class="list-group">
-  <a class="list-group-item {{#if profile}}active{{/if}}" href="/users/{{user.username}}/settings/profile">Profile</a>
-  <a class="list-group-item {{#if account}}active{{/if}}" href="/users/{{user.username}}/settings/account">Account</a>
-  <a class="list-group-item {{#if organizations}}active{{/if}}" href="/users/{{user.username}}/settings/organizations">Organizations</a>
-  <a class="list-group-item {{#if billing}}active{{/if}}" href="/users/{{user.username}}/settings/billing">Billing</a>
-</div>
+            <div class="panel panel-default">
+            	<div class="panel-heading">
+            		Personal settings 
+            	</div>
+            	<ul class="list-group">
+            		<a class="list-group-item {{#if profile}}active{{/if}}" href="/users/{{user.username}}/settings/profile">Profile</a>
+            		<a class="list-group-item {{#if account}}active{{/if}}" href="/users/{{user.username}}/settings/account">Account</a>
+            		<a class="list-group-item {{#if organizations}}active{{/if}}" href="/users/{{user.username}}/settings/organizations">Organizations</a>
+            		<a class="list-group-item {{#if billing}}active{{/if}}" href="/users/{{user.username}}/settings/billing">Billing</a>
+            	</ul>
+            </div>  

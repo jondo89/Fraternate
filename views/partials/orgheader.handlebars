@@ -9,7 +9,7 @@
       <div class="media-left">
         <a href="#">
           <a href="/organizations/{{organization.entry.name}}">
-            <img src="{{organization.entry.picture}}" class="media-object" style="max-width: 200px">
+            <img src="{{organization.entry.picture}}" class="media-object" style="max-width: 200px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
           </a>
         </a>
       </div>
@@ -17,7 +17,7 @@
       <div class="media-left">
         <a href="#">
           <a href="/organizations/{{organization.entry.name}}">
-            <img src="{{organization.gravatar}}" class="media-object" style="max-width: 200px">
+            <img src="{{organization.gravatar}}" class="media-object" style="max-width: 200px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
           </a>
         </a>
       </div>
@@ -25,37 +25,35 @@
       <div class="media-body">
         <h1>{{organization.entry.displayname}}  <small>{{dotdotdot organization.entry.name}}</small></h1>
         <p>{{dotdotdotdot organization.entry.description }}</p>
-        <div class="row" style="padding-top: 25px" >
-          {{#if organization.entry.company}}
-          <div class="col-md-4" style="color: grey"> 
-            <i class="fa fa-users" aria-hidden="true"></i>  {{dotdotdot organization.entry.company}}
-          </div>
-          {{/if}}
-          {{#if organization.entry.location}}
-          <div class="col-md-3" style="color: grey">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>   {{dotdotdot organization.entry.location }}
-          </div>
-          {{/if}}
-          {{#if organization.entry.email}}
-          <div class="col-md-5" style="color: grey">
-            <i class="fa fa-envelope-o" aria-hidden="true"></i>   <a style="color: grey" href="mailto:{{organization.entry.email}}">{{dotdotdot organization.entry.email}}</a>
-          </div>
+        {{#if organization.entry.company}}
+        <span style="color: grey">
+          <i class="fa fa-users" aria-hidden="true"></i>  {{dotdotdot organization.entry.company}}
+        </span style="color: grey">
+        {{/if}}
+        {{#if organization.entry.location}}
+        <span style="color: grey">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>   {{dotdotdot organization.entry.location }}
+        </span>
+        {{/if}}
+        {{#if organization.entry.email}}
+        <span style="color: grey">
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>   <a style="color: grey" href="mailto:{{organization.entry.email}}">{{dotdotdotdot organization.entry.displayemail}}</a>
           {{/if}}
           {{#if organization.entry.url}}
-          <div class="col-md-4" style="color: grey">
-            <i class="fa fa-link" aria-hidden="true"></i>   <a style="color: grey" href="http://{{organization.entry.url}}" target="_blank">{{dotdotdot organization.entry.url}}</a>  
-          </div>
+          <span style="color: grey">   
+            <i class="fa fa-link" aria-hidden="true"></i>   <a style="color: grey" href="http://{{organization.entry.url}}" target="_blank">{{dotdotdotdot organization.entry.url}}</a>  
+          </span>
           {{/if}}
+
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-2">
-    {{#if user}}
-    <div style="text-align: right;">
-     {{> button-org-user }}
+    <div class="col-md-2">
+      {{#if user}}
+      <div style="text-align: right;">
+       {{> button-org-user }}
+     </div>
+     {{/if}}
    </div>
-   {{/if}}
  </div>
-</div>
-<hr>
+<p></p>

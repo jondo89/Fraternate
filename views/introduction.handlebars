@@ -1,6 +1,5 @@
 <h1>An Introduction to {{sitename}}.</h1>
 <hr>
-
 <div class="row">
 	<div class="col-md-3">
 		<ul class="nav nav-pills nav-stacked">
@@ -11,36 +10,125 @@
 		</ul>
 	</div>
 	<div class="col-md-9">
-		
 		<h3>What is Fraternate?</h3>
 		<p>Fraternate is a standalone copy of the GitHub user management system. Designed using a mongodB, nodejs, expressjs and Handlebarsjs MVC (model view controller).</p>
-
 		<p>Fraternate should be used as a barebones template that can be modified to integrate into your sites custom content and allowing for a complete user management system.
 			This website has a direct copy hosted on GitHub to allow users to copy the functionality directly. </p>
-
 			<p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>
-
 			<p>To view the full site functionality you will need to sign up</p>
 			<div style="text-align: center">
-			<a href="/signup" target="_blank" class="btn btn-default">Sign up</a>
+				<a href="/signup" target="_blank" class="btn btn-default">Sign up</a>
 			</div>
 			<h3>User Management</h3>
-			Sign in | Sign up | Term-of-service | Privacy policy | Change Password | User Profiles | Account Control
+			<p>Below is a list of the current functionality of the user management system , and its progress.</p>
+			<table class="table table-bordered"> 
+				<thead>
+					<tr>
+						<th>Functionality</th>
+						<th style="text-align: center;max-width: 15px">Progress</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Sign in </td>
+						<td style="text-align: center;"><span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+							<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+						</span></td>
+					</tr>
+					<tr>
+						<td>Sign up</td>
+						<td style="text-align: center;"><span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+							<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+						</span></td>
+					</tr>
+					<tr>
+						<td>Term-of-service</td>
+						<td style="text-align: center;"><span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+							<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+						</span></td>
+					</tr>
+					<tr>
+						<td>Privacy policy</td>
+						<td style="text-align: center;"><span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+							<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+						</span></td>
+					</tr>
+					<tr>
+						<td>Change Password</td>
+						<td style="text-align: center;"><span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+							<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+						</span></td>
+					</tr>
+					<tr>
+						<td>Paid Access</td>
+						<td style="text-align: center;"><span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+							<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+						</span></td>
 
-
-			<h3>Organization Management by Users</h3>
-			Create Organization | Join Organization | Add Users to Organizations | Transfer Ownership | Organization Profiles
-
-			<h3>Commercialization</h3>
-			Pubilic and Private Account control for Users and Organizations with Paypal.
-
-			<h3>Security</h3>
-			Bcrypt , Passport and Recaptcha integration.
-
-			<div style="padding-top: 55px;text-align: center">
-				<p>To get started view the installation instructions on this site or the GitHub Repo.</p>
-				<a href="{{repo}}" target="_blank" class="btn btn-default">GitHub Repo</a>
+					</tr>
+					<tr>
+						<td>User Profiles</td>
+						<td style="text-align: center;">
+							<span class="fa-stack fa-lg">
+								<i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+								<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+							</span>
+						</tr>  
+					</tbody>
+				</table>
+				<h3>Organization Management by Users</h3>
+				<p>Below is a list of the current functionality of the organization management system , and its progress.</p>
+				<table class="table table-bordered"> 
+					<thead>
+						<tr>
+							<th>Functionality</th>
+							<th style="text-align: center;max-width: 15px">Progress</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Create Organization</td>
+							<td style="text-align: center;">5/10</td>
+						</tr>
+						<tr>
+							<td>Join Organization</td>
+							<td style="text-align: center;">0/10</td>
+						</tr>
+						<tr>
+							<td>Leave Organization</td>
+													<td style="text-align: center;"><span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+							<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+						</span></td>
+						</tr>						
+						<tr>
+							<td>Add Users to Organizations</td>
+							<td style="text-align: center;">0/10</td>
+						</tr>
+						<tr>
+							<td>Transfer Ownership</td>
+							<td style="text-align: center;">0/10</td>
+						</tr>
+						<tr>
+							<td>Organization Profiles</td>
+							<td style="text-align: center;">6/10</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3>Commercialization</h3>
+				Pubilic and Private Account control for Users and Organizations with Paypal.
+				<h3>Security</h3>
+				Bcrypt , Passport and Recaptcha integration.
+				<div style="padding-top: 55px;text-align: center">
+					<p>To get started view the installation instructions on this site or the GitHub Repo.</p>
+					<a href="{{repo}}" target="_blank" class="btn btn-default">GitHub Repo</a>
+				</div>
 			</div>
 		</div>
-	</div>
 
