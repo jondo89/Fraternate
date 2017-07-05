@@ -154,7 +154,7 @@ app.locals.repo = repo
 app.get('/privacy', userInterfaceController.privacy);
 app.get('/terms', userInterfaceController.terms);
 app.get('/introduction', userInterfaceController.introduction);
-app.get('/testing', userInterfaceController.testing);
+app.get('/troubleshooting', userInterfaceController.troubleshooting);
 app.get('/installation', userInterfaceController.installation);
 app.get('/integration', userInterfaceController.integration);
  

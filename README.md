@@ -1,91 +1,84 @@
-<h2>Fraternate Installation Instructions</h2>
-  <h1><a href="https://fraternate.herokuapp.com/" target="_blank">DEMO</a></h1>
+<h1><a href="https://fraternate.herokuapp.com/" target="_blank">DEMO</a></h1>
 
-<h3>Fraternate Installation Instructions</h3>
-  
-<p>In summary Fraternate requires the following: </p>
-<ul>
-  <li>Node.js</li>
-  <li>Mongodb</li>
-  <li>The GitHub Fraternate repo</li>
-  <li>NPM</li>
-  <li>serve-favicon</li>
-  <li>express</li>
-</ul>
+<h3>What is Fraternate?</h3>
+<p>Fraternate is a standalone copy of the GitHub user management system. Designed using a mongodB, nodejs, expressjs and Handlebarsjs MVC (model view controller).</p>
 
-<p>In more detail.</p>
+<p>Fraternate should be used as a barebones template that can be modified to integrate into your sites custom content and allowing for a complete user management system.
+This website has a direct copy hosted on GitHub to allow users to copy the functionality directly. </p>
 
-<ul>
-<li>Step 1 - Install Node.js</li>
-<pre>
-Download and install from the Node.js homepage.
-<a href="https://nodejs.org/en/" target="_blank">https://nodejs.org/en/</a>  
-</pre>
+<p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>
 
-<li>Step 2 - Install mongdb | follow the set up instructions on the website. (The trick is to create the c:/data/db directory then run mongod.exe). When in doubt the documentation on the site is very good.</li>
+
+<h3>Installation Instructions</h3>
+<p>If you would like to install Fraternate on your local development machine Fraternate requires the following components:</p>
 
 <pre>
-Download and install from the mongodb homepage.
-<a href="https://www.mongodb.com/" target="_blank">https://www.mongodb.com/</a>  
+Node.js
+MongodB
+The GitHub Fraternate repo
+NPM
+expressjs
 </pre>
+<h3>In more detail.</h3>
 
-<li>Step 3 - Sign up for Github , install the windows gihub client then clone the Fraternate repository.</li>
+<p>Install Node.js Download and install from the Node.js homepage.</p>
+
+<pre><a href="https://nodejs.org/en/">https://nodejs.org/en/</a>&nbsp;</pre>
+
+<p>Install mongodB | follow the set-up instructions on the website. (The trick is to create the c:/data/db directory then run mongod.exe). When in doubt the documentation on the site is very good. Download and install from the mongodB homepage.</p>
+
+<pre><a href="https://www.mongodb.com/">https://www.mongodb.com/</a>&nbsp;</pre>
+
+<p>Sign up for GitHub, install the windows GitHub client then clone the Fraternate repository.</p>
 <p>Clone the repository on your hard drive, using the "clone or download" button on the GitHub front page for Fraternate.</p>
-<p>Once downloaded, extract to the directory of your choice. For example: </p>
+<p>Once downloaded, extract to the directory of your choice. For example:</p>
 
-<pre>
-C:\ Fraternate
-</pre>
+<pre>C:\Fraternate</pre>
 
-<li>Step 4 - With node.js installed, the use of the NPM service is now available from your command prompt, go into the directory where Fraternate was cloned using your preferred command prompt (DOS interface). For example: </li>
+<p>With node.js installed, the use of the NPM (Node Package Manager) service is now available from your command prompt, go into the directory where Fraternate was cloned using your preferred command prompt (DOS interface). For example:</p>
 
-<pre>
-cd\ Fraternate
-</pre>
+<pre>cd\Fraternate</pre>
+
 <p>When you are at the command prompt in the correct directory, type in the following:</p>
 
-<pre>npm install npm@latest -g</pre> 
+<pre>npm install npm@latest -g</pre>
 
-<p>
-The NPM service will now download and install into the cloned directory. The NPM service will now download and install into the cloned directory. When completed , enter the following:
-</p>
+<p>The NPM service will now download and install into the cloned directory. The NPM service will now download and install into the cloned directory. When completed, enter the following:</p>
 
 <pre>npm install</pre>
- 
 
-<li>In order to bring in the favicon (tab icons) server, use the following at the command prompt to install the favicon module.
-</li>
+<p>To bring in the favicon (tab icons) server, use the following at the command prompt to install the favicon module.</p>
+
 <pre>npm install serve-favicon</pre>
 
+<p>To make life much easier, install nodemon. Nodemon provides some welcome server management for troublesome server crashes, type into the cmd(command) prompt:</p>
 
-<li>To make life much easier, install nodemon. Nodemon provides some welcome server management for troublesome server crashes , type into the cmd(command) prompt: 
-</li>
 <pre>npm install -g nodemon</pre>
 
+<p>To communicate between the mongo server and the client side, expressjs needs to be installed. type into the cmd prompt</p>
 
-<li>In order to communicate between the mongo server and the client side , expressjs needs to be installed. type into the cmd prompt 
-</li>
 <pre>npm install express</pre>
 
-<li>In order to send mails from the signup and contact page , nodemailer needs to be installed. type into the cmd prompt 
-</li>
+<p>To send mails from the signup and contact page, nodemailer needs to be installed. type into the cmd prompt</p>
+
 <pre>npm install nodemailer</pre>
 
-<li>Robomongo is a very useful tool for viewing the mongodb database structure. Install from their website.
-<pre>
-Download and install from the mongodb homepage.
-<a href="https://robomongo.org/" target="_blank">https://robomongo.org/</a>  
-</pre>
 
+<p>Robomongo is a very useful tool for viewing the mongodb database structure. Install from their website.</p>
 
-<li>To ensure non-robotic users signin and signup , install the express recaptcha package.
-</li>
-<pre>npm install express-recaptcha --save</pre>
+<p>Download and install from the mongodb homepage.</p>
 
-<li>Dependant on the version of expressjs installed , the following may be required.
-</li>
-<pre>
-npm install morgan
+<pre><a href="https://robomongo.org/">https://robomongo.org/</a></pre>
+
+<p>To ensure non-robotic users sign in and signup, install the express recaptcha package.</p>
+
+<pre>npm install express-recaptcha -save</pre>
+
+<h3>Troubleshooting</h3>
+
+<p>Dependent on the version of expressjs installed, the following may be required.</p>
+
+<pre>npm install morgan
 npm install compression
 npm install method-override
 npm install express-session
@@ -105,10 +98,6 @@ npm install passport-local
 npm install passport-github
 </pre>
 
+<p>If you are getting stuck, this is a port of the quality work done on Megaboilerplate. Here are the installation instructions for&nbsp;<a href="https://github.com/sahat/megaboilerplate#express">Megaboilerplate</a></p>
+<p>If you are still having trouble use the contact page , or add an issue on the GitHub Repo.</p>
 
-
-</ul>
- 
- 
-
-<p>If you are getting stuck , this is a port of the quality work done on Megaboilerplate. Here are the installation instructions for <a href="https://github.com/sahat/megaboilerplate#express" target="_blank">Megaboilerplate</a></p>

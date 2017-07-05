@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{sitename}}</title>
   {{> css}}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>{{sitename}}</title>
   <style type="text/css">
     .outer{
       background-color: rgba(0,0,0,0.5);
@@ -13,92 +15,252 @@
       -ms-filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
     }
   </style><!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-</head>
-<body>
-  {{> javascript}}
-  <script src='https://www.google.com/recaptcha/api.js'></script>
-  {{> header}}
-  <div class="full-page-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7" style="padding-top: 95px">
-         <div class="well outer"  >
-           <h1> 
-             {{sitename}} is a user and organization registration , login and management framework.
-           </h1><!-- Place this tag where you want the button to render. -->
-           <h3> 
-            {{sitename}} is a standalone copy of the GitHub organization and user interaction framework. Built with Mongo dB | Node.js | Express.js | Handlebars.js | Bootstrap.
-          </h3>  
-          <table class="table table-bordered"> 
-            <thead>
-              <tr>
-                <th></th>
-                <th style="text-align: center;">User</th>
-                <th style="text-align: center;">Organization</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Public Profile</td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-              </tr>
-              <tr>
-                <td>Private Profile</td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-              </tr>
-              <tr>
-                <td>User Access Control</td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-              </tr>
-              <tr>
-                <td>Settings</td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-              </tr>
-              <tr>
-                <td>Free Access</td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-              </tr>
-              <tr>
-                <td>Paid Access</td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-              </tr>
-              <tr>
-                <td>Privilege Control</td>
-                <td style="text-align: center;">N/A</td>
-                <td style="text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
-              </tr>  
-            </tbody>
-          </table>
-          <div style="padding-top: 35px" style="text-align:center;">
-            <p></p>
-            <!-- Place this tag where you want the button to render. -->
-            <!-- Place this tag where you want the button to render. -->
-            <a class="github-button" href="https://github.com/Isithelo/Fraternate" data-size="large" data-show-count="true" aria-label="Star Isithelo/Fraternate on GitHub">Star</a>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        {{> javascript}}
+      </head>
+      <body id="page-top">
+        {{> header}}
+        <header>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="header-content">
+                  <div class="header-content-inner">
+                    <div class="well outer"  >
+                   <h1> 
+                           {{sitename}} is an opensource user and organizational management controller. 
+                         </h1>  
+                     <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user management system. It is <strong style="color: white">open-source</strong> and <strong style="color: white">light weight</strong>.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
+                     <div style="text-align: center;">
+ 
+                    </div>
+                    <div style="padding-top: 35px" style="text-align:center;">
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="header-content">
+                <div class="header-content-inner">
+                  {{> signuphomepage}}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-5" style="padding-top: 95px">
-        {{> signuphomepage}}
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-4051238795083187"
-        data-ad-slot="6384881635"
-        data-ad-format="auto"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-    </div>
-  </div>
-</div>
-{{> analytics}}
-</body>
-</html>
+      </header>
+      <section id="download" class="features" style="text-align: center;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <h2 class="section-heading">The Fraternate framework</h2>
+              <div class="badges">
+                <a class="badge-link" target="_blank" href="https://nodejs.org/en/"><img src="img/logo/node.png" alt="" style="max-height: 75px"></a>
+                <a class="badge-link" target="_blank" href="https://expressjs.com/"><img src="img/logo/express.png" alt="" style="max-height: 45px"> </a>
+                <a class="badge-link" target="_blank" href="https://www.mongodb.com/"><img src="img/logo/mongdb.png" alt="" style="max-height: 65px"></a>
+                <a class="badge-link" target="_blank" href="http://handlebarsjs.com/"><img src="img/logo/handlebars.png" alt="" style="max-height: 75px"></a>
+                <a class="badge-link" target="_blank" href="http://getbootstrap.com/"><img src="img/logo/bootstrap.jpg" alt="" style="max-height: 75px"></a>
+              </div>
+              <div style="padding-top: 90px;text-align: justify">
+                <p>Fraternate should be used as a barebones template that can be modified to integrate into your sites custom content and allowing for a complete user management system.
+                  This website has a direct copy hosted on GitHub to allow users to copy the functionality directly. </p>
+                  <p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>
+                </div>
+                <div style="text-align: center;padding-top: 35px">
+                  <a href="/introduction" class="btn btn-default btn-lg">Instructions</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr>
+        <section id="features" class="features">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                  <h2>Fraternate Functionality</h2>
+                  <p class="text-muted">The Fraternate Model | View | Controller is quick to modify and highly versatile!</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="device-container">
+                  <div class="device-mockup iphone6_plus portrait white">
+                   <table class="table table-bordered"> 
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th style="text-align: center;">User</th>
+                        <th style="text-align: center;">Organization</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Public Profile</td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                      </tr>
+                      <tr>
+                        <td>Private Profile</td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                      </tr>
+                      <tr>
+                        <td>User Access Control</td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                      </tr>
+                      <tr>
+                        <td>Settings</td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                      </tr>
+                      <tr>
+                        <td>Free Access</td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                      </tr>
+                      <tr>
+                        <td>Paid Access</td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                        <td style="text-align: center;"><span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                          <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span></td>
+                      </tr>
+                      <tr>
+                        <td>Privilege Control</td>
+                        <td style="text-align: center;">N/A</td>
+                        <td style="text-align: center;">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x" style="color: green"></i>
+                            <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </tr>  
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="feature-item">
+                        <i class="icon-screen-smartphone text-primary"></i>
+                        <h3>Users</h3>
+                        <p class="text-muted">Sign in | Sign up | Term-of-service | Privacy policy | Change Password | User Profiles | Account Control</p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="feature-item">
+                        <i class="icon-camera text-primary"></i>
+                        <h3>Organizational Control</h3>
+                        <p class="text-muted">Create Organization | Join Organization | Add Users to Organizations | Transfer Ownership | Organization Profiles</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="feature-item">
+                        <i class="icon-present text-primary"></i>
+                        <h3>Commercialization</h3>
+                        <p class="text-muted">Pubilic and Private Account control for Users and Organizations with Paypal.</p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="feature-item">
+                        <i class="icon-lock-open text-primary"></i>
+                        <h3>Security</h3>
+                        <p class="text-muted">Bcrypt , Passport and Recaptcha integration.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="cta">
+          <div class="cta-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-7"> <h2>Stop waiting.<br>Start building.</h2>
+                  <a class="btn btn-default btn-lg" href="/signin">Let's Get Started!</a>
+                </div>
+                <div class="col-md-5">
+                <p></p>
+                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-4051238795083187"
+                  data-ad-slot="6384881635"
+                  data-ad-format="auto"></ins>
+                  <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="overlay"></div>
+        </section>
+        <section id="contact" >
+          <div class="container">
+            <h2>Built with <i class="fa fa-heart"></i></h2>
+            <ul class="list-inline list-social">
+              <li class="social-twitter">
+                <a href="https://www.isithelo.com/" target="_blank">Isithelo Technical</a>
+              </li>
+              <li class="social-facebook">
+                <a href="{{repo}}">GitHub Repo</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+        {{> analytics}}
+      </body>
+      </html>

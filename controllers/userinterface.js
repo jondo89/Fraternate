@@ -37,12 +37,12 @@ res.render('introduction',{
 })
 }; 
 
-////////////////////////
-/////  TESTING    ///// 
-//////////////////////
-exports.testing = function(req, res) {
-res.render('testing',{
-      pagetitle: 'Site Testing | '+sitename+'',
+////////////////////////////////
+/////  TROUBLESHOOTING    ///// 
+//////////////////////////////
+exports.troubleshooting = function(req, res) {
+res.render('troubleshooting',{
+      pagetitle: 'Troubleshooting | '+sitename+'',
 })
 }; 
 
