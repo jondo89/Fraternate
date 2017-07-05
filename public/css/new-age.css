@@ -7,17 +7,13 @@
   font-weight: 200;
   letter-spacing: 1px;
 }
-.body-font {
-}
+ 
 .alt-font {
    text-transform: uppercase;
   letter-spacing: 2px;
 }
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
+ 
+ 
   
 header {
   position: relative;
@@ -74,26 +70,18 @@ header .device-container .screen img {
     top: 50%;
     transform: translateY(-50%);
   }
-  header .header-content .header-content-inner h1 {
-   
-  }
+ 
   header .device-container {
     max-width: none;
     max-height: calc(0vh);
     margin: 100px auto 0;
   }
 }
-@media (min-width: 992px) {
-  header .header-content .header-content-inner h1 {
-   
-  }
-}
+ 
 section {
   padding: 100px 0;
 }
-section h2 {
  
-}
 section.download {
   padding: 150px 0;
   position: relative;
@@ -118,11 +106,7 @@ section.download .badges .badge-link img {
     margin-bottom: 0;
   }
 }
-@media (min-width: 768px) {
-  section.download h2 {
  
-  }
-}
 section.features .section-heading {
   margin-bottom: 100px;
 }
@@ -149,11 +133,8 @@ section.features .feature-item {
   text-align: center;
   margin-bottom: 100px;
 }
-section.features .feature-item h3 {
-  
-}
-section.features .feature-item i {
  
+section.features .feature-item i {
   background: -webkit-linear-gradient(to left, #7b4397, #dc2430);
   background: linear-gradient(to left, #7b4397, #dc2430);
   -webkit-background-clip: text;
@@ -240,37 +221,4 @@ section.contact ul.list-social li.social-google-plus a:hover {
   background-color: #d73925;
 }
 
-.bg-primary {
-  background: #fdcc52;
-  background: -webkit-linear-gradient(#fdcc52, #fdc539);
-  background: linear-gradient(#fdcc52, #fdc539);
-}
-.text-primary {
-  color: #fdcc52;
-}
-.no-gutter > [class*='col-'] {
-  padding-right: 0;
-  padding-left: 0;
-}
- 
-::-moz-selection {
-  color: white;
-  text-shadow: none;
-  background: #222222;
-}
-::selection {
-  color: white;
-  text-shadow: none;
-  background: #222222;
-}
-img::selection {
-  color: white;
-  background: transparent;
-}
-img::-moz-selection {
-  color: white;
-  background: transparent;
-}
-body {
-  webkit-tap-highlight-color: #222222;
-}
+  
