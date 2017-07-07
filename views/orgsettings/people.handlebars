@@ -2,28 +2,28 @@
 <ul class="nav nav-tabs" role="tablist">
 	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
 	<li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+	{{#if orgowner}}
 	<li role="presentation"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
+	{{else}}
+	{{/if}}
 </ul>
+
+
+{{#if orgowner}}
 <div style="padding-top: 25px">
 	<button class="btn btn-success" data-toggle="modal" data-target="#myModal">Invite member</button>
 </div>
+{{/if}}
 
 <div class="row" style="padding-top: 25px" >
-<p>Add username , password and smtp to node server to get this working.</p>
+	<p>Add username , password and smtp to node server to get this working.</p>
 	<div class="col-md-2">
-		 
-	<button class="btn btn-success" onclick="emailtest()"  >Email Test</button>
- 
+	<button class="btn btn-success" onclick="emailtest()">Email Test</button>
 	</div>
 	<div class="col-md-2">
 		<pre id="testmails"></pre>
 	</div>
 </div>
-
-
-
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -78,11 +78,8 @@
 		});
 	});
 
-
-function emailtest(){
-	console.log('Working')
-
-
+	function emailtest(){
+		console.log('Working')
 		jQuery.ajax({
 			'async': true,
 			'global': false,
@@ -92,9 +89,7 @@ function emailtest(){
 				$('#testmails').html(dataSchemaObject)
 			}
 		});
-
-
-}
+	}
 
 
 </script>

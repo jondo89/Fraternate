@@ -3,36 +3,80 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
 {{> orgheader}}
 <div>
-
-
-
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
     <li role="presentation" ><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+    {{#if orgowner}}
     <li role="presentation"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
+    {{else}}
+    {{/if}}
   </ul>
-
-
-  
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="Summary">
       <div class="row" style="padding-top: 35px">
-        <div class="col-md-4">
-        <h5>Owned by</h5>
+        <div class="col-md-3">
+
+
+
+
+          <h4>Owned by</h4>
+          {{#if organization.entry.owner}}
           <a style="color:grey" href="/users/{{organization.entry.owner}}">{{organization.entry.owner}}</a>
-
-
-        {{#if organization.entry.members}}
-<h5>Members</h5>
+          {{#if orgowner}}
+          <p>You are the owner</p>
+          {{else}}
+          {{/if}}
+          {{else}}
+          This organization does not have any owner.
+          {{/if}}
+          {{#if user}}
+          {{#if orgmember}}
+          {{#if organization.entry.members}}
+          <h4>Members</h4>
           <a style="color:grey" href="/users/{{organization.entry.members}}">{{organization.entry.members}}</a>
+          {{/if}}
+          <p>You are a member</p>
+          {{else}}
+          {{#if orgowner}}
+          {{else}}
+          <p></p>
+          <p></p>
+          {{#if orgsharerequest}}
 
-        {{/if}}
-          
+   {{#if messages.success}}
+   <div role="alert" class="alert alert-success">
+    {{#each messages.success}}
+    <div>{{msg}}</div>
+    {{/each}}
+  </div>
+  {{/if}}
+  {{#if messages.error}}
+  <div role="alert" class="alert alert-danger">
+    {{#each messages.error}}
+    <div>{{msg}}</div>
+    {{/each}}
+  </div>
+  {{/if}} 
 
 
+          <div style="text-align:center;">
+            <p>
+              <a class="btn btn-default" disabled>Requested Membership</a>  
+            </p>
+          </div>
+          {{else}}
+          <div style="text-align:center;">
+            <p>
+              <a class="btn btn-default" href="/orgsharerequest/{{organization.entry.name}}">Request Membership</a>  
+            </p>
+          </div>
+          {{/if}}
+          {{/if}}
+          {{/if}}
+          {{/if}}
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
           <h3>Custom Site Details</h3>
           <div style="border-width: 1px; border-style: dashed; border-color: grey;padding:55px;text-align: center;border-radius: 5px;"><strong> Heads up!</strong> This is where your custom content and user interaction detail will be added. 
           </div>

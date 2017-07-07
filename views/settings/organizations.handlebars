@@ -64,8 +64,10 @@
   <a class="btn btn-success" href="/organizations/new" >New Organization</a>  
   <p></p>
   {{else}}
-  <p>No organizations  found for this user.</p>
-  <a class="btn btn-success" href="/organizations/new" >New Organization</a>  
+    <div style="border-width: 1px; border-style: dashed; border-color: grey;padding:15px;border-radius: 5px;">
+      <p>No organizations found </p>
+      <a class="btn btn-success btn-xl" href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 
+    </div>
   {{/if}}
 </div>
 </div>

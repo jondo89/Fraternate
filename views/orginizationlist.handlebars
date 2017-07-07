@@ -1,5 +1,5 @@
  <h1>Organization List</h1>
- <p></p>
+ <p>Here is a list of all of the organizations on the site.</p>
  <table class="table table-bordered" id="Organization">
   <thead>
     <tr>
@@ -14,7 +14,7 @@
           <div class="media-left">
             <a href="#">
               {{#if this.entry.picture}}
-              <div class="media-left">
+              <div class="media-left media-middle">
                 <a href="#">
                   <a href="/organizations/{{this.entry.name}}">
                     <img src="{{this.entry.picture}}" class="media-object" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
@@ -22,7 +22,7 @@
                 </a>
               </div>
               {{else}}
-              <div class="media-left">
+              <div class="media-left media-middle">
                 <a href="#">
                   <a href="/organizations/{{this.entry.name}}">
                     <img src="{{this.gravatar}}" class="media-object" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">

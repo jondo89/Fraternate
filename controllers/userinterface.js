@@ -64,6 +64,15 @@ exports.integration = function(req, res) {
   })
 };
 
+/////////////////////////////
+/////  LICENCE         ///// 
+///////////////////////////
+exports.licence = function(req, res) {
+  res.render('licence',{
+    pagetitle: 'Licence | '+sitename+'',
+  })
+};
+
 ////////////////////////////////////
 ////////// SETTINGS PAGE ///////////
 ///////////////////////////////////

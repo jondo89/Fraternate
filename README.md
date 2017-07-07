@@ -8,6 +8,28 @@ This website has a direct copy hosted on GitHub to allow users to copy the funct
 
 <p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>
 
+<h3>Development Progress</h3>
+<h4>User Control (CRUD)</h4>
+
+- [x] Signin 
+- [x] Signup 
+- [x] Oauth Github / Google 
+- [x] Unique Usernames 
+- [x] Recaptcha 
+- [x] Forgot Password 
+- [x] Delete Account 
+- [x] Public Profile 
+- [x] Profile Pics 
+- [x] Email integration
+<h4>Organization Control (CRUD)</h4>
+
+- [x] Create Organization  
+- [ ] Invite to Organization 
+- [ ] Request Invite to Organization 
+- [ ] Transfer Ownership 
+- [x] Edit Memberships 
+- [x] Unique Organization Names 
+- [x] Public Organization Profile
 
 <h3>Installation Instructions</h3>
 <p>If you would like to install Fraternate on your local development machine Fraternate requires the following components:</p>

@@ -82,10 +82,16 @@ var hbs = exphbs.create({
         return str;}
       },
       'dotdotdotdot' : function(str) {
-
         if (str) {
           if (str.length > 200)
             return str.substring(0,200) + '...';
+          return str;
+        }
+      },
+      'dotdotdotdotdot' : function(str) {
+        if (str) {
+          if (str.length > 400)
+            return str.substring(0,400) + '...';
           return str;
         }
       }
@@ -156,6 +162,7 @@ app.get('/introduction', userInterfaceController.introduction);
 app.get('/troubleshooting', userInterfaceController.troubleshooting);
 app.get('/installation', userInterfaceController.installation);
 app.get('/integration', userInterfaceController.integration);
+app.get('/licence', userInterfaceController.licence);
  
 ///////////////////////////////////////////////////
 ////        USER INTERFACE CONTROLLER         //// 
@@ -175,16 +182,14 @@ app.get('/usersearch', userInterfaceController.usersearch);
 app.get('/organizations', organizationController.orglist);
 app.get('/organizations/new', organizationController.neworg);
 app.post('/organizations/new', organizationController.createorgstatic);
-app.get('/organizations/:orgname/', organizationController.ajaxorguserread ,organizationController.orgprofile);
-app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.settings);
-app.get('/organizations/:orgname/components', organizationController.ajaxorguserread ,organizationController.components);
-app.get('/organizations/:orgname/assemblies',organizationController.ajaxorguserread , organizationController.assemblies);
-app.get('/organizations/:orgname/people', organizationController.ajaxorguserread ,organizationController.people);
-app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.settings);
-app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread , organizationController.page);
-app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.orgPut);
+app.get('/organizations/:orgname/', organizationController.ajaxorguserread ,  organizationController.organizationpermission,    organizationController.orgprofile);
+app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.organizationpermission, organizationController.settings);
+app.get('/organizations/:orgname/people', organizationController.ajaxorguserread ,organizationController.organizationpermission, organizationController.people);
+app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.organizationpermission, organizationController.settings);
+app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.page);
+app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);
 app.get('/leaveorganiztion/:ids',  organizationController.leaveorganiztion);
-
+app.get('/orgsharerequest/:orgname',organizationController.orgsharerequest, organizationController.organizationpermission,    organizationController.orgprofile);
 //Ajax
 app.get('/orguserread', organizationController.orguserread); // Get the active user organizations , owner and member.
 

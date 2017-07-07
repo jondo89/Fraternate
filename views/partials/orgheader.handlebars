@@ -6,7 +6,7 @@
   <div class="col-md-10">
     <div class="media">
       {{#if organization.entry.picture}}
-      <div class="media-left">
+      <div class="media-left media-middle">
         <a href="#">
           <a href="/organizations/{{organization.entry.name}}">
             <img src="{{organization.entry.picture}}" class="media-object" style="max-width: 200px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
@@ -24,27 +24,27 @@
       {{/if}}
       <div class="media-body">
         <h1>{{organization.entry.displayname}}  <small>{{dotdotdot organization.entry.name}}</small></h1>
-        <p>{{dotdotdotdot organization.entry.description }}</p>
+        <p>{{dotdotdotdotdot organization.entry.description }}</p>
         {{#if organization.entry.company}}
-        <span style="color: grey">
-          <i class="fa fa-users" aria-hidden="true"></i>  {{dotdotdot organization.entry.company}}
-        </span style="color: grey">
+        <span style="color: grey;padding-right: 25px">
+          <i class="fa fa-users" aria-hidden="true"></i>  {{dotdotdot organization.entry.company}} 
+        </span >
         {{/if}}
         {{#if organization.entry.location}}
-        <span style="color: grey">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>   {{dotdotdot organization.entry.location }}
+        <span style="color: grey;padding-right: 25px">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>   {{dotdotdot organization.entry.location }} 
         </span>
         {{/if}}
-        {{#if organization.entry.email}}
-        <span style="color: grey">
+        {{#if organization.entry.displayemail}}
+        <span style="color: grey;padding-right: 25px">
           <i class="fa fa-envelope-o" aria-hidden="true"></i>   <a style="color: grey" href="mailto:{{organization.entry.email}}">{{dotdotdotdot organization.entry.displayemail}}</a>
+          </span>
           {{/if}}
           {{#if organization.entry.url}}
-          <span style="color: grey">   
+          <span style="color: grey;padding-right: 25px">   
             <i class="fa fa-link" aria-hidden="true"></i>   <a style="color: grey" href="http://{{organization.entry.url}}" target="_blank">{{dotdotdotdot organization.entry.url}}</a>  
           </span>
           {{/if}}
-
         </div>
       </div>
     </div>

@@ -22,9 +22,9 @@ exports.neworg = function(req, res) {
         title: 'New Organization | '+sitename ,
       })
     } else {
-        res.redirect('/signin');
+      res.redirect('/signin');
     }
-}; 
+  }; 
 
 ///////////////////////////////////////////////
 ///////   CREATE ORGaNIZATION STATIC  ////////
@@ -35,39 +35,37 @@ exports.createorgstatic = function(req, res) {
 // console.log('////////////////////////////////////////')
 //Allow for new credit cards every time , Do not call old CC details.	
 if (req.user) {
-    req.assert('name', 'Username cannot be blank').notEmpty();
-    req.assert('email', 'Please ensure that the email address is valid.').isEmail();
-    req.assert('email', 'Please ensure that the email address is included.').notEmpty();
-    req.sanitize('email').normalizeEmail({ remove_dots: false });
-    var errors = req.validationErrors();
-    if (errors) {
-       req.flash('error', errors);
-       return res.redirect('/organizations/new');
-   }
+  req.assert('name', 'Username cannot be blank').notEmpty();
+  req.assert('email', 'Please ensure that the email address is valid.').isEmail();
+  req.assert('email', 'Please ensure that the email address is included.').notEmpty();
+  req.sanitize('email').normalizeEmail({ remove_dots: false });
+  var errors = req.validationErrors();
+  if (errors) {
+   req.flash('error', errors);
+   return res.redirect('/organizations/new');
+ }
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.body.name }, function(err, username) {
     	if (username) {
     		req.flash('error', { msg: 'The Organizational name you have entered is already associated with another account.' });
     		return res.redirect('/organizations/new');
     	}
-        var temp = {}
-        temp['entry'] ={
-          name: req.body.name,
-          email: req.body.email,
-          password: req.body.password,
-          owner : req.user.username,
-          members : ''
+      var temp = {}
+      temp['entry'] ={
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        owner : req.user.username,
+        members : ''
       }        
       user = new organizationalModel(temp);
       user.save(function(err) {
-          req.logIn(user, function(err) {
-             res.redirect('/organizations/'+req.body.name);
-         });
+        res.redirect('/organizations/'+req.body.name);
       });
-  });
-} else {
+    });
+  } else {
    res.redirect('/signin');
-}
+ }
 }
 
 ////////////////////////////////////////////
@@ -76,18 +74,21 @@ if (req.user) {
 exports.orgprofile = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-        if (username) {
-            res.render('account/orgprofile',{
-                organization : username,
-                organizations : req.userorgs ,
-                title: username.entry.name + ' | '+sitename ,
-            }
-            )
-        } else {
-            return res.redirect('/');
+      if (username) {
+        res.render('account/orgprofile',{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          orgsharerequest : req.orgsharerequest,
+          organization : username,
+          organizations : req.userorgs ,
+          title: username.entry.name + ' | '+sitename ,
         }
+        )
+      } else {
+        return res.redirect('/');
+      }
     })
-}
+  }
 
 ////////////////////////////////////////////
 ////////// PROFILE ORGANIATION ////////////
@@ -95,18 +96,18 @@ exports.orgprofile = function(req, res) {
 exports.orguserread = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-        if (username) {
-            res.render('account/orgprofile',{
-                organization : username,
-                organizations : req.userorgs ,
-                title: username.entry.name + ' | '+sitename ,
-            }
-            )
-        } else {
-            return res.redirect('/');
+      if (username) {
+        res.render('account/orgprofile',{
+          organization : username,
+          organizations : req.userorgs ,
+          title: username.entry.name + ' | '+sitename ,
         }
+        )
+      } else {
+        return res.redirect('/');
+      }
     })
-}
+  }
 
 ////////////////////////////////////////////
 ////////// PROFILE ORGANIATION ////////////
@@ -114,65 +115,75 @@ exports.orguserread = function(req, res) {
 exports.ajaxorguserread = function(req, res, next) {
   if (req.user) {
     //console.log(req.user)
-      var username =  req.user.username
-      var query1 = organizationalModel.find(
-        {$or: [
-          {"entry.members": username },
-          {"entry.owner":  username }
-          ]}
+    var username =  req.user.username
+    var query1 = organizationalModel.find(
+      {$or: [
+        {"entry.members": username },
+        {"entry.owner":  username }
+        ]}
         )
-      query1.exec(function (err, query1_return) {
+    query1.exec(function (err, query1_return) {
       if(err){console.log('Error Here'); return;} 
-        req.userorgs = query1_return
-        next();
+      req.userorgs = query1_return
+      next();
     })
-} else {
- next();
-}
+  } else {
+   next();
+ }
 }
 
 //////////////////////////////
 //////////  PAGE ////////////
 ////////////////////////////
 exports.page = function(req, res) {
+  if (req.orgowner) {
    var template =  req.params.page 
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-        if (username) {
-            res.render('orgsettings/'+template,{
-                organization : username,
-                organizations : req.userorgs ,
-                title: 'Settings | '+username.entry.name   ,
-
-            }
-            )
-        } else {
-            return res.redirect('/');
+      if (username) {
+        res.render('orgsettings/'+template,{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          organization : username,
+          organizations : req.userorgs ,
+          pagetitle: 'Settings | '+username.entry.name   ,
         }
+        )
+      } else {
+        return res.redirect('/');
+      }
     })
+  } else {
+    return res.redirect('/');
+  }
 };
 
-
- ////////////////////////////////////
+/////////////////////////////////////
 ////////// SETTINGS PAGE ///////////
 ///////////////////////////////////
 exports.settings = function(req, res) {
+  if (req.orgowner) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-        if (username) {
-            res.render('orgsettings/settings',{
-                organization : username,
-                organizations : req.userorgs ,
-                title: 'Settings | '+username.entry.name   ,
-            }
-            )
-        } else {
-            return res.redirect('/');
+      if (username) {
+        res.render('orgsettings/settings',{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          organization : username,
+          organizations : req.userorgs ,
+          title: 'Settings | '+username.entry.name   ,
         }
+        )
+      } else {
+        return res.redirect('/');
+      }
     })
+  } else {
+    return res.redirect('/');
+  }
 };
 
- //////////////////////////////////////
+//////////////////////////////////////
 ////////// COMPONENTS PAGE ///////////
 /////////////////////////////////////
 exports.components = function(req, res) {
@@ -195,26 +206,24 @@ exports.components = function(req, res) {
     })
   };
 
-
 ////////////////////////////////////
 ////////// ASSEMBLIES PAGE ////////
 //////////////////////////////////
 exports.assemblies = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-        if (username) {
-            res.render('orgsettings/assemblies',{
-                organization : username,
-                organizations : req.userorgs ,
-                title: 'Assemblies | '+username.entry.name   ,
-            }
-            )
-        } else {
-            return res.redirect('/');
+      if (username) {
+        res.render('orgsettings/assemblies',{
+          organization : username,
+          organizations : req.userorgs ,
+          title: 'Assemblies | '+username.entry.name   ,
         }
+        )
+      } else {
+        return res.redirect('/');
+      }
     })
-};
-
+  };
 
 ///////////////////////////////////
 ////////// PEOPLE PAGE ///////////
@@ -222,18 +231,20 @@ exports.assemblies = function(req, res) {
 exports.people = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-        if (username) {
-            res.render('orgsettings/people',{
-                organization : username,
-                organizations : req.userorgs ,
-                title: 'People | '+username.entry.name   ,
-            }
-            )
-        } else {
-            return res.redirect('/');
+      if (username) {
+        res.render('orgsettings/people',{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          organization : username,
+          organizations : req.userorgs ,
+          title: 'People | '+username.entry.name   ,
         }
+        )
+      } else {
+        return res.redirect('/');
+      }
     })
-};
+  };
 
 ///////////////////////////////////
 ////////// ORGPUT PAGE ///////////
@@ -249,38 +260,38 @@ exports.orgPut = function(req, res, next) {
     organizationalModel.findById(organizationItem._id, function (err, orgid) {
       if (err) return handleError(err);
       if (orgid) { 
-//Profile Picture saving.
-var image = req.body.croppedImg
-var fs = require('fs');
-var directory = 'public/uploads/'
-var fileName = directory+orgid._id+'.jpg'
-var data = image.replace(/^data:image\/\w+;base64,/, '');
-fs.writeFile(fileName, data, {encoding: 'base64'}, function(err){
-  //Finished
-});
+        //Profile Picture saving.
+        var image = req.body.croppedImg
+        var fs = require('fs');
+        var directory = 'public/uploads/'
+        var fileName = directory+orgid._id+'.jpg'
+        var data = image.replace(/^data:image\/\w+;base64,/, '');
+        fs.writeFile(fileName, data, {encoding: 'base64'}, function(err){
+          //Finished
+        });
         //Painful parse issue.
         var temp = JSON.parse(JSON.stringify(orgid.entry))
         temp.picture = '/uploads/'+orgid._id+'.jpg'
         //Assign
-if (req.body.name !=null) {
-   temp.name = req.body.name
-}
-temp.displayname = req.body.displayname
-        temp.description = req.body.description
-        temp.location = req.body.location
-        temp.url = req.body.url
-        temp.email = req.body.email
-        temp.displayemail = req.body.displayemail
-        orgid.entry = temp    
-        orgid.save(function(err,doc) {
-          req.flash('success', { msg: 'Your profile information has been updated.' });
-          res.redirect('/organizations/'+req.params.orgname+'/settings/profile');
-        });
-      } else {
-        req.flash('error', { msg: 'Something went wrong here.' });
+        if (req.body.name !=null) {
+         temp.name = req.body.name
+       }
+       temp.displayname = req.body.displayname
+       temp.description = req.body.description
+       temp.location = req.body.location
+       temp.url = req.body.url
+       temp.email = req.body.email
+       temp.displayemail = req.body.displayemail
+       orgid.entry = temp    
+       orgid.save(function(err,doc) {
+        req.flash('success', { msg: 'Your profile information has been updated.' });
         res.redirect('/organizations/'+req.params.orgname+'/settings/profile');
-      }
-    });
+      });
+     } else {
+      req.flash('error', { msg: 'Something went wrong here.' });
+      res.redirect('/organizations/'+req.params.orgname+'/settings/profile');
+    }
+  });
   })
 };
 
@@ -288,12 +299,12 @@ temp.displayname = req.body.displayname
 //////////  ORGaNIZATION LIST ////////////
 /////////////////////////////////////////
 exports.orglist = function(req, res) {
-      organizationalModel.find(  function(err, username) {
-        res.render('orginizationlist',{
-          username : username,
-          title: 'Organizations | '+sitename   ,
-        });
-      });
+  organizationalModel.find(  function(err, username) {
+    res.render('orginizationlist',{
+      username : username,
+      pagetitle: 'Organizations | '+sitename+'',
+    });
+  });
 };
 
 ////////////////////////////////////////////
@@ -327,6 +338,12 @@ exports.leaveorganiztion = function(req, res) {
 
 
 
+///////////////////////////////////////////////
+//////////  ORGANIZATION ADD USER  ///////////
+/////////////////////////////////////////////
+exports.orgshareadd = function(req, res) {
+
+};
 
 
 
@@ -344,7 +361,7 @@ exports.userorganizations = function(req, res, next) {
   //Work around for the home controller with out paramater request
   if (req.user) { 
     if (!req.params.username) { 
-    req.params.username = req.user.username
+      req.params.username = req.user.username
     }
   }
   var query1 = organizationalModel.find(
@@ -361,4 +378,65 @@ exports.userorganizations = function(req, res, next) {
     next();
        //Query end
      })
+};
+
+
+////////////////////////////////////////////////
+////////// ORGANIZATION PERMISSION ////////////
+//////////////////////////////////////////////
+exports.organizationpermission = function(req, res, next) {
+  //Work around for the home controller with out paramater request
+  if (req.user) { 
+    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) {
+      //Check if this user is an owner of this organization
+      if (organization.entry.owner) {
+        if (organization.entry.owner == req.user.username) {
+          req.orgowner = true 
+        }
+      }
+      //Check if this user is a memeber
+      if (organization.entry.members) {
+        for (var i = 0; i < organization.entry.members.length; i++) {
+          if (organization.entry.members[i] == req.user.username) {
+            req.orgmember = true 
+          }
+        }
+      }
+      //Check if this user has requested membership to this organization
+      if (organization.entry.requests) {
+        for (var i = 0; i < organization.entry.requests.length; i++) {
+          if (organization.entry.requests[i] == req.user.username) {
+            req.orgsharerequest = true 
+          }
+        }
+      }
+      next();
+    })
+  } else {
+    next();
+  }
+};  
+
+///////////////////////////////////////////////////
+//////////  ORGANIZATION SHARE REQUEST ///////////
+/////////////////////////////////////////////////
+exports.orgsharerequest = function(req, res, next) {
+  if (req.user) {
+    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) {
+      var temp = JSON.parse(JSON.stringify(organization.entry))
+      if (temp['requests']) {
+        temp['requests'].push(req.user.username)
+      } else {
+        temp.requests = []
+        temp.requests.push(req.user.username)
+      }
+      organization.entry = temp
+      organization.save(function(err,doc) {
+        req.flash('success', { msg: 'You requests has been sent to the organization owner.' });
+        next();
+      });
+    });
+  } else {
+   res.redirect('/signin');
+ }
 };
