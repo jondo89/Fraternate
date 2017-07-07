@@ -9,6 +9,7 @@
 		{{#if organizations}}
 		<h3>Organizations <small>All user organizations are listed below.</small></h3>
 		<div class="row">
+		<pre>{{organizations}}</pre>
 			{{#each organizations}}
 			<div class="col-md-1">
 				<a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}"  >

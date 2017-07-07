@@ -14,7 +14,7 @@
           <div class="media-left">
             <a href="">
               {{#if this.picture}}
-              <img src="{{this.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+              <img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
               {{else}}
               <img src="{{this.gravatar}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
               {{/if}}

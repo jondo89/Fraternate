@@ -17,7 +17,7 @@
               <div class="media-left media-middle">
                 <a href="#">
                   <a href="/organizations/{{this.entry.name}}">
-                    <img src="{{this.entry.picture}}" class="media-object" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+                    <img onerror="this.src='{{this.gravatar}}'" src="{{this.entry.picture}}" class="media-object" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
                   </a>
                 </a>
               </div>
