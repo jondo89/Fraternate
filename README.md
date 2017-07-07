@@ -98,7 +98,7 @@ expressjs
 
 <h3>Troubleshooting</h3>
 
-<p>Dependent on the version of expressjs installed, the following may be required.</p>
+<p>Issues with starting the server on the first installation is likely due to missing NPM modules, If the server is crashing try installation the following modules independently.</p>
 
 <pre>npm install morgan
 npm install compression
@@ -121,5 +121,15 @@ npm install passport-github
 </pre>
 
 <p>If you are getting stuck, this is a port of the quality work done on Megaboilerplate. Here are the installation instructions for&nbsp;<a href="https://github.com/sahat/megaboilerplate#express">Megaboilerplate</a></p>
+
 <p>If you are still having trouble use the contact page , or add an issue on the GitHub Repo.</p>
+
+<h3>Server Installation.</h3>
+
+<p>Here are a few points to consider when uploading onto the Heroku server.</p>
+
+Server crash due to missing .env file.
+
+<pre>The .env file contains all of the sites api and secret keys. Ensure that it exists on the server.</pre>
+
 
