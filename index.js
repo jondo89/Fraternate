@@ -184,7 +184,7 @@ app.get('/organizations/new', organizationController.neworg);
 app.post('/organizations/new', organizationController.createorgstatic);
 app.get('/organizations/:orgname/', organizationController.ajaxorguserread ,  organizationController.organizationpermission,    organizationController.orgprofile);
 app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.organizationpermission, organizationController.settings);
-app.get('/organizations/:orgname/people', organizationController.ajaxorguserread ,organizationController.organizationpermission, organizationController.people);
+app.get('/organizations/:orgname/people', organizationController.ajaxorguserread ,organizationController.organizationpermission,organizationController.orgowneruserdetail,organizationController.people);
 app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.organizationpermission, organizationController.settings);
 app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.page);
 app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);

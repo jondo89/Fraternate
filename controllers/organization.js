@@ -1,4 +1,5 @@
 var organizationalModel      = require('../models/organizations.js');
+var User = require('../models/User');
 var ObjectId = require('mongodb').ObjectID;
 var express = require('express');
 var app = express();
@@ -233,11 +234,17 @@ exports.people = function(req, res) {
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
         res.render('orgsettings/people',{
+          owner:req.owner,
+          ownerParse:req.ownerParse,
+          members:req.members ,
+          membersParse:req.membersParse,
+          requests:req.requests ,
+          requestsParse:req.requestsParse,
           orgowner : req.orgowner ,
           orgmember : req.orgmember ,
           organization : username,
           organizations : req.userorgs ,
-          title: 'People | '+username.entry.name   ,
+          title: 'People | '+username.entry.name ,
         }
         )
       } else {
@@ -439,4 +446,39 @@ exports.orgsharerequest = function(req, res, next) {
   } else {
    res.redirect('/signin');
  }
+};
+
+////////////////////////////////////////////////////////////////////
+//////////  ORGANIZATIONAL OWNER GET FULL USER DETAILS  ///////////
+//////////////////////////////////////////////////////////////////
+exports.orgowneruserdetail = function(req, res, next) {
+  if (req.user) {
+  organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) {
+        //Is this the org owner.
+        if (organization.entry.owner == req.user.username) {
+          console.log('THis is entrering Here')
+          // if yes then send details of 
+          //Owner
+          //Member
+          //Requests.
+          User.findOne({ 'username': organization.entry.owner }).exec(function(err, user) {
+            User.find({ 'username': organization.entry.members }).exec(function(err, user1) {
+              User.find({ 'username': organization.entry.requests }).exec(function(err, user2) {
+                req.owner = user
+                req.ownerParse = JSON.stringify(user)
+                req.members = user1
+                req.membersParse = JSON.stringify(user1)
+                req.requests = user2
+                req.requestsParse = JSON.stringify(user2)
+                next();
+              })
+            })
+          })
+        } else {
+          next();
+        }
+      });
+} else {
+          next();
+        }
 };
