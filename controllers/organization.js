@@ -77,6 +77,12 @@ exports.orgprofile = function(req, res) {
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
         res.render('account/orgprofile',{
+          owner:req.owner,
+          ownerParse:req.ownerParse,
+          members:req.members ,
+          membersParse:req.membersParse,
+          requests:req.requests ,
+          requestsParse:req.requestsParse,
           orgowner : req.orgowner ,
           orgmember : req.orgmember ,
           orgsharerequest : req.orgsharerequest,
@@ -99,6 +105,12 @@ exports.orguserread = function(req, res) {
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
         res.render('account/orgprofile',{
+          owner:req.owner,
+          ownerParse:req.ownerParse,
+          members:req.members ,
+          membersParse:req.membersParse,
+          requests:req.requests ,
+          requestsParse:req.requestsParse,
           organization : username,
           organizations : req.userorgs ,
           title: username.entry.name + ' | '+sitename ,
@@ -371,20 +383,23 @@ exports.userorganizations = function(req, res, next) {
       req.params.username = req.user.username
     }
   }
-  var query1 = organizationalModel.find(
-    {$or: [
-      {"entry.members": req.params.username },
-      {"entry.owner":  req.params.username }
-      ]}
-      )
+  var query1 = organizationalModel.findOne(
+    {"entry.owner":  req.params.username }
+    )
+  var query2 = organizationalModel.find(
+    {"entry.members": req.params.username }
+    )
   query1.exec(function (err, query1_return) {
-    if(err){console.log('Error Here'); return;} 
-    //console.log(query1_return,'query1_return userorganizations')
-    req.organizations = query1_return
-    req.organizationsParse = JSON.stringify(query1_return)
-    next();
+    query2.exec(function (err, query2_return) {
+      if(err){console.log('Error Here'); return;} 
+      console.log(query1_return,query2_return)
+      req.organizations = query2_return
+      req.organizations.push(query1_return)
+      req.organizationsParse = JSON.stringify(req.organizations)
+      next();
        //Query end
      })
+  })
 };
 
 
@@ -452,16 +467,8 @@ exports.orgsharerequest = function(req, res, next) {
 //////////  ORGANIZATIONAL OWNER GET FULL USER DETAILS  ///////////
 //////////////////////////////////////////////////////////////////
 exports.orgowneruserdetail = function(req, res, next) {
-  if (req.user) {
-  organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) {
-        //Is this the org owner.
-        if (organization.entry.owner == req.user.username) {
-          console.log('THis is entrering Here')
-          // if yes then send details of 
-          //Owner
-          //Member
-          //Requests.
-          User.findOne({ 'username': organization.entry.owner }).exec(function(err, user) {
+    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) {
+           User.findOne({ 'username': organization.entry.owner }).exec(function(err, user) {
             User.find({ 'username': organization.entry.members }).exec(function(err, user1) {
               User.find({ 'username': organization.entry.requests }).exec(function(err, user2) {
                 req.owner = user
@@ -474,11 +481,5 @@ exports.orgowneruserdetail = function(req, res, next) {
               })
             })
           })
-        } else {
-          next();
-        }
       });
-} else {
-          next();
-        }
 };

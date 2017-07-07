@@ -8,7 +8,7 @@
       <div class="media-left" >  
         <a href="#">
           {{#if userload.picture}}
-           <div id="googlepic" style="min-width: 100%"></div>
+          <div id="googlepic" style="min-width: 100%"></div>
           {{else}}
           <img src="{{userload.gravatar}}" class="media-object">
           {{/if}}
@@ -72,11 +72,19 @@
     <h3>Organizations</h3>
     <div class="row">
       {{#each organizations}}
+      {{#if this.entry.picture}}
       <div class="col-md-2">
         <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
           <img src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
         </a>
       </div>
+      {{else}}
+      <div class="col-md-2">
+        <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
+          <img src="{{this.gravatar}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+        </a>
+      </div>
+      {{/if}}
       {{/each}}
     </div>
     {{else}}
