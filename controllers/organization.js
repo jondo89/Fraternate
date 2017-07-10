@@ -383,7 +383,7 @@ exports.userorganizations = function(req, res, next) {
       req.params.username = req.user.username
     }
   }
-  var query1 = organizationalModel.findOne(
+  var query1 = organizationalModel.find(
     {"entry.owner":  req.params.username }
     )
   var query2 = organizationalModel.find(
@@ -392,9 +392,8 @@ exports.userorganizations = function(req, res, next) {
   query1.exec(function (err, query1_return) {
     query2.exec(function (err, query2_return) {
       if(err){console.log('Error Here'); return;} 
-      console.log(query1_return,query2_return)
       req.organizations = query2_return
-      req.organizations.push(query1_return)
+      req.organizations.push.apply(req.organizations, query1_return)
       req.organizationsParse = JSON.stringify(req.organizations)
       next();
        //Query end

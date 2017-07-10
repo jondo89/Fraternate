@@ -34,7 +34,7 @@
               <label for="username" class="col-md-12">Username</label>
               <div class="col-md-11">
                 <input type="username" name="username" id="username" class="form-control" value="{{user.username}}" disabled>
-                <p class="help-block">Changing your username can have unforeseen consequences. <a class="btn btn-default btn-xs"  onclick="activate()">Change</a></p>
+                <p class="help-block">Changing your username can have unforeseen consequences. i.e will crash , let us know where yours does!!  <a class="btn btn-default btn-xs"  onclick="activate()">Change</a></p>
               </div>
             </div>
             <div class="form-group">
@@ -75,6 +75,13 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="company" class="col-md-12">Public Email</label>
+              <div class="col-md-11">
+                <input type="email" name="publicemail" id="publicemail" class="form-control" value="{{user.publicemail}}">
+                <p class="help-block">This email will be shown on the public profile. </p>
+              </div>
+            </div>            
+            <div class="form-group">
               <div class=" col-sm-4">
                 <button type="submit" onclick="updates()" id="export" class="btn btn-default">Update Profile</button>
               </div>
@@ -83,7 +90,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <div class="col-sm-12">
-                <h4>Profile Picture</h4>
+                <h4>Profile Picture</h4><p>The profile picture change will not save.</p>
                 <!-- This wraps the whole cropper -->
                 <div id="image-cropper" >
                   <!-- This is where the preview image is displayed -->
@@ -121,6 +128,16 @@
   $('#image-cropper').cropit({ 
     imageState: { src: imageSrc  },
     onImageLoaded : function(){
+      console.log('trigger loaded')
+      var imageData = $('#image-cropper').cropit('export', {
+        type: 'image/jpeg',
+        quality: .4,
+        originalSize: true,
+
+      });
+      $('#croppedImg').val(imageData);
+    },
+    onOffsetChange : function(){
       var imageData = $('#image-cropper').cropit('export', {
         type: 'image/jpeg',
         quality: .4,

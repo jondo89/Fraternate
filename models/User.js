@@ -34,6 +34,7 @@ var userSchema = new mongoose.Schema({
   facebook: String,
   twitter: String,
   google: String,
+  publicemail:String,
   github: String,
   vk: String
 }, schemaOptions);

@@ -163,24 +163,15 @@ exports.accountPut = function(req, res, next) {
    // req.assert('email', 'Email cannot be blank').notEmpty();
     //req.sanitize('email').normalizeEmail({ remove_dots: false });
   }
-
   var errors = req.validationErrors();
-
   if (errors) {
   req.flash('error', errors);
   return res.redirect(  '/users/'+req.user.username+'/settings/profile'  );
   }
-
-
-
-
-
   User.findById(req.user.id, function(err, user) {
     if ('password' in req.body) {
       user.password = req.body.password;
     } else {
-
-
 //Profile Picture saving.
   var image = req.body.croppedImg
   var fs = require('fs');
@@ -191,7 +182,6 @@ exports.accountPut = function(req, res, next) {
   fs.writeFile(fileName, data, {encoding: 'base64'}, function(err){
   //Finished
   });
-
       user.picture = '/uploads/'+user.id+'.jpg'
       user.email = req.body.email;
       user.name = req.body.name;
@@ -203,6 +193,7 @@ exports.accountPut = function(req, res, next) {
       user.company = req.body.company;
       user.location = req.body.location;
       user.website = req.body.website;
+      user.publicemail = req.body.publicemail;
     }
     user.save(function(err) {
       if ('password' in req.body) {

@@ -37,13 +37,13 @@
       </div>
     </div>
     {{/if}}
-    {{#if userload.email}}
+    {{#if userload.publicemail}}
     <div class="row">
       <div class="col-sm-2" style="text-align: center;">
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
       </div>
       <div class="col-sm-8">
-        <a href="mailto: ">not shown</a>
+        <a href="mailto:{{userload.publicemail}}">{{userload.publicemail}}</a>
       </div>
     </div>
     {{/if}}

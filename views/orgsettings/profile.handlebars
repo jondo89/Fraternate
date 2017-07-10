@@ -51,7 +51,7 @@
             <label for="displayname" class="col-sm-12">Organization username</label>
             <div class="col-sm-12">
               <input type="displayname" name="name" id="name" class="form-control" value="{{organization.entry.name}}" disabled>
-              <p class="help-block">Changing your username can have unforeseen consequences. <a class="btn btn-default btn-xs"  onclick="activate()">Change</a></p>
+              <p class="help-block">Changing your organization can have unforeseen consequences. i.e will crash , let us know where yours does!! <a class="btn btn-default btn-xs"  onclick="activate()">Change</a></p>
             </div>
           </div>
           <div class="form-group">
@@ -69,7 +69,7 @@
           <div class="form-group">
             <label for="displayname" class="col-sm-12">Description</label>
             <div class="col-sm-12">
-              <input type="description" name="description" id="description" class="form-control" value="{{organization.entry.description}}" >
+              <textarea type="description" rows="3"  name="description" id="description" class="form-control" >{{organization.entry.description}}</textarea>
             </div>
           </div>
           <div class="form-group">
@@ -99,11 +99,11 @@
         <div class="col-md-4">
           <div class="form-group">
             <div class="col-sm-12">
-              <h4  >Profile Picture</h4>
+              <h4  >Profile Picture</h4><p>The profile picture change will not save.</p>
               <!-- This wraps the whole cropper -->
               <div id="image-cropper" >
                 <!-- This is where the preview image is displayed -->
-                <div class="cropit-preview" id="pic" style="border: 1px solid #eee;position: relative;text-align: center;"><img src="/img/defaults/default-user.png" style="padding-top: 15px"></div>
+                <div class="cropit-preview" id="pic" style="border: 1px solid #eee;position: relative;text-align: center;"><img src="/img/defaults/default-users.png" style="padding-top: 15px"></div>
                 <!-- This range input controls zoom -->
                 <!-- You can add additional elements here, e.g. the image icons -->
                 <input type="range" class="cropit-image-zoom-input" style="width: 200px" />
@@ -111,7 +111,7 @@
                 <!-- This is where user selects new image -->
                 <input type="file" id="filechange" class="cropit-image-input"  />
 
-                <input  style="display: none;" name="croppedImg" id="croppedImg"/>
+                <input style="display: none;" name="croppedImg" id="croppedImg"/>
 
   <!-- The cropit- classes above are needed
   so cropit can identify these elements -->
@@ -125,24 +125,39 @@
 </div>
 
 <script type="text/javascript">
-////////////////////////////////
-///// Username change    //////
-//////////////////////////////
-function activate(){
-  $('#name').prop('disabled', false);
-}
 
-///////////////////////////////////////////////////
-///// UPDATE THE PIC DATA HOLER WITH SUBMIT //////
-/////////////////////////////////////////////////
-function updates(){
-  var imageData = $('#image-cropper').cropit('export', {
-    type: 'image/jpeg',
-    quality: .4,
-    originalSize: true
+  function activate(){
+    $('#name').prop('disabled', false);
+  }
+
+  {{#if user.picture}}
+  var imageSrc = '{{{organization.entry.picture}}}'
+  {{else}}
+  var imageSrc = '{{{organization.gravatar}}}'
+  {{/if}}
+  
+  $('#image-cropper').cropit({ 
+    imageState: { src: imageSrc  },
+    onImageLoaded : function(){
+      console.log('trigger loaded')
+      var imageData = $('#image-cropper').cropit('export', {
+        type: 'image/jpeg',
+        quality: .4,
+        originalSize: true,
+
+      });
+      $('#croppedImg').val(imageData);
+    },
+    onOffsetChange : function(){
+      var imageData = $('#image-cropper').cropit('export', {
+        type: 'image/jpeg',
+        quality: .4,
+        originalSize: true,
+
+      });
+      $('#croppedImg').val(imageData);
+    }
   });
-  $('#croppedImg').val(imageData);
-}
 
 ////////////////////////////////
 ///// LISTEN FOR CHANGES //////
@@ -151,7 +166,8 @@ $('#image-cropper').change(function() {
   var imageData = $('#image-cropper').cropit('export', {
     type: 'image/jpeg',
     quality: .4,
-    originalSize: true
+    originalSize: true,
+
   });
   $('#croppedImg').val(imageData);
 });
@@ -160,12 +176,6 @@ $('#image-cropper').change(function() {
 ///// INITIALIZE //////
 //////////////////////
 $(document).ready( function() {
-  {{#if organization.entry.picture}}
-  var imageSrc = '{{{organization.entry.picture}}}'
-  {{else}}
-  var imageSrc = '{{{organization.entry.gravatar}}}'
-  {{/if}}
-  $('#image-cropper').cropit({ imageState: { src: imageSrc  } });
   $(':file').on('fileselect', function(event, numFiles, label) {
     var input = $(this).parents('.input-group').find(':text'),
     log = numFiles > 1 ? numFiles + ' files selected' : label;

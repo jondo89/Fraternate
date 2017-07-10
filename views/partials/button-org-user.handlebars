@@ -18,7 +18,7 @@
         <a href="/organizations/{{this.entry.name}}" > 
             <span class="media">
               {{#if this.entry.picture}}
-              <img src="{{this.entry.picture}}"  style="max-width: 25px">
+              <img onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}"  style="max-width: 25px">
               {{else}}
               <img src="{{this.gravatar}}"  style="max-width: 25px">
               {{/if}}
