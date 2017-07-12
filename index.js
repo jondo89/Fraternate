@@ -94,6 +94,13 @@ var hbs = exphbs.create({
             return str.substring(0,400) + '...';
           return str;
         }
+      },
+            'profile' : function(str) {
+        if (str) {
+          if (str.length > 550)
+            return str.substring(0,550) + '...';
+          return str;
+        }
       }
     }
   });
@@ -190,6 +197,11 @@ app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorg
 app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);
 app.get('/leaveorganiztion/:ids',  organizationController.leaveorganiztion);
 app.get('/orgsharerequest/:orgname',organizationController.orgsharerequest, organizationController.organizationpermission,    organizationController.orgprofile);
+
+
+app.get('/organizations/:orgname/approvereq/:username/', organizationController.approvereq );
+
+
 //Ajax
 app.get('/orguserread', organizationController.orguserread); // Get the active user organizations , owner and member.
 

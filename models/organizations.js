@@ -1,8 +1,11 @@
 var mongoose = require('mongoose')
-  , Schema = mongoose.Schema
-  , ObjectId = Schema.ObjectId;
+, Schema = mongoose.Schema
+, ObjectId = Schema.ObjectId;
 var organizations;
- 
+var express = require('express');
+var app = express();
+
+
 ///////////////////////////////////////////////
 ////     SET YOUR APP.JSON DETAILS        //// 
 /////////////////////////////////////////////
@@ -21,9 +24,9 @@ var schemaOptions = {
 };
 
 var organizationsSchema = mongoose.Schema({
-'name' :{ type: String, default: 'Inital Form' },
-'detail' :String,
-'objectType' :String,
+  'name' :{ type: String, default: 'Inital Form' },
+  'detail' :String,
+  'objectType' :String,
 //child type will be a form id , used for determining what component is created by the form.
 'childType' :String,
 //Used for the routing of new posts
@@ -38,10 +41,11 @@ var organizationsSchema = mongoose.Schema({
 'active' : { type: String, default: "true" },
 }, schemaOptions);
 
+
 ///////////////////////////////////////
 ////     SIGN UP EMAIL SEND       //// 
 /////////////////////////////////////
-function signupEmail(username , email){
+function signupEmail(organizations){
   var port = process.env.MAIL_PORT
   var useremail = process.env.MAIL_USERNAME
   var passwords = process.env.MAIL_PASSWORD
@@ -61,33 +65,25 @@ var transporter = nodemailer.createTransport({
     }
   }); 
 var mailOptions = {
-  from: username + ' ' + '<'+ email + '>', // sender address
+  from: organizations.entry.name + ' ' + '<'+ organizations.entry.email + '>', // sender address
   to: process.env.MAIL_USERNAME, // list of receivers
-  subject: '✔ Your organization account modification was successfully completed | '+ sitename, // Subject line
-  html:  'Organization account modification :' + username + ' email : ' +  email,
+  subject: '✔ A user has edited an organization. | '+ sitename, // Subject line
+  html:  '<h2>The following organization has been edited.</h2><p>Code :</p> <pre>'+organizations+'</pre>',
 }
 // send mail with defined transport object
 transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
     return console.log(error);
   }
-  var mailOptions = {
-  from: 'The '+sitename+' Team' + ' ' + '<'+ process.env.MAIL_USERNAME + '>', // sender address
-  to: email, // list of receivers
-  subject: '✔ Your organization account was successfully completed | '+sitename, // Subject line
-  html:  'Your organization account has been successfully modified on '+sitename+' , First time users please complete you organization profile when you get a chance!',
-}
-transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-    return console.log(error);
-  }
-});
 });
 }
 
+/////////////////////////////////
+////     PRESAVE AREA       //// 
+///////////////////////////////
 organizationsSchema.pre('save', function(next) {
   var organizations = this;
-	signupEmail(organizations.name , organizations.email)
+  signupEmail(organizations)
 	next();
 });
 
@@ -100,7 +96,7 @@ organizationsSchema.virtual('gravatar').get(function() {
   return 'https://gravatar.com/avatar/' + md5 + '?s=200&d=retro';
 });
 
- 
+
 var Organizations = mongoose.model('organizations', organizationsSchema);
 
 module.exports = Organizations;

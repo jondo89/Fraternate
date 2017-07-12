@@ -43,7 +43,7 @@ var userSchema = new mongoose.Schema({
 ///////////////////////////////////////
 ////     SIGN UP EMAIL SEND       //// 
 /////////////////////////////////////
-function signupEmail(username , email){
+function signupEmail(user){
   var port = process.env.MAIL_PORT
   var useremail = process.env.MAIL_USERNAME
   var passwords = process.env.MAIL_PASSWORD
@@ -63,27 +63,16 @@ var transporter = nodemailer.createTransport({
     }
   }); 
 var mailOptions = {
-  from: username + ' ' + '<'+ email + '>', // sender address
+  from: user.name + ' ' + '<'+ user.email + '>', // sender address
   to: process.env.MAIL_USERNAME, // list of receivers
-  subject: '✔ Your Account modification was successfully completed | '+ sitename, // Subject line
-  html:  'Account modification :' + username + ' email : ' +  email,
+  subject: '✔ A user has edited their information. | '+ sitename, // Subject line
+  html:  '<h2>The following user has been edited.</h2><p>Code :</p> <pre>'+user+'</pre>',
 }
 // send mail with defined transport object
 transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
     return console.log(error);
   }
-  var mailOptions = {
-  from: 'The '+sitename+' Team' + ' ' + '<'+ process.env.MAIL_USERNAME + '>', // sender address
-  to: email, // list of receivers
-  subject: '✔ Your Account modification was successfully completed | '+sitename, // Subject line
-  html:  'Your account has been successfully modified on '+sitename+' , First time users please complete you profile and account settings when you get a chance!',
-}
-transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-    return console.log(error);
-  }
-});
 });
 }
 
@@ -99,7 +88,7 @@ if (user.username =="") {
 }
 
 
-signupEmail(user.username , user.email)
+  signupEmail(user)
 
 
   if (!user.isModified('password')) { return next(); }

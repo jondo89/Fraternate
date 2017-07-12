@@ -357,11 +357,51 @@ exports.leaveorganiztion = function(req, res) {
 
 
 
-///////////////////////////////////////////////
-//////////  ORGANIZATION ADD USER  ///////////
-/////////////////////////////////////////////
-exports.orgshareadd = function(req, res) {
-
+////////////////////////////////////////////////////////////////
+//////////  ORGANIZATION APPROVE USER JOIN REQUEST  ///////////
+//////////////////////////////////////////////////////////////
+exports.approvereq = function(req, res) {
+  if (req.user) {
+    var query1 = organizationalModel.findOne(
+      {"entry.name":  req.params.orgname }
+      )
+    query1.exec(function (err, query1_return) {
+      if(err){console.log('Error Here'); return;} 
+      if (query1_return.entry.owner == req.user.username ) {
+        //Painful parse issue.
+        var temp = JSON.parse(JSON.stringify(query1_return.entry))
+//find request
+for (var i = 0; i < temp.requests.length; i++) {
+  if (temp.requests[i] == req.params.username) {
+    if (temp.members) {
+      temp.members.push(req.params.username)
+    } else {
+      temp.members = [req.params.username]
+    }
+  }
+}
+//delete request
+var temp1 =[]
+for (var i = 0; i < temp.requests.length; i++) {
+  if (temp.requests[i] == req.params.username) {
+  } else {
+    temp1.push(temp.requests[i])
+  }
+}
+temp.requests = temp1
+query1_return.entry = temp
+req.params.options ='join'
+query1_return.save(function(err) {
+  return res.redirect('/');
+}); 
+} else {
+  console.log('User name and organization owner do not match.')
+  return res.redirect('/');
+}
+})
+  } else {
+    return res.redirect('/');
+  }
 };
 
 
@@ -466,19 +506,84 @@ exports.orgsharerequest = function(req, res, next) {
 //////////  ORGANIZATIONAL OWNER GET FULL USER DETAILS  ///////////
 //////////////////////////////////////////////////////////////////
 exports.orgowneruserdetail = function(req, res, next) {
-    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) {
-           User.findOne({ 'username': organization.entry.owner }).exec(function(err, user) {
-            User.find({ 'username': organization.entry.members }).exec(function(err, user1) {
-              User.find({ 'username': organization.entry.requests }).exec(function(err, user2) {
-                req.owner = user
-                req.ownerParse = JSON.stringify(user)
-                req.members = user1
-                req.membersParse = JSON.stringify(user1)
-                req.requests = user2
-                req.requestsParse = JSON.stringify(user2)
-                next();
-              })
-            })
-          })
-      });
+  organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) {
+   User.findOne({ 'username': organization.entry.owner }).exec(function(err, user) {
+    User.find({ 'username': organization.entry.members }).exec(function(err, user1) {
+      User.find({ 'username': organization.entry.requests }).exec(function(err, user2) {
+        req.owner = user
+        req.ownerParse = JSON.stringify(user)
+        req.members = user1
+        req.membersParse = JSON.stringify(user1)
+        req.requests = user2
+        req.requestsParse = JSON.stringify(user2)
+        next();
+      })
+    })
+  })
+ });
 };
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//ORGANIZATION EMAIL MANAGER.
+
+
+/*
+switch(true){
+  case (req.params.options == 'join'):
+  var subject = '✔ You have successfully added this user to your account | '+sitename // Subject line
+  var msg = 'Your organization account has been successfully modified on '+sitename+' , First time users please complete you organization profile when you get a chance!'
+    signupEmail(organizations.name , organizations.email,subject, msg)
+  break ;
+}*/
+
+///////////////////////////////////////
+////     SIGN UP EMAIL SEND       //// 
+/////////////////////////////////////
+function signupEmail(username , email,subject , msg){
+  var port = process.env.MAIL_PORT
+  var useremail = process.env.MAIL_USERNAME
+  var passwords = process.env.MAIL_PASSWORD
+  var temp = {}
+  'use strict';
+  var nodemailer = require('nodemailer');
+// create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport({
+  host: 'mail.isithelo.com',
+  tls: {
+    rejectUnauthorized: false
+  },
+    secure: false, // secure:true for port 465, secure:false for port 587
+    auth: {
+      user: useremail,
+      pass: passwords,
+    }
+  }); 
+var mailOptions = {
+  from: username + ' ' + '<'+ email + '>', // sender address
+  to: process.env.MAIL_USERNAME, // list of receivers
+  subject: '✔ Your organization account modification was successfully completed | '+ sitename, // Subject line
+  html:  'Organization account modification :' + username + ' email : ' +  email,
+}
+// send mail with defined transport object
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+    return console.log(error);
+  }
+  var mailOptions = {
+  from: 'The '+sitename+' Team' + ' ' + '<'+ process.env.MAIL_USERNAME + '>', // sender address
+  to: email, // list of receivers
+  subject: subject, // Subject line
+  html:  msg, //HTML msg body
+}
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+    return console.log(error);
+  }
+});
+});
+}

@@ -96,6 +96,29 @@ expressjs
 
 <pre>npm install express-recaptcha -save</pre>
 
+
+<h3>The .ENV File.</h3>
+<p>All of the magic on your localhost is managed by the .ENV file , here you would add your smtp host setting , recaptcha keys etc. Some example values are shown below.</p>
+<p>When installation is done on Heroku , the keys should be added to the Settings tab , in the "reveal config variable" area.</p>
+<pre>
+SESSION_SECRET='6681esdf3a9cb922b14ff4b5b3a9b03f95ba520e017f5a23453f6e2792965d4e063'
+
+MONGODB='localhost'
+
+GOOGLE_ID='942595912716-lrvbstvgdfd8em4sugjmvsu3jk6p6tgo0m74.apps.googleusercontent.com'
+GOOGLE_SECRET='9G5ZoRffKQ-cKiT9M0Ahsb2E4g'
+
+GITHUB_ID='800aa9e14a3asd6b3e981f2'
+GITHUB_SECRET='a87511fe094gdffde0b71de968691cbdb23265cf4f0'
+
+SITE_KEY='6Le2aCcUAAAAAO8g693sddE9uMACIv7L-DeAbDZc67-'
+SECRET_KEY='6Le2aCcUAAAAANzOY5iqXP94Kc76sas8FsZr1kxBMMZ'
+
+MAIL_PORT='587'
+MAIL_USERNAME='bla@bla.com'
+MAIL_PASSWORD='--- add your details here ---'
+</pre>
+
 <h3>Troubleshooting</h3>
 
 <p>Issues with starting the server on the first installation is likely due to missing NPM modules, If the server is crashing try installation the following modules independently.</p>
@@ -131,5 +154,4 @@ npm install passport-github
 Server crash due to missing .env file.
 
 <pre>The .env file contains all of the sites api and secret keys. Ensure that it exists on the server.</pre>
-
 
