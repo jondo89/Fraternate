@@ -19,54 +19,6 @@
   <loc>https://fraternate.herokuapp.com/introduction</loc>
 </url>
 <url>
-  <loc>https://fraternate.herokuapp.com/signin</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/signup</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/terms</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/Privacy</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/users/Jonathan</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/users/Clifford</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/users/VasileCatana</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/users/SuperDelux</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/users/Tor</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/users/JonDavies</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/users/test</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/users/MohammadKazemZaker</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/privacy</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/contact</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/organizations/Isithelo</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/organizations/novohamburgo</loc>
-</url>
-<url>
   <loc>https://fraternate.herokuapp.com/installation</loc>
 </url>
 <url>
@@ -74,17 +26,5 @@
 </url>
 <url>
   <loc>https://fraternate.herokuapp.com/troubleshooting</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/licence</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/forgot</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/organizations/Isithelo/people</loc>
-</url>
-<url>
-  <loc>https://fraternate.herokuapp.com/organizations/novohamburgo/people</loc>
 </url>
 </urlset>

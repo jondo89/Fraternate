@@ -196,9 +196,10 @@ app.get('/organizations/:orgname/settings',organizationController.ajaxorguserrea
 app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.page);
 app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);
 app.get('/leaveorganiztion/:ids',  organizationController.leaveorganiztion);
+
 app.get('/orgsharerequest/:orgname',organizationController.orgsharerequest, organizationController.organizationpermission,    organizationController.orgprofile);
 
-
+app.get('/organizations/:orgname/kickorg/:username/',  organizationController.kickorg);
 app.get('/organizations/:orgname/approvereq/:username/', organizationController.approvereq );
 
 

@@ -315,7 +315,7 @@ exports.orgPut = function(req, res, next) {
 };
 
 ///////////////////////////////////////////
-//////////  ORGaNIZATION LIST ////////////
+//////////  ORGANIZATION LIST ////////////
 /////////////////////////////////////////
 exports.orglist = function(req, res) {
   organizationalModel.find(  function(err, username) {
@@ -327,7 +327,7 @@ exports.orglist = function(req, res) {
 };
 
 ////////////////////////////////////////////
-//////////  ORGaNIZATION LEAVE ////////////
+//////////  ORGANIZATION LEAVE ////////////
 //////////////////////////////////////////
 exports.leaveorganiztion = function(req, res) {
   if (req.user) {
@@ -355,7 +355,36 @@ exports.leaveorganiztion = function(req, res) {
   }
 };
 
-
+////////////////////////////////////////////
+//////////  ORGANIZATION KICK  ////////////
+//////////////////////////////////////////
+exports.kickorg = function(req, res) {
+  console.log('entering')
+  if (req.user) {
+    organizationalModel.findOne( {"entry.name" : req.params.orgname}, function(err, organization) {
+      var temp = JSON.parse(JSON.stringify(organization.entry))
+      if (temp.owner == req.user.username) {
+      var tempArry =[]  
+      for (var i = 0; i < temp.members.length; i++) {
+        if (temp.members[i] == req.params.username) {
+        } else {
+          tempArry.push(temp.members[i])
+        }
+      }
+     temp.members = tempArry
+      organization.entry = temp    
+      organization.save(function(err) {
+        req.flash('success', { msg: req.params.username+' was successfully removed from '+organization.entry.name+'.' });
+        res.redirect('/organizations/'+organization.entry.name+'/people' );
+      });
+      } else {
+    return res.redirect('/');
+  }
+    });
+  } else {
+    return res.redirect('/');
+  }
+};
 
 ////////////////////////////////////////////////////////////////
 //////////  ORGANIZATION APPROVE USER JOIN REQUEST  ///////////
