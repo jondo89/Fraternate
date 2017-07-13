@@ -1,0 +1,27 @@
+User-Agent: *
+Disallow: 
+Disallow: /users/
+Disallow: /organizations/
+Disallow: /signin
+Disallow: /signup
+Disallow: /privacy/
+Disallow: /terms/
+Disallow: /users/
+Disallow: /usersearch/
+Disallow: /organizations/
+Disallow: /leaveorganiztion/
+Disallow: /orgsharerequest/
+Disallow: /orguserread/
+Disallow: /contact/
+Disallow: /account/
+Disallow: /signup/
+Disallow: /signin/
+Disallow: /signin/
+Disallow: /forgot/
+Disallow: /reset/
+Disallow: /signout/
+Disallow: /unlink/
+Disallow: /auth/
+
+
+Sitemap: https://fraternate.herokuapp.com/sitemap.xml
