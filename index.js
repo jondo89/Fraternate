@@ -179,7 +179,7 @@ app.get('/users/', userInterfaceController.users);
 app.get('/users/:username/',   organizationController.userorganizations,  userInterfaceController.profile);
 app.get('/users/:username/settings/',userInterfaceController.settings);
 app.get('/users/:username/settings/:page',   organizationController.userorganizations, userInterfaceController.page);
-app.get('/usersearch', userInterfaceController.usersearch);
+ 
 
 
 /////////////////////////////////////
@@ -201,6 +201,7 @@ app.get('/orgsharerequest/:orgname',organizationController.orgsharerequest, orga
 
 app.get('/organizations/:orgname/kickorg/:username/',  organizationController.kickorg);
 app.get('/organizations/:orgname/approvereq/:username/', organizationController.approvereq );
+app.get('/organizations/:orgname/usersearch/:username/', organizationController.usersearch );
 
 
 //Ajax

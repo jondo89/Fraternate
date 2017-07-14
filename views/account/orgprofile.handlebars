@@ -67,6 +67,19 @@
           </div>
           {{/if}}
           {{/if}}
+          {{#if organization.entry.members}}
+          <h4>Members</h4>
+          {{#each members}}
+          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          {{/each}}
+          {{/if}}
+          {{/if}}
+          {{else}}
+          {{#if organization.entry.members}}
+          <h4>Members</h4>
+          {{#each members}}
+          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          {{/each}}
           {{/if}}
           {{/if}}
         </div>

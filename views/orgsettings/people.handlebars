@@ -9,21 +9,21 @@
 </ul>
 
 
-   {{#if messages.success}}
-   <p></p>
-   <div role="alert" class="alert alert-success">
-    {{#each messages.success}}
-    <div>{{msg}}</div>
-    {{/each}}
-  </div>
-  {{/if}}
-  {{#if messages.error}}
-  <div role="alert" class="alert alert-danger">
-    {{#each messages.error}}
-    <div>{{msg}}</div>
-    {{/each}}
-  </div>
-  {{/if}} 
+{{#if messages.success}}
+<p></p>
+<div role="alert" class="alert alert-success">
+  {{#each messages.success}}
+  <div>{{msg}}</div>
+  {{/each}}
+</div>
+{{/if}}
+{{#if messages.error}}
+<div role="alert" class="alert alert-danger">
+  {{#each messages.error}}
+  <div>{{msg}}</div>
+  {{/each}}
+</div>
+{{/if}} 
 
 {{#if orgowner}}
 <p></p>
@@ -88,7 +88,7 @@
           {{dotdotdotdot owner.bio}}
         </div>
         <div class="col-md-3" style="text-align:right" >
-          <a class="btn btn-warning" data-toggle="modal" data-target="#myModal" id="{{this.username}}" onclick="kickMember(this.id)"><i class="fa fa-times" aria-hidden="true" ></i> Kick</a>
+          <a class="btn btn-default" data-toggle="modal" data-target="#myModal" id="{{this.username}}" onclick="kickMember(this.id)"><i class="fa fa-times" aria-hidden="true" ></i> Kick</a>
         </div>
       </div>
     </div>
@@ -131,7 +131,7 @@
 </table>
 <p></p>
 <div >
-	<button class="btn btn-success" id="inviteMember" data-toggle="modal" data-target="#myModal">Invite member</button>
+	<button class="btn btn-default" id="inviteMember" data-toggle="modal" data-target="#myModal">Invite member</button>
 </div>
 <p></p>
 {{else}}
@@ -231,6 +231,8 @@
   </div>
 </div>
 
+
+
 <script type="text/javascript">
 
 
@@ -253,27 +255,35 @@ $('document').ready(function(){
 ////        INVITE MEMEBER         //// 
 //////////////////////////////////////
 $('#inviteMember').click(function(){
- var html =  '<div style="text-align: center"> <h1> <i class="fa fa-envelope-o" aria-hidden="true"></i> </h1> <h3> Invite members to {{organization.entry.displayname}} </h3> <div class="row"> <div class="col-md-8 col-md-offset-2"> <form autocomplete="off" > <input value="" type="text" name="search" id="search" class="form-control" placeholder="Search by username, full name or email address"> </form> <div id="users" style="padding-top: 25px"></div> </div> </div> </div>'
+ var html =  '<div style="text-align: center"> <h1> <i class="fa fa-envelope-o" aria-hidden="true"></i> </h1> <h3> Invite members to {{organization.entry.displayname}} </h3> <p>An invitation will be sent via email to the selected user.</p><div class="row"> <div class="col-md-8 col-md-offset-2"> <form autocomplete="off" > <input value="" type="text" name="search" id="search" class="form-control" placeholder="Search by username"> </form> <div id="users" style="padding-top: 25px"></div> </div> </div> </div>'
  $('#modalTextArea').html(html)
 //search input drop down
+  var orgname = "{{organization.entry.name}}"
 $('#search').keyup(function(){
   var searchField = $('#search').val();
   jQuery.ajax({
     'async': true,
     'global': false,
-    'url': '/usersearch?item='+searchField,
+    'url': '/organizations/'+orgname+'/usersearch/'+searchField,
     'success': function (dataSchemaObject) {
       jQuery('#users').html("")
-      if (dataSchemaObject) {
-        var html = '<ul class="list-group">'
-        for (var i = 0; i < dataSchemaObject.users.length; i++) {
-          html+='<li class="list-group-item"><div class="media"><div class="media-left media-middle" > <img src="/uploads/'+dataSchemaObject.users[i]._id+'.jpg " style="max-width: 45px"> </div><div class="media-body" style="text-align: left;"><strong>'+dataSchemaObject.users[i].username+'</strong> '+dataSchemaObject.users[i].username+' <a class="btn btn-default" href="#" role="button" ><i class="fa fa-plus" aria-hidden="true"></i></a>   </div></li>'
+      try {
+        if (dataSchemaObject.users.length == 0) {
+          jQuery('#users').html('<p><i class="fa fa-frown-o" aria-hidden="true"></i> No users found.</p>')
+        } else {
+          var html = '<ul class="list-group">'
+          for (var i = 0; i < dataSchemaObject.users.length; i++) {
+            html+='<li class="list-group-item"><div class="media"><div class="media-left media-middle" > <img onerror="this.src='+"'"+'/img/defaults/default-user.png'+"'"+ '"  src="/uploads/'+dataSchemaObject.users[i]._id+'.jpg " style="max-width: 45px"> </div><div class="media-body" style="text-align: left;"><strong>'+dataSchemaObject.users[i].username+'</strong> '+dataSchemaObject.users[i].name+' <a onclick="sendRequest(this.id)" id="'+dataSchemaObject.users[i].username+'" class="btn btn-default" href="#" role="button" ><i class="fa fa-plus" aria-hidden="true"></i></a>   </div></li>'
+          }
+          html += '</ul>'
+          jQuery('#users').html(html)
         }
-        html += '</ul>'
-        jQuery('#users').html(html)
-      } else {
-        jQuery('#users').html("No users found")
+      } catch (err){
+        jQuery('#users').html('<p><i class="fa fa-frown-o" aria-hidden="true"></i> No users found.</p>')
       }
+    },
+    'error': function(err){
+      jQuery('#users').html("Try not to use special characters.")
     }
   });
 });
@@ -294,7 +304,21 @@ function kickMember(ids){
 /////////////////////////////////////////////////////
 function approveReq(ids){
   var orgname = "{{organization.entry.name}}"
-  console.log('/organizations/'+orgname+'/approvereq/'+ids)
+  jQuery.ajax({
+   'async': true,
+   'global': false,
+   'url': '/organizations/'+orgname+'/approvereq/'+ids,
+   'success': function (dataSchemaObject) {
+    location.reload();
+  }
+});
+}
+
+///////////////////////////////////////////////////////
+////        AJAX SEND REQUEST TO ADD USER         //// 
+/////////////////////////////////////////////////////
+function sendRequest(ids){
+  var orgname = "{{organization.entry.name}}"
   jQuery.ajax({
    'async': true,
    'global': false,

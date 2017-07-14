@@ -364,22 +364,22 @@ exports.kickorg = function(req, res) {
     organizationalModel.findOne( {"entry.name" : req.params.orgname}, function(err, organization) {
       var temp = JSON.parse(JSON.stringify(organization.entry))
       if (temp.owner == req.user.username) {
-      var tempArry =[]  
-      for (var i = 0; i < temp.members.length; i++) {
-        if (temp.members[i] == req.params.username) {
-        } else {
-          tempArry.push(temp.members[i])
+        var tempArry =[]  
+        for (var i = 0; i < temp.members.length; i++) {
+          if (temp.members[i] == req.params.username) {
+          } else {
+            tempArry.push(temp.members[i])
+          }
         }
-      }
-     temp.members = tempArry
-      organization.entry = temp    
-      organization.save(function(err) {
-        req.flash('success', { msg: req.params.username+' was successfully removed from '+organization.entry.name+'.' });
-        res.redirect('/organizations/'+organization.entry.name+'/people' );
-      });
+        temp.members = tempArry
+        organization.entry = temp    
+        organization.save(function(err) {
+          req.flash('success', { msg: req.params.username+' was successfully removed from '+organization.entry.name+'.' });
+          res.redirect('/organizations/'+organization.entry.name+'/people' );
+        });
       } else {
-    return res.redirect('/');
-  }
+        return res.redirect('/');
+      }
     });
   } else {
     return res.redirect('/');
@@ -399,16 +399,22 @@ exports.approvereq = function(req, res) {
       if (query1_return.entry.owner == req.user.username ) {
         //Painful parse issue.
         var temp = JSON.parse(JSON.stringify(query1_return.entry))
-//find request
-for (var i = 0; i < temp.requests.length; i++) {
-  if (temp.requests[i] == req.params.username) {
-    if (temp.members) {
-      temp.members.push(req.params.username)
-    } else {
-      temp.members = [req.params.username]
+//Invite and accept request in 1 query , where there is an error trap for multiple added users.
+var count=0
+if (temp.members) {
+  for (var i = 0; i < temp.members.length; i++) {
+    temp.members[i]
+    if (req.params.username == temp.members[i]) {
+      count+=1
     }
   }
+  if (count==0) {
+    temp.members.push(req.params.username)
+  }
+} else {
+  temp.members = [req.params.username]
 }
+if (temp.requests) {
 //delete request
 var temp1 =[]
 for (var i = 0; i < temp.requests.length; i++) {
@@ -416,6 +422,7 @@ for (var i = 0; i < temp.requests.length; i++) {
   } else {
     temp1.push(temp.requests[i])
   }
+}
 }
 temp.requests = temp1
 query1_return.entry = temp
@@ -551,6 +558,39 @@ exports.orgowneruserdetail = function(req, res, next) {
   })
  });
 };
+
+////////////////////////////////
+//////////  SEARCH ////////////
+//////////////////////////////
+exports.usersearch = function(req, res) {
+  if (req.user) {
+   req.sanitize('username').escape();
+   req.sanitize('username').trim();
+   var myExp = new RegExp(req.param('username'), 'i');
+   organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) { 
+     var query1 = User.find(
+      {"username" : {
+        $regex : myExp,
+        $ne: req.user.username ,
+        $nin: organization.entry.members ,
+      }
+    }
+    ).limit(10)
+     query1.exec(function (err, query1_return) {
+      if(err){
+        res.send("No user found");
+        return;} 
+        res.send(
+          { users : query1_return}
+          );
+      });
+   })
+ } else {
+   res.redirect('/');
+ }
+};
+
+
 
 
 

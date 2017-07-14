@@ -151,19 +151,4 @@ exports.users = function(req, res) {
   });
 };
 
-////////////////////////////////
-//////////  SEARCH ////////////
-//////////////////////////////
-exports.usersearch = function(req, res) {
-  var myExp = new RegExp(req.param('item'), 'i');
-  var query1 = User.find({"username" : {$regex : myExp}})
-  query1.exec(function (err, query1_return) {
-    if(err){
-      res.send("No user found");
-      return;} 
-      res.send(
-        { users : query1_return}
-        );
-    })
-};
 

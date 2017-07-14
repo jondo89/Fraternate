@@ -139,7 +139,6 @@
   $('#image-cropper').cropit({ 
     imageState: { src: imageSrc  },
     onImageLoaded : function(){
-      console.log('trigger loaded')
       var imageData = $('#image-cropper').cropit('export', {
         type: 'image/jpeg',
         quality: .4,
