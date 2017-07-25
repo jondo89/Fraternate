@@ -3,6 +3,18 @@ var User = require('../models/User');
 var ObjectId = require('mongodb').ObjectID;
 var express = require('express');
 var app = express();
+var braintree = require("braintree");
+
+////////////////////////////////////////////
+///////   BRAINTREE INTEGRATION    ////////
+//////////////////////////////////////////
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: process.env.MERCHANTID,
+  publicKey: process.env.PUBLICKEY,
+  privateKey: process.env.PRIVATEKEY
+});
+
 
 ///////////////////////////////////////////////
 ////     SET YOUR APP.JSON DETAILS        //// 
@@ -19,9 +31,14 @@ var repo = myModule.repo
 exports.neworg = function(req, res) {
     //Perform Routing for Varios user type on the home page.
     if (req.user) {
-    	res.render('neworg',{
-        title: 'New Organization | '+sitename ,
+      //Create client token for Braintree payments.
+      gateway.clientToken.generate({}, function (err, response) {
+       res.render('neworg',{
+        pagetitle: 'New Organization | '+sitename ,
+        clientToken : response.clientToken
       })
+     });
+
     } else {
       res.redirect('/signin');
     }

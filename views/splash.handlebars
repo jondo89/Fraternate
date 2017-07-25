@@ -3,12 +3,34 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
 
+<style type="text/css">
+	.awesome {
+	     padding: 2px;
+		text-align:center;
+		border-radius: 5px;
+		background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+	}
+
+	.dotted {
+ 
+border-width: 1px;
+border-style: dashed; 
+border-color: grey;
+padding:55px;
+text-align: center;
+border-radius: 5px;
+	}
+
+</style>
+
+
 <div class="row">
 	<div class="col-md-7">
 		<p></p>
 		{{#if organizations}}
 		<h3>Organizations <small>All user organizations are listed below.</small></h3>
-		<div class="row">
+
+		<div class="row" style="padding-top: 15px">
 			{{#each organizations}}
 			<div class="col-md-1">
 				<a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}"  >
@@ -32,22 +54,38 @@
 			<a class="btn btn-success btn-xl" href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 
 		</div>
 		{{/if}}
+			<div>
+			<h3>Recent activity <small>Details of your interaction on the site are shown below.</small></h3> 
+			<div class="dotted">
+			<div style="background-color: #fff !important;padding: 60px">
+			<strong>Welcome!</strong> You are just getting started, setup you profile, create an organization then get started with your custom site content. Remember, this is a demonstration of what the Fraternate pattern can do.
+	
+			</div>
+			
+			</div>
+		</div>
 		<h3>Recent Contributions. <small>Click on the item to view the days contributions.</small></h3>
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div id="cal-heatmap"></div>
 			</div>
 		</div>
-		<div>
-			<h3>Recent activity <small>Details of your interaction on the site are shown below.</small></h3> 
-			<div style="border-width: 1px; border-style: dashed; border-color: grey;padding:55px;text-align: center;border-radius: 5px;"><strong>Welcome!</strong> You are just getting started, setup you profile, create an organization then get started with your custom site content.</div>
-		</div>
+	
 	</div>
 	<div class="col-md-5">
+
+
+
 		<h3>Custom Site Details <small>Add your content here.</small></h3>
-		<div style="height:355px;border-width: 1px;border-style: dashed; border-color: grey;padding:55px;text-align: center;border-radius: 5px;"><strong> Heads up!</strong> This is where your custom content and user interaction detail will be added. 
+		<div class="dotted" style="height: 355"><strong> Heads up!</strong> This is where you could add your custom content. 
 		</div>
 		<p></p>  
+					<div class="awesome">
+			<div style="background-color: #fff !important;padding: 40px">
+			<h3>Get Started <small>Star the GitHub Repo to help speed up development.</small></h3> 
+			<a class="github-button" href="https://github.com/Isithelo/Fraternate" data-size="large" data-show-count="true" aria-label="Star Isithelo/Fraternate on GitHub">Star</a> 
+			</div>
+			</div>
 	</div>
 </div>
 

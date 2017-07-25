@@ -31,6 +31,9 @@
 </div>
 {{/if}}
 
+
+
+
 <h3>Create an organization account.</h3>
 <hr>
 <form method="POST" action="/organizations/new" class="form-horizontal">
@@ -152,62 +155,13 @@
            <p></p>
 
            <legend>Credit Card Information</legend>
-           <!-- Text input-->
-           <div class="form-group">
-            <label class="col-md-4 control-label" for="AccountNo" id="AccountNo_label">* Card Number</label>
-            <div class="col-md-8">
-              <input id="AccountNo" name="AccountNo" type="tel" value="1234123412341234" placeholder="Debit / Credit Card Number" class="form-control input-md" required=""> <span class="help-block" style="display: none;">Enter a valid debit or credit card number. Spaces will be shown automatically.</span> 
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="CCMonth">* Card Expiration</label>
-            <div class="col-md-8">
-              <div class="row">
-                <div class="col-md-6">
-                  <select class="form-control col-sm-2" name="CCMonth" id="CCMonth">
-                    <option>Month</option>
-                    <option value="01" Selected>Jan (01)</option>
-                    <option value="02">Feb (02)</option>
-                    <option value="03">Mar (03)</option>
-                    <option value="04">Apr (04)</option>
-                    <option value="05">May (05)</option>
-                    <option value="06">June (06)</option>
-                    <option value="07">July (07)</option>
-                    <option value="08">Aug (08)</option>
-                    <option value="09">Sep (09)</option>
-                    <option value="10">Oct (10)</option>
-                    <option value="11">Nov (11)</option>
-                    <option value="12">Dec (12)</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <select class="form-control" name="CCYear">
-                    <option>Year</option>
-                    <option value="15" selected>2015</option>
-                    <option value="16">2016</option>
-                    <option value="17">2017</option>
-                    <option value="18">2018</option>
-                    <option value="19">2019</option>
-                    <option value="20">2020</option>
-                    <option value="21">2021</option>
-                    <option value="22">2022</option>
-                    <option value="23">2023</option>
-                    <option value="24">2024</option>
-                    <option value="25">2025</option>
-                    <option value="26">2026</option>
-                    <option value="27">2027</option>
-                    <option value="28">2028</option>
-                    <option value="29">2029</option>
-                  </select>
-                </div>
-              </div> <span class="help-block" style="display: none;">Select the card expiration date month and year.</span> 
-            </div>
-          </div>
+<form>
+  <div id="dropin-container"></div>
+</form>
         </div>
         <div role="tabpanel" class="tab-pane" id="Paypal">
-
-          <div style="padding-top: 35px;padding-bottom: 35px">
-          </div>
+        <p></p>
+<div id="paypal-container"></div>
         </div>
       </div>
     </div>
@@ -323,6 +277,28 @@
       }
     })
 
+
+
+var clientToken = "{{clientToken}}";
+
+braintree.setup(clientToken, "dropin", {
+  container: 'dropin-container',
+  paypal: {
+    button: {
+      type: 'checkout'
+    }
+  }
+});
+
+
+  braintree.setup(clientToken, "custom", {
+    paypal: {
+      container: "paypal-container",
+    },
+    onPaymentMethodReceived: function (obj) {
+      doSomethingWithTheNonce(obj.nonce);
+    }
+  });
 
 </script>
 

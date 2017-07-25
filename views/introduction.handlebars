@@ -1,3 +1,15 @@
+<style type="text/css">
+	.awesome {
+	     padding: 2px;
+		text-align:center;
+		border-radius: 5px;
+		background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+	}
+
+ 
+
+</style>
+
 <h1>An Introduction to {{sitename}}.</h1>
 <hr>
 <div class="row">
@@ -6,13 +18,14 @@
 			<li role="presentation" class="active"><a href="/introduction">Introduction</a></li>
 			<li role="presentation"><a href="/installation">Installation Instructions</a></li>
 			<li role="presentation"><a href="/integration">Integration</a></li>
+			<li role="presentation"><a href="/payments">Payments</a></li>
 			<li role="presentation"><a href="/troubleshooting">Troubleshooting</a></li>
 			<li role="presentation" ><a href="/licence">Licence</a></li>
 		</ul>
 	</div>
 	<div class="col-md-9">
 		<h3>What is Fraternate?</h3>
-		<p>Fraternate is a standalone copy of the GitHub user management system. Designed using a mongodB, nodejs, expressjs and Handlebarsjs MVC (model view controller).</p>
+		<p>Fraternate is a standalone copy of the GitHub user management system. Designed using a mongodB, NodeJS, expressjs and Handlebarsjs MVC (model view controller).</p>
 		<p>Fraternate should be used as a barebones template that can be modified to integrate into your sites custom content and allowing for a complete user management system.
 			This website has a direct copy hosted on GitHub to allow users to copy the functionality directly. </p>
 			<p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>
@@ -20,28 +33,41 @@
 			<div class="row">
 				<div class="col-md-6">
 					<h4>User Control (CRUD)</h4>
-					<div class="panel panel-default" style="text-align: center;">
-						<div class="panel-body">
+				 
 							<span class="label label-default"">Signin</span> <span class="label label-default">Signup</span> <span class="label label-default">Oauth Github / Google</span> <span class="label label-default">Unique Usernames</span> <span class="label label-default">Recaptcha</span> <span class="label label-default">Forgot Password</span> <span class="label label-default">Delete Account</span> <span class="label label-default">Public Profile</span> <span class="label label-default">Profile Pics</span> <span class="label label-default">Email integration</span>
-						</div>
-					</div>
+						 
 				</div>
 				<div class="col-md-6">
 					<h4>Organization Control (CRUD)</h4>
-					<div class="panel panel-default" style="text-align: center;">
-						<div class="panel-body">
+					 
 							<span class="label label-default">Create Organization</span>  <span class="label label-default">Invite to Organization</span> <span class="label label-default">Request Invite to Organization</span> <span class="label label-default">Transfer Ownership</span> <span class="label label-default">Edit Memberships</span> <span class="label label-default">Unique Organization Names</span> <span class="label label-default">Public Organization Profile</span>
-						</div>
-					</div>
+						 
 				</div>
 			</div>
+			<p></p>
 			<p>To view the full site functionality, you will need to sign up.</p>
 			<div  >
 				<a href="/signup" target="_blank" class="btn btn-default">Sign up</a>
 			</div>
+
+
+<h3>Fraternate functionality is as follows.</h3>
+<span class="fa-stack fa-lg">
+								<i class="fa fa-circle fa-stack-2x" style="color: #337ab7"></i>
+						 
+									<i class="fa fa-road fa-stack-1x fa-inverse" aria-hidden="true"></i>
+
+								</i>
+							</span> Items on the road map.
+							<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x" style="color: #5cb85c"></i>
+							<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+						</span> Items that are complete.
+
+
 			<h3>User Management</h3>
 			<p>Below is a list of the current functionality of the user management system , and its progress.</p>
-			<table class="table table-bordered"> 
+			<table class="table table-bordered" style="width: 55%"> 
 				<thead>
 					<tr>
 						<th>Functionality</th>
@@ -104,7 +130,7 @@
 				</table>
 				<h3>Organization Management by Users</h3>
 				<p>Below is a list of the current functionality of the organization management system , and its progress.</p>
-				<table class="table table-bordered"> 
+				<table class="table table-bordered" style="width: 55%"> 
 					<thead>
 						<tr>
 							<th>Functionality</th>
@@ -152,8 +178,15 @@
 							</span></td>
 						</tr>						
 						<tr>
+
+
+
 							<td>Transfer Ownership</td>
-							<td style="text-align: center;">0/10</td>
+								<td style="text-align: center;"><span class="fa-stack fa-lg">
+								<i class="fa fa-circle fa-stack-2x" style="color: #337ab7"></i>
+									<i class="fa fa-road fa-stack-1x fa-inverse" aria-hidden="true"></i>
+								</i>
+							</span></td>
 						</tr>
 						<tr>
 							<td>Organization Profiles</td>
@@ -161,10 +194,72 @@
 						</tr>
 					</tbody>
 				</table>
+
+<h3>Superuser Functionality</h3>
+				<p>Below is a list of the current functionality for superuser access, and its progress.</p>
+				<table class="table table-bordered" style="width: 55%"> 
+					<thead>
+						<tr>
+							<th>Functionality</th>
+							<th style="text-align: center; ">Progress</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Get orphaned organizations</td>
+							<td style="text-align: center;"><span class="fa-stack fa-lg">
+								<i class="fa fa-circle fa-stack-2x" style="color: #337ab7"></i>
+									<i class="fa fa-road fa-stack-1x fa-inverse" aria-hidden="true"></i>
+								</i>
+							</span></td>
+						</tr>
+ 
+					</tbody>
+				</table>
+
+
 				<h3>Commercialization</h3>
-				Pubilic and Private Account control for Users and Organizations with Paypal.
+				Pubilic and Private Account control for Users and Organizations with Braintree. Functionality for Credit card subscription and PayPal.
+
+
+			<table class="table table-bordered" style="width: 55%"> 
+				<thead>
+					<tr>
+						<th>Users</th>
+						<th style="text-align: center; ">Progress</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>New user Subscription</td>
+						<td style="text-align: center;">0/10</td>
+					</tr>
+ 
+			 
+					</tbody>
+				</table>
+
+			<table class="table table-bordered" style="width: 55%"> 
+				<thead>
+					<tr>
+						<th>Organizations</th>
+						<th style="text-align: center; ">Progress</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>New Organization Subscription</td>
+						<td style="text-align: center;">3/10</td>
+					</tr>
+ 
+			 
+					</tbody>
+				</table>
+
+
+
 				<h3>Security</h3>
-				<p>The following security measures have been put in place for the operationals elements of the site.</p>
+				<p>The following security measures have been put in place for the operational elements of the site.</p>
 				<p>Bcrypt , Passport and Recaptcha integration is working .</p>
 				
 			 <p><h5>Legend</h5></p>
@@ -174,17 +269,17 @@
 					</dl>
 					<dl class="dl-horizontal">
 						<dt><i class="fa fa-user" aria-hidden="true"></i></dt>
-						<dd>Client Side Validation</dd>
+						<dd>Client-Side Validation</dd>
 					</dl>
 					<dl class="dl-horizontal">
 						<dt><i class="fa fa-server" aria-hidden="true"></i></dt>
-						<dd>Server Side Validation</dd>
+						<dd>Server-Side Validation</dd>
 					</dl>	
 				 
 
 
 
-			<table class="table table-bordered"> 
+			<table class="table table-bordered" style="width: 75%"> 
 				<thead>
 					<tr>
 						<th>Functionality</th>
@@ -256,7 +351,7 @@
 				</table>
 
  
-			<table class="table table-bordered"> 
+			<table class="table table-bordered" style="width: 75%"> 
 					<thead>
 					<tr>
 						<th>Functionality</th>
@@ -337,13 +432,22 @@
  
 
 
+<hr>
+				
 
-
-
-				<div style="padding-top: 55px;text-align: center">
+	<div class="awesome">
+			<div style="background-color: #fff !important;padding: 40px">
+			<h3>Don’t Forget! <small>Star the GitHub Repo to help speed up development.</small></h3> 
+			<a class="github-button" href="https://github.com/Isithelo/Fraternate" data-size="large" data-show-count="true" aria-label="Star Isithelo/Fraternate on GitHub">Star</a> 
+<div style="padding-top: 55px;text-align: center">
 					<p>To get started view the installation instructions on this site or the GitHub Repo.</p>
 					<a href="{{repo}}" target="_blank" class="btn btn-default">GitHub Repo</a>
 				</div>
+
+			</div>
+			</div>
+
+
 			</div>
 		</div>
 

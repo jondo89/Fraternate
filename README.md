@@ -1,9 +1,9 @@
-<h1><a href="https://fraternate.herokuapp.com/" target="_blank">DEMO</a></h1>
+<h1><a href="https://fraternate.herokuapp.com/" target="_blank">VIEW THE DEMO</a></h1>
 
 <h3>What is Fraternate?</h3>
 <p>Fraternate is a standalone copy of the GitHub user management system. Designed using a mongodB, nodejs, expressjs and Handlebarsjs MVC (model view controller).</p>
 
-<p>Fraternate should be used as a barebones template that can be modified to integrate into your sites custom content and allowing for a complete user management system.
+<p>Fraternate should be used as a barebones template that can be modified to integrate into your sites custom content and allowing for a complete user subscription management system.
 This website has a direct copy hosted on GitHub to allow users to copy the functionality directly. </p>
 
 <p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>

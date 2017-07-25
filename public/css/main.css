@@ -6,13 +6,14 @@
 html {
   position: relative;
   min-height: 100%;
+
 }
 
 body {
   background-color: #f4f4f4;;
   margin-bottom: 44px;
   line-height: 1.57142857;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -299,3 +300,9 @@ textarea {
  }
 
 
+.navbar-inverse .navbar-nav > li > a {
+ 
+    font-weight: 600;
+ 
+    color: rgba(255,255,255,0.75);
+}

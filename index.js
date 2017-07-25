@@ -12,6 +12,7 @@ var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var recaptcha = require('express-recaptcha');
+var braintree = require("braintree");
 
 // Load environment variables from .env file
 dotenv.load();
@@ -58,6 +59,16 @@ db.once('open', function() {
   // we're connected!
   console.log('mongoose connection ok')
   //compile the schema for mongoose
+});
+
+////////////////////////////////////////////
+///////   BRAINTREE INTEGRATION    ////////
+//////////////////////////////////////////
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: process.env.MERCHANTID,
+  publicKey: process.env.PUBLICKEY,
+  privateKey: process.env.PRIVATEKEY
 });
 
 var hbs = exphbs.create({
@@ -168,6 +179,7 @@ app.get('/terms', userInterfaceController.terms);
 app.get('/introduction', userInterfaceController.introduction);
 app.get('/troubleshooting', userInterfaceController.troubleshooting);
 app.get('/installation', userInterfaceController.installation);
+app.get('/payments', userInterfaceController.payments);
 app.get('/integration', userInterfaceController.integration);
 app.get('/licence', userInterfaceController.licence);
  
@@ -180,8 +192,6 @@ app.get('/users/:username/',   organizationController.userorganizations,  userIn
 app.get('/users/:username/settings/',userInterfaceController.settings);
 app.get('/users/:username/settings/:page',   organizationController.userorganizations, userInterfaceController.page);
  
-
-
 /////////////////////////////////////
 ////       ORGANIZATION         //// 
 ///////////////////////////////////

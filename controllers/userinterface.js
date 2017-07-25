@@ -55,6 +55,15 @@ exports.installation = function(req, res) {
   })
 };
 
+//////////////////////////
+/////  PAYMENTS     ///// 
+////////////////////////
+exports.payments = function(req, res) {
+  res.render('payments',{
+    pagetitle: 'Payments | '+sitename+'',
+  })
+};
+
 /////////////////////////////
 /////  INTEGRATION     ///// 
 ///////////////////////////
