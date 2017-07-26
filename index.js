@@ -182,6 +182,7 @@ app.get('/installation', userInterfaceController.installation);
 app.get('/payments', userInterfaceController.payments);
 app.get('/integration', userInterfaceController.integration);
 app.get('/licence', userInterfaceController.licence);
+app.get('/specifications', userInterfaceController.specifications);
  
 ///////////////////////////////////////////////////
 ////        USER INTERFACE CONTROLLER         //// 

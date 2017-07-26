@@ -82,6 +82,15 @@ exports.licence = function(req, res) {
   })
 };
 
+/////////////////////////////////
+/////  SPECIFICATIONS      ///// 
+///////////////////////////////
+exports.specifications = function(req, res) {
+  res.render('specifications',{
+    pagetitle: 'Specifications | '+sitename+'',
+  })
+};
+
 ////////////////////////////////////
 ////////// SETTINGS PAGE ///////////
 ///////////////////////////////////
