@@ -29,7 +29,6 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         {{> javascript}}
       </head>
-
       <div id="fb-root"></div>
       <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -51,61 +50,53 @@
                        {{sitename}} is a user and team subscription framework. 
                      </h1>  
                      <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user subscription system. It is <strong style="color: white">open-source</strong> and <strong style="color: white">light weight</strong>.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
-              <div class="row">
-        <div class="col-md-6">
-          <h4>User Control</h4>
-          <ul>
-            <li>Sign in / Login</li>
-            <li>Signup</li>
-            <li>Oauth GitHub / Google</li>
-            <li>Unique Usernames</li>
-            <li>Recaptcha</li>
-            <li>Forgot Password</li>
-            <li>Delete Account</li>
-            <li>Public Profile</li>
-            <li>Profile Pics</li>
-            <li>Email integration</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <h4>Organization Control</h4>
-          <ul>
-            <li>Create Organization</li>
-            <li>Invite to Organization</li>
-            <li>Request Invite to Organization</li>
-            <li>Transfer Ownership</li>
-            <li>Edit Memberships</li>
-            <li>Unique Organization Names</li>
-            <li>Public Organization Profile</li>
-          </ul>
-        </div>
-      </div>
-                    <div style="text-align: center;padding-top: 15px">
-         
-                         
-               
-                          <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
-                <a class="github-button" href="https://github.com/Isithelo/Fraternate" data-size="large" data-show-count="true" aria-label="Star Isithelo/Fraternate on GitHub">Star</a> 
-                          </a>
+                     <div class="row">
+                      <div class="col-md-6">
+                        <h4>User Control</h4>
+                        <ul>
+                          <li>Sign in / Login</li>
+                          <li>Signup</li>
+                          <li>Oauth GitHub / Google</li>
+                          <li>Unique Usernames</li>
+                          <li>Recaptcha</li>
+                          <li>Forgot Password</li>
+                          <li>Delete Account</li>
+                          <li>Public Profile</li>
+                          <li>Profile Pics</li>
+                          <li>Email Notifications</li>
+                        </ul>
                       </div>
-
- 
-
-
-                   
+                      <div class="col-md-6">
+                        <h4>Organization Control</h4>
+                        <ul>
+                          <li>Create Organization</li>
+                          <li>Delete Organization</li>
+                          <li>Invite to Organization</li>
+                          <li>Request Invite to Organization</li>
+                          <li>Edit Memberships</li>
+                          <li>Unique Organization Names</li>
+                          <li>Public Organization Profile</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div style="text-align: center;padding-top: 15px">
+                      <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
+                      <a class="github-button" href="https://github.com/Isithelo/Fraternate" data-size="large" data-show-count="true" aria-label="Star Isithelo/Fraternate on GitHub">Star</a> 
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-sm-5">
-              <div class="header-content">
-                <div class="header-content-inner">
-                  {{> signuphomepage}}
-                </div>
+          </div>
+          <div class="col-sm-5">
+            <div class="header-content">
+              <div class="header-content-inner">
+                {{> signuphomepage}}
               </div>
             </div>
           </div>
-        </div> 
-    {{> analytics}}
-  </body>
-  </html>
+        </div>
+      </div> 
+      {{> analytics}}
+    </body>
+    </html>

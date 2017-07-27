@@ -121,8 +121,45 @@
 </div>
 </div>
 </form>
+  <h3  style="color:#d9534f">Delete Organization</h3>
+  <hr  style="color:#d9534f">
+  <form method="POST" action="" class="form-horizontal">
+    <div class="form-group">
+      <p class=" col-sm-9" style="color:#d9534f">You can delete this organization, but keep in mind this action is irreversible.</p>
+      <div class=" col-sm-9">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+          Delete {{organization.entry.name}}
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Caution</h4>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="/account?_method=DELETE" class="form-horizontal">
+            <div class="form-group">
+ 
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 <script type="text/javascript">
 

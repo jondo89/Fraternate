@@ -288,9 +288,6 @@ textarea {
     max-width: 18px !important;
 }
  
-
- 
-
 .navbar {
    border-radius: 0px !important;  
  }
@@ -301,8 +298,51 @@ textarea {
 
 
 .navbar-inverse .navbar-nav > li > a {
- 
     font-weight: 600;
- 
     color: rgba(255,255,255,0.75);
+}
+
+ @media screen and (min-width:750px) {
+/* caret style */
+.caret {
+  position: relative;
+}
+.navbar-nav>li>.dropdown-menu {
+    margin-top: -2px;
+}
+/* dropdown style */
+.dropdown.open .caret:before,
+.dropdown.open .caret:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 7px 8px;
+  border-style: solid;
+  border-color: transparent;
+  z-index: 1001;
+}
+.dropdown.open .caret:before {
+  bottom: -174px;
+  right: -8px;
+  border-bottom-color: #ccc;
+}
+.dropdown.open .caret:after {
+  bottom: -184px;
+  right: -8px;
+  border-bottom-color: #fff;
+}
+
+/* navbar style */
+.navbar-nav > li > .dropdown-menu {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.navbar-nav > .open > a .caret:before {
+  bottom: -21px;
+}
+.navbar-nav > .open > a .caret:after {
+  bottom: -21px;
+}
 }

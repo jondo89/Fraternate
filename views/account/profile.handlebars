@@ -4,8 +4,8 @@
 
 <div class="row" style="padding-top: 35px">
   <div class="col-md-4">
-    <div class="media">
-      <div class="media-left" >  
+    <div  >
+      <div  >  
         <a href="#">
           {{#if userload.picture}}
           <div onerror="this.src='{{userload.gravatar}}'"" id="googlepic" style="min-width: 100%"></div>
@@ -75,13 +75,13 @@
       {{#if this.entry.picture}}
       <div class="col-md-2">
         <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
-          <img src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+          <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
         </a>
       </div>
       {{else}}
       <div class="col-md-2">
-        <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
-          <img src="{{this.gravatar}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+        <a  href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
+          <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.gravatar}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
         </a>
       </div>
       {{/if}}

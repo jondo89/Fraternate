@@ -5,9 +5,6 @@
 		border-radius: 5px;
 		background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
 	}
-
-
-
 </style>
 <h1>An Introduction to {{sitename}}.</h1>
 <hr>
@@ -24,16 +21,17 @@
 		</ul>
 	</div>
 	<div class="col-md-9">
-		<h3>Fraternate Specifications are as follows.</h3>
-		<span class="fa-stack fa-lg">
-			<i class="fa fa-circle fa-stack-2x" style="color: #337ab7"></i>
-			<i class="fa fa-road fa-stack-1x fa-inverse" aria-hidden="true"></i>
-		</i>
-	</span> Items on the road map.
-	<span class="fa-stack fa-lg">
-		<i class="fa fa-circle fa-stack-2x" style="color: #5cb85c"></i>
-		<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
-	</span> Items that are complete.
+		<div style="text-align: center;">
+			<span class="fa-stack fa-lg">
+				<i class="fa fa-circle fa-stack-2x" style="color: #5cb85c"></i>
+				<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+			</span> Items that are complete.
+			<span class="fa-stack fa-lg">
+				<i class="fa fa-circle fa-stack-2x" style="color: #337ab7"></i>
+				<i class="fa fa-road fa-stack-1x fa-inverse" aria-hidden="true"></i>
+			</i>
+		</span> Items on the road map.
+	</div>
 	<div class="row">
 		<div class="col-md-6">
 			<h3>User Management</h3>
@@ -47,7 +45,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Sign in </td>
+						<td>Log in </td>
 						<td style="text-align: center;"><span class="fa-stack fa-lg">
 							<i class="fa fa-circle fa-stack-2x" style="color: #5cb85c"></i>
 							<i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
@@ -115,6 +113,14 @@
 							<td style="text-align: center;">5/10</td>
 						</tr>
 						<tr>
+							<td>Delete Organization</td>
+							<td style="text-align: center;">2/10</td>
+						</tr>
+						<tr>
+							<td>Organization Profiles</td>
+							<td style="text-align: center;">6/10</td>
+						</tr>												
+						<tr>
 							<td>Request to Join Organization</td>
 							<td style="text-align: center;"><span class="fa-stack fa-lg">
 								<i class="fa fa-circle fa-stack-2x" style="color: #5cb85c"></i>
@@ -158,89 +164,97 @@
 						</span></td>
 					</tr>
 					<tr>
-						<td>Organization Profiles</td>
-						<td style="text-align: center;">6/10</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="col-md-6">
-			<h3>Superuser Functionality</h3>
-			<p>Below is a list of the current functionality for superuser access, and its progress.</p>
-			<table class="table table-bordered"> 
-				<thead>
-					<tr>
-						<th>Functionality</th>
-						<th style="text-align: center; ">Progress</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Get orphaned organizations</td>
+						<td>Membership Privelages</td>
 						<td style="text-align: center;"><span class="fa-stack fa-lg">
 							<i class="fa fa-circle fa-stack-2x" style="color: #337ab7"></i>
 							<i class="fa fa-road fa-stack-1x fa-inverse" aria-hidden="true"></i>
 						</i>
 					</span></td>
-				</tr>
-
+				</tr>					
 			</tbody>
 		</table>
 	</div>
 	<div class="col-md-6">
-		<h3>Commercialization</h3>
-		Pubilic and Private Account control for Users and Organizations with Braintree. Functionality for Credit card subscription and PayPal.
+		<h3>Superuser Functionality</h3>
+		<p>Below is a list of the current functionality for superuser access, and its progress.</p>
 		<table class="table table-bordered"> 
 			<thead>
 				<tr>
-					<th>Users</th>
+					<th>Functionality</th>
 					<th style="text-align: center; ">Progress</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>New user Subscription</td>
-					<td style="text-align: center;">0/10</td>
-				</tr>
-			</tbody>
-		</table>
-		<table class="table table-bordered"> 
-			<thead>
-				<tr>
-					<th>Organizations</th>
-					<th style="text-align: center; ">Progress</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>New Organization Subscription</td>
-					<td style="text-align: center;">3/10</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+					<td>Get orphaned organizations</td>
+					<td style="text-align: center;"><span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x" style="color: #337ab7"></i>
+						<i class="fa fa-road fa-stack-1x fa-inverse" aria-hidden="true"></i>
+					</i>
+				</span></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
-
-
-
-
+<div class="col-md-6">
+	<h3>Commercialization</h3>
+	Pubilic and Private Account control for Users and Organizations with Braintree. Functionality for Credit card subscription and PayPal.
+	<table class="table table-bordered"> 
+		<thead>
+			<tr>
+				<th>Users</th>
+				<th style="text-align: center; ">Progress</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>New user Subscription</td>
+				<td style="text-align: center;">0/10</td>
+			</tr>
+			<tr>
+				<td>User Subscription Plans</td>
+				<td style="text-align: center;">0/10</td>
+			</tr>				
+		</tbody>
+	</table>
+	<table class="table table-bordered"> 
+		<thead>
+			<tr>
+				<th>Organizations</th>
+				<th style="text-align: center; ">Progress</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>New Organization Subscription</td>
+				<td style="text-align: center;">3/10</td>
+			</tr>
+			<tr>
+				<td>Organization Subscription Plans</td>
+				<td style="text-align: center;">0/10</td>
+			</tr>				
+		</tbody>
+	</table>
+</div>
+</div>
 <h3>Security</h3>
 <p>The following security measures have been put in place for the operational elements of the site.</p>
-
-<p><h5>Legend</h5></p>
-<dl class="dl-horizontal">
-	<dt><img src="/img/defaults/reCAPTCHA_logo.png" style="max-width: 15px;"></dt>
-	<dd>Recaptcha integration</dd>
-</dl>
-<dl class="dl-horizontal">
-	<dt><i class="fa fa-user" aria-hidden="true"></i></dt>
-	<dd>Client-Side Validation</dd>
-</dl>
-<dl class="dl-horizontal">
-	<dt><i class="fa fa-server" aria-hidden="true"></i></dt>
-	<dd>Server-Side Validation</dd>
-</dl>	
-
+<p></p>
+<div style="text-align: center;">
+	<span>
+		<img src="/img/defaults/reCAPTCHA_logo.png" style="max-width: 15px;">
+		Recaptcha integration
+	</span>
+	<span>
+		<i class="fa fa-user" aria-hidden="true"></i>
+		Client-Side Validation   
+	</span>
+	<span>
+		<i class="fa fa-server" aria-hidden="true"></i>
+		Server-Side Validation   
+	</span>
+</div>
+<p></p>
 <table class="table table-bordered"> 
 	<thead>
 		<tr>
@@ -310,7 +324,6 @@
 									</tr>  
 								</tbody>
 							</table>
-
 							<table class="table table-bordered"> 
 								<thead>
 									<tr>
@@ -388,7 +401,6 @@
 																	</tr>
 																</tbody>
 															</table>
-															<hr>
 														</div>
 													</div>
 
