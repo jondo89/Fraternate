@@ -403,6 +403,23 @@ exports.kickorg = function(req, res) {
   }
 };
 
+
+////////////////////////////////////////////
+//////////  ORGANIZATION DELETE  ////////////
+//////////////////////////////////////////
+exports.deleteorganiztion = function(req, res) {
+  if (req.user) {
+    organizationalModel.remove( {"_id" : req.params.ids}, function(err) {
+      if(err){console.log('Error Here'); return;} 
+      req.flash('success', { msg: 'Organization deleted.' });
+      res.redirect('/users/'+req.user.username);
+    })
+  } else {
+    return res.redirect('/');
+  }
+};
+
+
 ////////////////////////////////////////////////////////////////
 //////////  ORGANIZATION APPROVE USER JOIN REQUEST  ///////////
 //////////////////////////////////////////////////////////////
@@ -560,20 +577,28 @@ exports.orgsharerequest = function(req, res, next) {
 //////////////////////////////////////////////////////////////////
 exports.orgowneruserdetail = function(req, res, next) {
   organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) {
-   User.findOne({ 'username': organization.entry.owner }).exec(function(err, user) {
-    User.find({ 'username': organization.entry.members }).exec(function(err, user1) {
-      User.find({ 'username': organization.entry.requests }).exec(function(err, user2) {
-        req.owner = user
-        req.ownerParse = JSON.stringify(user)
-        req.members = user1
-        req.membersParse = JSON.stringify(user1)
-        req.requests = user2
-        req.requestsParse = JSON.stringify(user2)
-        next();
+    if(err){console.log('Error Here'); return;} 
+    if (organization) {
+     User.findOne({ 'username': organization.entry.owner }).exec(function(err, user) {
+      if(err){console.log('Error Here2'); return;} 
+      User.find({ 'username': organization.entry.members }).exec(function(err, user1) {
+        if(err){console.log('Error Here3'); return;} 
+        User.find({ 'username': organization.entry.requests }).exec(function(err, user2) {
+          if(err){console.log('Error Here4'); return;} 
+          req.owner = user
+          req.ownerParse = JSON.stringify(user)
+          req.members = user1
+          req.membersParse = JSON.stringify(user1)
+          req.requests = user2
+          req.requestsParse = JSON.stringify(user2)
+          next();
+        })
       })
     })
-  })
- });
+   } else {
+    next();
+  }
+});
 };
 
 ////////////////////////////////
@@ -606,10 +631,6 @@ exports.usersearch = function(req, res) {
    res.redirect('/');
  }
 };
-
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

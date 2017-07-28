@@ -30,10 +30,6 @@
   {{/each}}
 </div>
 {{/if}}
-
-
-
-
 <h3>Create an organization account.</h3>
 <hr>
 <form method="POST" action="/organizations/new" class="form-horizontal">
@@ -42,7 +38,7 @@
       <div class="form-group" id="nameGroup">
         <label for="name" class="col-md-12">Organization name </label>
         <div class="col-md-12">
-        <div id="errmsg" style="font-size: 12px;color: red"></div> 
+          <div id="errmsg" style="font-size: 12px;color: red"></div> 
           <input type="text" name="name" id="name" class="form-control" value="">
           <p class="help-block"><small>The organization account will live at {{website}}organizations/<span id="insert"></span></small></p>
         </div>
@@ -133,35 +129,26 @@
     </div>
   </div> 
 </div> 
-
 <div class="row">
   <div class="col-md-7">
     <div id="payment">
-
       <h5>Choose your payment method</h5>
       <div>
-
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#Credit" aria-controls="Credit" role="tab" data-toggle="tab">Credit Card</a></li>
           <li role="presentation"><a href="#Paypal" aria-controls="Paypal" role="tab" data-toggle="tab">Paypal</a></li>
-
         </ul>
-
         <!-- Tab panes -->
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="Credit">
-
            <p></p>
-
            <legend>Credit Card Information</legend>
-<form>
-  <div id="dropin-container"></div>
-</form>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="Paypal">
-        <p></p>
-<div id="paypal-container"></div>
+           <div id="dropin-container"></div>
+         </div>
+         <div role="tabpanel" class="tab-pane" id="Paypal">
+          <p></p>
+          <div id="paypal-container"></div>
         </div>
       </div>
     </div>
@@ -182,7 +169,6 @@
       </div>
     </div>
   </div>
-  
 </div> 
 <div class="col-md-5">
   <div  >
@@ -236,70 +222,75 @@
 
   });
 
-    jQuery.fn.extend({
-        disable: function(state) {
-            return this.each(function() {
-                var $this = $(this);
-                $this.toggleClass('disabled', state);
-            });
-        }
-    });
-
-    $("#name").on("keyup", function() {
-      var value = $( this ).val();
-      var invalidChars = [  ];
-      var name = new RegExp('^[A-Za-z]+$');
-      if(value.match(name)) {
-        $("#insert").html($("#name").val())
-        $('#submits').prop('disabled', false);
-        $("#nameGroup").removeClass('has-error')
-        $('#errmsg').html('')
-      } else {
-        $("#nameGroup").addClass('has-error')
-        $('#submits').prop('disabled', true);
-        $('#errmsg').html('Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.')
-      }
-    })
-
-    $("#name").on("change", function() {
-      var value = $( this ).val();
-      var invalidChars = [  ];
-      var name = new RegExp('^[A-Za-z]+$');
-      if(value.match(name)) {
-        $("#insert").html($("#name").val())
-        $('#submits').prop('disabled', false);
-        $("#nameGroup").removeClass('has-error')
-        $('#errmsg').html('')
-      } else {
-        $("#nameGroup").addClass('has-error')
-        $('#submits').prop('disabled', true);
-        $('#errmsg').html('Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.')
-      }
-    })
-
-
-
-var clientToken = "{{clientToken}}";
-
-braintree.setup(clientToken, "dropin", {
-  container: 'dropin-container',
-  paypal: {
-    button: {
-      type: 'checkout'
-    }
-  }
-});
-
-
-  braintree.setup(clientToken, "custom", {
-    paypal: {
-      container: "paypal-container",
-    },
-    onPaymentMethodReceived: function (obj) {
-      doSomethingWithTheNonce(obj.nonce);
+  jQuery.fn.extend({
+    disable: function(state) {
+      return this.each(function() {
+        var $this = $(this);
+        $this.toggleClass('disabled', state);
+      });
     }
   });
 
+  $("#name").on("keyup", function() {
+    var value = $( this ).val();
+    var invalidChars = [  ];
+    var name = new RegExp('^[A-Za-z]+$');
+    if(value.match(name)) {
+      $("#insert").html($("#name").val())
+      $('#submits').prop('disabled', false);
+      $("#nameGroup").removeClass('has-error')
+      $('#errmsg').html('')
+    } else {
+      $("#nameGroup").addClass('has-error')
+      $('#submits').prop('disabled', true);
+      $('#errmsg').html('Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.')
+    }
+  })
+
+  $("#name").on("change", function() {
+    var value = $( this ).val();
+    var invalidChars = [  ];
+    var name = new RegExp('^[A-Za-z]+$');
+    if(value.match(name)) {
+      $("#insert").html($("#name").val())
+      $('#submits').prop('disabled', false);
+      $("#nameGroup").removeClass('has-error')
+      $('#errmsg').html('')
+    } else {
+      $("#nameGroup").addClass('has-error')
+      $('#submits').prop('disabled', true);
+      $('#errmsg').html('Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.')
+    }
+  })
+
+
+  var checkout;
+
+  $('#radios-1').click(function(){
+   var clientToken = "{{clientToken}}";
+   braintree.setup(clientToken, "dropin", {
+    container: 'dropin-container',
+    onReady: function (integration) {
+      checkout = integration;
+    },
+    paypal: {
+      button: {
+        type: 'checkout'
+      }
+    }
+  });
+ })
+
+  $('#radios-0').click(function(){
+// When you are ready to tear down your integration
+checkout.teardown(function () {
+  checkout = null;
+  // braintree.setup can safely be run again!
+});
+})
+
+
 </script>
+
 
 

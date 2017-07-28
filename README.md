@@ -1,35 +1,41 @@
 <h1><a href="https://fraternate.herokuapp.com/" target="_blank">VIEW THE DEMO</a></h1>
 
 <h3>What is Fraternate?</h3>
-<p>Fraternate is a standalone copy of the GitHub user management system. Designed using a mongodB, nodejs, expressjs and Handlebarsjs MVC (model view controller).</p>
-
-<p>Fraternate should be used as a barebones template that can be modified to integrate into your sites custom content and allowing for a complete user subscription management system.
+<p>Fraternate is a standalone copy of the GitHub user management system. Designed using a mongodB, NodeJS, expressjs and Handlebarsjs MVC (model view controller).</p>
+<p>Fraternate should be used as a barebones template that can be modified to integrate into your sites custom content and allowing for a complete user management system.
 This website has a direct copy hosted on GitHub to allow users to copy the functionality directly. </p>
-
 <p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>
 
-<h3>Development Progress</h3>
-<h4>User Control (CRUD)</h4>
+<h4 >MIT License - 100 % Open Source</h4>
+Fraternate is completely open source.
 
-- [x] Signin 
-- [x] Signup 
-- [x] Oauth Github / Google 
-- [x] Unique Usernames 
-- [x] Recaptcha 
-- [x] Forgot Password 
-- [x] Delete Account 
-- [x] Public Profile 
-- [x] Profile Pics 
-- [x] Email integration
-<h4>Organization Control (CRUD)</h4>
 
-- [x] Create Organization  
-- [ ] Invite to Organization 
-- [ ] Request Invite to Organization 
-- [ ] Transfer Ownership 
-- [x] Edit Memberships 
-- [x] Unique Organization Names 
-- [x] Public Organization Profile
+
+<h4>User Control</h4>
+<ul>
+<li>Sign in / Login</li>
+<li>Signup</li>
+<li>Oauth GitHub / Google</li>
+<li>Unique Usernames</li>
+<li>Recaptcha</li>
+<li>Forgot Password</li>
+<li>Delete Account</li>
+<li>Public Profile</li>
+<li>Profile Pics</li>
+<li>Email Notifications</li>
+</ul>
+<h4>Organization Control</h4>
+<ul>
+<li>Create Organization</li>
+<li>Delete Organization</li>
+<li>Invite to Organization</li>
+<li>Request Invite to Organization</li>
+<li>Edit Memberships</li>
+<li>Unique Organization Names</li>
+<li>Public Organization Profile</li>
+</ul>
+
+
 
 <h3>Installation Instructions</h3>
 <p>If you would like to install Fraternate on your local development machine Fraternate requires the following components:</p>
@@ -154,4 +160,5 @@ npm install passport-github
 Server crash due to missing .env file.
 
 <pre>The .env file contains all of the sites api and secret keys. Ensure that it exists on the server.</pre>
+
 

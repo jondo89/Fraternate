@@ -29,21 +29,21 @@
 		<h3>Organizations <small>All user organizations are listed below.</small></h3>
 		<div class="row" style="padding-top: 15px">
 			{{#each organizations}}
-			<div class="col-md-1">
+			<div class="col-md-1 col-xs-2">
 				<a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}"  >
 					{{#if this.entry.picture}}
 					<img  onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="media-object" style="max-width: 55px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
 					{{else}}
-					<img src="{{this.gravatar}}" class="media-object" style="max-width: 45px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+					<img src="{{this.gravatar}}" class="media-object" class="media-object" style="max-width: 55px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
 					{{/if}}       
 				</a>
 			</div>
 			{{/each}}
-			<div class="col-md-12" style="text-align: right;">
+			</div>
+			<div class="col-md-12" style="text-align: right;padding-top: 15px">
 				<p></p>
 				<a class="btn btn-default " href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 	
 			</div>
-		</div>
 		{{else}}
 		<h3>Organizations <small>Get started by creating your organization.</small></h3>
 		<div style="border-width: 1px; border-style: dashed; border-color: grey;padding:15px;border-radius: 5px;">
@@ -51,20 +51,14 @@
 			<a class="btn btn-success btn-xl" href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 
 		</div>
 		{{/if}}
-		<div>
-			<h3>Recent activity <small>Details of your interaction on the site are shown below.</small></h3> 
+		<div style="padding-top: 15px">
+			<h3>Welcome to Fraternate <small>This is where details of your interaction on the site could be shown.</small></h3> 
+		</div>
 			<div class="dotted">
-				<div style="background-color: #fff !important;padding: 60px">
+				<div style="background-color: #fff !important;padding: 40px">
 					<strong>Welcome!</strong> You are just getting started, setup you profile, create an organization then get started with your custom site content. Remember, this is a demonstration of what the Fraternate platform can do.
 				</div>
 			</div>
-		</div>
-		<h3>Recent Contributions. <small>Click on the item to view the days contributions.</small></h3>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<div id="cal-heatmap"></div>
-			</div>
-		</div>
 	</div>
 	<div class="col-md-5">
 		<h3>Custom Site Details <small>Add your content here.</small></h3>
@@ -81,12 +75,5 @@
 </div>
 
 <script type="text/javascript">
-	var cal = new CalHeatMap();
-	cal.init({
-		domain: "day",
-		range: 12,
-		legendVerticalPosition: "center",
-		legendOrientation: "vertical",
-		legendMargin: [0, 10, 0, 0]
-	});
+ 
 </script>

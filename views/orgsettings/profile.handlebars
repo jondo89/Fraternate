@@ -128,7 +128,7 @@
       <p class=" col-sm-9" style="color:#d9534f">You can delete this organization, but keep in mind this action is irreversible.</p>
       <div class=" col-sm-9">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" id="{{organization._id}}" onclick="deleteOrgnaization(this.id)">
           Delete {{organization.entry.name}}
         </button>
       </div>
@@ -137,27 +137,13 @@
 </div>
 </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Caution</h4>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="/account?_method=DELETE" class="form-horizontal">
-            <div class="form-group">
- 
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"  id="modalTextArea">
     </div>
   </div>
+</div>
 
 
 
@@ -203,7 +189,6 @@ $('#image-cropper').change(function() {
     type: 'image/jpeg',
     quality: .4,
     originalSize: true,
-
   });
   $('#croppedImg').val(imageData);
 });
@@ -222,4 +207,15 @@ $(document).ready( function() {
     }
   });
 });
+
+
+/////////////////////////////////////
+////        KICK MEMBER         //// 
+///////////////////////////////////
+function deleteOrgnaization(ids){
+  var html = '<div style="color:#d9534f" class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> <h4 class="modal-title" id="myModalLabel"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete this Organization.</h4> </div> <div class="modal-body" style="color:#d9534f"> <p>Are you sure you wish to delete <strong>{{organization.entry.name}}</strong>? This action cannot be undone.</p> <div style="text-align: center"> <div id="modelHtml"></div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>'
+  $('#modalTextArea').html(html)
+  $('#modelHtml').html('<a href="/deleteorganiztion/'+ids+'" class="btn btn-danger">Delete {{organization.entry.name}}</a>')
+}
+
 </script>

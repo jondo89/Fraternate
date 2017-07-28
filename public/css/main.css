@@ -308,7 +308,7 @@ textarea {
   position: relative;
 }
 .navbar-nav>li>.dropdown-menu {
-    margin-top: -2px;
+    margin-top: -2px!important;
 }
 /* dropdown style */
 .dropdown.open .caret:before,

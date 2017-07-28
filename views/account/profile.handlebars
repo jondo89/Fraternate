@@ -3,9 +3,25 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
 
 <div class="row" style="padding-top: 35px">
+  <div class="col-sm-12">
+    {{#if messages.success}}
+    <div role="alert" class="alert alert-success">
+      {{#each messages.success}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+    {{#if messages.error}}
+    <div role="alert" class="alert alert-danger">
+      {{#each messages.error}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+  </div>
   <div class="col-md-4">
-    <div  >
-      <div  >  
+    <div>
+      <div>  
         <a href="#">
           {{#if userload.picture}}
           <div onerror="this.src='{{userload.gravatar}}'"" id="googlepic" style="min-width: 100%"></div>
@@ -73,13 +89,13 @@
     <div class="row">
       {{#each organizations}}
       {{#if this.entry.picture}}
-      <div class="col-md-2">
+      <div class="col-md-2 col-xs-2">
         <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
           <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
         </a>
       </div>
       {{else}}
-      <div class="col-md-2">
+      <div class="col-md-2 col-xs-2">
         <a  href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
           <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.gravatar}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
         </a>
@@ -95,16 +111,9 @@
   </div>
   <div class="col-md-8">
     <h3>Custom Site Details</h3>
-    <div style="border-width: 1px; border-style: dashed; border-color: grey;padding:155px;text-align: center;border-radius: 5px;"><strong> Heads up!</strong> This is where your custom content and user interaction detail will be added. 
+    <div style="border-width: 1px; border-style: dashed; border-color: grey;padding:40px;text-align: center;border-radius: 5px;"><strong> Heads up!</strong> This is where your custom content and user interaction detail will be added. 
     </div>
-    <p></p>  <h3>User Contributions</h3>
-    <div class="panel panel-default">
-      <div class="panel-body">
-       <div id="cal-heatmap"></div>
-       <p>To get more details on the user contributions map visit : 
-        <a href="http://cal-heatmap.com/" target="_blank">Cal-heatmap</a></p>
-      </div>
-    </div>
+    <p></p>  
   </div>
 </div>
 </div>
@@ -115,13 +124,5 @@
   var text = '{{userload.picture}}'
   text =text.replace("sz&#x3D;50", "sz&#x3D;200");
   $('#googlepic').html('<img src="'+text+'" style="max-width: 100%" class="media-object">')
-  var cal = new CalHeatMap();
-  cal.init({
-    domain: "day",
-    range: 12,
-    legendVerticalPosition: "center",
-    legendOrientation: "vertical",
-    legendMargin: [0, 10, 0, 0]
-  });
 </script>
 
