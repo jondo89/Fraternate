@@ -10,6 +10,7 @@ Disallow: /users/
 Disallow: /usersearch/
 Disallow: /organizations/
 Disallow: /leaveorganiztion/
+Disallow: /deleteorganiztion/
 Disallow: /orgsharerequest/
 Disallow: /orguserread/
 Disallow: /contact/
@@ -22,6 +23,6 @@ Disallow: /reset/
 Disallow: /signout/
 Disallow: /unlink/
 Disallow: /auth/
-
+Disallow: /licence/
 
 Sitemap: https://fraternate.herokuapp.com/sitemap.xml

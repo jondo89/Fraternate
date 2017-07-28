@@ -5,7 +5,6 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 <url>
   <loc>https://fraternate.herokuapp.com/</loc>
 </url>
@@ -19,12 +18,21 @@
   <loc>https://fraternate.herokuapp.com/introduction</loc>
 </url>
 <url>
+  <loc>https://fraternate.herokuapp.com/specifications</loc>
+</url>
+<url>
   <loc>https://fraternate.herokuapp.com/installation</loc>
 </url>
 <url>
   <loc>https://fraternate.herokuapp.com/integration</loc>
 </url>
 <url>
+  <loc>https://fraternate.herokuapp.com/payments</loc>
+</url>
+<url>
   <loc>https://fraternate.herokuapp.com/troubleshooting</loc>
+</url>
+<url>
+  <loc>https://fraternate.herokuapp.com/licence</loc>
 </url>
 </urlset>
