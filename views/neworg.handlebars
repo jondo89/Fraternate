@@ -144,11 +144,11 @@
           <div role="tabpanel" class="tab-pane active" id="Credit">
            <p></p>
            <legend>Credit Card Information</legend>
-           <div id="dropin-container"></div>
+     
          </div>
          <div role="tabpanel" class="tab-pane" id="Paypal">
           <p></p>
-          <div id="paypal-container"></div>
+        
         </div>
       </div>
     </div>
@@ -188,6 +188,35 @@
 </div>
 </form>
 </div>
+
+
+
+
+
+
+
+  <meta charset="utf-8">
+  <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
+ 
+  <div id="dropin-container"></div>
+  <button id="submit-button">Request payment method</button>
+  <script>
+    var button = document.querySelector('#submits');
+
+    braintree.dropin.create({
+      authorization: '{{clientToken}}',
+      container: '#dropin-container'
+    }, function (createErr, instance) {
+      button.addEventListener('click', function () {
+        instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+          // Submit payload.nonce to your server
+        });
+      });
+    });
+  </script>
+
+
+
 
 <script type="text/javascript">
   $(".hiddenInput").hide();
@@ -267,18 +296,7 @@
   var checkout;
 
   $('#radios-1').click(function(){
-   var clientToken = "{{clientToken}}";
-   braintree.setup(clientToken, "dropin", {
-    container: 'dropin-container',
-    onReady: function (integration) {
-      checkout = integration;
-    },
-    paypal: {
-      button: {
-        type: 'checkout'
-      }
-    }
-  });
+ 
  })
 
   $('#radios-0').click(function(){

@@ -26,7 +26,62 @@ PUBLICKEY = '9pberwkvy2dewpykppd7'
 PRIVATEKEY = '0223774ef00abedfeebexxsdfcbdccc36569eee33d4'
 </pre>
 
+<div id="paypal-button"></div>
+<div id="paypal-credit-button"></div>
 
+<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
+<script src="https://js.braintreegateway.com/web/3.20.0/js/client.min.js"></script>
+<script src="https://js.braintreegateway.com/web/3.20.0/js/paypal-checkout.min.js"></script>
+<script>
+  braintree.client.create({
+    authorization: CLIENT_AUTHORIZATION
+  }, function (err, clientInstance) {
+    braintree.paypalCheckout.create({
+      client: clientInstance
+    }, function (err, paypalCheckoutInstance) {
+
+      // set up regular PayPal button
+      paypal.Button.render({
+        env: 'production', // or 'sandbox'
+        payment: function () {
+          return paypalCheckoutInstance.createPayment({
+            flow: 'checkout', // Required
+            amount: 10.00, // Required
+            currency: 'USD' // Required
+          });
+        },
+        onAuthorize: function (data, actions) {
+          return paypalCheckoutInstance.tokenizePayment(data)
+            .then(function (payload) {
+              // Submit `payload.nonce` to your server
+            });
+        },
+      }, '#paypal-button');
+
+      // set up PayPal credit button
+      paypal.Button.render({
+        env: 'production', // or 'sandbox'
+        style: {
+          label: 'credit'
+        },
+        payment: function () {
+          return paypalCheckoutInstance.createPayment({
+            flow: 'checkout', // Required
+            amount: 10.00, // Required
+            currency: 'USD', // Required
+            offerCredit: true
+          });
+        },
+        onAuthorize: function (data, actions) {
+          return paypalCheckoutInstance.tokenizePayment(data)
+            .then(function (payload) {
+              // Submit `payload.nonce` to your server
+            });
+        },
+      }, '#paypal-credit-button');
+    });
+  });
+</script>
 	</div>
 </div>
 
