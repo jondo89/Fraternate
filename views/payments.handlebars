@@ -1,44 +1,53 @@
 <h1>Payment Integration.</h1>
 <hr>
 <div class="row">
-<div class="col-md-3">
-	<ul class="nav nav-pills nav-stacked">
-		<li role="presentation"><a href="/introduction">Introduction</a></li>
-			<li role="presentation"><a href="/specifications">Specifications</a></li>		
-		<li role="presentation"><a href="/installation">Installation Instructions</a></li>
-		<li role="presentation"><a href="/integration">Third Party Integration</a></li>
-		<li role="presentation" class="active"><a href="/payments">Payment Integration</a></li>
-		<li role="presentation"><a href="/troubleshooting">Troubleshooting</a></li>
-		<li role="presentation" ><a href="/licence">Licence</a></li>
-	</ul>
+  <div class="col-md-3">
+   <ul class="nav nav-pills nav-stacked">
+    <li role="presentation"><a href="/introduction">Introduction</a></li>
+    <li role="presentation"><a href="/specifications">Specifications</a></li>		
+    <li role="presentation"><a href="/installation">Installation Instructions</a></li>
+    <li role="presentation"><a href="/integration">Third Party Integration</a></li>
+    <li role="presentation" class="active"><a href="/payments">Payment Integration</a></li>
+    <li role="presentation"><a href="/troubleshooting">Troubleshooting</a></li>
+    <li role="presentation" ><a href="/licence">Licence</a></li>
+  </ul>
 </div>
 <div class="col-md-9" style="min-height: 850px">
-<h3>Setting up the payments process.</h3> 
-<p>The payment managment and security is handled by Braintree , In order to utilize this functioality you will need to register or login .</p>
-      <a href="https://www.braintreepayments.com/" target="_blank"><img src="/img/logo/braintree.png"> </a>
+  <h3>Setting up the payments process.</h3> 
+  <p>The payment management and security is handled by Braintree , In order to utilize this functionality you will need to register or login.</p>
+<div style="text-align: center;">
+  <a href="https://www.braintreepayments.com/" target="_blank"><img src="/img/logo/braintree.png"> </a>
+</div>
 
-<h3>The .ENV File</h3>
-<p>For localhost testing the .ENV file on your local server should have the following lines added to the file.</p>
-<p>You will be able to get your actuals from the <a href="https://www.braintreepayments.com/" target="_blank">Braintree</a> website. You will need to register or login to recieve the unique keys.</p>
-<pre>
-MERCHANTID = 'kfhj6tfcdfgjmp26znt'
-PUBLICKEY = '9pberwkvy2dewpykppd7'
-PRIVATEKEY = '0223774ef00abedfeebexxsdfcbdccc36569eee33d4'
-</pre>
+  
+<p></p>
+  <p>Braintree integration is not very user friendly. 2 separate site configurations are required
+  There is limited support for the sandbox functionality for Braintree and PayPal outside of the US , as such make sure your sandbox accounts are both in the USA.</p><p>
+    Getting the PayPal user credentials to put into Braintree is found with difficulty in the PayPal dashboard area, and is found under your account profile details in the xxxx's store area (very difficult to find).
+  </p>
 
-<div id="paypal-button"></div>
-<div id="paypal-credit-button"></div>
+  <h3>The .ENV File</h3>
+  <p>For localhost testing the .ENV file on your local server should have the following lines added to the file.</p>
+  <p>You will be able to get your actuals from the <a href="https://www.braintreepayments.com/" target="_blank">Braintree</a> website. You will need to register or login to receive the unique keys.</p>
+  <pre>
+MERCHANTID = 'YOU MECHANT ID GOES HERE'
+PUBLICKEY = 'YOUR PUBLIC KEY GOES HERE'
+PRIVATEKEY = 'YOUR PRIVATE KEY GOES HERE'
+  </pre>
 
-<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
-<script src="https://js.braintreegateway.com/web/3.20.0/js/client.min.js"></script>
-<script src="https://js.braintreegateway.com/web/3.20.0/js/paypal-checkout.min.js"></script>
-<script>
-  braintree.client.create({
-    authorization: CLIENT_AUTHORIZATION
-  }, function (err, clientInstance) {
-    braintree.paypalCheckout.create({
-      client: clientInstance
-    }, function (err, paypalCheckoutInstance) {
+  <div id="paypal-button"></div>
+  <div id="paypal-credit-button"></div>
+
+  <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
+  <script src="https://js.braintreegateway.com/web/3.20.0/js/client.min.js"></script>
+  <script src="https://js.braintreegateway.com/web/3.20.0/js/paypal-checkout.min.js"></script>
+  <script>
+    braintree.client.create({
+      authorization: CLIENT_AUTHORIZATION
+    }, function (err, clientInstance) {
+      braintree.paypalCheckout.create({
+        client: clientInstance
+      }, function (err, paypalCheckoutInstance) {
 
       // set up regular PayPal button
       paypal.Button.render({
@@ -52,7 +61,7 @@ PRIVATEKEY = '0223774ef00abedfeebexxsdfcbdccc36569eee33d4'
         },
         onAuthorize: function (data, actions) {
           return paypalCheckoutInstance.tokenizePayment(data)
-            .then(function (payload) {
+          .then(function (payload) {
               // Submit `payload.nonce` to your server
             });
         },
@@ -74,14 +83,14 @@ PRIVATEKEY = '0223774ef00abedfeebexxsdfcbdccc36569eee33d4'
         },
         onAuthorize: function (data, actions) {
           return paypalCheckoutInstance.tokenizePayment(data)
-            .then(function (payload) {
+          .then(function (payload) {
               // Submit `payload.nonce` to your server
             });
         },
       }, '#paypal-credit-button');
     });
-  });
-</script>
-	</div>
+    });
+  </script>
+</div>
 </div>
 

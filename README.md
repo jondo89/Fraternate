@@ -21,7 +21,7 @@ Fraternate is completely open source.
 <li>Forgot Password</li>
 <li>Delete Account</li>
 <li>Public Profile</li>
-<li>Profile Pics</li>
+<li>Profile Pictures</li>
 <li>Email Notifications</li>
 </ul>
 <h4>Organization Control</h4>

@@ -129,32 +129,48 @@
     </div>
   </div> 
 </div> 
-<div class="row">
+ 
+ <div class="row collapse" id="collapseExample">
+ <hr>
   <div class="col-md-7">
+
+<!--
+
     <div id="payment">
       <h5>Choose your payment method</h5>
-      <div>
+      <div>-->
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
+       <!-- <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#Credit" aria-controls="Credit" role="tab" data-toggle="tab">Credit Card</a></li>
           <li role="presentation"><a href="#Paypal" aria-controls="Paypal" role="tab" data-toggle="tab">Paypal</a></li>
-        </ul>
+        </ul>-->
         <!-- Tab panes -->
-        <div class="tab-content">
+       <!-- <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="Credit">
            <p></p>
            <legend>Credit Card Information</legend>
-     
+           <div id="dropin-container"></div>
          </div>
          <div role="tabpanel" class="tab-pane" id="Paypal">
           <p></p>
-        
+          <div id="payment-form"></div>
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
+
+<div id="payment-form"></div>
 </div> 
+<div class="col-md-5">
+  
+<samp>This is using the Braintree and Paypal sandbox , and will only work with invalid card details.</samp>
+<samp>Try this.</samp>
+<pre>4111111111111111</pre>
+</div>
 </div> 
+</div>
+
+
 <hr>
 <div class="row">
   <div class="col-md-7">
@@ -171,16 +187,18 @@
   </div>
 </div> 
 <div class="col-md-5">
-  <div  >
+  <div >
    <samp>This business — not <strong>{{user.username}}</strong> (your user account), will own and/or control any content posted to the organization account </samp>
  </div>
 </div> 
 </div> <hr>
 <div class="row">
   <div class="col-md-7">
+<div class="form-group">
     <p>
       By clicking on "Create organization" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.
     </p>
+    </div>
   </div>
 </div><hr>
 <div style="padding-bottom: 55px">
@@ -192,30 +210,7 @@
 
 
 
-
-
-
-  <meta charset="utf-8">
-  <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
- 
-  <div id="dropin-container"></div>
-  <button id="submit-button">Request payment method</button>
-  <script>
-    var button = document.querySelector('#submits');
-
-    braintree.dropin.create({
-      authorization: '{{clientToken}}',
-      container: '#dropin-container'
-    }, function (createErr, instance) {
-      button.addEventListener('click', function () {
-        instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-          // Submit payload.nonce to your server
-        });
-      });
-    });
-  </script>
-
-
+<script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
 
 
 <script type="text/javascript">
@@ -294,15 +289,69 @@
 
 
   var checkout;
+  var checkout1;
 
   $('#radios-1').click(function(){
- 
- })
+$('#collapseExample').collapse()
+// We generated a client token for you so you can test out this code
+// immediately. In a production-ready integration, you will need to
+// generate a client token on your server (see section below).
+var clientToken = '{{{clientToken}}}';
+
+var button = document.querySelector('#submits');
+/*
+braintree.dropin.create({
+  authorization: clientToken,
+  container: '#dropin-container',
+  onReady: function (integration) {
+    checkout = integration;
+  },
+}, function (createErr, instance) {
+  button.addEventListener('click', function () {
+    instance.requestPaymentMethod(function (err, payload) {
+          // Submit payload.nonce to your server
+        });
+  });
+});*/
+
+braintree.dropin.create({
+  authorization: clientToken,
+  container: "#payment-form",
+  onReady: function (integration) {
+    checkout = integration;
+  },
+  paypal: {
+    container: 'paypal-container',
+    singleUse: true, // Required
+    amount: 10.00, // Required
+    currency: 'USD', // Required
+    locale: 'en_US',
+    enableShippingAddress: true,
+    shippingAddressOverride: {
+      recipientName: 'Scruff McGruff',
+      streetAddress: '1234 Main St.',
+      extendedAddress: 'Unit 1',
+      locality: 'Chicago',
+      countryCodeAlpha2: 'US',
+      postalCode: '60652',
+      region: 'IL',
+      phone: '123.456.7890',
+      editable: false
+    }
+  },
+  onPaymentMethodReceived: function (obj) {
+    doSomethingWithTheNonce(obj.nonce);
+  }
+});
+
+
+})
 
   $('#radios-0').click(function(){
 // When you are ready to tear down your integration
 checkout.teardown(function () {
   checkout = null;
+  //checkout1 = null;
   // braintree.setup can safely be run again!
 });
 })
