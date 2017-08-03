@@ -45,17 +45,39 @@
     <h2>Billing</h2>
     <hr>
     <h5>Plan</h5>
-    <div class="well">
-      <strong>Free plan</strong>, unlimited public repositories</strong>
-      {{user.plan}}
+
+<div class="row">
+<div class="col-md-10 col-md-offset-1">
+<div class="well">
+<strong>Free </strong>plan, unlimited public repositories</strong>
+<div class="row">
+  <div class="col-md-7">
+          Get unlimited private repositories for teams
+Starting at $25 / month which includes your first 5 users, $9 / month for each additional user
+  
+  </div>
+  <div class="col-md-5" style="text-align: right;">
+      <p><a class="btn btn-success" href="/organizations/{{organization.entry.name}}/settings/billing/per_seat">Upgrade</a></p>
+  </div>
+</div>
+ 
+
     </div>
-    <p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
+
+</div>
+</div>
+
+
+
+
+
+    
     <hr>
     <h5>Payment</h5>
     <div class="well">
       <i class="fa fa-credit-card" aria-hidden="true"></i> No payment method on file.
     </div>      
-    <p><a class="btn btn-default" href="/users/{{user.username}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Add payment method</a></p>
+    <p><a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Add payment method</a></p>
     <hr>
     <h5>Billing Manager</h5>
     <div class="well">

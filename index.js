@@ -209,6 +209,10 @@ app.get('/organizations/:orgname/people', organizationController.ajaxorguserread
 app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.organizationpermission, organizationController.settings);
 app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.page);
 app.get('/organizations/:orgname/settings/billing/billing_managers/new', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.billing_managers);
+app.get('/organizations/:orgname/settings/billing/per_seat', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.per_seat);
+app.get('/organizations/:orgname/settings/billing/payment', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.payment);
+
+
 
  
 

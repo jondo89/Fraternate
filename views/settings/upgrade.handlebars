@@ -54,11 +54,15 @@
 			<div class="panel-footer">Your next charge will be on 2018-08-01.</div>
 		</div>
 	</div>
-	<p></p>
+	<p></p>   <p>
+      By clicking on "Create organization" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.
+    </p>
 	<div class="btn-group" role="group" aria-label="...">
 		<a type="button" class="btn btn-success">Upgrade your plan</a>
 		<a type="button" class="btn btn-default">Cancel</a>
 	</div>
+
+
 </div>
 </div>
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
@@ -67,7 +71,7 @@
 	var user = JSON.stringify('{{user.username}}')
 	var text = '{{user.picture}}'
 	text =text.replace("sz&#x3D;50", "sz&#x3D;200");
-	$('#googlepic').html('<img src="'+text+'" style="max-width: 35%" class="media-object">')
+	$('#googlepic').html('<img src="'+text+'" style="max-width: 50%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;" class="media-object">')
 	var checkout;
 // We generated a client token for you so you can test out this code
 // immediately. In a production-ready integration, you will need to

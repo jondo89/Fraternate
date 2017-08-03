@@ -6,6 +6,11 @@
 		<h2><a href="/users/{{user.username}}/settings/billing">Billing</a> / Payment Details</h2>
 		<hr>
 	<div id="payment-form"></div>
+	  <div class="btn-group" role="group" aria-label="...">
+    <a type="button" class="btn btn-success">Update payment details</a>
+    <a type="button" class="btn btn-default" href="/users/{{user.username}}/settings/billing">Cancel</a>
+  </div>
+  <small>There are no upcoming charges to your account.</small>
 </div>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>

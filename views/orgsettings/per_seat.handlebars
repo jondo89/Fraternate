@@ -1,0 +1,213 @@
+<style type="text/css">
+  .awesome {
+    padding: 2px;
+
+    border-radius: 5px;
+    background: #5cb85c;
+  }
+</style>
+ 
+ 
+<div class="row" style="padding-top: 25px">
+	<div class="col-md-3" id="navMenuPanel">  
+
+ <h3>Upgrade your plan</h3>
+  {{#if organization.entry.picture}}
+      <div class="media-left media-middle">
+        <a href="#">
+          <a href="/organizations/{{organization.entry.name}}">
+            <img onerror="this.src='{{organization.gravatar}}'"" src="{{organization.entry.picture}}" class="media-object" style="max-width: 50%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+          </a>
+        </a>
+      </div>
+      {{else}}
+      <div class="media-left">
+        <a href="#">
+          <a href="/organizations/{{organization.entry.name}}">
+            <img src="{{organization.gravatar}}" class="media-object" style="max-width: 50%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+          </a>
+        </a>
+      </div>
+      {{/if}}
+<h4>{{organization.entry.displayname}}  <small>{{dotdotdot organization.entry.name}}</small></h4>
+   <hr>
+    <h5>Current plan</h5>
+    <strong>Free plan</strong>
+<p>Unlimited public repositories</p>
+
+   
+
+    <hr>
+    <h5>Upgrading to</h5>
+    <strong>Team</strong>
+    <p>Unlimited private repositories</p>
+ 
+  <hr>
+  <h5>Total upgrade price</h5>
+  <h1>$25.00 / month</h1>
+ <small>for 5 users (minimum)</small>
+
+
+
+  
+ 
+
+
+
+
+
+  </div>  
+  <div class="col-md-9" id="browserArea">
+    {{#if messages.success}}
+    <div role="alert" class="alert alert-success">
+      {{#each messages.success}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+    {{#if messages.error}}
+    <div role="alert" class="alert alert-danger">
+      {{#each messages.error}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+
+    <h2><a href="/organizations/{{organization.entry.name}}/settings/billing" >Billing</a> / Plan setup and duration</h2>
+    <hr>
+
+
+ 
+    <div class="row">
+      <label for="radios" class="col-md-12">Choose your plan</label>
+      <div class="col-md-12">
+        <ul class="list-group">
+ 
+        <div class="list-group-item">
+          <input type="radio"  checked="checked" name="radios" id="radios-1" value="2"  class="teampay">
+          <strong>Team</strong>
+          <div class="row">
+            <div class="col-md-12">
+             <p class="help-block">Starts at $25 / month which includes your first 5 users.</p>
+             <p class="help-block">Unlimited public repositories.</p>
+             <p class="help-block">Unlimited private repositories.</p>
+           </div>
+           <div class="col-md-12" style="text-align: right;">
+            $9
+            per user
+            / month
+          </div>
+        </div>
+        <br/> 
+  
+ 
+        </ul>
+      </div>
+    </div>
+ 
+
+  <h3>Plan setup and duration</h3>
+  <hr>
+  <div class="btn-group" data-toggle="buttons" s>
+    <label class="btn btn-default btn-lg active">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked style="position: relative;"> <strong>$25 / month </strong>
+    </label>
+    <label class="btn btn-default btn-lg">
+      <input type="radio" name="options" id="option2" autocomplete="off" style="position: relative;">  <strong>$300 / year </strong>
+    </label>
+  </div>
+<hr>
+ <div id="payment-form"></div>
+  <div class="awesome">
+    <div class="panel panel-default" style="margin-bottom: 1px;border-color: #5cb85c; "  >
+      <div class="panel-body" >
+        Charge today
+        <h1>$84.00</h1>
+      </div>
+      <div class="panel-footer">Your next charge will be on 2018-08-01.</div>
+    </div>
+  </div>
+<p></p>
+
+        <input type="checkbox" name="chkBox1" id="chkBox1" class="showHideCheck" />This account is owned by a business (see the Terms of Service for details)
+        <br/><div class="hiddenInput">  
+        <br>
+        <p>What is the name of the business that owns this account?</p>
+        <input type="email" name="business_email" id="business_email" class="form-control" >
+        <p class="help-block">e.g, Acme, Inc. This business — not <strong>{{user.username}}</strong> (your user account), will own and/or control any content posted to the organization account</p>
+ 
+      </div>
+
+  <p></p>  
+  <p>
+      By clicking on "Upgrade your plan" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.
+    </p>
+  <div class="btn-group" role="group" aria-label="...">
+    <a type="button" class="btn btn-success">Upgrade your plan</a>
+    <a type="button" class="btn btn-default">Cancel</a>
+  </div>
+</div>
+</div>
+
+
+
+<script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
+<script type="text/javascript">
+
+$(".hiddenInput").hide();
+  $(".showHideCheck").on("change", function() {
+    $this = $(this);
+    $input = $this.parent().find(".hiddenInput");
+    if($this.is(":checked")) {
+      $input.slideDown();
+    } else {
+      $input.slideUp();
+    }
+  });
+
+var clientToken = '{{{clientToken}}}';
+var button = document.querySelector('#submits');
+/*
+braintree.dropin.create({
+authorization: clientToken,
+container: '#dropin-container',
+onReady: function (integration) {
+checkout = integration;
+},
+}, function (createErr, instance) {
+button.addEventListener('click', function () {
+instance.requestPaymentMethod(function (err, payload) {
+      // Submit payload.nonce to your server
+    });
+});
+});*/
+braintree.dropin.create({
+  authorization: clientToken,
+  container: "#payment-form",
+  onReady: function (integration) {
+    checkout = integration;
+  },
+  paypal: {
+    container: 'paypal-container',
+singleUse: true, // Required
+amount: 10.00, // Required
+currency: 'USD', // Required
+locale: 'en_US',
+enableShippingAddress: true,
+shippingAddressOverride: {
+  recipientName: 'Scruff McGruff',
+  streetAddress: '1234 Main St.',
+  extendedAddress: 'Unit 1',
+  locality: 'Chicago',
+  countryCodeAlpha2: 'US',
+  postalCode: '60652',
+  region: 'IL',
+  phone: '123.456.7890',
+  editable: false
+}
+},
+onPaymentMethodReceived: function (obj) {
+  doSomethingWithTheNonce(obj.nonce);
+}
+});
+</script>

@@ -518,6 +518,75 @@ exports.billing_managers = function(req, res) {
   }
 };
 
+///////////////////////////////////////////////
+//////////  Upgrade your Org Plan ////////////
+/////////////////////////////////////////////
+exports.per_seat = function(req, res) {
+  console.log('getting here')
+  if (req.orgowner) {
+   var template =  req.params.page 
+    //check the user name for duplicate.
+    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
+      if (username) {
+
+gateway.clientToken.generate({}, function (err, response) {
+        res.render('orgsettings/per_seat',{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          organization : username,
+          organizations : req.userorgs ,
+                    clientToken : response.clientToken,
+          pagetitle: 'Settings | '+username.entry.name   ,
+        }
+        )
+
+    });
+
+      } else {
+        return res.redirect('/');
+      }
+    })
+  } else {
+    return res.redirect('/');
+  }
+};
+
+///////////////////////////////////////////////
+//////////  ADD PAYMENT DETAILS   ////////////
+/////////////////////////////////////////////
+exports.payment = function(req, res) {
+  console.log('getting here')
+  if (req.orgowner) {
+   var template =  req.params.page 
+    //check the user name for duplicate.
+    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
+      if (username) {
+
+
+      gateway.clientToken.generate({}, function (err, response) {
+        res.render('orgsettings/payment',{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          organization : username,
+          organizations : req.userorgs ,
+          clientToken : response.clientToken,
+          pagetitle: 'Settings | '+username.entry.name   ,
+        }
+        )
+     });
+
+
+
+
+
+      } else {
+        return res.redirect('/');
+      }
+    })
+  } else {
+    return res.redirect('/');
+  }
+};
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

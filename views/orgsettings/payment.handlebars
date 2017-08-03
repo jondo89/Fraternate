@@ -1,0 +1,107 @@
+<style type="text/css">
+  .cropit-preview {
+    /* You can specify preview size in CSS */
+    width: 200px;
+    height: 200px;
+  }
+</style> 
+{{> orgheader}}
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
+	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+  {{#if orgowner}}
+  <li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
+  {{else}}
+  {{/if}}
+</ul>
+<div class="row" style="padding-top: 25px">
+	<div class="col-md-3" id="navMenuPanel">  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Organization settings 
+      </div>
+      <ul class="list-group">
+        <a href="/organizations/{{organization.entry.name}}/settings/profile" class="list-group-item ">Profile</a>
+        <a href="/organizations/{{organization.entry.name}}/settings/member_privileges" class="list-group-item">Member privileges</a>
+        <a href="/organizations/{{organization.entry.name}}/settings/billing" class="list-group-item active">Billing</a>
+      </ul>
+    </div>  
+  </div>  
+  <div class="col-md-9" id="browserArea">
+    {{#if messages.success}}
+    <div role="alert" class="alert alert-success">
+      {{#each messages.success}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+    {{#if messages.error}}
+    <div role="alert" class="alert alert-danger">
+      {{#each messages.error}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+    <h2><a href="/organizations/{{organization.entry.name}}/settings/billing" >Billing</a> / Payment details</h2>
+    <hr>
+ <div id="payment-form"></div>
+
+  <div class="btn-group" role="group" aria-label="...">
+    <a type="button" class="btn btn-success">Update payment details</a>
+    <a type="button" class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing">Cancel</a>
+  </div>
+  <small>There are no upcoming charges to your account.</small>
+
+</div>
+</div>
+
+
+
+<script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
+<script type="text/javascript">
+var clientToken = '{{{clientToken}}}';
+var button = document.querySelector('#submits');
+/*
+braintree.dropin.create({
+authorization: clientToken,
+container: '#dropin-container',
+onReady: function (integration) {
+checkout = integration;
+},
+}, function (createErr, instance) {
+button.addEventListener('click', function () {
+instance.requestPaymentMethod(function (err, payload) {
+      // Submit payload.nonce to your server
+    });
+});
+});*/
+braintree.dropin.create({
+  authorization: clientToken,
+  container: "#payment-form",
+  onReady: function (integration) {
+    checkout = integration;
+  },
+  paypal: {
+    container: 'paypal-container',
+singleUse: true, // Required
+amount: 10.00, // Required
+currency: 'USD', // Required
+locale: 'en_US',
+enableShippingAddress: true,
+shippingAddressOverride: {
+  recipientName: 'Scruff McGruff',
+  streetAddress: '1234 Main St.',
+  extendedAddress: 'Unit 1',
+  locality: 'Chicago',
+  countryCodeAlpha2: 'US',
+  postalCode: '60652',
+  region: 'IL',
+  phone: '123.456.7890',
+  editable: false
+}
+},
+onPaymentMethodReceived: function (obj) {
+  doSomethingWithTheNonce(obj.nonce);
+}
+});
+</script>
