@@ -207,9 +207,6 @@
 </form>
 </div>
 
-
-
-
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
 
 
@@ -225,7 +222,6 @@
       $input.slideUp();
     }
   });
-
   $(".teampay").on("change", function() {
     $this = $(this);
     $input = $this.parent().find(".hiddenInput");
@@ -237,7 +233,6 @@
       $('#payment').slideUp();
     }
   });
-
   $(".free").on("change", function() {
     $this = $(this);
     $input = $(".teampay").parent().find(".hiddenInput");
@@ -245,7 +240,6 @@
     $('#payment').slideUp();
 
   });
-
   jQuery.fn.extend({
     disable: function(state) {
       return this.each(function() {
@@ -254,7 +248,6 @@
       });
     }
   });
-
   $("#name").on("keyup", function() {
     var value = $( this ).val();
     var invalidChars = [  ];
@@ -270,7 +263,6 @@
       $('#errmsg').html('Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.')
     }
   })
-
   $("#name").on("change", function() {
     var value = $( this ).val();
     var invalidChars = [  ];
@@ -286,18 +278,14 @@
       $('#errmsg').html('Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.')
     }
   })
-
-
   var checkout;
   var checkout1;
-
   $('#radios-1').click(function(){
 $('#collapseExample').collapse()
 // We generated a client token for you so you can test out this code
 // immediately. In a production-ready integration, you will need to
 // generate a client token on your server (see section below).
 var clientToken = '{{{clientToken}}}';
-
 var button = document.querySelector('#submits');
 /*
 braintree.dropin.create({
@@ -343,8 +331,6 @@ braintree.dropin.create({
     doSomethingWithTheNonce(obj.nonce);
   }
 });
-
-
 })
 
   $('#radios-0').click(function(){

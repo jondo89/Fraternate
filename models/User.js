@@ -23,6 +23,7 @@ var userSchema = new mongoose.Schema({
   email: { type: String, unique: true},
   password: String,
   bio: String,
+  plan: String,
   username: String,
   passwordResetToken: String,
   permission: String,
@@ -86,11 +87,7 @@ if (!user.username) {
 if (user.username =="") {
   user.username = user.name.replace(/\s/g,'')
 }
-
-
   signupEmail(user)
-
-
   if (!user.isModified('password')) { return next(); }
   bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(user.password, salt, null, function(err, hash) {

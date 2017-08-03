@@ -1,5 +1,15 @@
  
 var User = require('../models/User');
+var braintree = require("braintree");
+////////////////////////////////////////////
+///////   BRAINTREE INTEGRATION    ////////
+//////////////////////////////////////////
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: process.env.MERCHANTID,
+  publicKey: process.env.PUBLICKEY,
+  privateKey: process.env.PRIVATEKEY
+});
 
 ///////////////////////////////////////////////
 ////     SET YOUR APP.JSON DETAILS        //// 
@@ -91,6 +101,46 @@ exports.specifications = function(req, res) {
   })
 };
 
+//////////////////////////
+/////  UPGRADE      ///// 
+////////////////////////
+exports.upgrade = function(req, res) {
+    //Perform Routing for Varios user type on the home page.
+    if (req.user) {
+      //Create client token for Braintree payments.
+      gateway.clientToken.generate({}, function (err, response) {
+        res.render('settings/upgrade',{
+          pagetitle: 'Upgrade | '+sitename+'',
+          clientToken : response.clientToken
+        })
+      });
+    } else {
+      res.redirect('/signin');
+    }
+  };
+
+///////////////////////////
+/////  PAYMENTS      ///// 
+/////////////////////////
+exports.payment = function(req, res) {
+ 
+
+    //Perform Routing for Varios user type on the home page.
+    if (req.user) {
+      //Create client token for Braintree payments.
+      gateway.clientToken.generate({}, function (err, response) {
+        res.render('settings/payment',{
+          pagetitle: 'Payment | '+sitename+'',
+          clientToken : response.clientToken
+        })
+      });
+    } else {
+      res.redirect('/signin');
+    }
+
+
+};
+
 ////////////////////////////////////
 ////////// SETTINGS PAGE ///////////
 ///////////////////////////////////
@@ -148,7 +198,13 @@ exports.page = function(req, res) {
         pagetitle: template+' | '+sitename+'',
       })
       break;
-      default:
+      case(template=='billing'):
+
+      res.render('settings/'+template,{
+        pagetitle: template+' | '+sitename+'',
+      })
+
+      break;      default:
       res.render('settings/'+template);
       break;
     }

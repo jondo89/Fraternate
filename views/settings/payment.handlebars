@@ -1,0 +1,58 @@
+<div class="row" style="padding-top: 25px">
+	<div class="col-md-3" id="navMenuPanel">       
+		{{> usernav billing=true}}
+	</div>  
+	<div class="col-md-9" id="browserArea">
+		<h2><a href="/users/{{user.username}}/settings/billing">Billing</a> / Payment Details</h2>
+		<hr>
+	<div id="payment-form"></div>
+</div>
+
+<script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
+<script type="text/javascript">
+var clientToken = '{{{clientToken}}}';
+var button = document.querySelector('#submits');
+/*
+braintree.dropin.create({
+authorization: clientToken,
+container: '#dropin-container',
+onReady: function (integration) {
+checkout = integration;
+},
+}, function (createErr, instance) {
+button.addEventListener('click', function () {
+instance.requestPaymentMethod(function (err, payload) {
+      // Submit payload.nonce to your server
+    });
+});
+});*/
+braintree.dropin.create({
+	authorization: clientToken,
+	container: "#payment-form",
+	onReady: function (integration) {
+		checkout = integration;
+	},
+	paypal: {
+		container: 'paypal-container',
+singleUse: true, // Required
+amount: 10.00, // Required
+currency: 'USD', // Required
+locale: 'en_US',
+enableShippingAddress: true,
+shippingAddressOverride: {
+	recipientName: 'Scruff McGruff',
+	streetAddress: '1234 Main St.',
+	extendedAddress: 'Unit 1',
+	locality: 'Chicago',
+	countryCodeAlpha2: 'US',
+	postalCode: '60652',
+	region: 'IL',
+	phone: '123.456.7890',
+	editable: false
+}
+},
+onPaymentMethodReceived: function (obj) {
+	doSomethingWithTheNonce(obj.nonce);
+}
+});
+</script>

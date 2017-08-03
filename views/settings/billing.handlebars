@@ -1,34 +1,32 @@
- 
 <div class="row" style="padding-top: 25px">
-  <div class="col-md-3" id="navMenuPanel">       
-    {{> usernav billing=true}}
-  </div>  
-  <div class="col-md-9" id="browserArea">
- 
-      <h2>Billing</h2>
-      <hr>
-
-       Plan
-Free plan, unlimited public repositories
-Get private repositories
-Git LFS Data
-$0 per month for 0 data packs – Learn more about Git LFS
-Purchase more
-Marketplace Apps
-You have not purchased any apps from the Marketplace.
-Payment
- No payment method on file.
- Add payment method
-Coupon
-You don’t have an active coupon.
- Redeem a coupon
-Payment history
-You have not made any payments.
-Amounts shown in USD
- 
+	<div class="col-md-3" id="navMenuPanel">       
+		{{> usernav billing=true}}
+	</div>  
+	<div class="col-md-9" id="browserArea">
+		<h2>Billing</h2>
+		<hr>
+		<h5>Plan</h5>
+		
+		<div class="well">
+		<strong>Free plan</strong>, unlimited public repositories</strong>
+		
+			{{user.plan}}
+		</div>
+		
+		<p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
+		<hr>
+		<h5>Payment</h5>
+		<div class="well">
+			<i class="fa fa-credit-card" aria-hidden="true"></i> No payment method on file.
+		</div>			
+		<p><a class="btn btn-default" href="/users/{{user.username}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Add payment method</a></p>
+		<hr>
+		<h5>Payment history</h5>
+		<div class="well">
+			You have not made any payments.	
+		</div>			
+		<small>Amounts shown in USD</small>
+	</div>
 </div>
-</div>
- 
 <script type="text/javascript">
- 
-  </script>
+</script>

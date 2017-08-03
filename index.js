@@ -192,6 +192,8 @@ app.get('/users/', userInterfaceController.users);
 app.get('/users/:username/',   organizationController.userorganizations,  userInterfaceController.profile);
 app.get('/users/:username/settings/',userInterfaceController.settings);
 app.get('/users/:username/settings/:page',   organizationController.userorganizations, userInterfaceController.page);
+app.get('/users/:username/settings/billing/upgrade', userInterfaceController.upgrade);
+app.get('/users/:username/settings/billing/payment', userInterfaceController.payment);
  
 /////////////////////////////////////
 ////       ORGANIZATION         //// 
@@ -206,6 +208,8 @@ app.get('/organizations/:orgname/settings',organizationController.ajaxorguserrea
 app.get('/organizations/:orgname/people', organizationController.ajaxorguserread ,organizationController.organizationpermission,organizationController.orgowneruserdetail,organizationController.people);
 app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.organizationpermission, organizationController.settings);
 app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.page);
+
+
 app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);
 app.get('/leaveorganiztion/:ids',  organizationController.leaveorganiztion);
 app.get('/deleteorganiztion/:ids',  organizationController.deleteorganiztion);
