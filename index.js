@@ -208,7 +208,9 @@ app.get('/organizations/:orgname/settings',organizationController.ajaxorguserrea
 app.get('/organizations/:orgname/people', organizationController.ajaxorguserread ,organizationController.organizationpermission,organizationController.orgowneruserdetail,organizationController.people);
 app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.organizationpermission, organizationController.settings);
 app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.page);
+app.get('/organizations/:orgname/settings/billing/billing_managers/new', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.billing_managers);
 
+ 
 
 app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);
 app.get('/leaveorganiztion/:ids',  organizationController.leaveorganiztion);

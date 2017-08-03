@@ -1,0 +1,105 @@
+<style type="text/css">
+  .cropit-preview {
+    /* You can specify preview size in CSS */
+    width: 200px;
+    height: 200px;
+  }
+</style> 
+{{> orgheader}}
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
+	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+  {{#if orgowner}}
+  <li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
+  {{else}}
+  {{/if}}
+</ul>
+<div class="row" style="padding-top: 25px">
+	<div class="col-md-3" id="navMenuPanel">  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Organization settings 
+      </div>
+      <ul class="list-group">
+        <a href="/organizations/{{organization.entry.name}}/settings/profile" class="list-group-item ">Profile</a>
+        <a href="/organizations/{{organization.entry.name}}/settings/member_privileges" class="list-group-item">Member privileges</a>
+        <a href="/organizations/{{organization.entry.name}}/settings/billing" class="list-group-item active">Billing</a>
+      </ul>
+    </div>  
+  </div>  
+  <div class="col-md-9" id="browserArea">
+    {{#if messages.success}}
+    <div role="alert" class="alert alert-success">
+      {{#each messages.success}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+    {{#if messages.error}}
+    <div role="alert" class="alert alert-danger">
+      {{#each messages.error}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+    <h2>Billing</h2>
+    <hr>
+    <h5>Plan</h5>
+    <div class="well">
+      <strong>Free plan</strong>, unlimited public repositories</strong>
+      {{user.plan}}
+    </div>
+    <p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
+    <hr>
+    <h5>Payment</h5>
+    <div class="well">
+      <i class="fa fa-credit-card" aria-hidden="true"></i> No payment method on file.
+    </div>      
+    <p><a class="btn btn-default" href="/users/{{user.username}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Add payment method</a></p>
+    <hr>
+    <h5>Billing Manager</h5>
+    <div class="well">
+      You have not invited any billing managers. 
+    </div>      
+     <p><a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/billing_managers/new"><i class="fa fa-user" aria-hidden="true"></i> Add a billing manager</a></p>
+    <small>Receipts are sent to the billing managers for this organization, and <a href="" data-toggle="modal" data-target=".bs-example-modal-sm"> {{organization.entry.email}}  <i class="fa fa-pencil" aria-hidden="true"></i></a></small>
+    <hr>
+    <h5>Payment history</h5>
+    <div class="well">
+      You have not made any payments. 
+    </div>      
+    <small>Amounts shown in USD</small>
+  </div> 
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit billing email</h4>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/organizations/{{organization.entry.name}}/?_method=PUT" class="form-horizontal">
+         <div class="form-group">
+          <label for="email" class="col-sm-12">Billing email (Private)</label>
+          <div class="col-sm-12">
+            <input type="email" name="email" id="email" class="form-control" value="{{organization.entry.email}}">
+          </div>
+        </div> 
+        <div class="form-group">
+          <div class="col-sm-4">
+            <button type="submit" onclick="updates()" class="btn btn-success">Update</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+</script>

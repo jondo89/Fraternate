@@ -297,37 +297,53 @@ exports.orgPut = function(req, res, next) {
       if (err) return handleError(err);
       if (orgid) { 
         //Profile Picture saving.
-        var image = req.body.croppedImg
-        var fs = require('fs');
-        var directory = 'public/uploads/'
-        var fileName = directory+orgid._id+'.jpg'
-        var data = image.replace(/^data:image\/\w+;base64,/, '');
-        fs.writeFile(fileName, data, {encoding: 'base64'}, function(err){
+        if (req.body.croppedImg) {
+          var image = req.body.croppedImg
+          var fs = require('fs');
+          var directory = 'public/uploads/'
+          var fileName = directory+orgid._id+'.jpg'
+          var data = image.replace(/^data:image\/\w+;base64,/, '');
+          fs.writeFile(fileName, data, {encoding: 'base64'}, function(err){
           //Finished
         });
-        //Painful parse issue.
-        var temp = JSON.parse(JSON.stringify(orgid.entry))
-        temp.picture = '/uploads/'+orgid._id+'.jpg'
-        //Assign
+        }
+      //Painful parse issue.
+      var temp = JSON.parse(JSON.stringify(orgid.entry))
+      temp.picture = '/uploads/'+orgid._id+'.jpg'
+        //Assign 
+        //This can surely be improved.
         if (req.body.name !=null) {
          temp.name = req.body.name
        }
-       temp.displayname = req.body.displayname
-       temp.description = req.body.description
-       temp.location = req.body.location
+       if (req.body.displayname) {
+         temp.displayname = req.body.displayname
+       }
+       if (req.body.description) {
+        temp.description = req.body.description
+      }
+      if (req.body.location) {
+        temp.location = req.body.location
+      }
+      if (req.body.url) {
        temp.url = req.body.url
-       temp.email = req.body.email
-       temp.displayemail = req.body.displayemail
-       orgid.entry = temp    
-       orgid.save(function(err,doc) {
-        req.flash('success', { msg: 'Your profile information has been updated.' });
-        res.redirect('/organizations/'+req.params.orgname+'/settings/profile');
-      });
-     } else {
-      req.flash('error', { msg: 'Something went wrong here.' });
-      res.redirect('/organizations/'+req.params.orgname+'/settings/profile');
-    }
+     }
+     if (req.body.email) {
+      console.log(req.body.email)
+      temp.email = req.body.email
+    }     
+    if (req.body.displayemail) {
+     temp.displayemail = req.body.displayemail
+   }       
+   orgid.entry = temp    
+   orgid.save(function(err,doc) {
+    req.flash('success', { msg: 'Your profile information has been updated.' });
+    res.redirect('/organizations/'+req.params.orgname+'/settings/profile');
   });
+ } else {
+  req.flash('error', { msg: 'Something went wrong here.' });
+  res.redirect('/organizations/'+req.params.orgname+'/settings/profile');
+}
+});
   })
 };
 
@@ -475,6 +491,32 @@ query1_return.save(function(err) {
 };
 
 
+
+//////////////////////////////////////////
+//////////  BILLING MANAGERS ////////////
+////////////////////////////////////////
+exports.billing_managers = function(req, res) {
+  if (req.orgowner) {
+   var template =  req.params.page 
+    //check the user name for duplicate.
+    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
+      if (username) {
+        res.render('orgsettings/billing_manager',{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          organization : username,
+          organizations : req.userorgs ,
+          pagetitle: 'Settings | '+username.entry.name   ,
+        }
+        )
+      } else {
+        return res.redirect('/');
+      }
+    })
+  } else {
+    return res.redirect('/');
+  }
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
