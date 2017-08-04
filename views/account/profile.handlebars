@@ -86,23 +86,17 @@
     <hr>
     {{#if organizations}}
     <h4>Organizations</h4>
-    <div class="row">
-      {{#each organizations}}
-      {{#if this.entry.picture}}
-      <div class="col-md-2 col-xs-2">
-        <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
-          <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.entry.picture}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
-        </a>
-      </div>
-      {{else}}
-      <div class="col-md-2 col-xs-2">
-        <a  href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
-          <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.gravatar}}" class="media-object" style="max-width: 45px;border-radius: 1px;border: 1px;border-color: #d8d8d8;border-style: solid;">
-        </a>
-      </div>
-      {{/if}}
-      {{/each}}
-    </div>
+    {{#each organizations}}
+    {{#if this.entry.picture}}
+    <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
+      <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.entry.picture}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+    </a>
+    {{else}}
+    <a  href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
+      <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.gravatar}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+    </a>
+    {{/if}}
+    {{/each}}
     {{else}}
     <div  class="row" style="text-align: center">
       <p>This user is not a member of any organizations.</p>

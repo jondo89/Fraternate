@@ -3,19 +3,68 @@
 		{{> usernav billing=true}}
 	</div>  
 	<div class="col-md-9" id="browserArea">
+	    {{#if messages.success}}
+    <div role="alert" class="alert alert-success">
+      {{#each messages.success}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+    {{#if messages.error}}
+    <div role="alert" class="alert alert-danger">
+      {{#each messages.error}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
 		<h2><a href="/users/{{user.username}}/settings/billing">Billing</a> / Payment Details</h2>
 		<hr>
 	<div id="payment-form"></div>
 	  <div class="btn-group" role="group" aria-label="...">
-    <a type="button" class="btn btn-success">Update payment details</a>
+    <a type="button" class="btn btn-success" onclick="sendRequest(this.id)" id="{{user.username}}">Update payment details</a>
+{{#if braintree_customer}}
+	 <a type="button" class="btn btn-danger"    onclick="deleteBraintreeClient(this.id)" id="{{user._id}}"  data-toggle="modal" data-target="#myModal">Delete payment details</a>
+{{/if}}
+
     <a type="button" class="btn btn-default" href="/users/{{user.username}}/settings/billing">Cancel</a>
   </div>
+<p></p>
+<div id="msg"></div>
+<div id="customer"></div>
   <small>There are no upcoming charges to your account.</small>
 </div>
+
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"  id="modalTextArea">
+    </div>
+  </div>
+</div>
+
+
 
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
 <script type="text/javascript">
 var clientToken = '{{{clientToken}}}';
+
+
+
+ 
+{{#if braintree_customer}}
+	var customer = {{{braintree_customer}}}
+	$('#customer').html('<pre>'+customer+'</pre>')
+{{else}}
+	$('#customer').html('No existing details found')
+{{/if}}
+ 
+
+	
+ 
+
+
 var button = document.querySelector('#submits');
 /*
 braintree.dropin.create({
@@ -60,4 +109,31 @@ onPaymentMethodReceived: function (obj) {
 	doSomethingWithTheNonce(obj.nonce);
 }
 });
+
+
+///////////////////////////////////////////////////////
+////        AJAX TO ADD CLIENT TO BT VAULT        //// 
+/////////////////////////////////////////////////////
+function sendRequest(ids){
+  jQuery.ajax({
+   'async': true,
+   'global': false,
+   'url': '/users/'+ids+'/vault',
+   'success': function (dataSchemaObject) {
+    $('#msg').html(dataSchemaObject.msg)
+  }
+}); 
+}
+
+/////////////////////////////////////
+////        KICK MEMBER         //// 
+///////////////////////////////////
+function deleteBraintreeClient(ids){
+  var html = '<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> <h4 class="modal-title" id="myModalLabel"><i class="fa fa-trash" aria-hidden="true"></i> Delete payment details.</h4> </div> <div class="modal-body"> <p>Are you sure you wish to delete these payment details from your account?</p> <div style="text-align: center"> <div id="modelHtml"></div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>'
+  $('#modalTextArea').html(html)
+  $('#modelHtml').html('<a href="/users/deletepaymentdetails/'+ids+'" class="btn btn-danger">Delete these payment details.</a>')
+}
+
+ 
+
 </script>

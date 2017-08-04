@@ -24,6 +24,7 @@ var userSchema = new mongoose.Schema({
   password: String,
   bio: String,
   plan: String,
+  braintreeid:String,
   username: String,
   passwordResetToken: String,
   permission: String,

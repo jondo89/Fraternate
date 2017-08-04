@@ -194,7 +194,9 @@ app.get('/users/:username/settings/',userInterfaceController.settings);
 app.get('/users/:username/settings/:page',   organizationController.userorganizations, userInterfaceController.page);
 app.get('/users/:username/settings/billing/upgrade', userInterfaceController.upgrade);
 app.get('/users/:username/settings/billing/payment', userInterfaceController.payment);
- 
+app.get('/users/:username/vault', userInterfaceController.vault);
+app.get('/users/deletepaymentdetails/:ids',  userInterfaceController.deletepaymentdetails);
+
 /////////////////////////////////////
 ////       ORGANIZATION         //// 
 ///////////////////////////////////
@@ -213,7 +215,7 @@ app.get('/organizations/:orgname/settings/billing/per_seat', organizationControl
 app.get('/organizations/:orgname/settings/billing/payment', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.payment);
 
 
-
+ 
  
 
 app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);
@@ -227,6 +229,7 @@ app.get('/organizations/:orgname/approvereq/:username/', organizationController.
 app.get('/organizations/:orgname/usersearch/:username/', organizationController.usersearch );
 app.get('/organizations/:orgname/billing_managersearch/:username/', organizationController.billing_managersearch );
 app.get('/organizations/:orgname/kickbilling/:username/',  organizationController.kickbilling);
+
 
 //Ajax
 app.get('/orguserread', organizationController.orguserread); // Get the active user organizations , owner and member.

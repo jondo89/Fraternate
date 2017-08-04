@@ -16,10 +16,26 @@
 		<p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
 		<hr>
 		<h5>Payment</h5>
+
+
+{{#if braintree_customer}}
+ 			
+		<p><a class="btn btn-default" href="/users/{{user.username}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Edit payment method</a></p>
+
+
+{{else}}
 		<div class="well">
 			<i class="fa fa-credit-card" aria-hidden="true"></i> No payment method on file.
 		</div>			
 		<p><a class="btn btn-default" href="/users/{{user.username}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Add payment method</a></p>
+
+
+{{/if}}
+ 
+
+
+
+
 		<hr>
 		<h5>Payment history</h5>
 		<div class="well">
