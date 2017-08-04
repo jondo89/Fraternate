@@ -67,6 +67,7 @@
      </ul>
    </div>
  </div>
+ <div id="msg"></div>
  <div id="searchUser">
  </div>
 </div>
@@ -84,7 +85,6 @@ $('document').ready(function(){
   intit()
 })
 
-
 ////////////////////////////////////////
 ////        INVITE MEMEBER         //// 
 //////////////////////////////////////
@@ -98,7 +98,7 @@ $('#search').keyup(function(){
   jQuery.ajax({
     'async': true,
     'global': false,
-    'url': '/organizations/'+orgname+'/usersearch/'+searchField,
+    'url': '/organizations/'+orgname+'/billing_managersearch/'+searchField,
     'success': function (dataSchemaObject) {
       jQuery('#users').html("")
       try {
@@ -127,22 +127,17 @@ $('#search').keyup(function(){
 ////        AJAX SEND REQUEST TO ADD USER         //// 
 /////////////////////////////////////////////////////
 function sendRequest(ids){
-
-//This is where you where working. 20170803
-
-  /*
   var orgname = "{{organization.entry.name}}"
   jQuery.ajax({
    'async': true,
    'global': false,
-   'url': '/organizations/'+orgname+'/approvereq/'+ids,
+   'url': '/organizations/'+orgname+'/add_manager/'+ids,
    'success': function (dataSchemaObject) {
-    location.reload();
+    $('#search').val('')
+    $('#search').trigger('keyup')
+    $('#msg').html(dataSchemaObject.msg)
   }
-});*/
+}); 
 }
-
-
-
 
 </script>

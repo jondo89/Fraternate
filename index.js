@@ -225,11 +225,12 @@ app.get('/orgsharerequest/:orgname',organizationController.orgsharerequest, orga
 app.get('/organizations/:orgname/kickorg/:username/',  organizationController.kickorg);
 app.get('/organizations/:orgname/approvereq/:username/', organizationController.approvereq );
 app.get('/organizations/:orgname/usersearch/:username/', organizationController.usersearch );
-
+app.get('/organizations/:orgname/billing_managersearch/:username/', organizationController.billing_managersearch );
+app.get('/organizations/:orgname/kickbilling/:username/',  organizationController.kickbilling);
 
 //Ajax
 app.get('/orguserread', organizationController.orguserread); // Get the active user organizations , owner and member.
-
+app.get('/organizations/:orgname/add_manager/:username/', organizationController.add_manager ); // ajax call to add a billing manager to the organization.
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

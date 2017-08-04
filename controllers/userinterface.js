@@ -201,7 +201,7 @@ exports.page = function(req, res) {
       case(template=='billing'):
 
       res.render('settings/'+template,{
-        pagetitle: template+' | '+sitename+'',
+        pagetitle: 'Billing | '+sitename+'',
       })
 
       break;      default:

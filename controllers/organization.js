@@ -392,7 +392,6 @@ exports.leaveorganiztion = function(req, res) {
 //////////  ORGANIZATION KICK  ////////////
 //////////////////////////////////////////
 exports.kickorg = function(req, res) {
-  console.log('entering')
   if (req.user) {
     organizationalModel.findOne( {"entry.name" : req.params.orgname}, function(err, organization) {
       var temp = JSON.parse(JSON.stringify(organization.entry))
@@ -419,6 +418,35 @@ exports.kickorg = function(req, res) {
   }
 };
 
+////////////////////////////////////////////////////////////
+//////////  ORGANIZATION KICK BILLING MANAGER  ////////////
+//////////////////////////////////////////////////////////
+exports.kickbilling = function(req, res) {
+  if (req.user) {
+    organizationalModel.findOne( {"entry.name" : req.params.orgname}, function(err, organization) {
+      var temp = JSON.parse(JSON.stringify(organization.entry))
+      if (temp.owner == req.user.username) {
+        var tempArry =[]  
+        for (var i = 0; i < temp.billing_managers.length; i++) {
+          if (temp.billing_managers[i] == req.params.username) {
+          } else {
+            tempArry.push(temp.billing_managers[i])
+          }
+        }
+        temp.billing_managers = tempArry
+        organization.entry = temp    
+        organization.save(function(err) {
+          req.flash('success', { msg: req.params.username+' was successfully removed from '+organization.entry.name+' as a billing manager.' });
+          res.redirect('/organizations/'+organization.entry.name+'/settings/billing' );
+        });
+      } else {
+        return res.redirect('/');
+      }
+    });
+  } else {
+    return res.redirect('/');
+  }
+};
 
 ////////////////////////////////////////////
 //////////  ORGANIZATION DELETE  ////////////
@@ -490,7 +518,35 @@ query1_return.save(function(err) {
   }
 };
 
-
+////////////////////////////////////////////
+//////////  ADD BILLING MANAGER ///////////
+//////////////////////////////////////////
+exports.add_manager = function(req, res) {
+  console.log('is this working')
+  if (req.user) {
+    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) {
+      var temp = JSON.parse(JSON.stringify(organization.entry))
+      var count = 0
+      if (temp['billing_managers']) {
+        for (var i = temp['billing_managers'].length - 1; i >= 0; i--) {
+          if(temp['billing_managers'][i] == req.params.username) {
+              return res.send({ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> This user is already a billing manager for this organization.</div>' });
+          } 
+        }
+        temp['billing_managers'].push(req.params.username)
+      } else {
+        temp.billing_managers = []
+        temp.billing_managers.push(req.params.username)
+      }
+      organization.entry = temp
+      organization.save(function(err,doc) {
+        return res.send({ msg: '<div class="alert alert-success" role="alert"> <strong>Completed!</strong> '+req.params.username+' has been added as a billing manager to this organization. </div>' });
+      });
+    });
+  } else {
+   res.redirect('/signin');
+ }
+};
 
 //////////////////////////////////////////
 //////////  BILLING MANAGERS ////////////
@@ -726,6 +782,37 @@ exports.usersearch = function(req, res) {
         $regex : myExp,
         $ne: req.user.username ,
         $nin: organization.entry.members ,
+      }
+    }
+    ).limit(10)
+     query1.exec(function (err, query1_return) {
+      if(err){
+        res.send("No user found");
+        return;} 
+        res.send(
+          { users : query1_return}
+          );
+      });
+   })
+ } else {
+   res.redirect('/');
+ }
+};
+
+////////////////////////////////////////////////
+//////////  BILLING MANAGER SEARCH ////////////
+//////////////////////////////////////////////
+exports.billing_managersearch = function(req, res) {
+  if (req.user) {
+   req.sanitize('username').escape();
+   req.sanitize('username').trim();
+   var myExp = new RegExp(req.param('username'), 'i');
+   organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, organization) { 
+     var query1 = User.find(
+      {"username" : {
+        $regex : myExp,
+        $ne: req.user.username ,
+        $nin: organization.entry.billing_managers ,
       }
     }
     ).limit(10)

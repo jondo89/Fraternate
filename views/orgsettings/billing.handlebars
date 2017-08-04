@@ -45,33 +45,22 @@
     <h2>Billing</h2>
     <hr>
     <h5>Plan</h5>
-
-<div class="row">
-<div class="col-md-10 col-md-offset-1">
-<div class="well">
-<strong>Free </strong>plan, unlimited public repositories</strong>
-<div class="row">
-  <div class="col-md-7">
-          Get unlimited private repositories for teams
-Starting at $25 / month which includes your first 5 users, $9 / month for each additional user
-  
-  </div>
-  <div class="col-md-5" style="text-align: right;">
-      <p><a class="btn btn-success" href="/organizations/{{organization.entry.name}}/settings/billing/per_seat">Upgrade</a></p>
-  </div>
-</div>
- 
-
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="well">
+          <strong>Free </strong>plan, unlimited public repositories</strong>
+          <div class="row">
+            <div class="col-md-7">
+              Get unlimited private repositories for teams
+              Starting at $25 / month which includes your first 5 users, $9 / month for each additional user
+            </div>
+            <div class="col-md-5" style="text-align: right;">
+              <p><a class="btn btn-success" href="/organizations/{{organization.entry.name}}/settings/billing/per_seat">Upgrade</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-</div>
-</div>
-
-
-
-
-
-    
     <hr>
     <h5>Payment</h5>
     <div class="well">
@@ -80,10 +69,53 @@ Starting at $25 / month which includes your first 5 users, $9 / month for each a
     <p><a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Add payment method</a></p>
     <hr>
     <h5>Billing Manager</h5>
-    <div class="well">
+
+ 
+{{#if organization.entry.billing_managers}}
+<table class="table table-bordered" id="organizationOwner">
+ 
+  <tbody>
+   {{#each organization.entry.billing_managers}}
+  <tr>
+   <td> 
+    <div class="media">
+ 
+      <div class="media-body">
+        <div class="row">
+          <div class="col-md-3">
+           <a href="/users/{{this}}">{{this}}</a>
+       
+         </div>
+         <div class="col-md-6">
+       
+        </div>
+        <div class="col-md-3" style="text-align:right" >
+          <a class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal" id="{{this}}" onclick="kickMember(this.id)"><i class="fa fa-times" aria-hidden="true" ></i> Kick</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</td>
+</tr>
+{{/each}}
+ </tbody>
+</table>
+{{else}}
+  <div class="well">
       You have not invited any billing managers. 
     </div>      
-     <p><a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/billing_managers/new"><i class="fa fa-user" aria-hidden="true"></i> Add a billing manager</a></p>
+
+
+
+  {{/if}}
+
+
+
+
+
+
+  
+    <p><a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/billing_managers/new"><i class="fa fa-user" aria-hidden="true"></i> Add a billing manager</a></p>
     <small>Receipts are sent to the billing managers for this organization, and <a href="" data-toggle="modal" data-target=".bs-example-modal-sm"> {{organization.entry.email}}  <i class="fa fa-pencil" aria-hidden="true"></i></a></small>
     <hr>
     <h5>Payment history</h5>
@@ -94,34 +126,27 @@ Starting at $25 / month which includes your first 5 users, $9 / month for each a
   </div> 
 </div>
 </div>
+
+
+
 <!-- Modal -->
-<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit billing email</h4>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="/organizations/{{organization.entry.name}}/?_method=PUT" class="form-horizontal">
-         <div class="form-group">
-          <label for="email" class="col-sm-12">Billing email (Private)</label>
-          <div class="col-sm-12">
-            <input type="email" name="email" id="email" class="form-control" value="{{organization.entry.email}}">
-          </div>
-        </div> 
-        <div class="form-group">
-          <div class="col-sm-4">
-            <button type="submit" onclick="updates()" class="btn btn-success">Update</button>
-          </div>
-        </div>
-      </div>
-    </form>
+    <div class="modal-content"  id="modalTextArea">
+    </div>
   </div>
-</div>
-</div>
 </div>
 
 <script type="text/javascript">
+
+
+/////////////////////////////////////
+////        KICK MEMBER         //// 
+///////////////////////////////////
+function kickMember(ids){
+  var html = '<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> <h4 class="modal-title" id="myModalLabel"><i class="fa fa-sign-out" aria-hidden="true"></i> Kick this user.</h4> </div> <div class="modal-body"> <p>Are you sure you wish to kick <strong>'+ids+'</strong> from {{organization.entry.displayname}}?</p> <div style="text-align: center"> <div id="modelHtml"></div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>'
+  $('#modalTextArea').html(html)
+  $('#modelHtml').html('<a href="/organizations/{{organization.entry.name}}/kickbilling/'+ids+'" class="btn btn-warning">Kick '+ids+'</a>')
+}
 
 </script>
