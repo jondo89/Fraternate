@@ -194,8 +194,17 @@ app.get('/users/:username/settings/',userInterfaceController.settings);
 app.get('/users/:username/settings/:page',   organizationController.userorganizations, userInterfaceController.page);
 app.get('/users/:username/settings/billing/upgrade', userInterfaceController.upgrade);
 app.get('/users/:username/settings/billing/payment', userInterfaceController.payment);
-app.get('/users/:username/vault', userInterfaceController.vault);
+
+
+
+///////////////////////////////////////////
+////        BRAINTREE - USERS         //// 
+///////////////////////////////////////////
+app.post('/users/:username/vault', userInterfaceController.vault);
+app.post('/users/:username/vaultupdate', userInterfaceController.vaultupdate);
 app.get('/users/deletepaymentdetails/:ids',  userInterfaceController.deletepaymentdetails);
+ 
+
 
 /////////////////////////////////////
 ////       ORGANIZATION         //// 

@@ -6,36 +6,24 @@
 		<h2>Billing</h2>
 		<hr>
 		<h5>Plan</h5>
-		
 		<div class="well">
-		<strong>Free plan</strong>, unlimited public repositories</strong>
-		
+			<strong>Free plan</strong>, unlimited public repositories</strong>
 			{{user.plan}}
 		</div>
-		
 		<p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
 		<hr>
 		<h5>Payment</h5>
-
-
-{{#if braintree_customer}}
- 			
-		<p><a class="btn btn-default" href="/users/{{user.username}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Edit payment method</a></p>
-
-
-{{else}}
+		{{#if braintree_customer}}
+		<div class="btn-group" role="group" aria-label="...">
+			<a class="btn btn-default" href="/users/{{user.username}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Edit payment method</a>
+			<a type="button" class="btn btn-danger"    onclick="deleteBraintreeClient(this.id)" id="{{user._id}}"  data-toggle="modal" data-target="#myModal"><i class="fa fa-trash" aria-hidden="true"></i> Delete payment method</a>
+		</div> 
+		{{else}}
 		<div class="well">
 			<i class="fa fa-credit-card" aria-hidden="true"></i> No payment method on file.
 		</div>			
 		<p><a class="btn btn-default" href="/users/{{user.username}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Add payment method</a></p>
-
-
-{{/if}}
- 
-
-
-
-
+		{{/if}}
 		<hr>
 		<h5>Payment history</h5>
 		<div class="well">
@@ -44,5 +32,22 @@
 		<small>Amounts shown in USD</small>
 	</div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content"  id="modalTextArea">
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
+/////////////////////////////////////
+////        KICK MEMBER         //// 
+///////////////////////////////////
+function deleteBraintreeClient(ids){
+	var html = '<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> <h4 class="modal-title" id="myModalLabel"><i class="fa fa-trash" aria-hidden="true"></i> Delete payment details.</h4> </div> <div class="modal-body"> <p>Are you sure you wish to delete these payment details from your account?</p> <div style="text-align: center"> <div id="modelHtml"></div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>'
+	$('#modalTextArea').html(html)
+	$('#modelHtml').html('<a href="/users/deletepaymentdetails/'+ids+'" class="btn btn-danger">Delete these payment details.</a>')
+}
 </script>

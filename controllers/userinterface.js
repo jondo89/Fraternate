@@ -107,13 +107,46 @@ exports.specifications = function(req, res) {
 exports.upgrade = function(req, res) {
     //Perform Routing for Varios user type on the home page.
     if (req.user) {
+
+
+ 
+
       //Create client token for Braintree payments.
-      gateway.clientToken.generate({}, function (err, response) {
-        res.render('settings/upgrade',{
-          pagetitle: 'Upgrade | '+sitename+'',
-          clientToken : response.clientToken
-        })
-      });
+      if (req.user.braintreeid) {
+        gateway.customer.find(req.user.braintreeid, function(err, customer) {
+          if (customer) {
+           gateway.clientToken.generate({
+            customerId: customer.id
+          }, function (err, response) {
+            res.render('settings/upgrade',{
+              pagetitle: 'Upgrade | '+sitename+'',
+              braintree_customer : JSON.stringify(customer),
+              clientToken : response.clientToken
+            })
+          });
+
+         }else{
+           gateway.clientToken.generate({}, function (err, response) {
+            res.render('settings/upgrade',{
+              pagetitle: 'Upgrade | '+sitename+'',
+              braintree_customer : JSON.stringify(customer),
+              clientToken : response.clientToken
+            })
+          });
+         }
+
+         
+       });
+      } else {
+        gateway.clientToken.generate({}, function (err, response) {
+          res.render('settings/upgrade',{
+            pagetitle: 'Upgrade | '+sitename+'',
+            clientToken : response.clientToken
+          })
+        });
+      }
+
+
     } else {
       res.redirect('/signin');
     }
@@ -123,20 +156,34 @@ exports.upgrade = function(req, res) {
 /////  PAYMENTS      ///// 
 /////////////////////////
 exports.payment = function(req, res) {
-    //Perform Routing for Varios user type on the home page.
+    //Perform Routing for Various user type on the home page.
     if (req.user) {
       //Create client token for Braintree payments.
       if (req.user.braintreeid) {
         gateway.customer.find(req.user.braintreeid, function(err, customer) {
-
-          gateway.clientToken.generate({}, function (err, response) {
+          if (customer) {
+           gateway.clientToken.generate({
+            customerId: customer.id
+          }, function (err, response) {
             res.render('settings/payment',{
               pagetitle: 'Payment | '+sitename+'',
               braintree_customer : JSON.stringify(customer),
               clientToken : response.clientToken
             })
           });
-        });
+
+         }else{
+           gateway.clientToken.generate({}, function (err, response) {
+            res.render('settings/payment',{
+              pagetitle: 'Payment | '+sitename+'',
+              braintree_customer : JSON.stringify(customer),
+              clientToken : response.clientToken
+            })
+          });
+         }
+
+         
+       });
       } else {
         gateway.clientToken.generate({}, function (err, response) {
           res.render('settings/payment',{
@@ -154,31 +201,170 @@ exports.payment = function(req, res) {
 /////  VAULT      ///// 
 //////////////////////
 exports.vault = function(req, res) {
+  console.log('VAlutr')
     //Perform Routing for Varios user type on the home page.
     if (req.user) {
-
-      gateway.customer.create({
-        firstName: "Jen",
-        lastName: "Smith",
-        company: "Braintree",
-        email: "jen@example.com",
-        phone: "312.555.1234",
-        fax: "614.555.5678",
-        website: "www.example.com",
- // id : req.user._id
+      var errors = req.validationErrors();
+      if (errors) {
+        req.flash('error', errors);
+        return res.redirect(  '/users/'+req.user.username+'/settings/billing/payment'  );
+      }
+      User.findById(req.user.id, function(err, user) {
+        user.email = req.body.email;
+        user.name = req.body.name;
+        user.phone = req.body.phone;
+        user.fax = req.body.fax;
+        if (user.location ==-1) {
+          user.location = ''
+        } else {
+          user.location = req.body.location;
+        }
+        user.website = req.body.website;
+        user.save(function(err) {
+          if (err && err.code === 11000) {
+            req.flash('error', { msg: 'The email address you have entered is already associated with another account.' });
+          }  
+          console.log
+          gateway.customer.create({
+            firstName: user.name,
+            email: user.email,
+            phone: user.phone,
+            fax: user.fax ,
+            website: user.website,
+            creditCard: {
+              paymentMethodNonce: req.body.payload,
+    //options: { updateExistingToken: "theToken" }
+  }
 }, function (err, result) {
   if(err){
     console.log('Error Here query1',err); return;
-    return res.send({ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> payment method error has occured <pre>'+err+'</pre> Please send use this warning.</div>' });
+    req.flash('error',{ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> payment method error has occured <pre>'+err+'</pre> Please send us this warning.</div>' });
+    return res.send()
   }
-  User.findById(req.user.id, function(err, user) {
-    user.braintreeid = result.customer.id
-    user.save(function(err) {
-      console.log(result)
-      return res.send({ msg: '<div class="alert alert-success" role="alert"> <strong>Completed!</strong> payment method has been added to the braintree payment vault for user : <strong>'+req.params.username+' '+result.customer.id+'</strong></div>' });
+  var errors = result.errors;
+  if (errors) {
+    var customerErrors = errors.for("customer").deepErrors();
+    for (var i in customerErrors) {
+      if (customerErrors.hasOwnProperty(i)) {
+        console.log(customerErrors[i].code);
+        console.log(customerErrors[i].message);
+        console.log(customerErrors[i].attribute);
+      }
+    }
+    req.flash('error',{ msg: 'Heads up, There is a validation error with your details.' });
+    return res.send()
+  } else {
+   if (errors) {
+    var creditCardErrors = errors.for("customer").for("creditCard").deepErrors();
+    for (var i in creditCardErrors) {
+      if (creditCardErrors.hasOwnProperty(i)) {
+        console.log(creditCardErrors[i].code);
+        console.log(creditCardErrors[i].message);
+        console.log(creditCardErrors[i].attribute);
+      }
+    }
+    req.flash('error',{ msg: 'Heads up, There is a error with your credit card validation.' });
+    return res.send()
+  } else {
+    User.findById(req.user.id, function(err, user) {
+      user.braintreeid = result.customer.id
+      user.save(function(err) {
+        console.log(result)
+        req.flash('success',{ msg: 'Your payment details have been updated.' });
+        return res.send()
+      });
     });
-  });
+  }
+}
 });
+        });
+      });
+    } else {
+      res.redirect('/signin');
+    }
+  };
+
+//////////////////////////////
+/////  VAULT UPDATE     ///// 
+////////////////////////////
+exports.vaultupdate = function(req, res) {
+  console.log('VAlutsssssssssssssssr')
+    //Perform Routing for Varios user type on the home page.
+    if (req.user) {
+      var errors = req.validationErrors();
+      if (errors) {
+        req.flash('error', errors);
+        return res.redirect(  '/users/'+req.user.username+'/settings/billing/payment'  );
+      }
+      User.findById(req.user.id, function(err, user) {
+        user.email = req.body.email;
+        user.name = req.body.name;
+        user.phone = req.body.phone;
+        user.fax = req.body.fax;
+        if (user.location =='-1') {
+          user.location = ''
+        } else {
+          user.location = req.body.location;
+        }
+        user.website = req.body.website;
+        user.save(function(err) {
+          if (err && err.code === 11000) {
+            req.flash('error', { msg: 'The email address you have entered is already associated with another account.' });
+          }  
+          gateway.customer.update(user.braintreeid,{
+            firstName: user.name,
+            email: user.email,
+            phone: user.phone,
+            fax: user.fax ,
+            website: user.website,
+            creditCard: {
+              paymentMethodNonce: req.body.payload,
+              //options: { updateExistingToken: "theToken" }
+            }
+          }, function (err, result) {
+            if(err){
+              console.log('Error Here query1',err); return;
+              req.flash('error',{ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> payment method error has occured <pre>'+err+'</pre> Please send us this warning.</div>' });
+              return res.send()
+            }
+            var errors = result.errors;
+            if (errors.customer) {
+              var customerErrors = errors.for("customer").deepErrors();
+              for (var i in customerErrors) {
+                if (customerErrors.hasOwnProperty(i)) {
+                  console.log(customerErrors[i].code);
+                  console.log(customerErrors[i].message);
+                  console.log(customerErrors[i].attribute);
+                }
+              }
+              req.flash('error',{ msg: 'Heads up, There is a validation error with your details.' });
+              return res.send()
+            } else {
+             if (errors.customer) {
+              var creditCardErrors = errors.for("customer").for("creditCard").deepErrors();
+              for (var i in creditCardErrors) {
+                if (creditCardErrors.hasOwnProperty(i)) {
+                  console.log(creditCardErrors[i].code);
+                  console.log(creditCardErrors[i].message);
+                  console.log(creditCardErrors[i].attribute);
+                }
+              }
+              req.flash('error',{ msg: 'Heads up, There is a error with your credit card validation.' });
+              return res.send()
+            } else {
+              User.findById(req.user.id, function(err, user) {
+
+                user.save(function(err) {
+                  console.log(result)
+                  req.flash('success',{ msg: 'Your payment details have been updated.' });
+                  return res.send()
+                });
+              });
+            }
+          }
+        });
+        });
+      });
     } else {
       res.redirect('/signin');
     }
@@ -190,28 +376,28 @@ exports.vault = function(req, res) {
 exports.deletepaymentdetails = function(req, res) {
     //Perform Routing for Varios user type on the home page.
     if (req.user) {
-  User.findById(req.params.ids, function(err, user) {
-    console.log(user.braintreeid)
+      User.findById(req.params.ids, function(err, user) {
+        console.log(user.braintreeid)
         gateway.customer.delete(user.braintreeid, function(err) {
-      if(err){
-         req.flash('error', { msg: 'Something went wrong here with braintreeid '+err+' .' });
-         res.redirect('/users/'+user.username+'/settings/billing/payment');
-        return;
-      }
+          if(err){
+           req.flash('error', { msg: 'Something went wrong here with braintreeid '+err+' .' });
+           res.redirect('/users/'+user.username+'/settings/billing/payment');
+           return;
+         }
 
-    delete user.braintreeid
-    user.save(function(err) {
-      if(err){
-         req.flash('error', { msg: 'Something went wrong here '+err+' .' });
+         delete user.braintreeid
+         user.save(function(err) {
+          if(err){
+           req.flash('error', { msg: 'Something went wrong here '+err+' .' });
+           res.redirect('/users/'+user.username+'/settings/billing/payment');
+           return;
+         }
+         req.flash('success', { msg: 'Payment details for '+user.username+' have be deleted from Braintree Vault.' });
          res.redirect('/users/'+user.username+'/settings/billing/payment');
-        return;
-      }
-      req.flash('success', { msg: 'Payment details for '+user.username+' have be deleted from Braintree Vault.' });
-      res.redirect('/users/'+user.username+'/settings/billing/payment');
-       return;
-    });
-        });
-  });
+         return;
+       });
+       });
+      });
 
     } else {
       res.redirect('/signin');
