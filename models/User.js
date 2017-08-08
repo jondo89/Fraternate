@@ -23,10 +23,13 @@ var userSchema = new mongoose.Schema({
   email: { type: String, unique: true},
   password: String,
   bio: String,
-  plan: String,
+  plan: {
+          name: String,//THe plan type saved on braintree
+          braintreeid: String, //The plan ID saved on braintree
+        },
   phone: String,
   fax: String,
-  braintreeid:String,
+  braintreeid:String,//Used to query the braintree customer payment details.
   username: String,
   passwordResetToken: String,
   permission: String,

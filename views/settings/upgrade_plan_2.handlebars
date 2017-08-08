@@ -30,7 +30,7 @@
 	</strong>
 	<hr>
 	<h5>New plan price</h5>
-	<h1 id="pricing">$7 / month</h1>
+	<h1 id="pricing">$84 / month</h1>
 </div>
 <div class="col-md-9">
       {{#if messages.success}}
@@ -47,26 +47,14 @@
         {{/each}}
       </div>
       {{/if}}
-
-
-
-
-
-
-
-{{#if user.plan.name}}
-		<a class="btn btn-default" href="/users/{{user.username}}/cancel_subscription">Cancel Subscription</a>
-	
-{{else}}
-
 	<h3>Plan Duration</h3>
 	<hr>
 	<div class="btn-group"  >
-		<a href="/users/{{user.username}}/settings/billing/upgrade" class="btn btn-default btn-lg active">
-			<input type="radio" name="options" id="option1" autocomplete="off" style="position: relative;" checked> <strong>$7 / month </strong>
+		<a href="/users/{{user.username}}/settings/billing/upgrade" class="btn btn-default btn-lg ">
+			<input type="radio" name="options" id="option1" autocomplete="off" style="position: relative;" > <strong>$7 / month </strong>
 		</a>
-		<a href="/users/{{user.username}}/settings/billing/upgrade_plan_2" class="btn btn-default btn-lg " >
-			<input href="" type="radio" name="options" id="option2"  autocomplete="off" style="position: relative;"  >  <strong>$84 / year </strong></a>
+		<a href="/users/{{user.username}}/settings/billing/upgrade_plan_2" class="btn btn-default btn-lg active" >
+			<input href="" type="radio" name="options" id="option2"  autocomplete="off" style="position: relative;"  checked>  <strong>$84 / year </strong></a>
 		</a>
 	</div>
 	<form id="theForm" class="form-horizontal" >
@@ -76,7 +64,7 @@
 			<div class="panel panel-default" style="margin-bottom: 1px;border-color: #5cb85c; "  >
 				<div class="panel-body" >
 					Charge today
-					<h1 id="pricingNow">$7.00</h1>
+					<h1 id="pricingNow">$84.00</h1>
 				</div>
 				<div class="panel-footer">Your next charge will be on <span id="dates"></span>.</div>
 			</div>
@@ -89,15 +77,6 @@
 		<a type="button" class="btn btn-default">Cancel</a>
 	</div>
 </form>
-	{{/if}}	
-
-
-
-
-
-
-
-
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -109,6 +88,7 @@
 	text =text.replace("sz&#x3D;50", "sz&#x3D;200");
 	$('#googlepic').html('<img src="'+text+'" style="max-width: 50%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;" class="media-object">')
 	var checkout;
+
 
 //////////////////////////////////////////
 ////        BRAINTREE INSTANCE       //// 
@@ -136,12 +116,13 @@
 			});
 		});
 	}) 
- 
+
 //////////////////////////////////////////////////////
 ////        AJAX SUBMIT THE FORM - CREATE        //// 
 ////////////////////////////////////////////////////
 function formPost(payload){
 	var moredata = payload.nonce;
+	console.log(payload)
 	$input = $('<input type="text" name="payload" style="display:none"/>').val(moredata);
 	$('#theForm').append($input);
 	var datastring = $('#theForm').serialize()
@@ -170,7 +151,7 @@ $(document).ready( function() {
 ///// HANDLING THE DATES //////
 //////////////////////////////
 function months(){
-	var datevalue = moment().add(1, 'M').format('YYYY-MM-DD');
+	var datevalue = moment().add(1, 'Y').format('YYYY-MM-DD');
 	$('#dates').html(datevalue)
 }
 </script>

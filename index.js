@@ -23,6 +23,7 @@ var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
 var userInterfaceController = require('./controllers/userinterface');
 var organizationController = require('./controllers/organization');
+var braintreeController = require('./controllers/braintree');
 
 // Passport OAuth strategies
 require('./config/passport');
@@ -192,19 +193,7 @@ app.get('/users/', userInterfaceController.users);
 app.get('/users/:username/',   organizationController.userorganizations,  userInterfaceController.profile);
 app.get('/users/:username/settings/',userInterfaceController.settings);
 app.get('/users/:username/settings/:page',   organizationController.userorganizations, userInterfaceController.page);
-app.get('/users/:username/settings/billing/upgrade', userInterfaceController.upgrade);
 app.get('/users/:username/settings/billing/payment', userInterfaceController.payment);
-
-
-
-///////////////////////////////////////////
-////        BRAINTREE - USERS         //// 
-///////////////////////////////////////////
-app.post('/users/:username/vault', userInterfaceController.vault);
-app.post('/users/:username/vaultupdate', userInterfaceController.vaultupdate);
-app.get('/users/deletepaymentdetails/:ids',  userInterfaceController.deletepaymentdetails);
- 
-
 
 /////////////////////////////////////
 ////       ORGANIZATION         //// 
@@ -223,10 +212,6 @@ app.get('/organizations/:orgname/settings/billing/billing_managers/new', organiz
 app.get('/organizations/:orgname/settings/billing/per_seat', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.per_seat);
 app.get('/organizations/:orgname/settings/billing/payment', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.payment);
 
-
- 
- 
-
 app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);
 app.get('/leaveorganiztion/:ids',  organizationController.leaveorganiztion);
 app.get('/deleteorganiztion/:ids',  organizationController.deleteorganiztion);
@@ -239,10 +224,32 @@ app.get('/organizations/:orgname/usersearch/:username/', organizationController.
 app.get('/organizations/:orgname/billing_managersearch/:username/', organizationController.billing_managersearch );
 app.get('/organizations/:orgname/kickbilling/:username/',  organizationController.kickbilling);
 
-
 //Ajax
 app.get('/orguserread', organizationController.orguserread); // Get the active user organizations , owner and member.
 app.get('/organizations/:orgname/add_manager/:username/', organizationController.add_manager ); // ajax call to add a billing manager to the organization.
+
+
+///////////////////////////////////////////
+////        BRAINTREE - USERS         //// 
+/////////////////////////////////////////
+app.get('/users/:username/settings/billing/upgrade', braintreeController.upgrade);
+app.get('/users/:username/settings/billing/upgrade_plan_2', braintreeController.upgrade_plan_2);
+app.post('/users/:username/subscription', braintreeController.subscription);
+app.post('/users/:username/subscription_plan_2', braintreeController.subscription_plan_2);
+app.get('/users/:username/cancel_subscription', braintreeController.cancel_subscription);
+app.get('/users/:username/transaction_histroy', braintreeController.transaction_histroy);
+
+
+
+
+///////////////////////////////////////////////////
+////        BRAINTREE - ORGANIZATIONS         //// 
+/////////////////////////////////////////////////
+
+///////////////////     MIGRATE TO NEW CONTROLLER JS FILE     ///////////////////
+app.post('/users/:username/vault', userInterfaceController.vault);
+app.post('/users/:username/vaultupdate', userInterfaceController.vaultupdate);
+app.get('/users/deletepaymentdetails/:ids',  userInterfaceController.deletepaymentdetails);
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -6,11 +6,20 @@
 		<h2>Billing</h2>
 		<hr>
 		<h5>Plan</h5>
-		<div class="well">
+
+			 
+{{#if user.plan.name}}
+		<a class="btn btn-danger" href="/users/{{user.username}}/cancel_subscription"><i class="fa fa-ban" aria-hidden="true"></i> Cancel Subscription</a>
+	
+{{else}}
+	<div class="well">
 			<strong>Free plan</strong>, unlimited public repositories</strong>
-			{{user.plan}}
-		</div>
-		<p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
+</div>
+<p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
+	{{/if}}		
+
+		
+		
 		<hr>
 		<h5>Payment</h5>
 		{{#if braintree_customer}}
@@ -50,4 +59,32 @@ function deleteBraintreeClient(ids){
 	$('#modalTextArea').html(html)
 	$('#modelHtml').html('<a href="/users/deletepaymentdetails/'+ids+'" class="btn btn-danger">Delete these payment details.</a>')
 }
+
+	var user = JSON.stringify('{{user.username}}')
+//////////////////////////////////////////////////////
+////        AJAX SUBMIT THE FORM - CREATE        //// 
+////////////////////////////////////////////////////
+function streamTransactions(){
+	$.ajax({
+		url: '/users/'+user+'/transaction_histroy',
+		params:{},
+		responseType: 'arraybuffer',
+		success: function(data) {
+			 	console.log(data)
+		},
+		error : function(err){
+			 console.log(err)
+		}
+	}); 
+}
+
+////////////////////////
+///// INITIALIZE //////
+//////////////////////
+$(document).ready( function() {
+	streamTransactions()
+});
+
+
+
 </script>

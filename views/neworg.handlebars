@@ -309,25 +309,9 @@ braintree.dropin.create({
   onReady: function (integration) {
     checkout = integration;
   },
-  paypal: {
-    container: 'paypal-container',
-    singleUse: true, // Required
-    amount: 10.00, // Required
-    currency: 'USD', // Required
-    locale: 'en_US',
-    enableShippingAddress: true,
-    shippingAddressOverride: {
-      recipientName: 'Scruff McGruff',
-      streetAddress: '1234 Main St.',
-      extendedAddress: 'Unit 1',
-      locality: 'Chicago',
-      countryCodeAlpha2: 'US',
-      postalCode: '60652',
-      region: 'IL',
-      phone: '123.456.7890',
-      editable: false
-    }
-  },
+   paypal: {
+        flow: 'vault'
+      },
   onPaymentMethodReceived: function (obj) {
     doSomethingWithTheNonce(obj.nonce);
   }
