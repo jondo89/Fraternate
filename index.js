@@ -232,12 +232,17 @@ app.get('/organizations/:orgname/add_manager/:username/', organizationController
 ///////////////////////////////////////////
 ////        BRAINTREE - USERS         //// 
 /////////////////////////////////////////
+app.get('/braintree', braintreeController.braintree);
+app.get('/transaction_history_all', braintreeController.transaction_history_all);
+app.get('/subscription_history_all', braintreeController.subscription_history_all);
+app.get('/transaction_history_all', braintreeController.transaction_history_all);
 app.get('/users/:username/settings/billing/upgrade', braintreeController.upgrade);
 app.get('/users/:username/settings/billing/upgrade_plan_2', braintreeController.upgrade_plan_2);
 app.post('/users/:username/subscription', braintreeController.subscription);
 app.post('/users/:username/subscription_plan_2', braintreeController.subscription_plan_2);
 app.get('/users/:username/cancel_subscription', braintreeController.cancel_subscription);
 app.get('/users/:username/transaction_history', braintreeController.transaction_history);
+app.get('/users/:username/subscription_history', braintreeController.subscription_history);
 
 
 

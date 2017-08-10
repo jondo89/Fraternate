@@ -151,10 +151,12 @@ function formPost(payload){
 		data: datastring,
 		dataType: "json",
 		success: function(data) {
-			location.reload()	
+			console.log('WOrking')
+			 window.location = '/users/'+username+'/settings/billing';	
 		},
 		error : function(err){
-			location.reload()
+			console.log('Not working')
+			window.location = '/users/'+username+'/settings/billing';	
 		}
 	}); 
 }

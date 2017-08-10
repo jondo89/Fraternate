@@ -20,6 +20,66 @@ var sitename = myModule.sitename
 var website = myModule.website
 var repo = myModule.repo
 
+////////////////////////////////////////////////////
+//////////  BRAINTREE TRANSACTION LIST ////////////
+//////////////////////////////////////////////////
+exports.braintree = function(req, res) {
+  res.render('braintree', {
+    pagetitle: 'Braintree | '+sitename+'',
+  });
+};
+
+//////////////////////////////////////////////////
+/////  STREAM IN TRANSACTION HISTROY ALL    ///// 
+////////////////////////////////////////////////
+exports.transaction_history_all = function(req, res) {
+  var stream = require("stream");
+  var customerStream = gateway.transaction.search(function (search) {
+        //  search.customerId().is(req.user.braintreeid)
+      });
+  res.write("[");
+  var first = true;       
+  customerStream.on("data", function (customer) {
+    if (first) {
+      first = false;
+      var temp =  JSON.stringify(customer);
+    } else {
+      var temp =  "," + JSON.stringify(customer);
+    }
+    res.write(temp);
+  });
+  customerStream.on("end", function () {
+    res.write("]");
+    res.end();
+  });
+};
+
+///////////////////////////////////////////////////
+/////  STREAM IN SUBSCRIPTION HISTROY ALL    ///// 
+/////////////////////////////////////////////////
+exports.subscription_history_all = function(req, res) {
+  var stream = require("stream");
+  var customer_stream = gateway.customer.search(function (search) {
+        //    search.id().is(req.user.braintreeid)
+      });
+  res.write("[");
+  var first = true;       
+  customer_stream.on("data", function (customer) {
+    if (first) {
+      first = false;
+      var temp =  JSON.stringify(customer);
+    } else {
+      var temp =  "," + JSON.stringify(customer);
+    }
+    res.write(temp);
+  });
+  customer_stream.on("end", function () {
+    res.write("]");
+    res.end();
+  });
+};
+
+
 //////////////////////////
 /////  UPGRADE      ///// 
 ////////////////////////
@@ -220,7 +280,7 @@ exports.cancel_subscription = function(req, res) {
 
 ///////////////////////////////////////////////
 /////  STREAM IN TRANSACTION HISTROY     ///// 
-///////////////////////////////////////////////
+/////////////////////////////////////////////
 exports.transaction_history = function(req, res) {
   if (req.user) {
       //where req.user.braintree id is the id saved on the local mongodb server.
@@ -249,3 +309,38 @@ exports.transaction_history = function(req, res) {
       res.redirect('/signin');
     }
   };
+
+
+////////////////////////////////////////////////
+/////  STREAM IN SUBSCRIPTION HISTROY     ///// 
+//////////////////////////////////////////////
+exports.subscription_history = function(req, res) {
+  if (req.user) {
+      //where req.user.braintree id is the id saved on the local mongodb server.
+      if (req.user.braintreeid) {
+        var stream = require("stream");
+        var customer_stream = gateway.customer.search(function (search) {
+          search.id().is(req.user.braintreeid)
+        });
+        res.write("[");
+        var first = true;       
+        customer_stream.on("data", function (customer) {
+          if (first) {
+            first = false;
+            var temp =  JSON.stringify(customer);
+          } else {
+            var temp =  "," + JSON.stringify(customer);
+          }
+          res.write(temp);
+        });
+        customer_stream.on("end", function () {
+          res.write("]");
+          res.end();
+        });
+      }
+    } else {
+      res.redirect('/signin');
+    }
+  };
+
+
