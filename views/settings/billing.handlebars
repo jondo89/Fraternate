@@ -7,19 +7,16 @@
 		<hr>
 		<h5>Plan</h5>
 
-			 
-{{#if user.plan.name}}
-		<a class="btn btn-danger" href="/users/{{user.username}}/cancel_subscription"><i class="fa fa-ban" aria-hidden="true"></i> Cancel Subscription</a>
-	
-{{else}}
-	<div class="well">
-			<strong>Free plan</strong>, unlimited public repositories</strong>
-</div>
-<p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
-	{{/if}}		
 
-		
-		
+		{{#if user.plan.name}}
+		<a class="btn btn-danger" href="/users/{{user.username}}/cancel_subscription"><i class="fa fa-ban" aria-hidden="true"></i> Cancel Subscription</a>
+
+		{{else}}
+		<div class="well">
+			<strong>Free plan</strong>, unlimited public repositories</strong>
+		</div>
+		<p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
+		{{/if}}		
 		<hr>
 		<h5>Payment</h5>
 		{{#if braintree_customer}}
@@ -35,9 +32,11 @@
 		{{/if}}
 		<hr>
 		<h5>Payment history</h5>
-		<div class="well">
-			You have not made any payments.	
-		</div>			
+		<div id="transaction_history">
+			<div class="well">
+				You have not made any payments.	
+			</div>			
+		</div>
 		<small>Amounts shown in USD</small>
 	</div>
 </div>
@@ -50,6 +49,9 @@
 	</div>
 </div>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
 <script type="text/javascript">
 /////////////////////////////////////
 ////        KICK MEMBER         //// 
@@ -60,22 +62,44 @@ function deleteBraintreeClient(ids){
 	$('#modelHtml').html('<a href="/users/deletepaymentdetails/'+ids+'" class="btn btn-danger">Delete these payment details.</a>')
 }
 
-	var user = JSON.stringify('{{user.username}}')
+var user = JSON.stringify('{{user.username}}')
 //////////////////////////////////////////////////////
 ////        AJAX SUBMIT THE FORM - CREATE        //// 
 ////////////////////////////////////////////////////
 function streamTransactions(){
 	$.ajax({
-		url: '/users/'+user+'/transaction_histroy',
-		params:{},
-		responseType: 'arraybuffer',
+		url: '/users/'+user+'/transaction_history',
 		success: function(data) {
-			 	console.log(data)
+			data = JSON.parse(data)
+			printTable(data)
 		},
 		error : function(err){
-			 console.log(err)
+			console.log(err)
 		}
 	}); 
+}
+
+///////////////////////////////////
+///// PRINT ACCOUNT HISTORY //////
+/////////////////////////////////
+function printTable(data){
+	console.log(data)
+	var html =''
+	$('#transaction_history').html('')
+	html += '<table class="table table-bordered" id="transaction_table" > <thead> <tr> <th>Date</th> <th>Id</th> <th>Status</th> <th>Currency</th> <th>Value</th> </tr> </thead> <tbody>'
+	for (var i = 0; i < data.length; i++) {
+		var date =  new Date(data[i].createdAt)
+		date = moment(date).format('YYYY-MM-DD');
+ 
+		html += '<tr><td>'+date+'</td><td>'+data[i].id+'</td><td>'+data[i].status+'</td><td>'+data[i].currencyIsoCode+'</td><td>'+data[i].amount+'</td></tr>'
+	}
+	html +='</tbody></table>  '
+	$('#transaction_history').append(html)
+	var table = jQuery('#transaction_table').DataTable({
+		'destroy':true,
+		"pagingType": "numbers"
+  //  'order': [[ 2, 'asc' ]] ,
+});
 }
 
 ////////////////////////

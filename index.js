@@ -237,7 +237,7 @@ app.get('/users/:username/settings/billing/upgrade_plan_2', braintreeController.
 app.post('/users/:username/subscription', braintreeController.subscription);
 app.post('/users/:username/subscription_plan_2', braintreeController.subscription_plan_2);
 app.get('/users/:username/cancel_subscription', braintreeController.cancel_subscription);
-app.get('/users/:username/transaction_histroy', braintreeController.transaction_histroy);
+app.get('/users/:username/transaction_history', braintreeController.transaction_history);
 
 
 

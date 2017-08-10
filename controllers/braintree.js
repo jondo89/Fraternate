@@ -221,39 +221,31 @@ exports.cancel_subscription = function(req, res) {
 ///////////////////////////////////////////////
 /////  STREAM IN TRANSACTION HISTROY     ///// 
 ///////////////////////////////////////////////
-exports.transaction_histroy = function(req, res) {
-
-    if (req.user) {
-      //Create client token for Braintree payments.
+exports.transaction_history = function(req, res) {
+  if (req.user) {
+      //where req.user.braintree id is the id saved on the local mongodb server.
       if (req.user.braintreeid) {
-
-
-var stream = gateway.transaction.search(function (search) {
-  search.customerId().is(req.user.braintreeid);
-}, function (err, response) {
-  response.each(function (err, transaction) {
-    console.log(transaction.amount)
- 
- 
-  });
-});
-
-stream.pipe(res);
-
-  // or use event handlers
-  stream.on('data', function(data) {
-    res.write(data);
-  });
-
-  stream.on('end', function() {
-    res.end();
-  });
-
-
+        var stream = require("stream");
+        var customerStream = gateway.transaction.search(function (search) {
+          search.customerId().is(req.user.braintreeid)
+        });
+        res.write("[");
+        var first = true;       
+        customerStream.on("data", function (customer) {
+          if (first) {
+            first = false;
+            var temp =  JSON.stringify(customer);
+          } else {
+            var temp =  "," + JSON.stringify(customer);
+          }
+          res.write(temp);
+        });
+        customerStream.on("end", function () {
+          res.write("]");
+          res.end();
+        });
       }
     } else {
-    res.redirect('/signin');
-  }
-
-
-};
+      res.redirect('/signin');
+    }
+  };
