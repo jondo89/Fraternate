@@ -193,7 +193,7 @@ app.get('/users/', userInterfaceController.users);
 app.get('/users/:username/',   organizationController.userorganizations,  userInterfaceController.profile);
 app.get('/users/:username/settings/',userInterfaceController.settings);
 app.get('/users/:username/settings/:page',   organizationController.userorganizations, userInterfaceController.page);
-app.get('/users/:username/settings/billing/payment', userInterfaceController.payment);
+
 
 /////////////////////////////////////
 ////       ORGANIZATION         //// 
@@ -247,14 +247,17 @@ app.get('/users/:username/subscription_history', braintreeController.subscriptio
 
 
 
+app.post('/users/:username/vault', braintreeController.vault);
+app.post('/users/:username/vaultupdate', braintreeController.vaultupdate);
+app.get('/users/deletepaymentdetails/:ids',  braintreeController.deletepaymentdetails);
+app.get('/users/:username/settings/billing/payment', braintreeController.payment);
+
+
 ///////////////////////////////////////////////////
 ////        BRAINTREE - ORGANIZATIONS         //// 
 /////////////////////////////////////////////////
 
-///////////////////     MIGRATE TO NEW CONTROLLER JS FILE     ///////////////////
-app.post('/users/:username/vault', userInterfaceController.vault);
-app.post('/users/:username/vaultupdate', userInterfaceController.vaultupdate);
-app.get('/users/deletepaymentdetails/:ids',  userInterfaceController.deletepaymentdetails);
+ 
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

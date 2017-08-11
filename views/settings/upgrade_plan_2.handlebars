@@ -47,6 +47,9 @@
         {{/each}}
       </div>
       {{/if}}
+      {{#if user.plan.name}}
+		<a class="btn btn-default" href="/users/{{user.username}}/cancel_subscription">Cancel Subscription</a>
+{{else}}
 	<h3>Plan Duration</h3>
 	<hr>
 	<div class="btn-group"  >
@@ -76,7 +79,11 @@
 		<a type="button" class="btn btn-success disabled" id="submits" type="submit">Upgrade your plan</a>
 		<a type="button" class="btn btn-default">Cancel</a>
 	</div>
+	<small>Test Values for Cards</small>
+	<code>4111111111111111</code>
+	<code>10/19</code>
 </form>
+	{{/if}}	
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -88,7 +95,6 @@
 	text =text.replace("sz&#x3D;50", "sz&#x3D;200");
 	$('#googlepic').html('<img src="'+text+'" style="max-width: 50%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;" class="media-object">')
 	var checkout;
-
 
 //////////////////////////////////////////
 ////        BRAINTREE INSTANCE       //// 
@@ -122,20 +128,20 @@
 ////////////////////////////////////////////////////
 function formPost(payload){
 	var moredata = payload.nonce;
-	console.log(payload)
 	$input = $('<input type="text" name="payload" style="display:none"/>').val(moredata);
 	$('#theForm').append($input);
 	var datastring = $('#theForm').serialize()
 	$.ajax({
 		type: "POST",
-		url: '/users/'+username+'/subscription',
+		url: '/users/'+username+'/subscription_plan_2',
 		data: datastring,
 		dataType: "json",
 		success: function(data) {
-			location.reload()	
+			 window.location = '/users/'+username+'/settings/billing';	
 		},
 		error : function(err){
-			location.reload()
+			console.log('Not working')
+			window.location = '/users/'+username+'/settings/billing';	
 		}
 	}); 
 }

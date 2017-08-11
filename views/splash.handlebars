@@ -50,15 +50,24 @@
 			<p>No organizations found </p>
 			<a class="btn btn-success btn-xl" href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 
 		</div>
-		{{/if}}
+		{{/if}}<hr>
 		<div style="padding-top: 15px">
-			<h3>Welcome to Fraternate <small>This is where details of your interaction on the site could be shown.</small></h3> 
+		 <hr>
+			<h3>Welcome to Fraternate </h3> 
+			<p>Feel free to test the system , keep in mind the payments are spoofed on the sandbox Braintree system, as such you can experiment without paying, the Braintree sandbox will not accept valid credit card details.</p>
 		</div>
-			<div class="dotted">
-				<div style="background-color: #fff !important;padding: 40px">
-					<strong>Welcome!</strong> You are just getting started, setup you profile, create an organization then get started with your custom site content. Remember, this is a demonstration of what the Fraternate platform can do.
-				</div>
-			</div>
+		<h4>Plan</h4>
+		{{#if user.plan.name}}
+		<div class="well">
+			<strong>Developer</strong>, Unlimited private repositories</strong>
+		</div>
+		<a class="btn btn-default" href="/users/{{user.username}}/settings/billing/" ><i class="fa fa-pencil" aria-hidden="true"></i> Edit Subscription</a>
+		{{else}}
+		<div class="well">
+			<strong>Free plan</strong>, unlimited public repositories</strong>
+		</div>
+		<p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
+		{{/if}}
 	</div>
 	<div class="col-md-5">
 		<h3>Custom Site Details <small>Add your content here.</small></h3>
@@ -75,5 +84,6 @@
 </div>
 
 <script type="text/javascript">
- 
+  
+
 </script>

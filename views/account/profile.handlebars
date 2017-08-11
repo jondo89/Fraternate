@@ -3,22 +3,7 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
 
 <div class="row" style="padding-top: 35px">
-  <div class="col-sm-12">
-    {{#if messages.success}}
-    <div role="alert" class="alert alert-success">
-      {{#each messages.success}}
-      <div>{{msg}}</div>
-      {{/each}}
-    </div>
-    {{/if}}
-    {{#if messages.error}}
-    <div role="alert" class="alert alert-danger">
-      {{#each messages.error}}
-      <div>{{msg}}</div>
-      {{/each}}
-    </div>
-    {{/if}}
-  </div>
+ 
   <div class="col-md-4">
     <div>
       <div>  
@@ -104,6 +89,21 @@
     {{/if}}
   </div>
   <div class="col-md-8">
+    {{#if messages.success}}
+    <div role="alert" class="alert alert-success">
+      {{#each messages.success}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+    {{#if messages.error}}
+    <div role="alert" class="alert alert-danger">
+      {{#each messages.error}}
+      <div>{{msg}}</div>
+      {{/each}}
+    </div>
+    {{/if}}
+  
     <h3>Custom Site Details</h3>
     <div style="border-width: 1px; border-style: dashed; border-color: grey;padding:40px;text-align: center;border-radius: 5px;"><strong> Heads up!</strong> This is where your custom content and user interaction detail will be added. 
     </div>
