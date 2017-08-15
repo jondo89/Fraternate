@@ -26,19 +26,23 @@ var schemaOptions = {
 var organizationsSchema = mongoose.Schema({
   'name' :{ type: String, default: 'Inital Form' },
   'detail' :String,
-  'objectType' :String,
-//child type will be a form id , used for determining what component is created by the form.
-'childType' :String,
-//Used for the routing of new posts
-'route' :String,
-'entry' :Schema.Types.Mixed,
-'parentid' :String,
-'name' :String,
-'elementID' :{ type: String, default: '' },
-'userID' :String,
-'revision' :{ type: String, default: 'created' },
-'created' : { type: Date, default: Date.now },
-'active' : { type: String, default: "true" },
+  'objectType' :String,//child type will be a form id , used for determining what component is created by the form.
+  'childType' :String,//Used for the routing of new posts
+  'braintreeid':String,//Used to query the braintree customer payment details.
+  'plan': {
+    'name': String,//THe plan type saved on braintree
+    'braintreeid': String, //The plan ID saved on braintree
+  },
+ 
+  'route' :String,
+  'entry' :Schema.Types.Mixed,
+  'parentid' :String,
+  'name' :String,
+  'elementID' :{ type: String, default: '' },
+  'userID' :String,
+  'revision' :{ type: String, default: 'created' },
+  'created' : { type: Date, default: Date.now },
+  'active' : { type: String, default: "true" },
 }, schemaOptions);
 
 
@@ -84,7 +88,7 @@ transporter.sendMail(mailOptions, (error, info) => {
 organizationsSchema.pre('save', function(next) {
   var organizations = this;
   signupEmail(organizations)
-	next();
+  next();
 });
 
 

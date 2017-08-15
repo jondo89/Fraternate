@@ -38,7 +38,6 @@ exports.neworg = function(req, res) {
         clientToken : response.clientToken
       })
      });
-
     } else {
       res.redirect('/signin');
     }
@@ -48,20 +47,16 @@ exports.neworg = function(req, res) {
 ///////   CREATE ORGaNIZATION STATIC  ////////
 /////////////////////////////////////////////
 exports.createorgstatic = function(req, res) {
-//console.log('//////////////////////////////////////////')
-//console.log('//////  CREATE NEW ORGaNIZATION  ////////')
-// console.log('////////////////////////////////////////')
-//Allow for new credit cards every time , Do not call old CC details.	
-if (req.user) {
-  req.assert('name', 'Username cannot be blank').notEmpty();
-  req.assert('email', 'Please ensure that the email address is valid.').isEmail();
-  req.assert('email', 'Please ensure that the email address is included.').notEmpty();
-  req.sanitize('email').normalizeEmail({ remove_dots: false });
-  var errors = req.validationErrors();
-  if (errors) {
-   req.flash('error', errors);
-   return res.redirect('/organizations/new');
- }
+  if (req.user) {
+    req.assert('name', 'Username cannot be blank').notEmpty();
+    req.assert('email', 'Please ensure that the email address is valid.').isEmail();
+    req.assert('email', 'Please ensure that the email address is included.').notEmpty();
+    req.sanitize('email').normalizeEmail({ remove_dots: false });
+    var errors = req.validationErrors();
+    if (errors) {
+     req.flash('error', errors);
+     return res.redirect('/organizations/new');
+   }
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.body.name }, function(err, username) {
     	if (username) {
@@ -74,7 +69,8 @@ if (req.user) {
         email: req.body.email,
         password: req.body.password,
         owner : req.user.username,
-        members : ''
+        members : '',
+        business_billing_name :req.body.business_billing_name
       }        
       user = new organizationalModel(temp);
       user.save(function(err) {
@@ -168,6 +164,60 @@ exports.ajaxorguserread = function(req, res, next) {
 exports.page = function(req, res) {
   if (req.orgowner) {
    var template =  req.params.page 
+
+
+
+
+    switch (true){
+      case(template=='billing'):
+      if (req.user.braintreeid) {
+
+
+
+
+
+
+    //check the user name for duplicate.
+    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
+
+
+        gateway.customer.find(username.entry.braintreeid, function(err, customer) {
+
+
+
+ 
+
+      if (username) {
+        res.render('orgsettings/'+template,{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          organization : username,
+          organizations : req.userorgs ,
+          braintree_customer : JSON.stringify(customer),
+          pagetitle: 'Settings | '+username.entry.name   ,
+        }
+        )
+      } else {
+        return res.redirect('/');
+      }
+
+
+
+
+        });
+
+
+
+
+
+
+
+    })
+
+
+
+      } else {
+
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
@@ -183,6 +233,41 @@ exports.page = function(req, res) {
         return res.redirect('/');
       }
     })
+
+      
+
+
+
+
+      }
+
+
+
+
+
+      break;      
+      default:
+    //check the user name for duplicate.
+    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
+      if (username) {
+        res.render('orgsettings/'+template,{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          organization : username,
+          organizations : req.userorgs ,
+          pagetitle: 'Settings | '+username.entry.name   ,
+        }
+        )
+      } else {
+        return res.redirect('/');
+      }
+    })
+      break;
+    }
+
+
+
+
   } else {
     return res.redirect('/');
   }
@@ -322,10 +407,19 @@ exports.orgPut = function(req, res, next) {
         temp.description = req.body.description
       }
       if (req.body.location) {
-        temp.location = req.body.location
+        if (req.body.location == -1) {
+          //do nothing 
+        } else {
+          temp.location = req.body.location 
+        }
       }
       if (req.body.url) {
        temp.url = req.body.url
+     }
+     if (req.body.business_billing_name) {
+       temp.business_billing_name = req.body.business_billing_name
+     } else {
+      delete temp.business_billing_name 
      }
      if (req.body.email) {
       console.log(req.body.email)
@@ -530,7 +624,7 @@ exports.add_manager = function(req, res) {
       if (temp['billing_managers']) {
         for (var i = temp['billing_managers'].length - 1; i >= 0; i--) {
           if(temp['billing_managers'][i] == req.params.username) {
-              return res.send({ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> This user is already a billing manager for this organization.</div>' });
+            return res.send({ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> This user is already a billing manager for this organization.</div>' });
           } 
         }
         temp['billing_managers'].push(req.params.username)
@@ -585,19 +679,17 @@ exports.per_seat = function(req, res) {
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
 
-gateway.clientToken.generate({}, function (err, response) {
-        res.render('orgsettings/per_seat',{
-          orgowner : req.orgowner ,
-          orgmember : req.orgmember ,
-          organization : username,
-          organizations : req.userorgs ,
-                    clientToken : response.clientToken,
-          pagetitle: 'Settings | '+username.entry.name   ,
-        }
-        )
-
-    });
-
+        gateway.clientToken.generate({}, function (err, response) {
+          res.render('orgsettings/per_seat',{
+            orgowner : req.orgowner ,
+            orgmember : req.orgmember ,
+            organization : username,
+            organizations : req.userorgs ,
+            clientToken : response.clientToken,
+            pagetitle: 'Settings | '+username.entry.name   ,
+          }
+          )
+        });
       } else {
         return res.redirect('/');
       }
@@ -607,42 +699,7 @@ gateway.clientToken.generate({}, function (err, response) {
   }
 };
 
-///////////////////////////////////////////////
-//////////  ADD PAYMENT DETAILS   ////////////
-/////////////////////////////////////////////
-exports.payment = function(req, res) {
-  console.log('getting here')
-  if (req.orgowner) {
-   var template =  req.params.page 
-    //check the user name for duplicate.
-    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-      if (username) {
 
-
-      gateway.clientToken.generate({}, function (err, response) {
-        res.render('orgsettings/payment',{
-          orgowner : req.orgowner ,
-          orgmember : req.orgmember ,
-          organization : username,
-          organizations : req.userorgs ,
-          clientToken : response.clientToken,
-          pagetitle: 'Settings | '+username.entry.name   ,
-        }
-        )
-     });
-
-
-
-
-
-      } else {
-        return res.redirect('/');
-      }
-    })
-  } else {
-    return res.redirect('/');
-  }
-};
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -836,15 +893,6 @@ exports.billing_managersearch = function(req, res) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //ORGANIZATION EMAIL MANAGER.
 
-
-/*
-switch(true){
-  case (req.params.options == 'join'):
-  var subject = '✔ You have successfully added this user to your account | '+sitename // Subject line
-  var msg = 'Your organization account has been successfully modified on '+sitename+' , First time users please complete you organization profile when you get a chance!'
-    signupEmail(organizations.name , organizations.email,subject, msg)
-  break ;
-}*/
 
 ///////////////////////////////////////
 ////     SIGN UP EMAIL SEND       //// 

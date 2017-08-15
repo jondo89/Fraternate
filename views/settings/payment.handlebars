@@ -17,6 +17,7 @@
 			{{/each}}
 		</div>
 		{{/if}}
+		<div id="alert"></div>
 		<h2><a href="/users/{{user.username}}/settings/billing">Billing</a> / Payment Details</h2>
 		<hr>
 		<form id="theForm" class="form-horizontal" >
@@ -154,6 +155,11 @@ $('document').ready(function(){
 ////        AJAX SUBMIT THE FORM - CREATE        //// 
 ////////////////////////////////////////////////////
 function formPost(payload){
+	if (!payload) {
+		$('#alert').html('<div id="alert" role="alert" class="alert alert-danger">Please add your payment details.</div>')
+		$('#submits').toggleClass('disabled', false);
+		return
+	}	
 	var moredata = payload.nonce;
 	$input = $('<input type="text" name="payload" style="display:none"/>').val(moredata);
 	$('#theForm').append($input);
@@ -176,6 +182,11 @@ function formPost(payload){
 ////        AJAX SUBMIT THE FORM - UPDATE        //// 
 ////////////////////////////////////////////////////
 function formPostUpdate(payload){
+	if (!payload) {
+		$('#alert').html('<div id="alert" role="alert" class="alert alert-danger">Please add your payment details.</div>')
+		$('#submits').toggleClass('disabled', false);
+		return
+	}	
 	var moredata = payload.nonce;
 	$input = $('<input type="text" name="payload" style="display:none"/>').val(moredata);
 	$('#theForm').append($input);

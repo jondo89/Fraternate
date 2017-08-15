@@ -50,93 +50,129 @@
         <div class="col-md-8">
           <div class="form-group">
             <label for="displayname" class="col-sm-12">Organization username</label>
-            <div class="col-sm-12">
+            <div class="col-sm-11">
               <input type="displayname" name="name" id="name" class="form-control" value="{{organization.entry.name}}" disabled>
               <p class="help-block">Changing your organization can have unforeseen consequences. i.e will crash , let us know where yours does!! <a class="btn btn-default btn-xs"  onclick="activate()">Change</a></p>
             </div>
           </div>
+
           <div class="form-group">
-            <label for="displayname" class="col-sm-12">Organization display name</label>
-            <div class="col-sm-12">
+          <label for="displayname" class="col-sm-12">Display name</label>
+            <div class="col-sm-11">
               <input type="displayname" name="displayname" id="displayname" class="form-control" value="{{organization.entry.displayname}}" >
             </div>
           </div>
+    {{#if organization.entry.business_billing_name.length}}
           <div class="form-group">
-            <label for="displayemail" class="col-sm-12">Email (will be public)</label>
-            <div class="col-sm-12">
-              <input type="email" name="displayemail" id="displayemail" class="form-control" value="{{organization.entry.displayemail}}">
-            </div>
-          </div> 
-          <div class="form-group">
-            <label for="displayname" class="col-sm-12">Description</label>
-            <div class="col-sm-12">
-              <textarea type="description" rows="3"  name="description" id="description" class="form-control" >{{organization.entry.description}}</textarea>
-            </div>
+            <div class="col-sm-11">
+              
+              
+               <div class="col-md-12">
+                 <div class="form-group">
+                  <label for="displayname" class="col-sm-12">Billing Name</label>
+                  <input type="text" name="business_billing_name" id="business_billing_name" class="form-control" value="{{organization.entry.business_billing_name}}">
+                  <p class="help-block">What is the name of the business that owns this account? e.g, Acme, Inc.</p>
+                </div> 
+              </div>
+           
           </div>
-          <div class="form-group">
-            <label for="displayname" class="col-sm-12">Url</label>
-            <div class="col-sm-12">
-              <input type="url" name="url" id="url" class="form-control" value="{{organization.entry.url}}" >
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="displayname" class="col-sm-12">Location</label>
-            <div class="col-sm-12">
-              <input type="location" name="location" id="location" class="form-control" value="{{organization.entry.location}}" >
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email" class="col-sm-12">Billing email (Private)</label>
-            <div class="col-sm-12">
-              <input type="email" name="email" id="email" class="form-control" value="{{organization.entry.email}}">
-            </div>
-          </div> 
-          <div class="form-group">
-            <div class="col-sm-4">
-              <button type="submit" onclick="updates()" class="btn btn-default">Update Profile</button>
+        </div>
+    {{else}}
+              <div class="form-group">
+            <div class="col-sm-11">
+              <input type="checkbox" name="chkBox1" id="chkBox1" class="showHideCheck" /> This account is owned by a business (see the <a href="/terms" target="_blank">terms of service</a> for details).
+              <p></p>
+              <div class="hiddenInput">  
+               <div class="col-md-12">
+                 <div class="form-group">
+                  <label for="displayname" class="col-sm-12">Billing Name</label>
+                  <input type="text" name="business_billing_name" id="business_billing_name" class="form-control" value="{{organization.entry.business_billing_name}}">
+                  <p class="help-block">What is the name of the business that owns this account? e.g, Acme, Inc.</p>
+                </div> 
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <div class="col-sm-12">
-              <h4  >Profile Picture</h4><p>The profile picture change will not save.</p>
-              <!-- This wraps the whole cropper -->
-              <div id="image-cropper" >
-                <!-- This is where the preview image is displayed -->
-                <div class="cropit-preview" id="pic" style="border: 1px solid #eee;position: relative;text-align: center;"><img src="/img/defaults/default-users.png" style="padding-top: 15px"></div>
-                <!-- This range input controls zoom -->
-                <!-- You can add additional elements here, e.g. the image icons -->
-                <input type="range" class="cropit-image-zoom-input" style="width: 200px" />
-                <p></p>
-                <!-- This is where user selects new image -->
-                <input type="file" id="filechange" class="cropit-image-input"  />
+    {{/if}}
+        <div class="form-group">
+          <label for="displayemail" class="col-sm-12">Email (will be public)</label>
+          <div class="col-sm-11">
+            <input type="email" name="displayemail" id="displayemail" class="form-control" value="{{organization.entry.displayemail}}">
+          </div>
+        </div> 
+        <div class="form-group">
+          <label for="displayname" class="col-sm-12">Description</label>
+          <div class="col-sm-11">
+            <textarea type="description" rows="3"  name="description" id="description" class="form-control" >{{organization.entry.description}}</textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="displayname" class="col-sm-12">Url</label>
+          <div class="col-sm-11">
+            <input type="url" name="url" id="url" class="form-control" value="{{organization.entry.url}}" >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="location" class="col-md-12">Location</label>
+          <div class="col-md-11">
+           <select type="text" name="location" id="location" class="form-control" value="{{organization.entry.location}}"></select>
+           <p class="help-block">We store your organizational data in South Africa. See our <a href="/privacy">privacy policy</a> for more information. </p>
+         </div>
+       </div>
+       <div class="form-group">
+        <label for="email" class="col-sm-12">Billing email (Private)</label>
+        <div class="col-sm-11">
+          <input type="email" name="email" id="email" class="form-control" value="{{organization.entry.email}}">
+        </div>
+      </div> 
+      <div class="form-group">
+        <div class="col-sm-4">
+          <button type="submit" onclick="updates()" class="btn btn-default">Update Profile</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <div class="col-sm-11">
+          <h4  >Profile Picture</h4>
+          <!-- This wraps the whole cropper -->
+          <div id="image-cropper" >
+            <!-- This is where the preview image is displayed -->
+            <div class="cropit-preview" id="pic" style="border: 1px solid #eee;position: relative;text-align: center;"><img src="/img/defaults/default-users.png" style="padding-top: 15px"></div>
+            <!-- This range input controls zoom -->
+            <!-- You can add additional elements here, e.g. the image icons -->
+            <input type="range" class="cropit-image-zoom-input" style="width: 200px" />
+            <p></p>
+            <!-- This is where user selects new image -->
+            <input type="file" id="filechange" class="cropit-image-input"  />
 
-                <input style="display: none;" name="croppedImg" id="croppedImg"/>
+            <input style="display: none;" name="croppedImg" id="croppedImg"/>
 
   <!-- The cropit- classes above are needed
   so cropit can identify these elements -->
 </div>
+<p></p>
+                <small>The profile picture change will not save. <a href="https://stackoverflow.com/questions/28480058/cant-upload-images-on-heroku-server" target="_blank">Why?</a></small>
 </div>
 </div>
 </div>
 </div>
 </form>
-  <h3  style="color:#d9534f">Delete Organization</h3>
-  <hr  style="color:#d9534f">
-  <form method="POST" action="" class="form-horizontal">
-    <div class="form-group">
-      <p class=" col-sm-9" style="color:#d9534f">You can delete this organization, but keep in mind this action is irreversible.</p>
-      <div class=" col-sm-9">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" id="{{organization._id}}" onclick="deleteOrgnaization(this.id)">
-          Delete {{organization.entry.name}}
-        </button>
-      </div>
+<h3  style="color:#d9534f">Delete Organization</h3>
+<hr  style="color:#d9534f">
+<form method="POST" action="" class="form-horizontal">
+  <div class="form-group">
+    <p class=" col-sm-9" style="color:#d9534f">You can delete this organization, but keep in mind this action is irreversible.</p>
+    <div class=" col-sm-9">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" id="{{organization._id}}" onclick="deleteOrgnaization(this.id)">
+        Delete {{organization.entry.name}}
+      </button>
     </div>
-  </form>
+  </div>
+</form>
 </div>
-</div>
+ </div> 
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -218,5 +254,41 @@ function deleteOrgnaization(ids){
   $('#modalTextArea').html(html)
   $('#modelHtml').html('<a href="/deleteorganiztion/'+ids+'" class="btn btn-danger">Delete {{organization.entry.name}}</a>')
 }
+
+
+///////////////////////////////////////////////////
+////        BILLING ADDRESS SHOW/HIDE         //// 
+/////////////////////////////////////////////////
+$(".hiddenInput").hide();
+$(".showHideCheck").on("change", function() {
+  $this = $(this);
+  $input = $this.parent().find(".hiddenInput");
+  if($this.is(":checked")) {
+    $input.slideDown();
+  } else {
+    $input.slideUp();
+  }
+});
+
+/////////////////////////////////////////////////////
+////        POPULATE THE COUNTRY SELECT         //// 
+///////////////////////////////////////////////////
+var country_arr = new Array("Afghanistan", "Albania", "Algeria", "American Samoa", "Angola", "Anguilla", "Antartica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Ashmore and Cartier Island", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Clipperton Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czeck Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Europa Island", "Falkland Islands (Islas Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern and Antarctic Lands", "Gabon", "Gambia, The", "Gaza Strip", "Georgia", "Germany", "Ghana", "Gibraltar", "Glorioso Islands", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Holy See (Vatican City)", "Honduras", "Hong Kong", "Howland Island", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Ireland, Northern", "Israel", "Italy", "Jamaica", "Jan Mayen", "Japan", "Jarvis Island", "Jersey", "Johnston Atoll", "Jordan", "Juan de Nova Island", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia, Former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Man, Isle of", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Midway Islands", "Moldova", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcaim Islands", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romainia", "Russia", "Rwanda", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Scotland", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and South Sandwich Islands", "Spain", "Spratly Islands", "Sri Lanka", "Sudan", "Suriname", "Svalbard", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Tobago", "Toga", "Tokelau", "Tonga", "Trinidad", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "USA", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands", "Wales", "Wallis and Futuna", "West Bank", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe","None");
+
+populateCountries("location");
+function populateCountries(countryElementId, stateElementId) {
+    // given the id of the <select> tag as function argument, it inserts <option> tags
+    var countryElement = document.getElementById(countryElementId);
+    countryElement.length = 0;
+    if ('{{organization.entry.location}}' == -1) {
+      countryElement.options[0] = new Option('None', '-1');
+    } else {
+      countryElement.options[0] = new Option('{{organization.entry.location}}', '-1');  
+    }
+    countryElement.selectedIndex = 0;
+    for (var i = 0; i < country_arr.length; i++) {
+      countryElement.options[countryElement.length] = new Option(country_arr[i], country_arr[i]);
+    }
+  }
 
 </script>

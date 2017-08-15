@@ -165,9 +165,6 @@ exports.page = function(req, res) {
       case(template=='billing'):
       if (req.user.braintreeid) {
         gateway.customer.find(req.user.braintreeid, function(err, customer) {
-
-  
-
           res.render('settings/'+template,{
             pagetitle: 'Billing | '+sitename+'',
             braintree_customer : JSON.stringify(customer)

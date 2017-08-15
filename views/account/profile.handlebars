@@ -71,17 +71,21 @@
     <hr>
     {{#if organizations}}
     <h4>Organizations</h4>
-    {{#each organizations}}
-    {{#if this.entry.picture}}
-    <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
-      <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.entry.picture}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
-    </a>
-    {{else}}
-    <a  href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" >
-      <img onerror="this.src='{{owner.gravatar}}'"" src="{{this.gravatar}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
-    </a>
-    {{/if}}
-    {{/each}}
+
+
+      {{#each organizations}}
+      
+        <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}"  >
+          {{#if this.entry.picture}}
+          <img  onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+          {{else}}
+          <img src="{{this.gravatar}}" class="media-object" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+          {{/if}}       
+        </a>
+    
+      {{/each}}
+
+  
     {{else}}
     <div  class="row" style="text-align: center">
       <p>This user is not a member of any organizations.</p>

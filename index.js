@@ -24,6 +24,8 @@ var contactController = require('./controllers/contact');
 var userInterfaceController = require('./controllers/userinterface');
 var organizationController = require('./controllers/organization');
 var braintreeController = require('./controllers/braintree');
+var braintreeOrgController = require('./controllers/braintree_org');
+var stripeController = require('./controllers/stripe');
 
 // Passport OAuth strategies
 require('./config/passport');
@@ -210,8 +212,7 @@ app.get('/organizations/:orgname/settings',organizationController.ajaxorguserrea
 app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.page);
 app.get('/organizations/:orgname/settings/billing/billing_managers/new', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.billing_managers);
 app.get('/organizations/:orgname/settings/billing/per_seat', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.per_seat);
-app.get('/organizations/:orgname/settings/billing/payment', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.payment);
-
+ 
 app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);
 app.get('/leaveorganiztion/:ids',  organizationController.leaveorganiztion);
 app.get('/deleteorganiztion/:ids',  organizationController.deleteorganiztion);
@@ -229,13 +230,15 @@ app.get('/orguserread', organizationController.orguserread); // Get the active u
 app.get('/organizations/:orgname/add_manager/:username/', organizationController.add_manager ); // ajax call to add a billing manager to the organization.
 
 
+
+
+
 ///////////////////////////////////////////
 ////        BRAINTREE - USERS         //// 
 /////////////////////////////////////////
 app.get('/braintree', braintreeController.braintree);
 app.get('/transaction_history_all', braintreeController.transaction_history_all);
 app.get('/subscription_history_all', braintreeController.subscription_history_all);
-app.get('/transaction_history_all', braintreeController.transaction_history_all);
 app.get('/users/:username/settings/billing/upgrade', braintreeController.upgrade);
 app.get('/users/:username/settings/billing/upgrade_plan_2', braintreeController.upgrade_plan_2);
 app.post('/users/:username/subscription', braintreeController.subscription);
@@ -243,9 +246,6 @@ app.post('/users/:username/subscription_plan_2', braintreeController.subscriptio
 app.get('/users/:username/cancel_subscription', braintreeController.cancel_subscription);
 app.get('/users/:username/transaction_history', braintreeController.transaction_history);
 app.get('/users/:username/subscription_history', braintreeController.subscription_history);
-
-
-
 
 app.post('/users/:username/vault', braintreeController.vault);
 app.post('/users/:username/vaultupdate', braintreeController.vaultupdate);
@@ -256,8 +256,24 @@ app.get('/users/:username/settings/billing/payment', braintreeController.payment
 ///////////////////////////////////////////////////
 ////        BRAINTREE - ORGANIZATIONS         //// 
 /////////////////////////////////////////////////
+app.get('/organizations/:orgname/settings/billing/upgrade', braintreeOrgController.upgrade);
+app.get('/organizations/:orgname/settings/billing/upgrade_plan_2', braintreeOrgController.upgrade_plan_2);
+app.post('/organizations/:orgname/subscription', braintreeOrgController.subscription);
+app.post('/organizations/:orgname/subscription_plan_2', braintreeOrgController.subscription_plan_2);
+app.get('/organizations/:orgname/cancel_subscription', braintreeOrgController.cancel_subscription);
+app.get('/organizations/:orgname/transaction_history', braintreeOrgController.transaction_history);
+app.get('/organizations/:orgname/subscription_history', braintreeOrgController.subscription_history);
+
+app.post('/organizations/:orgname/vault', braintreeOrgController.vault);
+app.post('/organizations/:orgname/vaultupdate', braintreeOrgController.vaultupdate);
+app.get('/organizations/deletepaymentdetails/:ids',  braintreeOrgController.deletepaymentdetails);
+app.get('/organizations/:orgname/settings/billing/payment', organizationController.ajaxorguserread ,organizationController.organizationpermission,  braintreeOrgController.payment);
 
  
+///////////////////////////////////////////
+////        STRIPE - USERS         //// 
+/////////////////////////////////////////
+app.get('/stripe', stripeController.stripe);
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

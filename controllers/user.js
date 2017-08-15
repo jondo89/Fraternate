@@ -191,7 +191,15 @@ exports.accountPut = function(req, res, next) {
          user.username = req.body.username;
       }
       user.company = req.body.company;
-      user.location = req.body.location;
+
+ 
+      if ( req.body.location) {
+        if ( req.body.location == -1) {
+          //do nothing 
+        } else {
+          user.location =  req.body.location 
+        }
+      }
       user.website = req.body.website;
       user.publicemail = req.body.publicemail;
     }

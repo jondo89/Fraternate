@@ -45,85 +45,74 @@
     <h2>Billing</h2>
     <hr>
     <h5>Plan</h5>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="well">
-          <strong>Free </strong>plan, unlimited public repositories</strong>
-          <div class="row">
-            <div class="col-md-7">
-              Get unlimited private repositories for teams
-              Starting at $25 / month which includes your first 5 users, $9 / month for each additional user
-            </div>
-            <div class="col-md-5" style="text-align: right;">
-              <p><a class="btn btn-success" href="/organizations/{{organization.entry.name}}/settings/billing/per_seat">Upgrade</a></p>
-            </div>
-          </div>
+    <div class="well">
+      <strong>Free </strong>plan, unlimited public repositories</strong>
+      <div class="row">
+        <div class="col-md-7">
+          Get unlimited private repositories for teams
+          Starting at $25 / month which includes your first 5 users, $9 / month for each additional user
+        </div>
+        <div class="col-md-5" style="text-align: right;">
+          <p><a class="btn btn-success" href="/organizations/{{organization.entry.name}}/settings/billing/per_seat">Upgrade</a></p>
         </div>
       </div>
     </div>
     <hr>
-    <h5>Payment</h5>
+     <h5>Payment</h5>
+    {{#if braintree_customer}}
+    <div class="btn-group" role="group" aria-label="...">
+      <a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Edit payment method</a>
+      <a type="button" class="btn btn-danger"    onclick="deleteBraintreeClient(this.id)" id="{{organization._id}}"  data-toggle="modal" data-target="#myModal"><i class="fa fa-trash" aria-hidden="true"></i> Delete payment method</a>
+    </div> 
+    {{else}}
     <div class="well">
       <i class="fa fa-credit-card" aria-hidden="true"></i> No payment method on file.
     </div>      
     <p><a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/payment"><i class="fa fa-credit-card" aria-hidden="true"></i> Add payment method</a></p>
+    {{/if}}
     <hr>
     <h5>Billing Manager</h5>
-
- 
-{{#if organization.entry.billing_managers}}
-<table class="table table-bordered" id="organizationOwner">
- 
-  <tbody>
-   {{#each organization.entry.billing_managers}}
-  <tr>
-   <td> 
-    <div class="media">
- 
-      <div class="media-body">
-        <div class="row">
-          <div class="col-md-3">
-           <a href="/users/{{this}}">{{this}}</a>
-       
-         </div>
-         <div class="col-md-6">
-       
+    {{#if organization.entry.billing_managers}}
+    <table class="table table-bordered" id="organizationOwner">
+      <tbody>
+       {{#each organization.entry.billing_managers}}
+       <tr>
+         <td> 
+          <div class="media">
+            <div class="media-body">
+              <div class="row">
+                <div class="col-md-3">
+                 <a href="/users/{{this}}">{{this}}</a>
+               </div>
+               <div class="col-md-6">
+               </div>
+               <div class="col-md-3" style="text-align:right" >
+                <a class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal" id="{{this}}" onclick="kickMember(this.id)"><i class="fa fa-times" aria-hidden="true" ></i> Kick</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-3" style="text-align:right" >
-          <a class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal" id="{{this}}" onclick="kickMember(this.id)"><i class="fa fa-times" aria-hidden="true" ></i> Kick</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</td>
-</tr>
-{{/each}}
- </tbody>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
 </table>
 {{else}}
-  <div class="well">
-      You have not invited any billing managers. 
-    </div>      
-
-
-
-  {{/if}}
-
-
-
-
-
-
-  
-    <p><a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/billing_managers/new"><i class="fa fa-user" aria-hidden="true"></i> Add a billing manager</a></p>
-    <small>Receipts are sent to the billing managers for this organization, and <a href="" data-toggle="modal" data-target=".bs-example-modal-sm"> {{organization.entry.email}}  <i class="fa fa-pencil" aria-hidden="true"></i></a></small>
-    <hr>
-    <h5>Payment history</h5>
-    <div class="well">
-      You have not made any payments. 
-    </div>      
-    <small>Amounts shown in USD</small>
-  </div> 
+<div class="well">
+  You have not invited any billing managers. 
+</div>      
+{{/if}}
+<p>
+  <a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/billing_managers/new"><i class="fa fa-user" aria-hidden="true"></i> Add a billing manager</a>
+</p>
+<small>Receipts are sent to the billing managers for this organization, and <a href="" data-toggle="modal" data-target=".bs-example-modal-sm"> {{organization.entry.email}}  <i class="fa fa-pencil" aria-hidden="true"></i></a></small>
+<hr>
+<h5>Payment history</h5>
+<div class="well">
+  You have not made any payments. 
+</div>      
+<small>Amounts shown in USD</small>
+</div> 
 </div>
 </div>
 
@@ -138,7 +127,14 @@
 </div>
 
 <script type="text/javascript">
-
+///////////////////////////////////////////////
+////        DELTE PAYMENT DETAILS         //// 
+/////////////////////////////////////////////
+function deleteBraintreeClient(ids){
+  var html = '<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> <h4 class="modal-title" id="myModalLabel"><i class="fa fa-trash" aria-hidden="true"></i> Delete payment details.</h4> </div> <div class="modal-body"> <p>Are you sure you wish to delete these payment details from your account?</p> <div style="text-align: center"> <div id="modelHtml"></div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>'
+  $('#modalTextArea').html(html)
+  $('#modelHtml').html('<a href="/organizations/deletepaymentdetails/'+ids+'" class="btn btn-danger">Delete payment details.</a>')
+}
 
 /////////////////////////////////////
 ////        KICK MEMBER         //// 

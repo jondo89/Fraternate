@@ -15,6 +15,12 @@
   <loc>https://fraternate.herokuapp.com/organizations</loc>
 </url>
 <url>
+  <loc>https://fraternate.herokuapp.com/stripe</loc>
+</url>
+<url>
+  <loc>https://fraternate.herokuapp.com/braintree</loc>
+</url>
+<url>
   <loc>https://fraternate.herokuapp.com/introduction</loc>
 </url>
 <url>
