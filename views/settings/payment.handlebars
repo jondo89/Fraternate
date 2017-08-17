@@ -20,7 +20,7 @@
 		<div id="alert"></div>
 		<h2><a href="/users/{{user.username}}/settings/billing">Billing</a> / Payment Details</h2>
 		<hr>
-		<form id="theForm" class="form-horizontal" >
+		<form id="theForm" class="form-horizontal"  >
 			{{#if braintree_customer}}
 			{{else}}
 			<div class="alert alert-info" role="alert"> <strong>Heads up!</strong> No existing details found. </div>
@@ -55,7 +55,7 @@
 					<div class="form-group">
 						<label for="website" class="col-md-12">Website</label>
 						<div class="col-md-12">
-							<input type="text" name="website" id="website" class="form-control" value="{{user.website}}">
+							<input type="url" name="website" id="website" pattern="https?://.+" class="form-control" value="{{user.website}}">
 						</div>
 					</div>
 				</div>
@@ -102,7 +102,7 @@
 		<p></p>
 		<div id="msg"></div>
 		<div id="customer"></div>
-		<small>There are no upcoming charges to your account.</small>
+		<small>All transactions are processed on <a href="https://www.braintreepayments.com/" target="_blank">Braintree Payments</a> through an encrypted HTTP Secure connection.</small>
 	</div>
 </div>
 <!-- Modal -->
@@ -113,6 +113,8 @@
 	</div>
 </div>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
 <script type="text/javascript">
 	var clientToken = '{{{clientToken}}}';
@@ -127,6 +129,23 @@
 ////        INITIALIZE         //// 
 //////////////////////////////////
 $('document').ready(function(){
+	$("#theForm").validate({
+		rules: {
+			email: {
+				required: true,
+				email: true
+			},
+			name: {
+				required: true,
+			},
+		},
+		highlight: function(element) {
+			$(element).closest('.form-group').addClass('has-error');
+		},
+		unhighlight: function(element) {
+			$(element).closest('.form-group').removeClass('has-error');
+		}
+	});
 	braintree.dropin.create({
 		authorization: clientToken,
 		container: "#payment-form",
@@ -139,14 +158,17 @@ $('document').ready(function(){
 	}, function (createErr, instance) {
 		$('#submits').toggleClass('disabled', false);
 		button.addEventListener('click', function () {
-			instance.requestPaymentMethod(function (err, payload) {
-				$('#submits').toggleClass('disabled', true);
-				if (customerBT) {
-					formPostUpdate(payload)
-				} else {
-					formPost(payload)
-				}
-			});
+			var formValid = $("#theForm").valid()
+			if (formValid) {
+				instance.requestPaymentMethod(function (err, payload) {
+					$('#submits').toggleClass('disabled', true);
+					if (customerBT) {
+						formPostUpdate(payload)
+					} else {
+						formPost(payload)
+					}
+				});
+			}
 		});
 	}) 
 })
@@ -204,6 +226,8 @@ function formPostUpdate(payload){
 		}
 	}); 
 }
+
+
 
 /////////////////////////////////////////////////////
 ////        POPULATE THE COUNTRY SELECT         //// 

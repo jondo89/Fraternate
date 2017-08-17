@@ -164,60 +164,38 @@ exports.ajaxorguserread = function(req, res, next) {
 exports.page = function(req, res) {
   if (req.orgowner) {
    var template =  req.params.page 
-
-
-
-
-    switch (true){
-      case(template=='billing'):
-      if (req.user.braintreeid) {
-
-
-
-
-
-
+   switch (true){
+    case(template=='billing'):
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-
-
+      if (username.entry.braintreeid) {
         gateway.customer.find(username.entry.braintreeid, function(err, customer) {
-
-
-
- 
-
-      if (username) {
-        res.render('orgsettings/'+template,{
-          orgowner : req.orgowner ,
-          orgmember : req.orgmember ,
-          organization : username,
-          organizations : req.userorgs ,
-          braintree_customer : JSON.stringify(customer),
-          pagetitle: 'Settings | '+username.entry.name   ,
-        }
-        )
-      } else {
-        return res.redirect('/');
-      }
-
-
-
-
+          if (username) {
+            res.render('orgsettings/'+template,{
+              orgowner : req.orgowner ,
+              orgmember : req.orgmember ,
+              organization : username,
+              organizations : req.userorgs ,
+              braintree_customer : JSON.stringify(customer),
+              pagetitle: 'Settings | '+username.entry.name   ,
+            }
+            )
+          } else {
+            return res.redirect('/');
+          }
         });
-
-
-
-
-
-
-
+      }else{
+        res.render('orgsettings/'+template,{
+          orgowner : req.orgowner ,
+          orgmember : req.orgmember ,
+          organization : username,
+          organizations : req.userorgs ,
+          pagetitle: 'Settings | '+username.entry.name   ,
+        })
+      }
     })
-
-
-
-      } else {
-
+    break;      
+    default:
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
@@ -233,44 +211,11 @@ exports.page = function(req, res) {
         return res.redirect('/');
       }
     })
-
-      
-
-
-
-
-      }
-
-
-
-
-
-      break;      
-      default:
-    //check the user name for duplicate.
-    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-      if (username) {
-        res.render('orgsettings/'+template,{
-          orgowner : req.orgowner ,
-          orgmember : req.orgmember ,
-          organization : username,
-          organizations : req.userorgs ,
-          pagetitle: 'Settings | '+username.entry.name   ,
-        }
-        )
-      } else {
-        return res.redirect('/');
-      }
-    })
-      break;
-    }
-
-
-
-
-  } else {
-    return res.redirect('/');
+    break;
   }
+} else {
+  return res.redirect('/');
+}
 };
 
 /////////////////////////////////////
@@ -420,8 +365,8 @@ exports.orgPut = function(req, res, next) {
        temp.business_billing_name = req.body.business_billing_name
      } else {
       delete temp.business_billing_name 
-     }
-     if (req.body.email) {
+    }
+    if (req.body.email) {
       console.log(req.body.email)
       temp.email = req.body.email
     }     
@@ -668,36 +613,7 @@ exports.billing_managers = function(req, res) {
   }
 };
 
-///////////////////////////////////////////////
-//////////  Upgrade your Org Plan ////////////
-/////////////////////////////////////////////
-exports.per_seat = function(req, res) {
-  console.log('getting here')
-  if (req.orgowner) {
-   var template =  req.params.page 
-    //check the user name for duplicate.
-    organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
-      if (username) {
-
-        gateway.clientToken.generate({}, function (err, response) {
-          res.render('orgsettings/per_seat',{
-            orgowner : req.orgowner ,
-            orgmember : req.orgmember ,
-            organization : username,
-            organizations : req.userorgs ,
-            clientToken : response.clientToken,
-            pagetitle: 'Settings | '+username.entry.name   ,
-          }
-          )
-        });
-      } else {
-        return res.redirect('/');
-      }
-    })
-  } else {
-    return res.redirect('/');
-  }
-};
+ 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

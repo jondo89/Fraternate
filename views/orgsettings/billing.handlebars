@@ -45,18 +45,22 @@
     <h2>Billing</h2>
     <hr>
     <h5>Plan</h5>
+
+
+
+    {{#if organization.entry.plan.name}}
     <div class="well">
-      <strong>Free </strong>plan, unlimited public repositories</strong>
-      <div class="row">
-        <div class="col-md-7">
-          Get unlimited private repositories for teams
-          Starting at $25 / month which includes your first 5 users, $9 / month for each additional user
-        </div>
-        <div class="col-md-5" style="text-align: right;">
-          <p><a class="btn btn-success" href="/organizations/{{organization.entry.name}}/settings/billing/per_seat">Upgrade</a></p>
-        </div>
-      </div>
+      <strong>Developer</strong>, Unlimited private repositories</strong>
     </div>
+    <a class="btn btn-danger" onclick="cancel_subscriptionModal()" data-toggle="modal" data-target="#myModal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel Subscription</a>
+    {{else}}
+    <div class="well">
+      <strong>Free plan</strong>, unlimited public repositories</strong>
+    </div>
+    <p><a class="btn btn-success" href="/organizations/{{organization.entry.name}}/settings/billing/upgrade">Get private repositories</a></p>
+    {{/if}} 
+
+
     <hr>
      <h5>Payment</h5>
     {{#if braintree_customer}}

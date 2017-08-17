@@ -103,7 +103,7 @@
   <div class="form-group">
     <label for="url" class="col-md-12">url</label>
     <div class="col-md-12">
-      <input type="text" name="url" id="url" class="form-control" value="{{organization.entry.url}}">
+      <input type="url" name="url" id="url" class="form-control" value="{{organization.entry.url}}">
     </div>
   </div>
 </div>
@@ -150,7 +150,7 @@
 <p></p>
 <div id="msg"></div>
 <div id="customer"></div>
-<small>There are no upcoming charges to your account.</small>
+<small>All transactions are processed on <a href="https://www.braintreepayments.com/" target="_blank">Braintree Payments</a> through an encrypted HTTP Secure connection.</small>
 </div>
 </div>
 
@@ -162,6 +162,7 @@
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
 <script type="text/javascript">
   var clientToken = '{{{clientToken}}}';
@@ -176,6 +177,20 @@
 ////        INITIALIZE         //// 
 //////////////////////////////////
 $('document').ready(function(){
+  $("#theForm").validate({
+    rules: {
+      email: {
+        required: true,
+        email: true
+      },
+    },
+    highlight: function(element) {
+      $(element).closest('.form-group').addClass('has-error');
+    },
+    unhighlight: function(element) {
+      $(element).closest('.form-group').removeClass('has-error');
+    }
+  });  
   braintree.dropin.create({
     authorization: clientToken,
     container: "#payment-form",
@@ -188,6 +203,8 @@ $('document').ready(function(){
   }, function (createErr, instance) {
     $('#submits').toggleClass('disabled', false);
     button.addEventListener('click', function () {
+      var formValid = $("#theForm").valid()
+      if (formValid) {      
       instance.requestPaymentMethod(function (err, payload) {
         $('#submits').toggleClass('disabled', true);
         if (customerBT) {
@@ -196,6 +213,7 @@ $('document').ready(function(){
           formPost(payload)
         }
       });
+      }
     });
   }) 
 })
