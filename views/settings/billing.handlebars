@@ -48,9 +48,7 @@
 		<h4>Payment history</h4>
 		<div class="row">
 			<div class="col-md-6">
-
 				<div id="subscription_history">
-					
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -83,9 +81,9 @@ function deleteBraintreeClient(ids){
 	$('#modelHtml').html('<a href="/users/deletepaymentdetails/'+ids+'" class="btn btn-danger">Delete payment details.</a>')
 }
 
-/////////////////////////////////////
-////        KICK MEMBER         //// 
-///////////////////////////////////
+////////////////////////////////////////////
+////        CANCEL SUBSCRIPION         //// 
+//////////////////////////////////////////
 function cancel_subscriptionModal(){
 	var html = '<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> <h4 class="modal-title" id="myModalLabel"><i class="fa fa-trash" aria-hidden="true"></i> Cancel Subscription.</h4> </div> <div class="modal-body"> <p>Are you sure you wish to cancel this subscription?</p> <div style="text-align: center"> <div id="modelHtml"></div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>'
 	$('#modalTextArea').html(html)

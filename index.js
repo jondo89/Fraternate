@@ -258,8 +258,8 @@ app.get('/users/:username/settings/billing/payment', braintreeController.payment
 /////////////////////////////////////////////////
 app.get('/organizations/:orgname/settings/billing/upgrade',organizationController.ajaxorguserread ,organizationController.organizationpermission,   braintreeOrgController.upgrade);
 app.get('/organizations/:orgname/settings/billing/upgrade_plan_2',organizationController.ajaxorguserread ,organizationController.organizationpermission,   braintreeOrgController.upgrade_plan_2);
-app.post('/organizations/:orgname/subscription', braintreeOrgController.subscription);
-app.post('/organizations/:orgname/subscription_plan_2', braintreeOrgController.subscription_plan_2);
+app.post('/organizations/:orgname/subscription', organizationController.ajaxorguserread ,organizationController.organizationpermission,braintreeOrgController.subscription);
+app.post('/organizations/:orgname/subscription_plan_2', organizationController.ajaxorguserread ,organizationController.organizationpermission,braintreeOrgController.subscription_plan_2);
 app.get('/organizations/:orgname/cancel_subscription', braintreeOrgController.cancel_subscription);
 app.get('/organizations/:orgname/transaction_history', braintreeOrgController.transaction_history);
 app.get('/organizations/:orgname/subscription_history', braintreeOrgController.subscription_history);

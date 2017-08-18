@@ -1,59 +1,55 @@
-<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+ 
 
 <div class="row" style="padding-top: 25px" >
-  <div class="col-md-10">
-    <div class="media">
-      {{#if organization.entry.picture}}
-      <div class="media-left media-middle">
-        <a href="#">
-          <a href="/organizations/{{organization.entry.name}}">
-            <img onerror="this.src='{{organization.gravatar}}'"" src="{{organization.entry.picture}}" class="media-object" style="max-width: 200px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+  <div class="col-xs-12 col-md-10">
+    <div class="row">
+      <div class="col-xs-12 col-md-2">
+        {{#if organization.entry.picture}}
+          <a href="#">
+            <a href="/organizations/{{organization.entry.name}}">
+              <img onerror="this.src='{{organization.gravatar}}'"" src="{{organization.entry.picture}}" class="media-object" style="max-width: 150px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+            </a>
           </a>
-        </a>
-      </div>
-      {{else}}
-      <div class="media-left">
-        <a href="#">
-          <a href="/organizations/{{organization.entry.name}}">
-            <img src="{{organization.gravatar}}" class="media-object" style="max-width: 200px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+        {{else}}
+          <a href="#">
+            <a href="/organizations/{{organization.entry.name}}">
+              <img src="{{organization.gravatar}}" class="media-object" style="max-width: 150px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+            </a>
           </a>
-        </a>
+        {{/if}}
       </div>
-      {{/if}}
-      <div class="media-body">
-        <h1>{{organization.entry.displayname}}  <small>{{dotdotdot organization.entry.name}}</small></h1>
-        <p>{{dotdotdotdotdot organization.entry.description }}</p>
-        {{#if organization.entry.company}}
-        <span style="color: grey;padding-right: 25px">
-          <i class="fa fa-users" aria-hidden="true"></i>  {{dotdotdot organization.entry.company}} 
-        </span >
-        {{/if}}
-        {{#if organization.entry.location}}
-        <span style="color: grey;padding-right: 25px">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>   {{dotdotdot organization.entry.location }} 
-        </span>
-        {{/if}}
-        {{#if organization.entry.displayemail}}
-        <span style="color: grey;padding-right: 25px">
-          <i class="fa fa-envelope-o" aria-hidden="true"></i>   <a style="color: grey" href="mailto:{{organization.entry.email}}">{{dotdotdotdot organization.entry.displayemail}}</a>
+      <div class="col-xs-12 col-md-10">
+          <h1>{{organization.entry.displayname}}  <small>{{dotdotdot organization.entry.name}}</small></h1>
+          <p>{{dotdotdotdotdot organization.entry.description }}</p>
+          {{#if organization.entry.company}}
+          <span style="color: grey;padding-right: 25px">
+            <i class="fa fa-users" aria-hidden="true"></i> {{dotdotdot organization.entry.company}} 
+          </span >
+          {{/if}}
+          {{#if organization.entry.location}}
+          <span style="color: grey;padding-right: 25px">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> {{dotdotdot organization.entry.location }} 
+          </span>
+          {{/if}}
+          {{#if organization.entry.displayemail}}
+          <span style="color: grey;padding-right: 25px">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i> <a style="color: grey" href="mailto:{{organization.entry.email}}">{{dotdotdotdot organization.entry.displayemail}}</a>
           </span>
           {{/if}}
           {{#if organization.entry.url}}
           <span style="color: grey;padding-right: 25px">   
-            <i class="fa fa-link" aria-hidden="true"></i>   <a style="color: grey" href="http://{{organization.entry.url}}" target="_blank">{{dotdotdotdot organization.entry.url}}</a>  
+            <i class="fa fa-link" aria-hidden="true"></i> <a style="color: grey" href="http://{{organization.entry.url}}" target="_blank">{{dotdotdotdot organization.entry.url}}</a>  
           </span>
           {{/if}}
-        </div>
       </div>
     </div>
-    <div class="col-md-2">
-      {{#if user}}
-      <div style="text-align: right;">
-       {{> button-org-user }}
-     </div>
-     {{/if}}
+  </div>
+  <div class="col-xs-12 col-md-2">
+    {{#if user}}
+    <div style="text-align: right;">
+     {{> button-org-user }}
    </div>
+   {{/if}}
  </div>
+</div>
 <p></p>

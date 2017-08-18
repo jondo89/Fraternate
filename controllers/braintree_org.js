@@ -39,10 +39,10 @@ exports.payment = function(req, res) {
               res.render('orgsettings/payment',{
                 pagetitle: 'Payment | '+sitename+'',
                 braintree_customer : JSON.stringify(customer),
-            orgowner : req.orgowner ,
-            orgmember : req.orgmember ,
-            organization : orgname,
-            organizations : req.userorgs ,
+                orgowner : req.orgowner ,
+                orgmember : req.orgmember ,
+                organization : orgname,
+                organizations : req.userorgs ,
                 clientToken : response.clientToken
               })
             });
@@ -95,46 +95,46 @@ exports.upgrade = function(req, res) {
           gateway.customer.find(orgname.entry.braintreeid, function(err, customer) {
             if (customer) {
              gateway.clientToken.generate({
-                customerId: customer.id
+              customerId: customer.id
             }, function (err, response) {
-          res.render('orgsettings/upgrade',{
-            pagetitle: 'Upgrade | '+sitename+'',
-            braintree_customer : JSON.stringify(customer),
-            clientToken : response.clientToken,
-            orgowner : req.orgowner ,
-            orgmember : req.orgmember ,
-            organization : orgname,
-            organizations : req.userorgs ,
-          })
-        });
-       }else{
-         gateway.clientToken.generate({}, function (err, response) {
-          res.render('orgsettings/upgrade',{
-            pagetitle: 'Upgrade | '+sitename+'',
-            braintree_customer : JSON.stringify(customer),
-            clientToken : response.clientToken,
-            orgowner : req.orgowner ,
-            orgmember : req.orgmember ,
-            organization : orgname,
-            organizations : req.userorgs ,
-          })
-        });
-       }
-     });
-    } else {
-      gateway.clientToken.generate({}, function (err, response) {
-        res.render('orgsettings/payment',{
-          pagetitle: 'Payment | '+sitename+'',
-          clientToken : response.clientToken,
-          orgowner : req.orgowner ,
-          orgmember : req.orgmember ,
-          organization : orgname,
-          organizations : req.userorgs ,
-        })
-      });
-    }
-} 
-});
+              res.render('orgsettings/upgrade',{
+                pagetitle: 'Upgrade | '+sitename+'',
+                braintree_customer : JSON.stringify(customer),
+                clientToken : response.clientToken,
+                orgowner : req.orgowner ,
+                orgmember : req.orgmember ,
+                organization : orgname,
+                organizations : req.userorgs ,
+              })
+            });
+           }else{
+             gateway.clientToken.generate({}, function (err, response) {
+              res.render('orgsettings/upgrade',{
+                pagetitle: 'Upgrade | '+sitename+'',
+                braintree_customer : JSON.stringify(customer),
+                clientToken : response.clientToken,
+                orgowner : req.orgowner ,
+                orgmember : req.orgmember ,
+                organization : orgname,
+                organizations : req.userorgs ,
+              })
+            });
+           }
+         });
+        } else {
+          gateway.clientToken.generate({}, function (err, response) {
+            res.render('orgsettings/payment',{
+              pagetitle: 'Payment | '+sitename+'',
+              clientToken : response.clientToken,
+              orgowner : req.orgowner ,
+              orgmember : req.orgmember ,
+              organization : orgname,
+              organizations : req.userorgs ,
+            })
+          });
+        }
+      } 
+    });
 
   } else {
     res.redirect('/signin');
@@ -154,210 +154,225 @@ exports.upgrade_plan_2 = function(req, res) {
           gateway.customer.find(orgname.entry.braintreeid, function(err, customer) {
             if (customer) {
              gateway.clientToken.generate({
-                customerId: customer.id
+              customerId: customer.id
             }, function (err, response) {
-          res.render('orgsettings/upgrade_plan_2',{
-            pagetitle: 'Upgrade Yearly Plan | '+sitename+'',
-            braintree_customer : JSON.stringify(customer),
-            clientToken : response.clientToken,
-            orgowner : req.orgowner ,
-            orgmember : req.orgmember ,
-            organization : orgname,
-            organizations : req.userorgs ,
-          })
-        });
-       }else{
-         gateway.clientToken.generate({}, function (err, response) {
-          res.render('orgsettings/upgrade_plan_2',{
-            pagetitle: 'Upgrade Yearly Plan | '+sitename+'',
-            braintree_customer : JSON.stringify(customer),
-            clientToken : response.clientToken,
-            orgowner : req.orgowner ,
-            orgmember : req.orgmember ,
-            organization : orgname,
-            organizations : req.userorgs ,
-          })
-        });
-       }
-     });
-    } else {
-      gateway.clientToken.generate({}, function (err, response) {
-        res.render('orgsettings/payment',{
-          pagetitle: 'Payment | '+sitename+'',
-          clientToken : response.clientToken,
-          orgowner : req.orgowner ,
-          orgmember : req.orgmember ,
-          organization : orgname,
-          organizations : req.userorgs ,
-        })
-      });
-    }
-    } 
-});
+              res.render('orgsettings/upgrade_plan_2',{
+                pagetitle: 'Upgrade Yearly Plan | '+sitename+'',
+                braintree_customer : JSON.stringify(customer),
+                clientToken : response.clientToken,
+                orgowner : req.orgowner ,
+                orgmember : req.orgmember ,
+                organization : orgname,
+                organizations : req.userorgs ,
+              })
+            });
+           }else{
+             gateway.clientToken.generate({}, function (err, response) {
+              res.render('orgsettings/upgrade_plan_2',{
+                pagetitle: 'Upgrade Yearly Plan | '+sitename+'',
+                braintree_customer : JSON.stringify(customer),
+                clientToken : response.clientToken,
+                orgowner : req.orgowner ,
+                orgmember : req.orgmember ,
+                organization : orgname,
+                organizations : req.userorgs ,
+              })
+            });
+           }
+         });
+        } else {
+          gateway.clientToken.generate({}, function (err, response) {
+            res.render('orgsettings/payment',{
+              pagetitle: 'Payment | '+sitename+'',
+              clientToken : response.clientToken,
+              orgowner : req.orgowner ,
+              orgmember : req.orgmember ,
+              organization : orgname,
+              organizations : req.userorgs ,
+            })
+          });
+        }
+      } 
+    });
   } else {
     res.redirect('/signin');
   }
 };
+
+
+
 
 ///////////////////////////////////////
 /////  SUBSCRIPTION - PLAN 1     ///// 
 /////////////////////////////////////
 exports.subscription = function(req, res) {
   var plan = "j2d2"
-  //Perform Routing for Varios user type on the home page.
-  if (req.user) {
-    //Create client token for Braintree payments.
-    if (req.user.braintreeid) {
-    	gateway.customer.find(req.user.braintreeid, function(err, customer) {
-    		if (customer) {
-    			gateway.clientToken.generate({
-    				customerId: customer.id
-    			}, function (err, response) {
-    				gateway.subscription.create({
-    					paymentMethodToken: customer.paymentMethods[0].token,
-    					planId: plan,
-    				}, function (err, result) {
-                  //Poorly configured error traps  , needs vast improvement.
-                  if(err){
-                    console.log('Error Here query1',err); return;
-                    req.flash('error',{ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> payment method error has occured <pre>'+err+'</pre> Please send us this warning.</div>' });
-                    return res.send()
-                  }
-                  var errors = result.errors;
-                  if (errors) {
-                    var customerErrors = errors.for("customer").deepErrors();
-                    for (var i in customerErrors) {
-                      if (customerErrors.hasOwnProperty(i)) {
-                        console.log(customerErrors[i].code);
-                        console.log(customerErrors[i].message);
-                        console.log(customerErrors[i].attribute);
-                      }
+    //Perform Routing for Varios user type on the home page.
+    if (req.user) {
+      //Create client token for Braintree payments.
+      organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, orgname) { 
+        if (orgname.entry.braintreeid) {
+          gateway.customer.find(orgname.entry.braintreeid, function(err, customer) {
+            if (customer) {
+              gateway.clientToken.generate({
+                customerId: customer.id
+              }, function (err, response) {
+                gateway.subscription.create({
+                  paymentMethodToken: customer.paymentMethods[0].token,
+                  planId: plan,
+                }, function (err, result) {
+                    //Poorly configured error traps  , needs vast improvement.
+                    if(err){
+                      console.log('Error Here query1',err); return;
+                      req.flash('error',{ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> payment method error has occured <pre>'+err+'</pre> Please send us this warning.</div>' });
+                      return res.send()
                     }
-                    req.flash('error',{ msg: 'Heads up, There is a validation error with your details.' });
-                    return res.send()
-                  } else {
-                   if (errors) {
-                    var creditCardErrors = errors.for("customer").for("creditCard").deepErrors();
-                    for (var i in creditCardErrors) {
-                      if (creditCardErrors.hasOwnProperty(i)) {
-                        console.log(creditCardErrors[i].code);
-                        console.log(creditCardErrors[i].message);
-                        console.log(creditCardErrors[i].attribute);
+                    var errors = result.errors;
+                    if (errors) {
+                      var customerErrors = errors.for("customer").deepErrors();
+                      for (var i in customerErrors) {
+                        if (customerErrors.hasOwnProperty(i)) {
+                          console.log(customerErrors[i].code);
+                          console.log(customerErrors[i].message);
+                          console.log(customerErrors[i].attribute);
+                        }
                       }
-                    }
-                    req.flash('error',{ msg: 'Heads up, There is a error with your credit card validation.' });
-                    return res.send()
-                  } else {
-                    User.findById(req.user.id, function(err, user) {
-                      user.plan.name = plan
-                      user.plan.braintreeid = result.subscription.id
-                      user.save(function(err) {
-                        console.log(result)
+                      req.flash('error',{ msg: 'Heads up, There is a validation error with your details.' });
+                      return res.send()
+                    } else {
+                     if (errors) {
+                      var creditCardErrors = errors.for("customer").for("creditCard").deepErrors();
+                      for (var i in creditCardErrors) {
+                        if (creditCardErrors.hasOwnProperty(i)) {
+                          console.log(creditCardErrors[i].code);
+                          console.log(creditCardErrors[i].message);
+                          console.log(creditCardErrors[i].attribute);
+                        }
+                      }
+                      req.flash('error',{ msg: 'Heads up, There is a error with your credit card validation.' });
+                      return res.send()
+                    } else {
+                      var temp = JSON.parse(JSON.stringify(orgname.entry))
+                      temp.plan = {
+                        'name' : plan,
+                        'braintreeid' : result.subscription.id
+                      }
+                      orgname.entry = temp
+                      console.log(orgname)
+                      orgname.save(function(err) {
+                        console.log(result,'Fasd',err)
                         req.flash('success',{ msg: 'Your payment has been successfully processed.' });
                         return res.send()
                       });
-                    });
+                    }
                   }
-                }
-              }); 
-    			});
-    		}else{
-    			console.log('Did fghfghfghfgh happen here')
-    		}
-    	});
+                }); 
+              });
+            }else{
+              console.log('Did fghfghfghfgh happen here')
+            }
+          });
+        } else {
+          console.log('Did anyssssssssssssssssssthing happen here')
+        }
+      })
     } else {
-    	console.log('Did anyssssssssssssssssssthing happen here')
-    }
-  } else {
-   res.redirect('/signin');
- }
-};
+     res.redirect('/signin');
+   }
+ };
 
 ///////////////////////////////////////
 /////  SUBSCRIPTION - PLAN 2     ///// 
 /////////////////////////////////////
 exports.subscription_plan_2 = function(req, res) {
   var plan = "b36w"
-  //Perform Routing for Varios user type on the home page.
-  if (req.user) {
-    //Create client token for Braintree payments.
-    if (req.user.braintreeid) {
-      gateway.customer.find(req.user.braintreeid, function(err, customer) {
-        if (customer) {
-          gateway.clientToken.generate({
-            customerId: customer.id
-          }, function (err, response) {
-            gateway.subscription.create({
-              paymentMethodToken: customer.paymentMethods[0].token,
-              planId: plan,
-            }, function (err, result) {
-                  //Poorly configured error traps  , needs vast improvement.
-                  if(err){
-                    console.log('Error Here query1',err); return;
-                    req.flash('error',{ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> payment method error has occured <pre>'+err+'</pre> Please send us this warning.</div>' });
-                    return res.send()
-                  }
-                  var errors = result.errors;
-                  if (errors) {
-                    var customerErrors = errors.for("customer").deepErrors();
-                    for (var i in customerErrors) {
-                      if (customerErrors.hasOwnProperty(i)) {
-                        console.log(customerErrors[i].code);
-                        console.log(customerErrors[i].message);
-                        console.log(customerErrors[i].attribute);
-                      }
+    //Perform Routing for Varios user type on the home page.
+    if (req.user) {
+      organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, orgname) { 
+      //Create client token for Braintree payments.
+      if (orgname.entry.braintreeid) {
+        gateway.customer.find(orgname.entry.braintreeid, function(err, customer) {
+          if (customer) {
+            gateway.clientToken.generate({
+              customerId: customer.id
+            }, function (err, response) {
+              gateway.subscription.create({
+                paymentMethodToken: customer.paymentMethods[0].token,
+                planId: plan,
+              }, function (err, result) {
+                    //Poorly configured error traps  , needs vast improvement.
+                    if(err){
+                      console.log('Error Here query1',err); return;
+                      req.flash('error',{ msg: '<div class="alert alert-warning" role="alert"> <strong>Warning!</strong> payment method error has occured <pre>'+err+'</pre> Please send us this warning.</div>' });
+                      return res.send()
                     }
-                    req.flash('error',{ msg: 'Heads up, There is a validation error with your details.' });
-                    return res.send()
-                  } else {
-                   if (errors) {
-                    var creditCardErrors = errors.for("customer").for("creditCard").deepErrors();
-                    for (var i in creditCardErrors) {
-                      if (creditCardErrors.hasOwnProperty(i)) {
-                        console.log(creditCardErrors[i].code);
-                        console.log(creditCardErrors[i].message);
-                        console.log(creditCardErrors[i].attribute);
+                    var errors = result.errors;
+                    if (errors) {
+                      var customerErrors = errors.for("customer").deepErrors();
+                      for (var i in customerErrors) {
+                        if (customerErrors.hasOwnProperty(i)) {
+                          console.log(customerErrors[i].code);
+                          console.log(customerErrors[i].message);
+                          console.log(customerErrors[i].attribute);
+                        }
                       }
-                    }
-                    req.flash('error',{ msg: 'Heads up, There is a error with your credit card validation.' });
-                    return res.send()
-                  } else {
-                    User.findById(req.user.id, function(err, user) {
-                      user.plan.name = plan
-                      user.plan.braintreeid = result.subscription.id
-                      user.save(function(err) {
-                        console.log(result)
+                      req.flash('error',{ msg: 'Heads up, There is a validation error with your details.' });
+                      return res.send()
+                    } else {
+                     if (errors) {
+                      var creditCardErrors = errors.for("customer").for("creditCard").deepErrors();
+                      for (var i in creditCardErrors) {
+                        if (creditCardErrors.hasOwnProperty(i)) {
+                          console.log(creditCardErrors[i].code);
+                          console.log(creditCardErrors[i].message);
+                          console.log(creditCardErrors[i].attribute);
+                        }
+                      }
+                      req.flash('error',{ msg: 'Heads up, There is a error with your credit card validation.' });
+                      return res.send()
+                    } else {
+                      var temp = JSON.parse(JSON.stringify(orgname.entry))
+                      temp.plan = {
+                        'name' : plan,
+                        'braintreeid' : result.subscription.id
+                      }
+                      orgname.entry = temp
+                      console.log(orgname)
+                      orgname.save(function(err) {
+                        console.log(result,'Fasd',err)
                         req.flash('success',{ msg: 'Your payment has been successfully processed.' });
                         return res.send()
                       });
-                    });
+                    }
                   }
-                }
-              }); 
-          });
-        }else{
-          console.log('Did fghfghfghfgh happen here')
-        }
-      });
+                }); 
+            });
+          }else{
+            console.log('Did fghfghfghfgh happen here')
+          }
+        });
+      } else {
+        console.log('Did anyssssssssssssssssssthing happen here')
+      }
+    })
     } else {
-      console.log('Did anyssssssssssssssssssthing happen here')
-    }
-  } else {
-   res.redirect('/signin');
- }
-};
+     res.redirect('/signin');
+   }
+ };
 
 ///////////////////////////////////////////
 /////  CANCEL USER SUBSCRIPTIONS     ///// 
 /////////////////////////////////////////
 exports.cancel_subscription = function(req, res) {
-  User.findById(req.user._id, function(err, user) {  
-    var temp = JSON.parse(JSON.stringify(user.plan))
-    user.plan = {}  
-    user.save(function(err) {                       
+       
+  organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, orgname) {  
+    var temp = JSON.parse(JSON.stringify(orgname.entry))
+    temp.plan = {}
+    orgname.entry = temp 
+    orgname.save(function(err) {                       
       gateway.subscription.cancel(temp.braintreeid, function (err, result) {
         req.flash('success',{ msg: 'Your subscription has been deleted.' });
-        res.redirect('/organizations/'+req.user.username+'/settings/billing');
+        res.redirect('/organizations/'+orgname.entry.name+'/settings/billing');
         console.log(err,result)
       });
     });
@@ -370,11 +385,12 @@ exports.cancel_subscription = function(req, res) {
 /////////////////////////////////////////////
 exports.transaction_history = function(req, res) {
   if (req.user) {
-    //where req.user.braintree id is the id saved on the local mongodb server.
-    if (req.user.braintreeid) {
+      organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, orgname) { 
+      //Create client token for Braintree payments.
+      if (orgname.entry.braintreeid) {
       var stream = require("stream");
       var customerStream = gateway.transaction.search(function (search) {
-        search.customerId().is(req.user.braintreeid)
+        search.customerId().is(orgname.entry.braintreeid)
       });
       res.write("[");
       var first = true;       
@@ -392,6 +408,7 @@ exports.transaction_history = function(req, res) {
         res.end();
       });
     }
+ });
   } else {
     res.redirect('/signin');
   }
@@ -403,11 +420,12 @@ exports.transaction_history = function(req, res) {
 //////////////////////////////////////////////
 exports.subscription_history = function(req, res) {
   if (req.user) {
-    //where req.user.braintree id is the id saved on the local mongodb server.
-    if (req.user.braintreeid) {
+      organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, orgname) { 
+      //Create client token for Braintree payments.
+      if (orgname.entry.braintreeid) {
       var stream = require("stream");
       var customer_stream = gateway.customer.search(function (search) {
-        search.id().is(req.user.braintreeid)
+        search.id().is(orgname.entry.braintreeid)
       });
       res.write("[");
       var first = true;       
@@ -425,6 +443,7 @@ exports.subscription_history = function(req, res) {
         res.end();
       });
     }
+    });
   } else {
     res.redirect('/signin');
   }
@@ -716,9 +735,9 @@ exports.deletepaymentdetails = function(req, res) {
          res.redirect('/organizations/'+orgid.entry.name+'/settings/billing/payment');
          return;
        }
-var temp = JSON.parse(JSON.stringify(orgid.entry))
-delete temp.braintreeid
-orgid.entry = temp
+       var temp = JSON.parse(JSON.stringify(orgid.entry))
+       delete temp.braintreeid
+       orgid.entry = temp
        orgid.save(function(err) {
         if(err){
          req.flash('error', { msg: 'Something went wrong here '+err+' .' });

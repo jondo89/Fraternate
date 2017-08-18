@@ -1,17 +1,12 @@
-<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
-
 <div class="row" style="padding-top: 35px">
- 
   <div class="col-md-4">
     <div>
       <div>  
         <a href="#">
           {{#if userload.picture}}
-          <div onerror="this.src='{{userload.gravatar}}'"" id="googlepic" style="min-width: 100%"></div>
+          <div onerror="this.src='{{userload.gravatar}}'"" id="googlepic" style="max-width: 200px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;"></div>
           {{else}}
-          <img src="{{userload.gravatar}}" class="media-object">
+          <img src="{{userload.gravatar}}" style="max-width: 200px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;" class="media-object">
           {{/if}}
         </a>
       </div>
@@ -71,21 +66,15 @@
     <hr>
     {{#if organizations}}
     <h4>Organizations</h4>
-
-
-      {{#each organizations}}
-      
-        <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}"  >
-          {{#if this.entry.picture}}
-          <img  onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
-          {{else}}
-          <img src="{{this.gravatar}}" class="media-object" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
-          {{/if}}       
-        </a>
-    
-      {{/each}}
-
-  
+    {{#each organizations}}
+    <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}">
+      {{#if this.entry.picture}}
+      <img  onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+      {{else}}
+      <img src="{{this.gravatar}}" class="media-object" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+      {{/if}}       
+    </a>
+    {{/each}}
     {{else}}
     <div  class="row" style="text-align: center">
       <p>This user is not a member of any organizations.</p>
@@ -107,7 +96,6 @@
       {{/each}}
     </div>
     {{/if}}
-  
     <h3>Custom Site Details</h3>
     <div style="border-width: 1px; border-style: dashed; border-color: grey;padding:40px;text-align: center;border-radius: 5px;"><strong> Heads up!</strong> This is where your custom content and user interaction detail will be added. 
     </div>

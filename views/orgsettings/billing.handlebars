@@ -111,11 +111,24 @@
 </p>
 <small>Receipts are sent to the billing managers for this organization, and <a href="" data-toggle="modal" data-target=".bs-example-modal-sm"> {{organization.entry.email}}  <i class="fa fa-pencil" aria-hidden="true"></i></a></small>
 <hr>
-<h5>Payment history</h5>
-<div class="well">
-  You have not made any payments. 
-</div>      
-<small>Amounts shown in USD</small>
+    <h5>Payment history</h5>
+    <div class="row">
+      <div class="col-md-6">
+
+        <div id="subscription_history">
+          
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="transaction_history">
+        </div></div>
+      </div>
+      <div id="paymentNote">
+        <div class="well">
+          You have not made any payments. 
+        </div>      
+      </div>
+      <small>Amounts shown in USD</small>
 </div> 
 </div>
 </div>
@@ -129,7 +142,7 @@
     </div>
   </div>
 </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script type="text/javascript">
 ///////////////////////////////////////////////
 ////        DELTE PAYMENT DETAILS         //// 
@@ -140,13 +153,122 @@ function deleteBraintreeClient(ids){
   $('#modelHtml').html('<a href="/organizations/deletepaymentdetails/'+ids+'" class="btn btn-danger">Delete payment details.</a>')
 }
 
-/////////////////////////////////////
-////        KICK MEMBER         //// 
-///////////////////////////////////
-function kickMember(ids){
-  var html = '<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> <h4 class="modal-title" id="myModalLabel"><i class="fa fa-sign-out" aria-hidden="true"></i> Kick this user.</h4> </div> <div class="modal-body"> <p>Are you sure you wish to kick <strong>'+ids+'</strong> from {{organization.entry.displayname}}?</p> <div style="text-align: center"> <div id="modelHtml"></div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>'
+////////////////////////////////////////////
+////        CANCEL SUBSCRIPION         //// 
+//////////////////////////////////////////
+function cancel_subscriptionModal(){
+  var html = '<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> <h4 class="modal-title" id="myModalLabel"><i class="fa fa-trash" aria-hidden="true"></i> Cancel Subscription.</h4> </div> <div class="modal-body"> <p>Are you sure you wish to cancel this subscription?</p> <div style="text-align: center"> <div id="modelHtml"></div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div>'
   $('#modalTextArea').html(html)
-  $('#modelHtml').html('<a href="/organizations/{{organization.entry.name}}/kickbilling/'+ids+'" class="btn btn-warning">Kick '+ids+'</a>')
+  $('#modelHtml').html('<a href="/organizations/{{organization.entry.name}}/cancel_subscription" class="btn btn-danger">Cancel Subscription.</a>')
 }
+
+
+var orgname = '{{organization.entry.name}}'
+{{#if braintree_customer}}
+var braintreeid = '{{organization.entry.braintreeid}}'
+{{else}}
+{{/if}}
+
+//////////////////////////////////////////////////////
+////        STREAM IN TRANSACTION HISTROY        //// 
+////////////////////////////////////////////////////
+function streamTransactions(){
+  $.ajax({
+    url: '/organizations/'+orgname+'/transaction_history',
+    success: function(data) {
+      data = JSON.parse(data)
+      printTable(data)
+    },
+    error : function(err){
+      console.log(err)
+    }
+  }); 
+}
+
+///////////////////////////////////////
+///// PRINT TRANSACTION HISTORY //////
+/////////////////////////////////////
+function printTable(data){
+  var html =''
+  $('#transaction_history').html('')
+  html += '<h5>Transaction History</h5><table class="table table-bordered" id="transaction_table" > <thead> <tr> <th>Date</th> <th>Status</th> <th>Value</th> </tr> </thead> <tbody>'
+  for (var i = 0; i < data.length; i++) {
+    var date =  new Date(data[i].createdAt)
+    date = moment(date).format('YYYY-MM-DD , h:mm');
+    html += '<tr><td>'+date+'</td><td>'+data[i].status+'</td><td>$'+data[i].amount+'</td></tr>'
+  }
+  html +='</tbody></table>  '
+  $('#transaction_history').append(html)
+  var table = jQuery('#transaction_table').DataTable({
+    'destroy':true,
+    "pagingType": "numbers",
+    'order': [[ 0, 'desc' ]] ,
+    "bLengthChange": false,
+    "bFilter": false,
+    "language": {
+      "emptyTable": "You have no tranaction history."
+    }   
+  });
+}
+
+//////////////////////////////////////////////////////
+////        STREAM IN SUBSCRIPTION HISTORY       //// 
+////////////////////////////////////////////////////
+function streamSubscriptions(){
+  $.ajax({
+    url: '/organizations/'+orgname+'/subscription_history',
+    success: function(data) {
+      data = JSON.parse(data)
+      printTableSubscriptions(data)
+    },
+    error : function(err){
+      console.log(err)
+    }
+  }); 
+}
+
+////////////////////////////////////////
+///// PRINT SUBSCRIPTION HISTORY //////
+//////////////////////////////////////
+function printTableSubscriptions(datas){
+  var data = datas[0]
+  var html =''
+  $('#subscription_history').html('')
+  html += '<h5>Subscription History</h5><table class="table table-bordered" id="subscription_table" > <thead> <tr>  <th>Next Billing Date</th> <th>Value</th> <th>Status</th> </tr> </thead> <tbody>'
+  for (var i = 0; i < data.paymentMethods[0].subscriptions.length; i++) {
+    var date =  new Date(data.paymentMethods[0].subscriptions[i].nextBillingDate)
+    date = moment(date).format('YYYY-MM-DD , h:mm');
+    html += '<tr><td>'+data.paymentMethods[0].subscriptions[i].nextBillingDate+'</td><td>$'+data.paymentMethods[0].subscriptions[i].nextBillingPeriodAmount+'</td><td>'+data.paymentMethods[0].subscriptions[i].status+'</td></tr>'
+  }
+  html +='</tbody></table>  '
+  $('#subscription_history').append(html)
+  var table = jQuery('#subscription_table').DataTable({
+    'destroy':true,
+    "pagingType": "numbers",
+    'order': [[ 2, 'asc' ]] ,
+    "bLengthChange": false,
+    "bFilter": false, 
+    "language": {
+      "emptyTable": "You have no subscription history."
+    }
+  });
+}
+
+////////////////////////
+///// INITIALIZE //////
+//////////////////////
+$(document).ready( function() {
+{{#if braintree_customer}}
+  if (braintreeid) {
+    $('#paymentNote').html('')
+    $('#transaction_history').html('<div class="well" style="text-align:center;"><i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i></div>')
+    $('#subscription_history').html('<div class="well" style="text-align:center"><i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i></div>')
+    streamTransactions()
+    streamSubscriptions()
+  }
+{{else}}
+{{/if}}
+});
+
 
 </script>
