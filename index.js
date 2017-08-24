@@ -17,18 +17,7 @@ var braintree = require("braintree");
 // Load environment variables from .env file
 dotenv.load();
 
-// Controllers
-var HomeController = require('./controllers/home');
-var userController = require('./controllers/user');
-var contactController = require('./controllers/contact');
-var userInterfaceController = require('./controllers/userinterface');
-var organizationController = require('./controllers/organization');
-var braintreeController = require('./controllers/braintree');
-var braintreeOrgController = require('./controllers/braintree_org');
-var stripeController = require('./controllers/stripe');
 
-// Passport OAuth strategies
-require('./config/passport');
 
 var app = express();
 
@@ -57,6 +46,9 @@ mongoose.connection.on('error', function() {
   process.exit(1);
 });
 
+//////////////////////////////////////////////////
+///////   MONGODB INITIATE CONNECTION    ////////
+////////////////////////////////////////////////
 var db = mongoose.connection;
 db.once('open', function() {
   // we're connected!
@@ -74,6 +66,9 @@ var gateway = braintree.connect({
   privateKey: process.env.PRIVATEKEY
 });
 
+/////////////////////////////////////////
+///////   HANDLEBARS HELPERS    ////////
+///////////////////////////////////////
 var hbs = exphbs.create({
   defaultLayout: 'main',
   helpers: {
@@ -109,7 +104,7 @@ var hbs = exphbs.create({
           return str;
         }
       },
-            'profile' : function(str) {
+      'profile' : function(str) {
         if (str) {
           if (str.length > 550)
             return str.substring(0,550) + '...';
@@ -138,11 +133,17 @@ if (app.get('env') == 'production') {
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+
+
 /////////////////////////////////////////////
 ///////   LOCALHOST PORT SETTING    ////////
 ///////////////////////////////////////////
 app.set('port', process.env.PORT || 3000);
 
+
+//////////////////////////////////////////
+///////   GENERAL APP SETTINGS   ////////
+////////////////////////////////////////
 app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -159,150 +160,16 @@ app.use(function(req, res, next) {
 });
 app.use(express.static(path.join(__dirname, 'public')));
 
-///////////////////////////////////////////////
-////     SET YOUR APP.JSON DETAILS        //// 
-/////////////////////////////////////////////
-var myModule = require('./app.json');
-var sitename = myModule.sitename
-var website = myModule.website
-var repo = myModule.repo
-app.locals.sitename = sitename
-app.locals.website = website
-app.locals.repo = repo
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////                                                            ROUTING                                                                     //// 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/////////////////////////////////
-////       TEMPALTES        //// 
 ///////////////////////////////
-app.get('/privacy', userInterfaceController.privacy);
-app.get('/terms', userInterfaceController.terms);
-app.get('/introduction', userInterfaceController.introduction);
-app.get('/troubleshooting', userInterfaceController.troubleshooting);
-app.get('/installation', userInterfaceController.installation);
-app.get('/payments', userInterfaceController.payments);
-app.get('/integration', userInterfaceController.integration);
-app.get('/licence', userInterfaceController.licence);
-app.get('/specifications', userInterfaceController.specifications);
+////       ROUTING        //// 
+/////////////////////////////
+//Set Handlebars view directory for plugins
+app.set('views', path.join(__dirname, 'plugins/fraternate/views/'));
+//Fratenate Routing
+var fraternateRouting = require('./plugins/fraternate/routes/routes');
+app.use('/', fraternateRouting);
  
-///////////////////////////////////////////////////
-////        USER INTERFACE CONTROLLER         //// 
-/////////////////////////////////////////////////
-//Static
-app.get('/users/', userInterfaceController.users);
-app.get('/users/:username/',   organizationController.userorganizations,  userInterfaceController.profile);
-app.get('/users/:username/settings/',userInterfaceController.settings);
-app.get('/users/:username/settings/:page',   organizationController.userorganizations, userInterfaceController.page);
-
-
-/////////////////////////////////////
-////       ORGANIZATION         //// 
-///////////////////////////////////
-//Static
-app.get('/organizations', organizationController.orglist);
-app.get('/organizations/new', organizationController.neworg);
-app.post('/organizations/new', organizationController.createorgstatic);
-
-app.get('/organizations/:orgname/', organizationController.ajaxorguserread ,  organizationController.organizationpermission,  organizationController.orgowneruserdetail,  organizationController.orgprofile);
-app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.organizationpermission, organizationController.settings);
-app.get('/organizations/:orgname/people', organizationController.ajaxorguserread ,organizationController.organizationpermission,organizationController.orgowneruserdetail,organizationController.people);
-app.get('/organizations/:orgname/settings',organizationController.ajaxorguserread , organizationController.organizationpermission, organizationController.settings);
-app.get('/organizations/:orgname/settings/:page', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.page);
-app.get('/organizations/:orgname/settings/billing/billing_managers/new', organizationController.ajaxorguserread ,organizationController.organizationpermission,  organizationController.billing_managers);
-
- 
-app.put('/organizations/:orgname', userController.ensureAuthenticated, organizationController.organizationpermission, organizationController.orgPut);
-app.get('/leaveorganiztion/:ids',  organizationController.leaveorganiztion);
-app.get('/deleteorganiztion/:ids',  organizationController.deleteorganiztion);
-
-app.get('/orgsharerequest/:orgname',organizationController.orgsharerequest, organizationController.organizationpermission,    organizationController.orgprofile);
-
-app.get('/organizations/:orgname/kickorg/:username/',  organizationController.kickorg);
-app.get('/organizations/:orgname/approvereq/:username/', organizationController.approvereq );
-app.get('/organizations/:orgname/usersearch/:username/', organizationController.usersearch );
-app.get('/organizations/:orgname/billing_managersearch/:username/', organizationController.billing_managersearch );
-app.get('/organizations/:orgname/kickbilling/:username/',  organizationController.kickbilling);
-
-//Ajax
-app.get('/orguserread', organizationController.orguserread); // Get the active user organizations , owner and member.
-app.get('/organizations/:orgname/add_manager/:username/', organizationController.add_manager ); // ajax call to add a billing manager to the organization.
-
-
-
-
-
-///////////////////////////////////////////
-////        BRAINTREE - USERS         //// 
-/////////////////////////////////////////
-app.get('/braintree', braintreeController.braintree);
-app.get('/transaction_history_all', braintreeController.transaction_history_all);
-app.get('/subscription_history_all', braintreeController.subscription_history_all);
-app.get('/users/:username/settings/billing/upgrade', braintreeController.upgrade);
-app.get('/users/:username/settings/billing/upgrade_plan_2', braintreeController.upgrade_plan_2);
-app.post('/users/:username/subscription', braintreeController.subscription);
-app.post('/users/:username/subscription_plan_2', braintreeController.subscription_plan_2);
-app.get('/users/:username/cancel_subscription', braintreeController.cancel_subscription);
-app.get('/users/:username/transaction_history', braintreeController.transaction_history);
-app.get('/users/:username/subscription_history', braintreeController.subscription_history);
-
-app.post('/users/:username/vault', braintreeController.vault);
-app.post('/users/:username/vaultupdate', braintreeController.vaultupdate);
-app.get('/users/deletepaymentdetails/:ids',  braintreeController.deletepaymentdetails);
-app.get('/users/:username/settings/billing/payment', braintreeController.payment);
-
-
-///////////////////////////////////////////////////
-////        BRAINTREE - ORGANIZATIONS         //// 
-/////////////////////////////////////////////////
-app.get('/organizations/:orgname/settings/billing/upgrade',organizationController.ajaxorguserread ,organizationController.organizationpermission,   braintreeOrgController.upgrade);
-app.get('/organizations/:orgname/settings/billing/upgrade_plan_2',organizationController.ajaxorguserread ,organizationController.organizationpermission,   braintreeOrgController.upgrade_plan_2);
-app.post('/organizations/:orgname/subscription', organizationController.ajaxorguserread ,organizationController.organizationpermission,braintreeOrgController.subscription);
-app.post('/organizations/:orgname/subscription_plan_2', organizationController.ajaxorguserread ,organizationController.organizationpermission,braintreeOrgController.subscription_plan_2);
-app.get('/organizations/:orgname/cancel_subscription', braintreeOrgController.cancel_subscription);
-app.get('/organizations/:orgname/transaction_history', braintreeOrgController.transaction_history);
-app.get('/organizations/:orgname/subscription_history', braintreeOrgController.subscription_history);
-
-app.post('/organizations/:orgname/vault', braintreeOrgController.vault);
-app.post('/organizations/:orgname/vaultupdate', braintreeOrgController.vaultupdate);
-app.get('/organizations/deletepaymentdetails/:ids',  braintreeOrgController.deletepaymentdetails);
-app.get('/organizations/:orgname/settings/billing/payment', organizationController.ajaxorguserread ,organizationController.organizationpermission,  braintreeOrgController.payment);
-
- 
-////////////////////////////////////////
-////        STRIPE - USERS         //// 
-//////////////////////////////////////
-app.get('/stripe', stripeController.stripe);
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////                                                            USER                                                                        //// 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-app.get('/',   organizationController.userorganizations,  HomeController.index);
-
-app.get('/contact', contactController.contactGet);
-app.post('/contact', contactController.contactPost);
-app.get('/account', userController.ensureAuthenticated, userController.accountGet);
-app.put('/account', userController.ensureAuthenticated, userController.accountPut);
-app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
-app.get('/signup', userController.signupGet);
-app.post('/signup', userController.signupPost);
-app.get('/signin', userController.loginGet);
-app.post('/signin', userController.loginPost);
-app.get('/forgot', userController.forgotGet);
-app.post('/forgot', userController.forgotPost);
-app.get('/reset/:token', userController.resetGet);
-app.post('/reset/:token', userController.resetPost);
-app.get('/signout', userController.signout);
-app.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink);
-app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
-app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/signin' }));
-app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email profile repo' ] }));
-app.get('/auth/github/callback', passport.authenticate('github', { successRedirect: '/', failureRedirect: '/signin' }));
-
-
-
 
 
 /////////////////////////////

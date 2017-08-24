@@ -16,7 +16,10 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <!-- Main navigation -->
         <ul class="nav navbar-nav">
-        <li>
+
+          
+          <!-- Custom Content goes here. -->
+          <li>
             <a href="/users" >Users</a>
           </li> 
           <li>
@@ -27,14 +30,21 @@
           </li> 
           <li>
             <a href="/stripe">Stripe</a>
-          </li>           
+          </li>       
+          <!-- Custom Content goes here. -->
         </ul>
         <ul class="nav navbar-nav navbar-right" id="deploy">
+
+          <!-- Custom Content goes here. -->
           <li>
             <a href="/introduction">Instructions</a>
           </li> 
+          <!-- Custom Content goes here. -->
 
-           {{#if user}}
+
+
+          <!-- Custom Content goes here. -->
+          {{#if user}}
           <li class="dropdown" data-toggle="tooltip" data-placement="right" title="Create new.">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus" aria-hidden="true"></i> <span class="caret"></span></a>
             <ul class="dropdown-menu" id="component">  
@@ -42,7 +52,10 @@
             </ul>
           </li>
           {{/if}}
+          <!-- Custom Content goes here. -->
 
+
+          <!-- Custom Content goes here. -->
           {{#if user}}
           <li class="dropdown" data-toggle="tooltip" data-placement="right" title="View profile and more.">
             <a href="#" data-toggle="dropdown" class="navbar-avatar dropdown-toggle" >
@@ -67,6 +80,9 @@
           <li class=""><a href="/signin">Sign in</a></li>
           <li class=""><a href="/signup">Sign up</a></li>
           {{/if}}
+          <!-- Custom Content goes here. -->
+
+
         </ul>
       </div>
     </div>

@@ -1,6 +1,11 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="login-container container">
- 
+     <div style="text-align: center">
+       <img src="/img/Logo square 300x300.png" style="height: 55px">  
+     </div>
+    <div style="text-align: center;padding-bottom: 15px">
+         <h2>Sign up to {{sitename}}</h2>
+     </div>
 <div class="panel panel-default">
     <div class="panel-body">
       {{#if messages.error}}
@@ -35,9 +40,26 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+
   <p class="text-center">
     Already have an account? <a href="/signin"><strong >Sign in</strong></a>
   </p>
+
+<div style="text-align: center;border:1px solid #ddd;">
+<small style="color: green">Free Plan</small>
+<ul class="list-unstyled"> 
+  <li><small>Unlimited collaborators</small></li>
+  <li><small>Unlimited public repositories</small></li>
+</ul>  
+</div>
+
+
+
 </div>
 
 <script type="text/javascript">

@@ -1,0 +1,34 @@
+<h1>Third Party Integration.</h1>
+<hr>
+<div class="row">
+	<div class="col-md-3">
+		<ul class="nav nav-pills nav-stacked">
+			<li role="presentation"><a href="/introduction">Introduction</a></li>
+			<li role="presentation"><a href="/specifications">Specifications</a></li>		
+			<li role="presentation"><a href="/installation">Installation Instructions</a></li>
+			<li role="presentation" class="active"><a href="/integration">Third Party Integration</a></li>
+			<li role="presentation"><a href="/payments">Payment Integration</a></li>
+			<li role="presentation"><a href="/css">CSS Management</a></li>
+			<li role="presentation"><a href="/troubleshooting">Troubleshooting</a></li>
+			<li role="presentation" ><a href="/licence">Licence</a></li>
+		</ul>
+	</div>
+	<div class="col-md-9" style="min-height: 850px">
+		<h3>Integration of External Resources.</h3>
+		<p>Fraternate makes use of recaptcha , Google Oauth and GitHub Ouath , this can be extended , if you would like any additional resources let us know in the issues area of the GitHub repo.</p>
+		<h3>Google Recaptch</h3>
+		<p>Use the recaptcha admin area (browse and find with google), ensure that all of the recaptcha deployment points are changed to your new registered domain. Add the localhost option to the recaptcha domain to allow for local testing.</p>
+		<p>Don’t forget to update all your recaptcha points with your site details.</p>
+		<pre>data-sitekey="----   Your site details here   ----"</pre>
+		<h3>Google Oauth</h3>
+		<p>You will need to use the Google API credential manager to allow your website to use the Google Signing. Change the. env file in the root directory value for Client ID and Client Secret. For your site, you will need to change the Heroku dashboard keys to suit your new site values.</p>
+		<p>You will need to set up the localhost host signing permission for testing as well as your hosted domain. This will require that full local host address be used, <strong> including the port</strong>.</p>
+		<p>Here is the Authorized redirect URIs example that work for this site</p>
+		<pre>https:// --- your domain here ----  /auth/google/callback</pre>
+		<p>In the event of challenges with activation on the site, the use of http rather than https could be the problem.</p>
+		<h3>GitHub Oauth</h3>
+		<p>Similar to the setup of the google Oauth , the GitHub app authorizations are done in your user settings are under developer settings / Oauth applications. You will require 2 separate authorizations for localhost and server hosted applications.</p>
+		<pre>https:// --- your domain here ----  /auth/github/callback</pre>
+	</div>
+</div>
+

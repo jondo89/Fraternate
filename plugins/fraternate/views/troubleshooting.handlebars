@@ -1,0 +1,72 @@
+
+
+
+<h1>Troubleshooting {{sitename}}.</h1>
+<hr>
+
+<div class="row">
+	<div class="col-md-3">
+		<ul class="nav nav-pills nav-stacked">
+			<li role="presentation"><a href="/introduction">Introduction</a></li>
+			<li role="presentation"><a href="/specifications">Specifications</a></li>
+			<li role="presentation"><a href="/installation">Installation Instructions</a></li>
+			<li role="presentation"><a href="/integration">Third Party Integration</a></li>
+			<li role="presentation"><a href="/payments">Payment Integration</a></li>
+			<li role="presentation"><a href="/css">CSS Management</a></li>
+			<li role="presentation" class="active"><a href="/troubleshooting">Troubleshooting</a></li>
+			<li role="presentation" ><a href="/licence">Licence</a></li>
+		</ul>
+	</div>
+<div class="col-md-9" style="min-height: 850px">
+
+ 
+ 
+
+<h3>Troubleshooting</h3>
+
+<p>Issues with starting the server on the first installation is likely due to missing NPM modules, If the server is crashing try installation the following modules independently.</p>
+
+<pre>npm install morgan
+npm install compression
+npm install method-override
+npm install express-session
+npm install express-flash
+npm install body-parser
+npm install express-validator
+npm install dotenv
+npm install express-handlebars
+npm install passport
+npm install mongoose
+npm install async
+npm install nodemailer
+npm install crypto
+npm install bcrypt-nodejs
+npm install passport-google-oauth
+npm install passport-local
+npm install passport-github
+</pre>
+
+<p>If you are getting stuck, this is a port of the quality work done on Megaboilerplate. Here are the installation instructions for&nbsp;<a href="https://github.com/sahat/megaboilerplate#express">Megaboilerplate</a></p>
+
+<p>If you are still having trouble use the contact page , or add an issue on the GitHub Repo.</p>
+
+<h3>Recaptcha Troubleshooting</h3>
+<p>Some possible issues with Recaptcha.</p>
+<ul>
+	<li>the domain needs to read "localhost"</li>
+	<li>the .env file needs to be changed to have your secret etc included.</li>
+	<li>the page with the recaptcha div needs to have the correct data-sitekey!</li>
+</ul>
+
+ <code> &lt;div class="g-recaptcha" data-callback="enableBtn" data-sitekey="6Le2aCcUAAAAAO8g693E9uMACIv7L-DeAbDZc67-"&gt;&lt;/div&gt; </code>
+  
+<h3>Server Installation.</h3>
+
+<p>Here are a few points to consider when uploading onto the Heroku server.</p>
+
+Server crash due to missing .env file.
+
+<pre>The .env file contains all of the sites api and secret keys. Ensure that it exists on the server.</pre>
+
+</div>
+</div>

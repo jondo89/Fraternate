@@ -1,0 +1,99 @@
+<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+{{> orgheader}}
+<div>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
+    <li role="presentation" ><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+    {{#if orgowner}}
+    <li role="presentation"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
+    {{else}}
+    {{/if}}
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="Summary">
+      <div class="row" style="padding-top: 35px">
+        <div class="col-md-3">
+          <h4>Owned by</h4>
+          {{#if organization.entry.owner}}
+          <a href="/users/{{owner.username}}">{{#if owner.picture}}<img  onerror="this.src='{{owner.gravatar}}'"" src="{{owner.picture}}"  title="{{owner.name}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{owner.gravatar}}" title="{{owner.name}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          {{#if orgowner}}
+          <span>You are the owner</span>
+          {{else}}
+          {{/if}}
+          {{else}}
+          This organization does not have any owner.
+          {{/if}}
+          {{#if user}}
+          {{#if orgmember}}
+          {{#if organization.entry.members}}
+          <h4>Members</h4>
+          {{#each members}}
+          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          {{/each}}
+          {{/if}}
+          {{else}}
+          {{#if orgowner}}
+          {{else}}
+          <p></p>
+          <p></p>
+          {{#if orgsharerequest}}
+          {{#if messages.success}}
+          <div role="alert" class="alert alert-success">
+            {{#each messages.success}}
+            <div>{{msg}}</div>
+            {{/each}}
+          </div>
+          {{/if}}
+          {{#if messages.error}}
+          <div role="alert" class="alert alert-danger">
+            {{#each messages.error}}
+            <div>{{msg}}</div>
+            {{/each}}
+          </div>
+          {{/if}} 
+          <div style="text-align:center;">
+            <p>
+              <a class="btn btn-default" disabled>Requested Membership</a>  
+            </p>
+          </div>
+          {{else}}
+          <div style="text-align:center;">
+            <p>
+              <a class="btn btn-default" href="/orgsharerequest/{{organization.entry.name}}">Request Membership</a>  
+            </p>
+          </div>
+          {{/if}}
+          {{/if}}
+          {{#if organization.entry.members}}
+          <h4>Members</h4>
+          {{#each members}}
+          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          {{/each}}
+          {{/if}}
+          {{/if}}
+          {{else}}
+          {{#if organization.entry.members}}
+          <h4>Members</h4>
+          {{#each members}}
+          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          {{/each}}
+          {{/if}}
+          {{/if}}
+        </div>
+        <div class="col-md-9">
+          <h3>Custom Site Details</h3>
+          <div style="border-width: 1px; border-style: dashed; border-color: grey;padding:155px;text-align: center;border-radius: 5px;"><strong> Heads up!</strong> This is where your custom content and user interaction detail will be added. 
+          </div>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript">
+</script>

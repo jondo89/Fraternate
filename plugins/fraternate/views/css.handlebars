@@ -1,0 +1,45 @@
+<style type="text/css">
+	.awesome {
+		padding: 2px;
+		text-align:center;
+		border-radius: 5px;
+		background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+	}
+</style>
+<h1>An Introduction to {{sitename}}.</h1>
+<hr>
+<div class="row">
+	<div class="col-md-3">
+		<ul class="nav nav-pills nav-stacked">
+			<li role="presentation"><a href="/introduction">Introduction</a></li>
+			<li role="presentation"><a href="/specifications">Specifications</a></li>
+			<li role="presentation"><a href="/installation">Installation Instructions</a></li>
+			<li role="presentation"><a href="/integration">Third Party Integration</a></li>
+			<li role="presentation"><a href="/payments">Payment Integration</a></li>
+			<li role="presentation" class="active"><a href="/css">CSS Management</a></li>
+			<li role="presentation"><a href="/troubleshooting">Troubleshooting</a></li>
+			<li role="presentation" ><a href="/licence">Licence</a></li>
+		</ul>
+	</div>
+	<div class="col-md-9">
+ <h3>CSS Management.</h3>
+ <p>The CSS files are as follows.</p>
+ <pre>
+Public/
+└── css/
+    │	├── vendor/
+    │   	└── bootstrap.css
+    ├── main.css
+    └── custom.css
+ </pre>
+ <p>All custom CSS can be added to the custom.css file.</p>
+<pre>partial.handlebars</pre>
+<p>The main.handlebars contains the partial template. The CSS file contains some additional css components for :
+<a href="https://www.datatables.net/" target="_blank">Datatables</a> and 
+<a href="http://fontawesome.io/icons/" target="_blank">Fontawesome</a></p>
+
+			<div style="padding-top: 45px"></div>
+		 
+	</div>
+
+</div>

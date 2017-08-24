@@ -1,0 +1,165 @@
+<style type="text/css">
+	.awesome {
+		padding: 2px;
+
+		border-radius: 5px;
+		background: #5cb85c;
+	}
+</style>
+<div class="row">
+	<div class="col-md-3">
+		<h3>Upgrade your plan</h3>
+		<div>
+			<div>  
+				<a href="#">
+					{{#if organization.entry.picture}}
+					<div onerror="this.src='{{organization.entry.gravatar}}'"" id="googlepic" style="min-width: 25%"></div>
+					{{else}}
+					<img src="{{organization.entry.gravatar}}" class="media-object">
+					{{/if}}
+				</a>
+			</div>
+		</div>
+		<h4>{{organization.entry.name}}  <small>{{organization.entry.name}}</small></h4>
+		<hr>
+		<h5>Current plan</h5>
+		<strong>Free plan</strong>, Unlimited public repositories</strong>
+		<hr>
+		<strong>Team</strong>, Starts at $25 / month which includes your first 5 users.
+		Unlimited public repositories
+		Unlimited private repositories
+		<hr>
+		<h5>New plan price</h5>
+		<h1 id="pricing">$300 / month</h1>
+		<small>for 5 users (minimum)</small>
+	</div>
+	<div class="col-md-9">
+		{{#if messages.success}}
+		<div role="alert" class="alert alert-success">
+			{{#each messages.success}}
+			<div>{{msg}}</div>
+			{{/each}}
+		</div>
+		{{/if}}
+		{{#if messages.error}}
+		<div role="alert" class="alert alert-danger">
+			{{#each messages.error}}
+			<div>{{msg}}</div>
+			{{/each}}
+		</div>
+		{{/if}}
+		{{#if organization.entry.plan.name}}
+		<a class="btn btn-default" href="/organizations/{{organization.entry.name}}/cancel_subscription">Cancel Subscription</a>
+		{{else}}
+		<h3>Plan Duration</h3>
+		<hr>
+		<div class="btn-group"  >
+			<a href="/organizations/{{organization.entry.name}}/settings/billing/upgrade" class="btn btn-default btn-lg ">
+				<input type="radio" name="options" id="option1" autocomplete="off" style="position: relative;" > <strong>$25 / month </strong>
+			</a>
+			<a href="/organizations/{{organization.entry.name}}/settings/billing/upgrade_plan_2" class="btn btn-default btn-lg active" >
+				<input href="" type="radio" name="options" id="option2"  autocomplete="off" style="position: relative;"  checked>  <strong>$300 / year </strong></a>
+			</a>
+		</div>
+		<form id="theForm" class="form-horizontal" >
+			<hr>
+			<div id="payment-form"></div>
+			<div class="awesome">
+				<div class="panel panel-default" style="margin-bottom: 1px;border-color: #5cb85c; "  >
+					<div class="panel-body" >
+						Charge today
+						<h1 id="pricingNow">$300.00</h1>
+					</div>
+					<div class="panel-footer">Your next charge will be on <span id="dates"></span>.</div>
+				</div>
+			</div>
+			<p></p>   <p>
+			By clicking on "Upgrade your plan" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.
+		</p>
+		<div class="btn-group" role="group" aria-label="...">
+			<a type="button" class="btn btn-success disabled" id="submits" type="submit">Upgrade your plan</a>
+			<a type="button" class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/">Cancel</a>
+		</div>
+		<small>Test Values for Cards</small>
+		<code>4111111111111111</code>
+		<code>10/19</code>
+	</form>
+	{{/if}}	
+	
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
+<script type="text/javascript">
+	var organizationName = JSON.stringify('{{organization.entry.name}}')
+	var user = JSON.stringify('{{organization.entry.name}}')
+	var text = '{{organization.entry.picture}}'
+	text =text.replace("sz&#x3D;50", "sz&#x3D;200");
+	$('#googlepic').html('<img src="'+text+'" style="max-width: 50%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;" class="media-object">')
+	var checkout;
+
+//////////////////////////////////////////
+////        BRAINTREE INSTANCE       //// 
+////////////////////////////////////////
+var clientToken = '{{{clientToken}}}';
+var button = document.querySelector('#submits');
+braintree.dropin.create({
+	authorization: clientToken,
+	container: "#payment-form",
+	onReady: function (integration) {
+		checkout = integration;
+	},
+	paypal: {
+		flow: 'vault'
+	},
+	onPaymentMethodReceived: function (obj) {
+		doSomethingWithTheNonce(obj.nonce);
+	}
+}, function (createErr, instance) {
+	$('#submits').toggleClass('disabled', false);
+	button.addEventListener('click', function () {
+		instance.requestPaymentMethod(function (err, payload) {
+			$('#submits').toggleClass('disabled', true);
+			formPost(payload)
+		});
+	});
+}) 
+
+//////////////////////////////////////////////////////
+////        AJAX SUBMIT THE FORM - CREATE        //// 
+////////////////////////////////////////////////////
+function formPost(payload){
+	var moredata = payload.nonce;
+	$input = $('<input type="text" name="payload" style="display:none"/>').val(moredata);
+	$('#theForm').append($input);
+	var datastring = $('#theForm').serialize()
+	$.ajax({
+		type: "POST",
+		url: '/organizations/'+organizationName+'/subscription_plan_2',
+		data: datastring,
+		dataType: "json",
+		success: function(data) {
+			window.location = '/organizations/'+organizationName+'/settings/billing';	
+		},
+		error : function(err){
+			console.log('Not working')
+			window.location = '/organizations/'+organizationName+'/settings/billing';	
+		}
+	}); 
+}
+
+////////////////////////
+///// INITIALIZE //////
+//////////////////////
+$(document).ready( function() {
+	months()
+});
+
+////////////////////////////////
+///// HANDLING THE DATES //////
+//////////////////////////////
+function months(){
+	var datevalue = moment().add(1, 'Y').format('YYYY-MM-DD');
+	$('#dates').html(datevalue)
+}
+</script>
