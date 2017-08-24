@@ -1,4 +1,4 @@
-var User = require('../models/User');
+var User = require('../../../models/User');
 var braintree = require("braintree");
 var organizationalModel      = require('../models/organizations.js');
 //set the plugin controller directory

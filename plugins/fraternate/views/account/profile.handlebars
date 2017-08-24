@@ -5,23 +5,16 @@
 <div class="row" style="padding-top: 35px">
  
   <div class="col-md-4">
-    <div>
-      <div>  
-        <a href="#">
+ 
+      
           {{#if userload.picture}}
-<<<<<<< HEAD:plugins/fraternate/views/account/profile.handlebars
-          <div onerror="this.src='{{userload.gravatar}}'"" id="googlepic" style="min-width: 100%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;"></div>
+ 
+          <div onerror="this.src='{{userload.gravatar}}'"" id="googlepic" style="width: 100%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;"></div>
           {{else}}
-          <img src="{{userload.gravatar}}" style="min-width: 100%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;" class="media-object">
-=======
-          <div onerror="this.src='{{userload.gravatar}}'"" id="googlepic" style="min-width: 100%"></div>
-          {{else}}
-          <img src="{{userload.gravatar}}" class="media-object">
->>>>>>> parent of a06e1cf... Transaction History , Subscription Histroy and CRUD for subscription.:views/account/profile.handlebars
+          <img src="{{userload.gravatar}}" style="width: 100%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;" class="media-object">
+ 
           {{/if}}
-        </a>
-      </div>
-    </div>
+       
     <h1>{{userload.name}}  <small>{{userload.username}}</small></h1>
     <p>{{profile userload.bio}}</p>
     {{#if userload.company}}
@@ -127,6 +120,6 @@
   var user = JSON.stringify('{{user.username}}')
   var text = '{{userload.picture}}'
   text =text.replace("sz&#x3D;50", "sz&#x3D;200");
-  $('#googlepic').html('<img src="'+text+'" style="max-width: 100%" class="media-object">')
+  $('#googlepic').html('<img src="'+text+'" style="width: 100%" class="media-object">')
 </script>
 

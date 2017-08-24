@@ -161,6 +161,17 @@ app.use(function(req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+///////////////////////////////////////////////s
+////     SET YOUR APP.JSON DETAILS        //// 
+/////////////////////////////////////////////
+var myModule = require('./app.json');
+var sitename = myModule.sitename
+var website = myModule.website
+var repo = myModule.repo
+app.locals.sitename = sitename
+app.locals.website = website
+app.locals.repo = repo
+
 ///////////////////////////////
 ////       ROUTING        //// 
 /////////////////////////////
@@ -176,7 +187,7 @@ app.use('/', fraternateRouting);
 ////       404          //// 
 ///////////////////////////
 app.get('*', function(req, res){
-  res.render('404',{layout:false});
+  res.render('../../../views/404',{layout:false});
 });
 
 // Production error handler

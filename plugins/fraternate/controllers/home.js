@@ -1,4 +1,4 @@
-var User = require('../models/User');
+var User = require('../../../models/User');
 //set the plugin controller directory
 var directory = '../../../plugins/fraternate/'
 ///////////////////////////////////////////////
@@ -23,8 +23,9 @@ if (req.user) {
     	pagetitle: req.user.username +' | '+sitename+'',
     });
 } else {
-  res.render('home', {
+  res.render('../../../views/home', {
     layout: false
   });
 }
 };
+

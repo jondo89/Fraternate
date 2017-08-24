@@ -1,4 +1,4 @@
-var User = require('../models/User');
+var User = require('../../../models/User');
 var braintree = require("braintree");
 //set the plugin controller directory
 var directory = '../../../plugins/fraternate/'

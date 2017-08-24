@@ -1,5 +1,5 @@
 var organizationalModel      = require('../models/organizations.js');
-var User = require('../models/User');
+var User = require('../../../models/User');
 var ObjectId = require('mongodb').ObjectID;
 var express = require('express');
 var app = express();
