@@ -36,7 +36,7 @@ var repo = myModule.repo
   if (req.user) {
     return res.redirect('/');
   }
-  res.render('account/signin', {
+  res.render(directory+'views/account/signin', {
     pagetitle: 'Sign in | '+sitename+''
   });
 };
@@ -80,7 +80,7 @@ var repo = myModule.repo
   if (req.user) {
     return res.redirect('/');
   }
-  res.render('account/signup', {
+  res.render(directory+'views/account/signup', {
     pagetitle: 'Sign up | '+sitename+''
   });
 };
@@ -139,7 +139,7 @@ var repo = myModule.repo
  * GET /account
  */
  exports.accountGet = function(req, res) {
-  res.render('account/profile', {
+  res.render(directory+'views/account/profile', {
     pagetitle: 'My Account | '+sitename+''
   });
 };
@@ -264,7 +264,7 @@ exports.accountPut = function(req, res, next) {
  * GET /forgot
  */
  exports.forgotGet = function(req, res) {
-  res.render('account/forgot', {
+  res.render(directory+'views/account/forgot', {
     pagetitle: 'Forgot Password | '+sitename+''
   });
 };
@@ -357,7 +357,7 @@ exports.accountPut = function(req, res, next) {
       req.flash('error', { msg: 'Password reset token is invalid or has expired.' });
       return res.redirect('/forgot');
     }
-    res.render('account/reset', {
+    res.render(directory+'views/account/reset', {
       pagetitle: 'Password Reset | '+sitename+''
     });
   });
@@ -427,7 +427,7 @@ exports.accountPut = function(req, res, next) {
 exports.settings = function(req, res) {
   if (req.user) {
     userid = req.user.id
-    res.render('settings'
+    res.render(directory+'views/settings'
      );
   } else {
     res.redirect('/signin');
@@ -447,7 +447,7 @@ exports.profile = function(req, res) {
   if(err){console.log('Error Here query1'); return;}
   if (user) {
     user.password = 'Kwakwakwa'
-    res.render('account/profile', {
+    res.render(directory+'views/account/profile', {
       userload : user,
         items:req.items, //list of all '+sitename+' DB entires
         itemsParse:req.itemsParse,//list of all '+sitename+' DB entires
@@ -472,7 +472,7 @@ exports.page = function(req, res) {
     var username =  req.params.username 
     switch (true){
       case(template=='organizations'):
-      res.render('settings/'+template,{
+      res.render(directory+'views/settings/'+template,{
         organizations : req.organizations,
         organizationsParse:req.organizationsParse,
         pagetitle: template+' | '+sitename+'',
@@ -481,18 +481,18 @@ exports.page = function(req, res) {
       case(template=='billing'):
       if (req.user.braintreeid) {
         gateway.customer.find(req.user.braintreeid, function(err, customer) {
-          res.render('settings/'+template,{
+          res.render(directory+'views/settings/'+template,{
             pagetitle: 'Billing | '+sitename+'',
             braintree_customer : JSON.stringify(customer)
           })
         });
       } else {
-        res.render('settings/'+template,{
+        res.render(directory+'views/settings/'+template,{
           pagetitle: 'Billing | '+sitename+'',
         })
       }
       break;      default:
-      res.render('settings/'+template);
+      res.render(directory+'views/settings/'+template);
       break;
     }
   } else {
@@ -505,7 +505,7 @@ exports.page = function(req, res) {
 //////////////////////////////////
 exports.users = function(req, res) {
   User.find(  function(err, username) {
-    res.render('userlist',{
+    res.render(directory+'views/userlist',{
       username : username,
       pagetitle: 'Users | '+sitename+'',
     });
