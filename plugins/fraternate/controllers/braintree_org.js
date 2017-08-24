@@ -38,7 +38,7 @@ exports.payment = function(req, res) {
              gateway.clientToken.generate({
               customerId: customer.id
             }, function (err, response) {
-              res.render('orgsettings/payment',{
+              res.render('../../../plugins/fraternate/views/orgsettings/payment',{
                 pagetitle: 'Payment | '+sitename+'',
                 braintree_customer : JSON.stringify(customer),
             orgowner : req.orgowner ,
@@ -50,7 +50,7 @@ exports.payment = function(req, res) {
             });
            }else{
              gateway.clientToken.generate({}, function (err, response) {
-              res.render('orgsettings/payment',{
+              res.render('../../../plugins/fraternate/views/orgsettings/payment',{
                 pagetitle: 'Payment | '+sitename+'',
                 braintree_customer : JSON.stringify(customer),
                 orgowner : req.orgowner ,
@@ -64,7 +64,7 @@ exports.payment = function(req, res) {
          });
         } else {
           gateway.clientToken.generate({}, function (err, response) {
-            res.render('orgsettings/payment',{
+            res.render('../../../plugins/fraternate/views/orgsettings/payment',{
               pagetitle: 'Payment | '+sitename+'',
               clientToken : response.clientToken,
               orgowner : req.orgowner ,
@@ -99,7 +99,7 @@ exports.upgrade = function(req, res) {
              gateway.clientToken.generate({
                 customerId: customer.id
             }, function (err, response) {
-          res.render('orgsettings/upgrade',{
+          res.render('../../../plugins/fraternate/views/orgsettings/upgrade',{
             pagetitle: 'Upgrade | '+sitename+'',
             braintree_customer : JSON.stringify(customer),
             clientToken : response.clientToken,
@@ -111,7 +111,7 @@ exports.upgrade = function(req, res) {
         });
        }else{
          gateway.clientToken.generate({}, function (err, response) {
-          res.render('orgsettings/upgrade',{
+          res.render('../../../plugins/fraternate/views/orgsettings/upgrade',{
             pagetitle: 'Upgrade | '+sitename+'',
             braintree_customer : JSON.stringify(customer),
             clientToken : response.clientToken,
@@ -125,7 +125,7 @@ exports.upgrade = function(req, res) {
      });
     } else {
       gateway.clientToken.generate({}, function (err, response) {
-        res.render('orgsettings/payment',{
+        res.render('../../../plugins/fraternate/views/orgsettings/payment',{
           pagetitle: 'Payment | '+sitename+'',
           clientToken : response.clientToken,
           orgowner : req.orgowner ,
@@ -158,7 +158,7 @@ exports.upgrade_plan_2 = function(req, res) {
              gateway.clientToken.generate({
                 customerId: customer.id
             }, function (err, response) {
-          res.render('orgsettings/upgrade_plan_2',{
+          res.render('../../../plugins/fraternate/views/orgsettings/upgrade_plan_2',{
             pagetitle: 'Upgrade Yearly Plan | '+sitename+'',
             braintree_customer : JSON.stringify(customer),
             clientToken : response.clientToken,
@@ -170,7 +170,7 @@ exports.upgrade_plan_2 = function(req, res) {
         });
        }else{
          gateway.clientToken.generate({}, function (err, response) {
-          res.render('orgsettings/upgrade_plan_2',{
+          res.render('../../../plugins/fraternate/views/orgsettings/upgrade_plan_2',{
             pagetitle: 'Upgrade Yearly Plan | '+sitename+'',
             braintree_customer : JSON.stringify(customer),
             clientToken : response.clientToken,
@@ -184,7 +184,7 @@ exports.upgrade_plan_2 = function(req, res) {
      });
     } else {
       gateway.clientToken.generate({}, function (err, response) {
-        res.render('orgsettings/payment',{
+        res.render('../../../plugins/fraternate/views/orgsettings/payment',{
           pagetitle: 'Payment | '+sitename+'',
           clientToken : response.clientToken,
           orgowner : req.orgowner ,

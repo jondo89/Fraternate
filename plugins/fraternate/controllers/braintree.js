@@ -25,7 +25,7 @@ var repo = myModule.repo
 //////////  BRAINTREE TRANSACTION LIST ////////////
 //////////////////////////////////////////////////
 exports.braintree = function(req, res) {
-  res.render('braintree', {
+  res.render('../../../plugins/fraternate/views/braintree', {
     pagetitle: 'Braintree | '+sitename+'',
   });
 };
@@ -93,7 +93,7 @@ exports.payment = function(req, res) {
            gateway.clientToken.generate({
             customerId: customer.id
           }, function (err, response) {
-            res.render('settings/payment',{
+            res.render('../../../plugins/fraternate/views/settings/payment',{
               pagetitle: 'Payment | '+sitename+'',
               braintree_customer : JSON.stringify(customer),
               clientToken : response.clientToken
@@ -101,7 +101,7 @@ exports.payment = function(req, res) {
           });
          }else{
            gateway.clientToken.generate({}, function (err, response) {
-            res.render('settings/payment',{
+            res.render('../../../plugins/fraternate/views/settings/payment',{
               pagetitle: 'Payment | '+sitename+'',
               braintree_customer : JSON.stringify(customer),
               clientToken : response.clientToken
@@ -111,7 +111,7 @@ exports.payment = function(req, res) {
        });
       } else {
         gateway.clientToken.generate({}, function (err, response) {
-          res.render('settings/payment',{
+          res.render('../../../plugins/fraternate/views/settings/payment',{
             pagetitle: 'Payment | '+sitename+'',
             clientToken : response.clientToken
           })
@@ -136,7 +136,7 @@ exports.upgrade = function(req, res) {
            gateway.clientToken.generate({
             customerId: customer.id
           }, function (err, response) {
-            res.render('settings/upgrade',{
+            res.render('../../../plugins/fraternate/views/settings/upgrade',{
               pagetitle: 'Upgrade | '+sitename+'',
               braintree_customer : JSON.stringify(customer),
               clientToken : response.clientToken
@@ -144,7 +144,7 @@ exports.upgrade = function(req, res) {
           });
          }else{
            gateway.clientToken.generate({}, function (err, response) {
-            res.render('settings/upgrade',{
+            res.render('../../../plugins/fraternate/views/settings/upgrade',{
               pagetitle: 'Upgrade | '+sitename+'',
               braintree_customer : JSON.stringify(customer),
               clientToken : response.clientToken
@@ -154,7 +154,7 @@ exports.upgrade = function(req, res) {
        });
       } else {
         gateway.clientToken.generate({}, function (err, response) {
-          res.render('settings/payment',{
+          res.render('../../../plugins/fraternate/views/settings/payment',{
             pagetitle: 'Payment | '+sitename+'',
             clientToken : response.clientToken
           })
@@ -178,7 +178,7 @@ exports.upgrade_plan_2 = function(req, res) {
            gateway.clientToken.generate({
             customerId: customer.id
           }, function (err, response) {
-            res.render('settings/upgrade_plan_2',{
+            res.render('../../../plugins/fraternate/views/settings/upgrade_plan_2',{
               pagetitle: 'Upgrade Yearly Plan | '+sitename+'',
               braintree_customer : JSON.stringify(customer),
               clientToken : response.clientToken
@@ -186,7 +186,7 @@ exports.upgrade_plan_2 = function(req, res) {
           });
          }else{
            gateway.clientToken.generate({}, function (err, response) {
-            res.render('settings/upgrade_plan_2',{
+            res.render('../../../plugins/fraternate/views/settings/upgrade_plan_2',{
               pagetitle: 'Upgrade Yearly Plan | '+sitename+'',
               braintree_customer : JSON.stringify(customer),
               clientToken : response.clientToken
@@ -196,7 +196,7 @@ exports.upgrade_plan_2 = function(req, res) {
        });
       } else {
         gateway.clientToken.generate({}, function (err, response) {
-          res.render('settings/payment',{
+          res.render('../../../plugins/fraternate/views/settings/payment',{
             pagetitle: 'Payment | '+sitename+'',
             clientToken : response.clientToken
           })

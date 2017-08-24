@@ -15,7 +15,7 @@ var repo = myModule.repo
 //////////  BRAINTREE TRANSACTION LIST ////////////
 //////////////////////////////////////////////////
 exports.stripe = function(req, res) {
-  res.render('stripe', {
+  res.render('../../../plugins/fraternate/views/stripe', {
     pagetitle: 'Stripe | '+sitename+'',
   });
 }; 

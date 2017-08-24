@@ -34,7 +34,7 @@ exports.neworg = function(req, res) {
     if (req.user) {
       //Create client token for Braintree payments.
       gateway.clientToken.generate({}, function (err, response) {
-       res.render('neworg',{
+       res.render('../../../plugins/fraternate/views/neworg',{
         pagetitle: 'New Organization | '+sitename ,
         clientToken : response.clientToken
       })
@@ -60,10 +60,10 @@ exports.createorgstatic = function(req, res) {
    }
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.body.name }, function(err, username) {
-    	if (username) {
-    		req.flash('error', { msg: 'The Organizational name you have entered is already associated with another account.' });
-    		return res.redirect('/organizations/new');
-    	}
+      if (username) {
+        req.flash('error', { msg: 'The Organizational name you have entered is already associated with another account.' });
+        return res.redirect('/organizations/new');
+      }
       var temp = {}
       temp['entry'] ={
         name: req.body.name,
@@ -90,7 +90,7 @@ exports.orgprofile = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
-        res.render('account/orgprofile',{
+        res.render('../../../plugins/fraternate/views/account/orgprofile',{
           owner:req.owner,
           ownerParse:req.ownerParse,
           members:req.members ,
@@ -118,7 +118,7 @@ exports.orguserread = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
-        res.render('account/orgprofile',{
+        res.render('../../../plugins/fraternate/views/account/orgprofile',{
           owner:req.owner,
           ownerParse:req.ownerParse,
           members:req.members ,
@@ -172,7 +172,7 @@ exports.page = function(req, res) {
       if (username.entry.braintreeid) {
         gateway.customer.find(username.entry.braintreeid, function(err, customer) {
           if (username) {
-            res.render('orgsettings/'+template,{
+            res.render('../../../plugins/fraternate/views/orgsettings/'+template,{
               orgowner : req.orgowner ,
               orgmember : req.orgmember ,
               organization : username,
@@ -186,7 +186,7 @@ exports.page = function(req, res) {
           }
         });
       }else{
-        res.render('orgsettings/'+template,{
+        res.render('../../../plugins/fraternate/views/orgsettings/'+template,{
           orgowner : req.orgowner ,
           orgmember : req.orgmember ,
           organization : username,
@@ -200,7 +200,7 @@ exports.page = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
-        res.render('orgsettings/'+template,{
+        res.render('../../../plugins/fraternate/views/orgsettings/'+template,{
           orgowner : req.orgowner ,
           orgmember : req.orgmember ,
           organization : username,
@@ -227,7 +227,7 @@ exports.settings = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
-        res.render('orgsettings/settings',{
+        res.render('../../../plugins/fraternate/views/orgsettings/settings',{
           orgowner : req.orgowner ,
           orgmember : req.orgmember ,
           organization : username,
@@ -253,7 +253,7 @@ exports.components = function(req, res) {
       if (username) {
         var ids = '58d371b01373c63dccdee169'
         var Formids = '58aa74140b9d3241280ecf17'
-        res.render('orgsettings/components', {
+        res.render('../../../plugins/fraternate/views/orgsettings/components', {
           siteName : siteName,
           items : JSON.stringify(ids),
           Formids : JSON.stringify(Formids),
@@ -274,7 +274,7 @@ exports.assemblies = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
-        res.render('orgsettings/assemblies',{
+        res.render('../../../plugins/fraternate/views/orgsettings/assemblies',{
           organization : username,
           organizations : req.userorgs ,
           title: 'Assemblies | '+username.entry.name   ,
@@ -293,7 +293,7 @@ exports.people = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
-        res.render('orgsettings/people',{
+        res.render('../../../plugins/fraternate/views/orgsettings/people',{
           owner:req.owner,
           ownerParse:req.ownerParse,
           members:req.members ,
@@ -392,7 +392,7 @@ exports.orgPut = function(req, res, next) {
 /////////////////////////////////////////
 exports.orglist = function(req, res) {
   organizationalModel.find(  function(err, username) {
-    res.render('orginizationlist',{
+    res.render('../../../plugins/fraternate/views/orginizationlist',{
       username : username,
       pagetitle: 'Organizations | '+sitename+'',
     });
@@ -597,7 +597,7 @@ exports.billing_managers = function(req, res) {
     //check the user name for duplicate.
     organizationalModel.findOne({ 'entry.name': req.params.orgname }, function(err, username) {
       if (username) {
-        res.render('orgsettings/billing_manager',{
+        res.render('../../../plugins/fraternate/views/orgsettings/billing_manager',{
           orgowner : req.orgowner ,
           orgmember : req.orgmember ,
           organization : username,
