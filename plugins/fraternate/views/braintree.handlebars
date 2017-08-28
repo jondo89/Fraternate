@@ -1,7 +1,7 @@
     <h1>Braintree Billing Management</h1>
     <div class="row">
      <div class="col-md-9">
-       <p> The table below shows the complete set of transactions on the Fraternate site.
+       <p> The table below shows the complete set of transactions on the {{sitename}} site.
         All transactions are managed through the Braintree service, the data below is using the Sandbox payment system provided by Braintree and no real transactions are occurring and all credit card details are incorrect. So, you can go nuts and buy test subscriptions to your hearts content.
       </p>
     </div>
@@ -195,7 +195,7 @@ function printTable(data){
     "bLengthChange": false,
     "bFilter": false,
     "language": {
-      "emptyTable": "There is no transaction history on Fraternate, Likely the Sandbox account was recently purged."
+      "emptyTable": "There is no transaction history on {{sitenamte}}, Likely the Sandbox account was recently purged."
     }
   });
   heatmap(data)
@@ -239,7 +239,7 @@ function printTableSubscriptions(datas){
     "bLengthChange": false,
     "bFilter": false,
     "language": {
-      "emptyTable": "There is no subscription history on Fraternate, Likely the Sandbox account was recently purged."
+      "emptyTable": "There is no subscription history on {{sitename}}, Likely the Sandbox account was recently purged."
     }    
   });
 }

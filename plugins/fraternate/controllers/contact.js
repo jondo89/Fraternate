@@ -16,7 +16,7 @@ var repo = myModule.repo
  * GET /contact
  */
  exports.contactGet = function(req, res) {
-  res.render('contact', {
+  res.render('../../../plugins/fraternate/views/contact', {
     pagetitle: 'Contact Us | '+sitename+'',
   });
 };
