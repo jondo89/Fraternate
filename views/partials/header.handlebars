@@ -1,4 +1,5 @@
 <nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top ">
+<div id="headerload"></div>
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -28,9 +29,7 @@
           <li>
             <a href="/braintree">Braintree</a>
           </li> 
-          <li>
-            <a href="/stripe">Stripe</a>
-          </li>       
+        
           <!-- Custom Content goes here. -->
         </ul>
         <ul class="nav navbar-nav navbar-right" id="deploy">
@@ -90,3 +89,29 @@
   </div>
   <!-- /.container-fluid -->
 </nav>
+
+<style type="text/css">
+  #headerload {
+    width: 100%;
+    height: 1px;
+    padding: 0px;
+}
+
+#headerload > svg {
+    width: 100%;
+    display: block; height: 4px;
+}
+</style>
+
+<script type="text/javascript">
+  var circle = new ProgressBar.Line('#headerload', {
+    easing: 'easeInOut',
+    from: {color: '#ef4e7b'},
+    to: {color: '#337ab7'},
+    duration: 1400,
+    step: (state, bar) => {
+      bar.path.setAttribute('stroke', state.color);
+    }
+  });
+circle.animate(1.0);  // Number from 0.0 to 1.0
+</script>

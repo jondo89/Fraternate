@@ -98,7 +98,7 @@ var contactController = require(directory+'controllers/contact');
 var organizationController = require(directory+'controllers/organization');
 var braintreeController = require(directory+'controllers/braintree');
 var braintreeOrgController = require(directory+'controllers/braintree_org');
-var stripeController = require(directory+'controllers/stripe');
+ 
 
 
 // Passport OAuth strategies
@@ -193,13 +193,6 @@ app.post('/organizations/:orgname/vault', braintreeOrgController.vault);
 app.post('/organizations/:orgname/vaultupdate', braintreeOrgController.vaultupdate);
 app.get('/organizations/deletepaymentdetails/:ids',  braintreeOrgController.deletepaymentdetails);
 app.get('/organizations/:orgname/settings/billing/payment', organizationController.ajaxorguserread ,organizationController.organizationpermission,  braintreeOrgController.payment);
-
- 
-////////////////////////////////////////
-////        STRIPE - USERS         //// 
-//////////////////////////////////////
-app.get('/stripe', stripeController.stripe);
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////                                                            USER                                                                        //// 
