@@ -20,7 +20,7 @@
     {{#if organizations}}
     <h2>Organizations</h2>
     <hr>
-    <table class="table table-bordered" id="Organization">
+    <table class="table table-hover" id="Organization">
       <thead>
         <tr>
           <th>Organizations</th>
@@ -34,9 +34,9 @@
               <div class="media-left">
                 <a href="#">
                   {{#if this.entry.picture}}
-                  <img onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="media-object" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+                  <img onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="media-object" style="width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
                   {{else}}
-                  <img src="{{this.gravatar}}" class="media-object" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+                  <img src="{{this.gravatar}}" class="media-object" style="width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
                   {{/if}}
                 </a>
               </div>
@@ -60,12 +60,12 @@
       {{/each}}
     </tbody>
   </table>
-  <a class="btn btn-success" href="/organizations/new" >New Organization</a>  
+  <a class="btn btn-default" href="/organizations/new" >New Organization</a>  
   <p></p>
   {{else}}
     <div style="border-width: 1px; border-style: dashed; border-color: grey;padding:15px;border-radius: 5px;">
       <p>No organizations found </p>
-      <a class="btn btn-success btn-xl" href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 
+      <a class="btn btn-default btn-xl" href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 
     </div>
   {{/if}}
 </div>

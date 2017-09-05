@@ -1,18 +1,12 @@
 <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
-
 <div class="row" style="padding-top: 35px">
-
   <div class="col-md-4">
-
-
     {{#if userload.picture}}
-
-    <div onerror="this.src='{{userload.gravatar}}'"" id="googlepic" style="width: 100%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;"></div>
+    <div onerror="this.src='{{userload.gravatar}}'"" id="googlepic" style="border-radius:15px!important;width: 100%;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;"></div>
     {{else}}
-    <img src="{{userload.gravatar}}" style="width: 100%;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;" class="media-object">
-
+    <img src="{{userload.gravatar}}" style="width: 100%;border-radius:15px;border: 1px;border-color: #d8d8d8;border-style: solid;" class="media-object">
     {{/if}}
 
     <h1>{{userload.name}}  <small>{{userload.username}}</small></h1>
@@ -73,9 +67,9 @@
     {{#each organizations}}
     <a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}" style="text-decoration: none;">
       {{#if this.entry.picture}}
-      <img  onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+      <img  onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
       {{else}}
-      <img src="{{this.gravatar}}" class="media-object" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+      <img src="{{this.gravatar}}" class="media-object" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
       {{/if}}       
     </a>
     {{/each}}
@@ -113,6 +107,6 @@
   var user = JSON.stringify('{{user.username}}')
   var text = '{{userload.picture}}'
   text =text.replace("sz&#x3D;50", "sz&#x3D;200");
-  $('#googlepic').html('<img src="'+text+'" style="width: 100%" class="media-object">')
+  $('#googlepic').html('<img src="'+text+'" style="width: 100%;border-radius:15px;" class="media-object">')
 </script>
 

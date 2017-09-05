@@ -32,9 +32,9 @@
 			<div class="col-md-1 col-xs-2">
 				<a href="/organizations/{{this.entry.name}}" title="{{this.entry.name}}"  >
 					{{#if this.entry.picture}}
-					<img  onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="media-object" style="max-width: 55px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+					<img  onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}" class="media-object" style="max-width: 55px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
 					{{else}}
-					<img src="{{this.gravatar}}" class="media-object" class="media-object" style="max-width: 55px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+					<img src="{{this.gravatar}}" class="media-object" class="media-object" style="max-width: 55px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
 					{{/if}}       
 				</a>
 			</div>
@@ -48,7 +48,7 @@
 		<h3>Organizations <small>Get started by creating your organization.</small></h3>
 		<div style="border-width: 1px; border-style: dashed; border-color: grey;padding:15px;border-radius: 5px;">
 			<p>No organizations found </p>
-			<a class="btn btn-success btn-xl" href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 
+			<a class="btn btn-default btn-xl" href="/organizations/new"><i class="fa fa-plus" aria-hidden="true"></i> Create an Organization</a> 
 		</div>
 		{{/if}}<hr>
 		<div style="padding-top: 15px">
@@ -66,7 +66,7 @@
 		<div class="well">
 			<strong>Free plan</strong>, unlimited public repositories</strong>
 		</div>
-		<p><a class="btn btn-success" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
+		<p><a class="btn btn-default" href="/users/{{user.username}}/settings/billing/upgrade">Get private repositories</a></p>
 		{{/if}}
 	</div>
 	<div class="col-md-5">

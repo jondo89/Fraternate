@@ -7,7 +7,7 @@
         <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
       </button>
       <a class="navbar-brand" href="/" style="padding: 8px 0px 5px 11px">
-        <img alt="{{sitename}}" src="/img/Logo square inverse 50x50.png" style="height: 35px;padding: 5px"> 
+        <img alt="{{sitename}}" src="/img/Logo square inverse 50x50.png" style="height: 35px;width:35px;padding: 5px"> 
       </a> 
       <a class="navbar-brand" href="/">{{sitename}}</a>
     </div>
@@ -104,14 +104,18 @@
 </style>
 
 <script type="text/javascript">
-  var circle = new ProgressBar.Line('#headerload', {
+  var progressBar = new ProgressBar.Line('#headerload', {
     easing: 'easeInOut',
     from: {color: '#ef4e7b'},
     to: {color: '#337ab7'},
-    duration: 1400,
+    duration: 1400,fill: 'rgba(0, 0, 0, 0.5)',
     step: (state, bar) => {
       bar.path.setAttribute('stroke', state.color);
     }
   });
-circle.animate(1.0);  // Number from 0.0 to 1.0
+progressBar.animate(1.0, {
+    duration: 800
+}, function() {
+    $('#headerload').html('')
+});
 </script>

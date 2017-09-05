@@ -18,7 +18,7 @@
         <div class="col-md-3">
           <h4>Owned by</h4>
           {{#if organization.entry.owner}}
-          <a href="/users/{{owner.username}}">{{#if owner.picture}}<img  onerror="this.src='{{owner.gravatar}}'"" src="{{owner.picture}}"  title="{{owner.name}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{owner.gravatar}}" title="{{owner.name}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          <a href="/users/{{owner.username}}">{{#if owner.picture}}<img  onerror="this.src='{{owner.gravatar}}'"" src="{{owner.picture}}"  title="{{owner.name}}" class="navbar-avatar-pic" style="max-width: 65px;border: 1px;border-radius:5px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{owner.gravatar}}" title="{{owner.name}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
           {{#if orgowner}}
           <span>You are the owner</span>
           {{else}}
@@ -31,7 +31,7 @@
           {{#if organization.entry.members}}
           <h4>Members</h4>
           {{#each members}}
-          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
           {{/each}}
           {{/if}}
           {{else}}
@@ -70,7 +70,7 @@
           {{#if organization.entry.members}}
           <h4>Members</h4>
           {{#each members}}
-          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
           {{/each}}
           {{/if}}
           {{/if}}
@@ -78,7 +78,7 @@
           {{#if organization.entry.members}}
           <h4>Members</h4>
           {{#each members}}
-          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
+          <a href="/users/{{this.username}}">{{#if this.picture}}<img onerror="this.src='{{this.gravatar}}'"" src="{{this.picture}}" title="{{this.username}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{else}}<img src="{{this.gravatar}}" title="{{this.username}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">{{/if}}</a>
           {{/each}}
           {{/if}}
           {{/if}}

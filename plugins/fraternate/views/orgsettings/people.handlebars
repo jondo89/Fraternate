@@ -1,11 +1,11 @@
 {{> orgheader}}
 <ul class="nav nav-tabs" role="tablist">
-	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
-	<li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
-	{{#if orgowner}}
-	<li role="presentation"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
-	{{else}}
-	{{/if}}
+  <li role="presentation" ><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
+  <li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+  {{#if orgowner}}
+  <li role="presentation"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
+  {{else}}
+  {{/if}}
 </ul>
 
 
@@ -28,23 +28,23 @@
 {{#if orgowner}}
 <p></p>
 <table class="table table-bordered" id="organizationOwner">
-	<thead>
-		<tr>
-			<th>
-				People
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr >
-			<td>
+  <thead>
+    <tr>
+      <th>
+        People
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr >
+      <td>
         <div class="media">
           <div class="media-left">
             <a href="">
               {{#if owner.picture}}
-              <img src="{{owner.picture}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+              <img src="{{owner.picture}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
               {{else}}
-              <img src="{{owner.gravatar}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+              <img src="{{owner.gravatar}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
               {{/if}}
             </a>
           </div>
@@ -76,9 +76,9 @@
       <div class="media-left">
         <a href="">
           {{#if this.picture}}
-          <img src="{{this.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+          <img src="{{this.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
           {{else}}
-          <img src="{{this.gravatar}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+          <img src="{{this.gravatar}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
           {{/if}}
         </a>
       </div>
@@ -107,9 +107,9 @@
     <div class="media-left">
       <a href="">
         {{#if this.picture}}
-        <img src="{{this.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+        <img src="{{this.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
         {{else}}
-        <img src="{{this.gravatar}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+        <img src="{{this.gravatar}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
         {{/if}}
       </a>
     </div>
@@ -135,7 +135,7 @@
 </table>
 <p></p>
 <div >
-	<button class="btn btn-default" id="inviteMember" data-toggle="modal" data-target="#myModal">Invite member</button>
+  <button class="btn btn-default" id="inviteMember" data-toggle="modal" data-target="#myModal">Invite member</button>
 </div>
 <p></p>
 {{else}}
@@ -144,7 +144,7 @@
 
 {{#if owner}}
 <p></p>
-<table class="table table-bordered" id="organizationOwner">
+<table class="table " id="organizationOwner">
   <thead>
     <tr>
       <th>
@@ -159,9 +159,9 @@
           <div class="media-left">
             <a href="">
               {{#if owner.picture}}
-              <img src="{{owner.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+              <img src="{{owner.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
               {{else}}
-              <img src="{{owner.gravatar}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+              <img src="{{owner.gravatar}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
               {{/if}}
             </a>
           </div>
@@ -188,9 +188,9 @@
         <div class="media-left">
           <a href="">
             {{#if this.picture}}
-            <img src="{{this.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+            <img src="{{this.picture}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
             {{else}}
-            <img src="{{this.gravatar}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 2px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+            <img src="{{this.gravatar}}" class="navbar-avatar-pic" style="max-width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
             {{/if}}
           </a>
         </div>
@@ -229,8 +229,8 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content"  id="modalTextArea">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"  id="modalTextArea">
     </div>
   </div>
 </div>
