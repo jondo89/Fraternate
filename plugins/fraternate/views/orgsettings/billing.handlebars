@@ -7,15 +7,15 @@
 </style> 
 {{> orgheader}}
 <ul class="nav nav-tabs" role="tablist">
-	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
-	<li role="presentation" ><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
+  <li role="presentation" ><a href="/organizations/{{organization.entry.name}}" role="tab" >Summary</a></li>
+  <li role="presentation" ><a href="/organizations/{{organization.entry.name}}/people" role="tab">People</a></li>
   {{#if orgowner}}
   <li role="presentation" class="active"><a href="/organizations/{{organization.entry.name}}/settings/profile" role="tab">Settings</a></li>
   {{else}}
   {{/if}}
 </ul>
 <div class="row" style="padding-top: 25px">
-	<div class="col-md-3" id="navMenuPanel">  
+  <div class="col-md-3" id="navMenuPanel">  
     <div class="panel panel-default">
       <div class="panel-heading">
         Organization settings 
@@ -57,7 +57,7 @@
     <div class="well">
       <strong>Free plan</strong>, unlimited public repositories</strong>
     </div>
-    <p><a class="btn btn-success" href="/organizations/{{organization.entry.name}}/settings/billing/upgrade">Get private repositories</a></p>
+    <p><a class="btn btn-default" href="/organizations/{{organization.entry.name}}/settings/billing/upgrade">Get private repositories</a></p>
     {{/if}} 
 
 
