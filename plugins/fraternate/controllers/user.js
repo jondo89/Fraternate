@@ -15,6 +15,7 @@ var myModule = require('../../../app.json');
 var sitename = myModule.sitename
 var website = myModule.website
 var repo = myModule.repo
+var sitekey = process.env.SITE_KEY
  
 
 
@@ -37,7 +38,8 @@ var repo = myModule.repo
     return res.redirect('/');
   }
   res.render(directory+'views/account/signin', {
-    pagetitle: 'Sign in | '+sitename+''
+    pagetitle: 'Sign in | '+sitename+'',
+    sitekey : sitekey
   });
 };
 
@@ -81,7 +83,8 @@ var repo = myModule.repo
     return res.redirect('/');
   }
   res.render(directory+'views/account/signup', {
-    pagetitle: 'Sign up | '+sitename+''
+    pagetitle: 'Sign up | '+sitename+'',
+    sitekey : sitekey
   });
 };
 
@@ -140,7 +143,8 @@ var repo = myModule.repo
  */
  exports.accountGet = function(req, res) {
   res.render(directory+'views/account/profile', {
-    pagetitle: 'My Account | '+sitename+''
+    pagetitle: 'My Account | '+sitename+'',
+    sitekey : sitekey
   });
 };
 

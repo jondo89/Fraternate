@@ -17,14 +17,9 @@
       filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
       -ms-filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
     }
-
     .recaptch-placeholder{
       min-height: 88px;
-
-
     }
-
-
   </style><!-- Place this tag in your head or just before your close body tag. -->
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,9 +27,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
         <script async defer src="https://buttons.github.io/buttons.js"></script>
-
         {{> javascript}}
       </head>
       <div id="fb-root"></div>
@@ -55,48 +48,13 @@
                   <div class="header-content-inner">
                     <div class="well outer"  >
                      <h1> 
-                       {{sitename}} is an open source user and team subscription boilerplate. 
+                       {{sitename}} is an <strong>open source</strong> user and team subscription boilerplate. 
                      </h1>  
-                     <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user subscription boilerplate. It is <strong style="color: white">open-source</strong> and <strong style="color: white">light weight</strong>.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
-                     <div class="row">
-                      <div class="col-md-6">
-
-                        <h4>User Control</h4>
-
-                        <ul>
-                         Sign in / Login | 
-                         Signup | 
-                         Oauth GitHub / Google | 
-                         Unique Usernames | 
-                         Recaptcha | 
-                         Forgot Password | 
-                         Delete Account | 
-                         Public Profile | 
-                         Profile Pictures | 
-                         Email Notifications  
-                       </ul>
-
-                     </div>
-                     <div class="col-md-6">
-
-                      <h4>Organization Control</h4>
-
-                      <ul>
-                        Create Organization | 
-                        Delete Organization | 
-                        Invite to Organization | 
-                        Request Invite to Organization | 
-                        Edit Memberships | 
-                        Unique Organization Names | 
-                        Public Organization Profile 
-                      </ul>
-
-                    </div>
-                  </div>
+                     <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user subscription system, deployable as a boilerplate. It is <strong style="color: white">open-source</strong> and <strong style="color: white">light weight</strong>.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
+         
                   <div style="text-align: center;padding-top: 15px">
                     <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
-                    <a class="github-button" href="https://github.com/Isithelo/Fraternate" data-size="large" data-show-count="true" aria-label="Star Isithelo/Fraternate on GitHub">Star</a> 
-                    <span><script id='fb6654v'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//button.flattr.com/view/?fid=ljw99y&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb6654v');</script></span>
+                     <a class="github-button" href="https://github.com/Isithelo/{{sitename}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{sitename}} on GitHub">Star</a> 
                   </a>
                 </div>
               </div>
@@ -110,7 +68,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div> 
   </header>
@@ -124,7 +81,6 @@
           <div class="panel panel-default" style="min-height: 250px">
             <div class="panel-body"><h5>Phase 1</h5>
               <a href="https://fraternate.herokuapp.com/" target="_blank" style="text-decoration: none;">
-              
                 <img  style="max-width: 65px" src="/img/logo/fraternate.png" alt="..." >
                 <p></p>
                 <h3>Fraternate  <small>Team and User Management System.</small></h3>
@@ -136,20 +92,20 @@
         <div class="col-md-4" style="text-align: center; ">
           <div class="panel panel-default" style="min-height: 250px">
             <div class="panel-body">
-            <h5>Phase 2</h5>
-              <a href="https://fraternate.herokuapp.com/" target="_blank"  style="text-decoration: none;">
+              <h5>Phase 2</h5>
+              <a href="https://wrasse.herokuapp.com/" target="_blank"  style="text-decoration: none;">
                 <img  style="max-width: 65px" src="/img/logo/wrasse.png" alt="...">
                 <p></p>
                 <h3>Wrasse  <small>Issue Tracking.</small></h3>
                 <p><a href="https://github.com/Isithelo/Wrasse" target="_blank">Wrasse Repo</a></p>
               </a>
             </div>
-            </div>
+          </div>
         </div>
         <div class="col-md-4" style="text-align: center;  ">
           <div class="panel panel-default" style="min-height: 250px">
             <div class="panel-body">
-            <h5>Phase 3</h5>
+              <h5>Phase 3</h5>
               <a href="https://heavy-lifting.herokuapp.com/" target="_blank"  style="text-decoration: none;">
                 <img  style="max-width: 65px" src="/img/logo/heavy-lifting.png" alt="...">
                 <p></p>
@@ -160,12 +116,9 @@
           </div>
         </div>
       </div>
-
-
-<div style="text-align: center;padding: 100px" >
-<a href="/signin" class="btn btn-default btn-lg" >Give it a try !</a>  
-</div>
-
+      <div style="text-align: center;padding: 100px" >
+        <a href="/signin" class="btn btn-default btn-lg" >Give it a try !</a>  
+      </div>
     </div>
   </section>
   {{> analytics}}

@@ -24,9 +24,9 @@ var repo = myModule.repo
 ////////////////////////////////////////////////////
 //////////  BRAINTREE TRANSACTION LIST ////////////
 //////////////////////////////////////////////////
-exports.braintree = function(req, res) {
-  res.render('../../../plugins/fraternate/views/braintree', {
-    pagetitle: 'Braintree | '+sitename+'',
+exports.transactions = function(req, res) {
+  res.render('../../../plugins/fraternate/views/transactions', {
+    pagetitle: 'Transactions | '+sitename+'',
   });
 };
 

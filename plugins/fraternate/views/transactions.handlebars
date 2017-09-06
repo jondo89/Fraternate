@@ -1,0 +1,162 @@
+
+
+<h3>Transaction history. <small>Transaction are shown on the calendar below.</small></h3>
+<hr>
+<div id="cal-heatmap" style="overflow: auto;text-align: center;"></div>
+<hr>
+<div class="alert alert-info" role="alert"><strong>Heads Up!</strong> These are demonstration payments on the PayPal Sandbox account. Actual credit card details will not parse into this Fraternate demo.</div>
+<div class="row">
+  <div class="col-md-6">
+    <div id="subscription_history">
+    </div>
+    <small>The Braintree Sandbox does not support the node.js client subscription query for "all" as yet, as such this is not the complete subscription list. It does however work for single and multiple queries.</small>
+  </div>
+  <div class="col-md-6">
+    <div id="transaction_history">
+    </div></div>
+  </div>
+  <small>Amounts shown in USD</small>
+  <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script type="text/javascript">
+
+//////////////////////////////////////////////////////
+////        STREAM IN TRANSACTION HISTROY        //// 
+////////////////////////////////////////////////////
+function streamTransactions(){
+  $.ajax({
+    url: '/transaction_history_all',
+    success: function(data) {
+      data = JSON.parse(data)
+      printTable(data)
+    },
+    error : function(err){
+      console.log(err)
+    }
+  }); 
+}
+
+///////////////////////////////////////
+///// PRINT TRANSACTION HISTORY //////
+/////////////////////////////////////
+function printTable(data){
+  var html =''
+  $('#transaction_history').html('')
+  html += '<h5>Transaction History<small>  All of the site transactions.</small></h5><table class="table table-bordered" id="transaction_table" > <thead> <tr> <th>Date</th> <th>Status</th> <th>Value</th> </tr> </thead> <tbody>'
+  for (var i = 0; i < data.length; i++) {
+    var date =  new Date(data[i].createdAt)
+    date = moment(date).format('YYYY-MM-DD , h:mm');
+    html += '<tr><td>'+date+'</td><td>'+data[i].status+'</td><td>$'+data[i].amount+'</td></tr>'
+  }
+  html +='</tbody></table>  '
+  $('#transaction_history').append(html)
+  var table = jQuery('#transaction_table').DataTable({
+    'destroy':true,
+    "pagingType": "numbers",
+    'order': [[ 0, 'desc' ]] ,
+    "bLengthChange": false,
+    "bFilter": false,
+    "language": {
+      "emptyTable": "There is no transaction history on {{sitenamte}}, Likely the Sandbox account was recently purged."
+    }
+  });
+
+  heatmap(data)
+}
+
+//////////////////////////////////////////////////////
+////        STREAM IN SUBSCRIPTION HISTORY       //// 
+////////////////////////////////////////////////////
+function streamSubscriptions(){
+  $.ajax({
+    url: '/subscription_history_all',
+    success: function(data) {
+      data = JSON.parse(data)
+      printTableSubscriptions(data)
+    },
+    error : function(err){
+      console.log(err)
+    }
+  }); 
+}
+
+////////////////////////////////////////
+///// PRINT SUBSCRIPTION HISTORY //////
+//////////////////////////////////////
+function printTableSubscriptions(baabab){
+  var data = baabab[0]
+  var html =''
+  $('#subscription_history').html('')
+  html += '<h5>Subscription History<small>  All of the site subscriptions.</small></h5><table class="table table-bordered" id="subscription_table" > <thead> <tr>  <th>Next Billing Date</th> <th>Value</th> <th>Status</th> </tr> </thead> <tbody>'
+  for (var i = 0; i < data.paymentMethods[0].subscriptions.length; i++) {
+    var date =  new Date(data.paymentMethods[0].subscriptions[i].nextBillingDate)
+    date = moment(date).format('YYYY-MM-DD , h:mm');
+    html += '<tr><td>'+data.paymentMethods[0].subscriptions[i].nextBillingDate+'</td><td>$'+data.paymentMethods[0].subscriptions[i].nextBillingPeriodAmount+'</td><td>'+data.paymentMethods[0].subscriptions[i].status+'</td></tr>'
+  }
+  html +='</tbody></table>  '
+  $('#subscription_history').append(html)
+  var table = jQuery('#subscription_table').DataTable({
+    'destroy':true,
+    "pagingType": "numbers",
+    'order': [[ 2, 'asc' ]] ,
+    "bLengthChange": false,
+    "bFilter": false,
+    "language": {
+      "emptyTable": "There is no subscription history on {{sitename}}, Likely the Sandbox account was recently purged."
+    }    
+  });
+}
+
+////////////////////////
+///// INITIALIZE //////
+//////////////////////
+$(document).ready( function() {
+  $('#transaction_history').html('<div class="well" style="text-align:center;"><i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i></div>')
+  $('#subscription_history').html('<div class="well" style="text-align:center"><i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i></div>')
+  $('#cal-heatmap').html('<div class="well" style="text-align:center"><i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i></div>')
+  streamTransactions()
+  streamSubscriptions()
+});
+
+///////////////////////////// 
+//////  HEAT MAP      //////
+/////////////////////////// 
+function heatmap(datas){
+  $('#cal-heatmap').html('')
+  var parserData = function (data) {
+    var dataJSON = {};
+    for(var i=0; i<data.length; i++) {
+    var date = new Date(data[i].createdAt); // Date of activity 
+    var sec = date.getTime()/1000; // Convert to sec
+    // Pair "Key-Value" for calendar data
+    if(dataJSON[sec]) {
+      dataJSON[sec]++;
+    } else {
+      dataJSON[sec] = 1;
+    }
+}
+return dataJSON;
+}
+var cal = new CalHeatMap();
+cal.init({
+ itemSelector: "#cal-heatmap",
+ domain: "month",
+ subDomain: "day",
+ legendColors: {
+  empty: "#ededed",
+  min: "#ededed",
+  max: "#337ab7"
+},
+legend: [1,2,3,4,5],
+itemNamespace: "domainDynamicDimension",
+ // range: 11,
+//start: new Date(2016, 10),
+range: 9,
+  start:moment.utc(moment().subtract(8, 'months')).valueOf(),//get moment less range -1 months , then convert to UTC value of for cal heat map.
+   data: datas, // Dates Array
+   afterLoadData: parserData      // Parser function
+ });
+}
+</script>

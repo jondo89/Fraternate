@@ -25,7 +25,8 @@ if (req.user) {
     });
 } else {
   res.render('../../../views/home', {
-    layout: false
+    layout: false,
+    sitekey:process.env.SITE_KEY
   });
 }
 };

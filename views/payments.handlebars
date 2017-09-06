@@ -14,19 +14,145 @@
   </ul>
 </div>
 <div class="col-md-9" style="min-height: 850px">
-  <h3>Setting up the payments process.</h3> 
-  <p>The payment management and security is handled by Braintree , In order to utilize this functionality you will need to register or login.</p>
-<div style="text-align: center;">
-  <a href="https://www.braintreepayments.com/" target="_blank"><img src="/img/logo/braintree.png"> </a>
+ 
+  
+ 
+
+
+    <h3>Braintree Billing Management</h3>
+    <div class="row">
+     <div class="col-md-9">
+       <p> The table below shows the complete set of transactions on the {{sitename}} site.
+        All transactions are managed through the Braintree service, the data below is using the Sandbox payment system provided by Braintree and no real transactions are occurring and all credit card details are incorrect. So, you can go nuts and buy test subscriptions to your hearts content.
+      </p>
+    </div>
+    <div class="col-md-3">
+     <div style="text-align: center;">
+      <a href="https://www.braintreepayments.com/" target="_blank"><img src="/img/logo/braintree.png"> </a> <p>You will need to set up an account.</p>
+    </div>
+
+  </div>
+</div>
+<p></p>
+<h3>Braintree Boilerplate Specifications</h3>
+<div class="row">
+<div class="col-md-12">
+  <p>The following features are subscription features are tested on the Braintree sandbox account.</p>
 </div>
 
-  
-<p></p>
-  <p>Braintree integration is not very user friendly. 2 separate site configurations are required
-  There is limited support for the sandbox functionality for Braintree and PayPal outside of the US , as such make sure your sandbox accounts are both in the USA.</p><p>
-    Getting the PayPal user credentials to put into Braintree is found with difficulty in the PayPal dashboard area, and is found under your account profile details in the xxxx's store area (very difficult to find).
-  </p>
-
+  <div class="col-md-6">
+  <table class="table table-bordered">
+      <thead><tr class="tableizer-firstrow"><th>Credit Card</th><th>Create</th><th>Read</th><th>Update</th><th>Delete</th></tr></thead><tbody>
+      <tr><td>Payment Details</td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td></tr>
+      <tr><td>Subscription</td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td></tr>
+      <tr><td>Transaction</td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td></tr>
+    </tbody></table>
+  </div>
+  <div class="col-md-6">
+  <table class="table table-bordered">
+      <thead><tr class="tableizer-firstrow"><th>PayPal</th><th>Create</th><th>Read</th><th>Update</th><th>Delete</th></tr></thead><tbody>
+      <tr><td>Payment Details</td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td></tr>
+      <tr><td>Subscription</td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td></tr>
+      <tr><td>Transaction</td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td><td style="text-align: center;"><span class="fa-stack fa-lg">
+                
+                <i class="fa fa fa-check" style="color:green"></i>
+              </span>
+            </td></tr>
+    </tbody></table>
+  </div>
+</div>
   <h3>The .ENV File</h3>
   <p>For localhost testing the .ENV file on your local server should have the following lines added to the file.</p>
   <p>You will be able to get your actuals from the <a href="https://www.braintreepayments.com/" target="_blank">Braintree</a> website. You will need to register or login to receive the unique keys.</p>

@@ -10,21 +10,22 @@ var sitename = myModule.sitename
 var website = myModule.website
 var repo = myModule.repo
  
-
 ///////////////////////////////////////
 ////       HOME CONTROLLER        //// 
 /////////////////////////////////////
 exports.index = function(req, res) {
+	
 //Perform Routing for Varios user type on the home page.
 if (req.user) {
-    res.render('../../../plugins/fraternate/views/splash', {
+	res.render('../../../plugins/fraternate/views/splash', {
 		organizations : req.organizations,
 		organizationsParse:req.organizationsParse,
-    	pagetitle: req.user.username +' | '+sitename+'',
-    });
+		pagetitle: req.user.username +' | '+sitename+'',
+		sitekey : sitekey
+	});
 } else {
-  res.render('../../../views/home', {
-    layout: false
-  });
+	res.render('../../../views/home', {
+		layout: false
+	});
 }
 };

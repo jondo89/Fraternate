@@ -163,7 +163,7 @@ app.get('/organizations/:orgname/add_manager/:username/', organizationController
 ///////////////////////////////////////////
 ////        BRAINTREE - USERS         //// 
 /////////////////////////////////////////
-app.get('/braintree', braintreeController.braintree);
+app.get('/transactions', braintreeController.transactions);
 app.get('/transaction_history_all', braintreeController.transaction_history_all);
 app.get('/subscription_history_all', braintreeController.subscription_history_all);
 app.get('/users/:username/settings/billing/upgrade', braintreeController.upgrade);
