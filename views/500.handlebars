@@ -1,0 +1,38 @@
+ 
+  <style type="text/css">
+    .outer{
+      background-color: rgba(0,0,0,0.5);
+      filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
+      -ms-filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
+    }
+  </style>
+ 
+      <div class="col-md-12">
+        <div class="well outer" style="color: white">
+         <h1> 
+           ERROR 500
+         </h1>
+         <h1> 
+           Server Error Reporting.
+         </h1>
+ 
+
+
+      </div>
+    </div>
+    <div class="col-md-12" style="padding-top: 15px" style="overflow: scroll;">
+         {{#if messages.info}}
+        <div role="alert" class="alert alert-info">
+          {{#each messages.info}}
+            <div>{{msg}}</div>
+          {{/each}}
+        </div>
+      {{/if}}
+      {{#if messages.error}}
+      <strong>Error:</strong>
+        <div role="alert" class="alert alert-danger">
+          {{#each messages.error}}
+            <div>{{msg}}</div>
+          {{/each}}
+        </div>
+      {{/if}} </div>
