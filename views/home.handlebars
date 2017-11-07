@@ -33,100 +33,118 @@
  
       <body id="page-top">
         {{> header}}
-        <header>
-          <div class="container" >
+
+
+ 
+
+
+        <section class="cta" style="color: white"> <div class="overlay"></div>
+          <div class="container">
             <div class="row">
               <div class="col-sm-7">
-                <div class="header-content" >
-                  <div class="header-content-inner">
-                    <div class="well outer"  >
-                     <h1> 
+               <div class="header-content">
+                <div class="header-content-inner" style="text-align:left">
+          <h1> 
                        {{sitename}} is an <strong>open source</strong> user and team subscription boilerplate. 
                      </h1>  
-                     <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user subscription system, deployable as a boilerplate. It is <strong style="color: white">open-source</strong> and <strong style="color: white">light weight</strong>.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
+                     <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user subscription system. </h3>
+
+
+                       <h3 style="color: #c7c7c7">Deploy as a boilerplate directly off GitHub. It is <strong style="color: white">open-source</strong> and <strong style="color: white">light weight</strong>.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
          
-                  <div style="text-align: center;padding-top: 15px">
+
+                 <div style="padding-top: 25px">
+                  <div class="btn-group btn-group-lg" role="group">
+                    <a href="/signup" class="btn btn-primary">Get Started.</a>
+                    <a href="/users" class="btn btn-default">View User List.</a>
+                  </div>
+                </div>
+                 <div style="text-align: center;padding-top: 25px">
                     <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
                      <a class="github-button" href="https://github.com/Isithelo/{{sitename}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{sitename}} on GitHub">Star</a> 
                   </a>
                 </div>
-              </div>
+
             </div>
           </div>
         </div>
         <div class="col-sm-5">
-          <div class="header-content">
+          <div class="header-content" style="padding-top: 25px">
             <div class="header-content-inner">
               {{> signuphomepage}}
             </div>
           </div>
         </div>
       </div>
-    </div> 
-  </header>
-  <section style="text-align: center;"> 
-    <h1 style="padding-top: 100px">The Platform</h1>
-    <h1><small>Fraternate is the second phase of a user project management system for NodeJS. Modeled on the GitHub project management system and aimed to be modular for allowing as may application scenarios as possible.</small></h1>
-    <div style="padding-bottom: 100px"></div>
-    <div class="container" >
       <div class="row">
-              <div class="col-md-3" style="text-align: center;">
-          <div class="panel panel-default" style="min-height: 250px">
-            <div class="panel-body"><h5>Phase 1</h5>
-              <a href="https://semini.herokuapp.com/" target="_blank" style="text-decoration: none;">
-                <img  style="max-width: 65px" src="/img/logo/semini.png" alt="..." >
-                <p></p>
-                <h3>Semini  <small>Form creator.</small></h3>
-                <p><a href="https://github.com/Isithelo/Semini" target="_blank">Semini Repo</a></p>
-              </a>
-            </div>
-          </div>
+        <div class="col-sm-7">
         </div>
-              <div class="col-md-3" style="text-align: center;">
-          <div class="panel panel-default" style="min-height: 250px">
-            <div class="panel-body"><h5>Phase 2</h5>
-              <a href="https://fraternate.herokuapp.com/" target="_blank" style="text-decoration: none;">
-                <img  style="max-width: 65px" src="/img/logo/fraternate.png" alt="..." >
-                <p></p>
-                <h3>Fraternate  <small>Team and User Management System.</small></h3>
-                <p><a href="https://github.com/Isithelo/Fraternate" target="_blank">Fraternate Repo</a></p>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3" style="text-align: center; ">
-          <div class="panel panel-default" style="min-height: 250px">
-            <div class="panel-body">
-              <h5>Phase 3</h5>
-              <a href="https://wrasse.herokuapp.com/" target="_blank"  style="text-decoration: none;">
-                <img  style="max-width: 65px" src="/img/logo/wrasse.png" alt="...">
-                <p></p>
-                <h3>Wrasse  <small>Issue Tracking.</small></h3>
-                <p><a href="https://github.com/Isithelo/Wrasse" target="_blank">Wrasse Repo</a></p>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3" style="text-align: center;  ">
-          <div class="panel panel-default" style="min-height: 250px">
-            <div class="panel-body">
-              <h5>Phase 4</h5>
-              <a href="https://heavy-lifting.herokuapp.com/" target="_blank"  style="text-decoration: none;">
-                <img  style="max-width: 65px" src="/img/logo/heavy-lifting.png" alt="...">
-                <p></p>
-                <h3>Heavy-lifting  <small>Bulk cataloging and design.</small></h3>
-                <p><a href="https://github.com/Isithelo/Heavy-lifting" target="_blank">Heavy-lifting Repo</a></p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="text-align: center;padding: 100px" >
-        <a href="/signin" class="btn btn-default btn-lg" >Give it a try !</a>  
       </div>
     </div>
   </section>
+<section style="text-align: center;"> 
+  <div class="container">
+    <h1>Fraternate is the second phase of a user project management system for NodeJS. </h1>
+    <p>Modelled on the GitHub project management system and aimed to be modular for allowing as may application scenarios as possible.</p>
+    <h5>The Platform</h5> 
+    <div class="row" style="padding-top: 15px">
+      <div class="col-md-3" style="text-align: center;">
+        <div class="panel panel-default" style="min-height: 260px">
+          <div class="panel-body"><h5>Phase 1</h5>
+            <a href="https://semini.herokuapp.com/" target="_blank" style="text-decoration: none;">
+              <img  style="max-width: 65px" src="/img/logo/semini.png" alt="..." >
+              <p></p>
+              <h3>Semini</h3>  <p>Database primer and form creator.</p>
+              <p><a href="https://github.com/Isithelo/Semini" target="_blank">Semini Repo</a></p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" style="text-align: center;">
+        <div class="panel panel-default" style="min-height: 260px">
+          <div class="panel-body"><h5>Phase 2</h5>
+            <a href="https://fraternate.herokuapp.com/" target="_blank" style="text-decoration: none;">
+              <img  style="max-width: 65px" src="/img/logo/fraternate.png" alt="..." >
+              <p></p>
+              <h3>Fraternate</h3>  <p>Team and User Management System (Including Payments).</p>
+              <p><a href="https://github.com/Isithelo/Fraternate" target="_blank">Fraternate Repo</a></p>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3" style="text-align: center; ">
+        <div class="panel panel-default" style="min-height: 260px">
+          <div class="panel-body">
+            <h5>Phase 3</h5>
+            <a href="https://wrasse.herokuapp.com/" target="_blank"  style="text-decoration: none;">
+              <img  style="max-width: 65px" src="/img/logo/wrasse.png" alt="...">
+              <p></p>
+              <h3>Wrasse</h3>  <p>Issue tracking and commenting system.</p>
+              <p><a href="https://github.com/Isithelo/Wrasse" target="_blank">Wrasse Repo</a></p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" style="text-align: center;  ">
+        <div class="panel panel-default" style="min-height: 260px">
+          <div class="panel-body">
+            <h5>Phase 4</h5>
+            <a href="https://heavy-lifting.herokuapp.com/" target="_blank"  style="text-decoration: none;">
+              <img  style="max-width: 65px" src="/img/logo/heavy-lifting.png" alt="...">
+              <p></p>
+              <h3>Heavy-lifting</h3>  <p>Bulk cataloguing and design system.</p>
+              <p><a href="https://github.com/Isithelo/Heavy-lifting" target="_blank">Heavy-lifting Repo</a></p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;padding: 100px" >
+    <a href="/signin" class="btn btn-default btn-lg" >Sign in to give it a try !</a>  
+  </div>
+</section>
   {{> analytics}}
 </body>
 </html>

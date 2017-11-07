@@ -8,7 +8,7 @@ html {
   min-height: 100%;
 overflow-y: scroll; 
 }
-
+ 
 body {
   background-color: #f4f4f4;;
   margin-bottom: 44px;
@@ -493,8 +493,10 @@ section.cta {
   -o-background-size: cover;
   background-position: center;
   background-image: url('../img/background/background.jpg');
-  padding: 250px 0;
+ 
 }
+
+
 section.cta .cta-content {
   position: relative;
   z-index: 1;
@@ -503,7 +505,6 @@ section.cta .cta-content h2 {
   margin-top: 0;
   margin-bottom: 25px;
   color: white;
-  max-width: 450px;
   font-size: 50px;
 }
 @media (min-width: 768px) {
@@ -519,6 +520,44 @@ section.cta .overlay {
   top: 0;
   left: 0;
 }
+
+section.cta1 {
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  background-position: center;
+  background-image: url('../img/background/background1.jpg');
+ 
+}
+
+section.cta1 .cta-content {
+  position: relative;
+  z-index: 1;
+}
+section.cta1 .cta-content h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: white;
+  font-size: 50px;
+}
+@media (min-width: 768px) {
+  section.cta1 .cta-content h2 {
+    font-size: 80px;
+  }
+}
+section.cta1 .overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
 section.contact {
   text-align: center;
 }
@@ -570,3 +609,33 @@ body {
   color: #333;
   background-color: #fff;
 }
+
+  .awesome {
+    padding: 2px;
+    text-align:center;
+    border-radius: 5px;
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  }
+
+  .component-detail-img{
+         padding: 15px
+  }
+
+   .component-detail-img img{
+    width :200px;
+
+    border-radius: 15px;
+    border:1px #dddddd solid;
+  }
+
+    .component-thumb-img{
+   
+    padding: 15px
+  }
+
+   .component-thumb-img img{
+    width :100px;
+
+    border-radius: 15px;
+    border:1px #dddddd solid;
+  }
