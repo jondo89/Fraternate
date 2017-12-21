@@ -14,18 +14,19 @@ var repo = myModule.repo
 ////       HOME CONTROLLER        //// 
 /////////////////////////////////////
 exports.index = function(req, res) {
-	
 //Perform Routing for Varios user type on the home page.
 if (req.user) {
 	res.render('../../../plugins/fraternate/views/splash', {
 		organizations : req.organizations,
 		organizationsParse:req.organizationsParse,
 		pagetitle: req.user.username +' | '+sitename+'',
-		sitekey : sitekey
+		sitekey : sitekey,
+		siteName : sitename
 	});
 } else {
 	res.render('../../../views/home', {
-		layout: false
+		layout: false,
+		siteName : sitename
 	});
 }
 };

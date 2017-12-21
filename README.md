@@ -9,6 +9,8 @@ This website has a direct copy hosted on GitHub to allow users to copy the funct
 <h4 >MIT License - 100 % Open Source</h4>
 Fraternate is completely open source.
 
+<div style="width: 100%;padding: 55px;text-align: center;"><pre>NPM INSTALL FRATERNATE</pre></div>
+
 
 
 <h4>User Control</h4>

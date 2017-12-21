@@ -179,15 +179,12 @@ app.locals.website = website
 app.locals.repo = repo
 
 
-///////////////////////////////
-////       ROUTING        //// 
-/////////////////////////////
-//Set Handlebars view directory for plugins
-app.set('views', path.join(__dirname, 'plugins/fraternate/views/'));
-//Fratenate Routing
-var fraternateRouting = require('./plugins/fraternate/routes/routes');
-app.use('/', fraternateRouting);
- 
+///////////////////////////////////////////////
+////       FRATERNATE NPM MODULE          //// 
+/////////////////////////////////////////////
+var fraternate = require("fraternate");
+app.use('/', fraternate);
+
 
 
 /////////////////////////////
@@ -207,7 +204,7 @@ req.flash('error', { msg: JSON.stringify(err)});
 });
 
 /////////////////////////////
-////       404          //// 
+////       500          //// 
 ///////////////////////////
 app.get('/500', function(req, res){
   res.render('../../../views/500',{
