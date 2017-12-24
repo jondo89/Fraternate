@@ -66,59 +66,7 @@ var gateway = braintree.connect({
   privateKey: process.env.PRIVATEKEY
 });
 
-/////////////////////////////////////////
-///////   HANDLEBARS HELPERS    ////////
-///////////////////////////////////////
-var hbs = exphbs.create({
-  defaultLayout: 'main',
-  helpers: {
-    ifeq: function(a, b, options) {
-      if (a === b) {
-        return options.fn(this);
-      }
-      return options.inverse(this);
-    },
-    toJSON : function(object) {
-      return JSON.stringify(object);
-    },
-    partial: function (name) {
-      return name;
-    },
-    'dotdotdot' : function(str) {
-      if (str) {
-        if (str.length > 16)
-          return str.substring(0,16) + '...';
-        return str;}
-      },
-      'dotdotdotdot' : function(str) {
-        if (str) {
-          if (str.length > 200)
-            return str.substring(0,200) + '...';
-          return str;
-        }
-      },
-      'dotdotdotdotdot' : function(str) {
-        if (str) {
-          if (str.length > 400)
-            return str.substring(0,400) + '...';
-          return str;
-        }
-      },      'dots' : function(str) {
-        if (str) {
-          if (str.length > 150)
-            return str.substring(0,150) + '...';
-          return str;
-        }
-      },
-      'profile' : function(str) {
-        if (str) {
-          if (str.length > 550)
-            return str.substring(0,550) + '...';
-          return str;
-        }
-      }
-    }
-  });
+ 
 
 /////////////////////////////////////////////
 ///////   HTTPS TRAFFIC REDIRECT    ////////
@@ -135,9 +83,7 @@ res.redirect('https://'+req.hostname+req.url);
 if (app.get('env') == 'production') {
   app.all('*', ensureSecure);
 }
-
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+ 
 
 
 
@@ -177,7 +123,7 @@ var repo = myModule.repo
 app.locals.sitename = sitename
 app.locals.website = website
 app.locals.repo = repo
-
+var partialsDir = ['views/partials']
 
 ///////////////////////////////////////////////
 ////       FRATERNATE NPM MODULE          //// 
@@ -204,6 +150,57 @@ req.flash('error', { msg: JSON.stringify(err)});
   res.status(500);
   res.redirect('/500');
 });
+
+/////////////////////////////////////////
+///////   HANDLEBARS HELPERS    ////////
+///////////////////////////////////////
+var hbs = exphbs.create({
+  defaultLayout: 'main',
+  partialsDir:partialsDir,
+  helpers: {
+    ifeq: function(a, b, options) {
+      if (a === b) {
+        return options.fn(this);
+      }
+      return options.inverse(this);
+    },
+    toJSON : function(object) {
+      return JSON.stringify(object);
+    },
+    partial: function (name) {
+      return name;
+    },
+    'dotdotdot' : function(str) {
+      if (str) {
+        if (str.length > 16)
+          return str.substring(0,16) + '...';
+        return str;}
+      },
+      'dotdotdotdot' : function(str) {
+        if (str) {
+          if (str.length > 200)
+            return str.substring(0,200) + '...';
+          return str;
+        }
+      },
+      'dotdotdotdotdot' : function(str) {
+        if (str) {
+          if (str.length > 400)
+            return str.substring(0,400) + '...';
+          return str;
+        }
+      },
+      'profile' : function(str) {
+        if (str) {
+          if (str.length > 550)
+            return str.substring(0,550) + '...';
+          return str;
+        }
+      }
+    }
+  });
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 /////////////////////////////
 ////       500          //// 
