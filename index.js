@@ -183,6 +183,8 @@ app.locals.repo = repo
 ////       FRATERNATE NPM MODULE          //// 
 /////////////////////////////////////////////
 var fraternate = require("fraternate");
+//Append the partial directory inside the NPM module.
+partialsDir.push('node_modules/fraternate/views/partials')
 app.use('/', fraternate);
 
 

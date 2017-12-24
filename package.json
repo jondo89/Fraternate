@@ -21,7 +21,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^2.21.0",
     "flash": "^1.1.0",
-    "fraternate": "^1.0.10",
+    "fraternate": "^1.0.11",
     "method-override": "^2.3.10",
     "mongoose": "^4.13.7",
     "morgan": "^1.9.0",
