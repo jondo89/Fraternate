@@ -23,7 +23,7 @@
     "flash": "^1.1.0",
     "fraternate": "^1.0.11",
     "method-override": "^2.3.10",
-    "mongoose": "^4.13.7",
+    "mongoose": "^4.13.8",
     "morgan": "^1.9.0",
     "nodemailer": "^2.7.2",
     "passport": "^0.3.2",
