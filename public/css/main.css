@@ -157,7 +157,7 @@ footer {
 .btn-default {
   border-color: #ccc;
   background: #f5f5f5 linear-gradient(to bottom, #fff, #f5f5f5);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), inset 0 -1px 4px rgba(151, 159, 175, 0.2);
+ 
 }
 
 .btn-default:active {
@@ -167,7 +167,7 @@ footer {
 .btn-success {
   border-color: #208a46;
   background: #29b35b linear-gradient(to bottom, #2ec866, #29b35b);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 4px rgba(32, 138, 70, 0.3);
+  
 }
 
 .btn-success:active {
@@ -177,7 +177,7 @@ footer {
 .btn-danger {
   border-color: #8c1512;
   background: #b61b17 linear-gradient(to bottom, #cc1e1a, #b61b17);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 4px rgba(140, 21, 18, 0.3);
+  
 }
 
 .btn-danger:active {
@@ -368,7 +368,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/background/background.jpg');
+  background-image: url('/img/background/background.jpg');
   color: white;
 }
 header .header-content {
@@ -492,7 +492,7 @@ section.cta {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/background/background.jpg');
+  background-image: url('/img/background/background.jpg');
  
 }
 
@@ -528,7 +528,7 @@ section.cta1 {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/background/background1.jpg');
+  background-image: url('/img/background/splash.jpg');
  
 }
 
@@ -639,3 +639,5 @@ body {
     border-radius: 15px;
     border:1px #dddddd solid;
   }
+
+ 

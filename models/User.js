@@ -38,6 +38,7 @@ var userSchema = new mongoose.Schema({
   location: String,
   website: String,
   picture: String,
+  image: String,
   facebook: String,
   twitter: String,
   google: String,

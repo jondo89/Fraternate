@@ -1,16 +1,16 @@
     <!-- Single button -->
     <p></p>
     <div class="btn-group">
-    	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="/uploads/{{user.id}}.jpg " style="max-width: 30px">
-            {{user.username}}  <span class="caret"></span>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="{{user.image}}" style="max-width: 30px">
+            {{dotdotdot user.username}}  <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
           <li>
            <a href="/users/{{user.username}}"  style="text-align: right; ">
             <span class="media" style="color: grey">
-                {{user.username}} 
-                <img src="/uploads/{{user.id}}.jpg " style="max-width: 25px">    
+                {{dotdotdot user.username}} 
+                <img src="{{user.image}}" style="max-width: 25px">    
             </span>
         </a>
     </li>
@@ -18,15 +18,15 @@
     <li>
         <a href="/organizations/{{this.entry.name}}" > 
             <span class="media">
-              {{#if this.entry.picture}}
-              <img onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.picture}}"  style="max-width: 25px">
+              {{#if this.entry.image}}
+              <img onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.image}}"  style="max-width: 25px">
               {{else}}
               <img src="{{this.gravatar}}"  style="max-width: 25px">
               {{/if}}
               {{#if this.entry.displayname}}
-                {{this.entry.displayname}}
+                {{dotdotdot this.entry.displayname}}
               {{else}}
-                {{this.entry.name}}
+                {{dotdotdot this.entry.name}}
               {{/if}}
           </span>
       </a>

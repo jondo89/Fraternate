@@ -42,6 +42,8 @@
 
 
 
+
+
           <!-- Custom Content goes here. -->
           {{#if user}}
           <li class="dropdown" data-toggle="tooltip" data-placement="right" title="Create new.">
@@ -58,8 +60,8 @@
           {{#if user}}
           <li class="dropdown" data-toggle="tooltip" data-placement="right" title="View profile and more.">
             <a href="#" data-toggle="dropdown" class="navbar-avatar dropdown-toggle" >
-              {{#if user.picture}}
-              <img src="{{user.picture}}" class="navbar-avatar-pic" style="border-radius: 5px">
+              {{#if user.image}}
+              <img src="{{user.image}}" class="navbar-avatar-pic" style="border-radius: 5px">
               {{else}}
               <img src="{{user.gravatar}}" class="navbar-avatar-pic" style="border-radius: 5px">
               {{/if}}
@@ -80,8 +82,6 @@
           <li class=""><a href="/signup">Sign up</a></li>
           {{/if}}
           <!-- Custom Content goes here. -->
-
-
         </ul>
       </div>
     </div>
@@ -89,6 +89,13 @@
   </div>
   <!-- /.container-fluid -->
 </nav>
+
+          {{#if user}}
+<div style="position:absolute;right:100px; top:55px">
+  <a class="btn btn-success btn-sm" id="64e4afba-10de-0003-686d-d6e1781e19f0" data-idform="59e837ba9399ad427c493d4f" data-parent="5a3e642f056b871f8c1316cd" data-toggle="modal" data-target="#myModal" onclick="deployFormIssues(this.id)" title="Create a new issue"><i class="fa fa-exclamation" aria-hidden="true"></i> Flag an Issue</a>
+</div>
+          {{/if}}
+
 
 <style type="text/css">
   #headerload {
