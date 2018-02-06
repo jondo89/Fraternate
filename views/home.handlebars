@@ -47,6 +47,7 @@
           <h1> 
                        {{siteName}} is an <strong>open source</strong> user and team subscription boilerplate. 
                      </h1>  
+
                      <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user subscription system. </h3>
 
 
@@ -55,16 +56,19 @@
 
                  <div style="padding-top: 25px">
                   <div class="btn-group btn-group-lg" role="group">
-                    <a href="/signup" class="btn btn-primary">Get Started.</a>
-                    <a href="/users" class="btn btn-default">View User List.</a>
+                    <a href="/signup" class="btn btn-primary">Get Started</a>
+                    <a href="/users" class="btn btn-default">View User List</a>
                   </div>
                 </div>
+
                  <div style="text-align: center;padding-top: 25px">
                     <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
                      <a class="github-button" href="https://github.com/Isithelo/{{siteName}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{siteName}} on GitHub">Star</a> 
                   </a>
                 </div>
-<div style="width: 100%;padding: 55px;text-align: center;"><pre>NPM INSTALL FRATERNATE</pre></div>
+                 <div style="text-align: center;padding-top: 25px">
+<div style="text-align: center;"><pre>npm install fraternate</pre></div>
+                </div>
 
 
             </div>
@@ -84,6 +88,48 @@
       </div>
     </div>
   </section>
+
+ <section id="users" class="features">
+      <div class="container">
+        <div class="row">
+           
+          <div class="col-md-12 text-center">
+            <h1>Payment Methods.</h1>
+            <p>Monthly and yearly subscription payment structure for your clients.</p>
+          </div> 
+          <div class="col-md-6 text-center">
+ 
+<p style="padding-top: 35px"> 
+<a href="https://www.braintreepayments.com/" target="_blank">
+  <img style="max-width: 155px" src="/img/logo/braintree.png">   
+
+  </a>
+
+</p>
+<p>Limit range of available countries. Customization and management conducted on the node.js sever.</p>
+ 
+          </div>
+          <div class="col-md-6 text-center">
+ 
+<p style="padding-top: 35px"> 
+  <a href="https://www.paypal.com" target="_blank">
+<img src="/img/logo/download.png"> 
+
+  </a>
+<p>Basic PayPal management of payments. Most of the customization of values and subscription options covered on the PayPal site.</p>
+
+ 
+</p>
+
+ 
+          </div>
+
+        </div>
+        </div>
+    </section>
+
+<hr>
+
  <section id="users" class="features">
       <div class="container">
         <div class="row">
@@ -125,7 +171,7 @@
             <a href="https://semini.herokuapp.com/" target="_blank" style="text-decoration: none;">
               <img  style="max-width: 65px" src="/img/logo/semini.png" alt="..." >
               <p></p>
-              <h3>Semini</h3>  <p>Database primer and form creator.</p>
+              <h3>Semini</h3>  <p style="color:black">Database primer and form creator.</p>
               <p><a href="https://github.com/Isithelo/Semini" target="_blank">Semini Repo</a></p>
             </a>
           </div>
@@ -137,7 +183,7 @@
             <a href="https://fraternate.herokuapp.com/" target="_blank" style="text-decoration: none;">
               <img  style="max-width: 65px" src="/img/logo/fraternate.png" alt="..." >
               <p></p>
-              <h3>Fraternate</h3>  <p>Team and User Management System (Including Payments).</p>
+              <h3>Fraternate</h3>  <p style="color:black">Team and User Management System (Including Payments).</p>
               <p><a href="https://github.com/Isithelo/Fraternate" target="_blank">Fraternate Repo</a></p>
             </a>
           </div>
@@ -151,7 +197,7 @@
             <a href="https://wrasse.herokuapp.com/" target="_blank"  style="text-decoration: none;">
               <img  style="max-width: 65px" src="/img/logo/wrasse.png" alt="...">
               <p></p>
-              <h3>Wrasse</h3>  <p>Issue tracking and commenting system.</p>
+              <h3>Wrasse</h3>  <p style="color:black">Issue tracking and commenting system.</p>
               <p><a href="https://github.com/Isithelo/Wrasse" target="_blank">Wrasse Repo</a></p>
             </a>
           </div>
@@ -164,7 +210,7 @@
             <a href="https://heavy-lifting.herokuapp.com/" target="_blank"  style="text-decoration: none;">
               <img  style="max-width: 65px" src="/img/logo/heavy-lifting.png" alt="...">
               <p></p>
-              <h3>Heavy-lifting</h3>  <p>Bulk cataloguing and design system.</p>
+              <h3>Heavy-lifting</h3>  <p style="color:black">Bulk cataloguing and design system.</p>
               <p><a href="https://github.com/Isithelo/Heavy-lifting" target="_blank">Heavy-lifting Repo</a></p>
             </a>
           </div>
@@ -173,7 +219,8 @@
     </div>
   </div>
   <div style="text-align: center;padding-top: 100px" >
-    <a href="/signin" class="btn btn-default btn-lg" >Sign in to give it a try !</a>  
+    <p>Get started by testing the interface. You will need to sign in first.</p>
+    <a href="/signin" class="btn btn-default btn-lg" >Sign in!</a>  
   </div>
 </section>
     {{> footer}}

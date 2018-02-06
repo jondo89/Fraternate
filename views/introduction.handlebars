@@ -1,147 +1,151 @@
 <style type="text/css">
-	.awesome {
-		padding: 2px;
-		text-align:center;
-		border-radius: 5px;
-		background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-	}
+.awesome {
+	padding: 2px;
+	text-align:center;
+	border-radius: 5px;
+	background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+}
 </style>
 <h1>An Introduction to {{siteName}}.</h1>
 <hr>
 <div class="row">
 	<div class="col-md-3">
-		<ul class="nav nav-pills nav-stacked">
-			<li role="presentation" class="active"><a href="/introduction">Introduction</a></li>
-			<li role="presentation"><a href="/specifications">Specifications</a></li>
-			<li role="presentation"><a href="/installation">Installation Instructions</a></li>
-			<li role="presentation"><a href="/integration">Third Party Integration</a></li>
-			<li role="presentation"><a href="/payments">Payment Integration</a></li>
-			<li role="presentation"><a href="/css">CSS Management</a></li>
-			<li role="presentation"><a href="/troubleshooting">Troubleshooting</a></li>
-			<li role="presentation" ><a href="/licence">Licence</a></li>
-		</ul>
+<div class="list-group">
+			<a class="list-group-item active" href="/introduction">Introduction</a>
+			<a class="list-group-item" href="/specifications">Specifications</a>			
+			<a class="list-group-item" href="/installation">Installation Instructions</a>
+			<a class="list-group-item" href="/integration">Third Party Integration</a>
+			<a class="list-group-item" href="/payments">Payment Integration</a>
+			<a class="list-group-item" href="/troubleshooting">Troubleshooting</a>
+			<a class="list-group-item" href="/licence">Licence</a>
+	</div>
 		<p></p>
- 
-				<div class="co" style="text-align: center;"> 
-						<h3></h3>
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<img  style="max-width: 65px" src="/img/logo/osi_black_and_white_light_backgrounds_logo.png" alt="...">
-								<h4  >MIT License - 100 % Open Source</h4>
-								Fraternate is completely open source.
-							</div>
-						</div>
-					</div>
-		 
+		<div class="co" style="text-align: center;"> 
+			<h3></h3>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<img  style="max-width: 65px" src="/img/logo/osi_black_and_white_light_backgrounds_logo.png" alt="...">
+					<h4  >MIT License - 100 % Open Source</h4>
+					Fraternate is completely open source.
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="col-md-9">
-
 		<div class="row">
 			<div class="col-md-12 ">
 				<h3>What is Fraternate?</h3>
-				<div style="width: 100%;padding: 55px;text-align: center;"><pre>NPM INSTALL FRATERNATE</pre></div>
+		                 <div style="text-align: center;padding-top: 25px">
+<div style="text-align: center;"><pre>npm install fraternate</pre></div>
+                </div>
 				<p>Fraternate is a standalone copy of the GitHub user management system. Designed using a mongodB, NodeJS, expressjs and Handlebarsjs MVC (model view controller).</p>
 				<p>Fraternate should be used as a barebones boilerplate that can be modified to integrate into your sites custom content and allowing for a complete user management system.
-					This website has a copy hosted on GitHub to allow users to copy the functionality directly. </p>
-					<p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>
-				</div>
-				<div class="col-md-4  ">
-	
+				This website has a copy hosted on GitHub to allow users to copy the functionality directly. </p>
+				<p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>
+			</div>
+			<div class="col-md-4  ">
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>User Control</h4>
+				<ul>
+					<li>Sign in / Login</li>
+					<li>Signup</li>
+					<li>Oauth GitHub / Google</li>
+					<li>Unique Usernames</li>
+					<li>Recaptcha</li>
+					<li>Forgot Password</li>
+					<li>Delete Account</li>
+					<li>Public Profile</li>
+					<li>Profile Pictures</li>
+					<li>Email Notifications</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h4>Organization Control</h4>
+				<ul>
+					<li>Create Organization</li>
+					<li>Delete Organization</li>
+					<li>Invite to Organization</li>
+					<li>Request Invite to Organization</li>
+					<li>Edit Memberships</li>
+					<li>Unique Organization Names</li>
+					<li>Public Organization Profile</li>
+				</ul>
+			</div>
+						<div class="col-md-4">
+				<h4>Subscription Payments</h4>
+				<ul>
+					<li>Braintree</li>
+					<li>PayPal</li>
+					<li>PayFast</li>
+
+				</ul>
+			</div>
+		</div>
+		<p></p>
+		<div>
+			<div style="text-align: center;">
+				<a href="/signup" target="_blank" class="btn btn-lg btn-default">Sign in to test the functionality...</a>
+			</div>
+		</div>
+		<h3>The Platform</h3>
+		<p>Fraternate is the second phase of a user project management system for NodeJS. Modeled on the GitHub project management system and aimed to be modular for allowing as may application scenarios as possible.</p>
+		<div class="row">
+			<div class="col-md-3" style="text-align: center;">
+				<div class="panel panel-default" style="min-height: 280px">
+					<div class="panel-body"><h5>Phase 1</h5>
+						<a href="https://semini.herokuapp.com/" target="_blank" style="text-decoration: none;">
+							<img  style="max-width: 65px" src="/img/logo/semini.png" alt="..." >
+							<p></p>
+							<h3>Semini  <small>Form creator.</small></h3>
+							<p><a href="https://github.com/Isithelo/Semini" target="_blank">Semini Repo</a></p>
+						</a>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<h4>User Control</h4>
-					<ul>
-						<li>Sign in / Login</li>
-						<li>Signup</li>
-						<li>Oauth GitHub / Google</li>
-						<li>Unique Usernames</li>
-						<li>Recaptcha</li>
-						<li>Forgot Password</li>
-						<li>Delete Account</li>
-						<li>Public Profile</li>
-						<li>Profile Pictures</li>
-						<li>Email Notifications</li>
-					</ul>
-				</div>
-				<div class="col-md-6">
-					<h4>Organization Control</h4>
-					<ul>
-						<li>Create Organization</li>
-						<li>Delete Organization</li>
-						<li>Invite to Organization</li>
-						<li>Request Invite to Organization</li>
-						<li>Edit Memberships</li>
-						<li>Unique Organization Names</li>
-						<li>Public Organization Profile</li>
-					</ul>
-				</div>
-			</div>
-			<p></p>
-			<div>
-				<div style="text-align: center;">
-					<a href="/signup" target="_blank" class="btn btn-lg btn-default">Sign in to test the functionality...</a>
+			<div class="col-md-3" style="text-align: center;">
+				<div class="panel panel-default" style="min-height: 280px">
+					<div class="panel-body"><h5>Phase 2</h5>
+						<a href="https://fraternate.herokuapp.com/" target="_blank" style="text-decoration: none;">
+							<img  style="max-width: 65px" src="/img/logo/fraternate.png" alt="..." >
+							<p></p>
+							<h3>Fraternate  <small>Team and User Management System.</small></h3>
+							<p><a href="https://github.com/Isithelo/Fraternate" target="_blank">Fraternate Repo</a></p>
+						</a>
+					</div>
 				</div>
 			</div>
 
-
-			<h3>The Platform</h3>
-<p>Fraternate is the second phase of a user project management system for NodeJS. Modeled on the GitHub project management system and aimed to be modular for allowing as may application scenarios as possible.</p>
-
-      <div class="row">
-              <div class="col-md-3" style="text-align: center;">
-          <div class="panel panel-default" style="min-height: 280px">
-            <div class="panel-body"><h5>Phase 1</h5>
-              <a href="https://semini.herokuapp.com/" target="_blank" style="text-decoration: none;">
-                <img  style="max-width: 65px" src="/img/logo/semini.png" alt="..." >
-                <p></p>
-                <h3>Semini  <small>Form creator.</small></h3>
-                <p><a href="https://github.com/Isithelo/Semini" target="_blank">Semini Repo</a></p>
-              </a>
-            </div>
-          </div>
-        </div>
-              <div class="col-md-3" style="text-align: center;">
-          <div class="panel panel-default" style="min-height: 280px">
-            <div class="panel-body"><h5>Phase 2</h5>
-              <a href="https://fraternate.herokuapp.com/" target="_blank" style="text-decoration: none;">
-                <img  style="max-width: 65px" src="/img/logo/fraternate.png" alt="..." >
-                <p></p>
-                <h3>Fraternate  <small>Team and User Management System.</small></h3>
-                <p><a href="https://github.com/Isithelo/Fraternate" target="_blank">Fraternate Repo</a></p>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3" style="text-align: center; ">
-          <div class="panel panel-default" style="min-height: 280px">
-            <div class="panel-body">
-              <h5>Phase 3</h5>
-              <a href="https://wrasse.herokuapp.com/" target="_blank"  style="text-decoration: none;">
-                <img  style="max-width: 65px" src="/img/logo/wrasse.png" alt="...">
-                <p></p>
-                <h3>Wrasse  <small>Issue Tracking.</small></h3>
-                <p><a href="https://github.com/Isithelo/Wrasse" target="_blank">Wrasse Repo</a></p>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3" style="text-align: center;  ">
-          <div class="panel panel-default" style="min-height: 280px">
-            <div class="panel-body">
-              <h5>Phase 4</h5>
-              <a href="https://heavy-lifting.herokuapp.com/" target="_blank"  style="text-decoration: none;">
-                <img  style="max-width: 65px" src="/img/logo/heavy-lifting.png" alt="...">
-                <p></p>
-                <h3>Heavy-lifting  <small>Bulk cataloging and design.</small></h3>
-                <p><a href="https://github.com/Isithelo/Heavy-lifting" target="_blank">Heavy-lifting Repo</a></p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+			<div class="col-md-3" style="text-align: center; ">
+				<div class="panel panel-default" style="min-height: 280px">
+					<div class="panel-body">
+						<h5>Phase 3</h5>
+						<a href="https://wrasse.herokuapp.com/" target="_blank"  style="text-decoration: none;">
+							<img  style="max-width: 65px" src="/img/logo/wrasse.png" alt="...">
+							<p></p>
+							<h3>Wrasse  <small>Issue Tracking.</small></h3>
+							<p><a href="https://github.com/Isithelo/Wrasse" target="_blank">Wrasse Repo</a></p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3" style="text-align: center;  ">
+				<div class="panel panel-default" style="min-height: 280px">
+					<div class="panel-body">
+						<h5>Phase 4</h5>
+						<a href="https://heavy-lifting.herokuapp.com/" target="_blank"  style="text-decoration: none;">
+							<img  style="max-width: 65px" src="/img/logo/heavy-lifting.png" alt="...">
+							<p></p>
+							<h3>Heavy-lifting  <small>Bulk cataloging and design.</small></h3>
+							<p><a href="https://github.com/Isithelo/Heavy-lifting" target="_blank">Heavy-lifting Repo</a></p>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+</div>
 

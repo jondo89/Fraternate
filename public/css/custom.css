@@ -1,5 +1,23 @@
 /* Use this CSS File to manage your custom CSS.
 /* ------------------------- */
- 
 
- 
+.well {
+   position: relative;
+   padding: 32px;
+   text-align: center;
+   background-color: #fafbfc;
+   border: 1px solid #e1e4e8;
+   border-radius: 3px;
+   box-shadow: inset 0 0 10px rgba(27,31,35,0.05);
+
+}
+
+body {
+  background-image: linear-gradient(180deg, rgba(27,31,35,0.065), rgba(27,31,35,0)) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 200px !important;
+}
+
+.container {
+    width: 1028px;
+}
