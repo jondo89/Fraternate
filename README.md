@@ -13,44 +13,43 @@ Fraternate is completely open source.
 
 
 
-    <div class="row">
-      <div class="col-md-4">
-        <h4>User Control</h4>
-        <ul>
-          <li>Sign in / Login</li>
-          <li>Signup</li>
-          <li>Oauth GitHub / Google</li>
-          <li>Unique Usernames</li>
-          <li>Recaptcha</li>
-          <li>Forgot Password</li>
-          <li>Delete Account</li>
-          <li>Public Profile</li>
-          <li>Profile Pictures</li>
-          <li>Email Notifications</li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h4>Organization Control</h4>
-        <ul>
-          <li>Create Organization</li>
-          <li>Delete Organization</li>
-          <li>Invite to Organization</li>
-          <li>Request Invite to Organization</li>
-          <li>Edit Memberships</li>
-          <li>Unique Organization Names</li>
-          <li>Public Organization Profile</li>
-        </ul>
-      </div>
-            <div class="col-md-4">
-        <h4>Subscription Payments</h4>
-        <ul>
-          <li>Braintree</li>
-          <li>PayPal</li>
-          <li>PayFast</li>
-
-        </ul>
-      </div>
-    </div>
+<div class="row">
+<div class="col-md-4">
+<h4>User Control</h4>
+<ul>
+<li>Sign in / Login</li>
+<li>Signup</li>
+<li>Oauth GitHub / Google</li>
+<li>Unique Usernames</li>
+<li>Recaptcha</li>
+<li>Forgot Password</li>
+<li>Delete Account</li>
+<li>Public Profile</li>
+<li>Profile Pictures</li>
+<li>Email Notifications</li>
+</ul>
+</div>
+<div class="col-md-4">
+<h4>Organization Control</h4>
+<ul>
+<li>Create Organization</li>
+<li>Delete Organization</li>
+<li>Invite to Organization</li>
+<li>Request Invite to Organization</li>
+<li>Edit Memberships</li>
+<li>Unique Organization Names</li>
+<li>Public Organization Profile</li>
+</ul>
+</div>
+<div class="col-md-4">
+<h4>Subscription Payments</h4>
+<ul>
+<li>Braintree</li>
+<li>PayPal</li>
+<li>PayFast</li>
+</ul>
+</div>
+</div>
 
 
 <h3>Installation Instructions</h3>
