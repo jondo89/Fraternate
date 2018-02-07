@@ -18,21 +18,24 @@ var schemaOptions = {
   }
 };
 
+
+
 var userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true},
   password: String,
   bio: String,
   plan: {
-          name: String,//THe plan type saved on braintree
+          name: String,//The plan type saved on braintree
           braintreeid: String, //The plan ID saved on braintree
         },
+  paypalsubscriber : String, //true or false
   phone: String,
   fax: String,
   braintreeid:String,//Used to query the braintree customer payment details.
   username: String,
   passwordResetToken: String,
-  permission: String,
+  permission: String,//Administrator/Editor/Author/Contributor/Subscriber
   passwordResetExpires: Date,
   company: String,
   location: String,

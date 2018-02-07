@@ -12,153 +12,166 @@
   <meta name="flattr:id" content="ljw99y">
   <title>{{siteName}}</title>
   <style type="text/css">
-    .outer{
-      background-color: rgba(0,0,0,0.5);
-      filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
-      -ms-filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
-    }
-    .recaptch-placeholder{
-      min-height: 88px;
-    }
-  </style><!-- Place this tag in your head or just before your close body tag. -->
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  .outer{
+    background-color: rgba(0,0,0,0.5);
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
+    -ms-filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
+  }
+  .recaptch-placeholder{
+    min-height: 88px;
+  }
+</style>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-        {{> javascript}}
-      </head>
- 
-      <body id="page-top">
-        {{> header}}
-
-
- 
-
-
-        <section class="cta" style="color: white"> <div class="overlay"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-7">
-               <div class="header-content">
-                <div class="header-content-inner" style="text-align:left">
-          <h1> 
-                       {{siteName}} is an <strong>open source</strong> user and team subscription boilerplate. 
-                     </h1>  
-
-                     <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user subscription system. </h3>
-
-
-                       <h3 style="color: #c7c7c7">Fraternate is <strong style="color: white">open-source</strong>, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
-         
-
-                 <div style="padding-top: 25px">
-                  <div class="btn-group btn-group-lg" role="group">
-                    <a href="/signup" class="btn btn-primary">Get Started</a>
-                    <a href="/users" class="btn btn-default">View User List</a>
-                  </div>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+      {{> javascript}}
+    </head>
+    <body id="page-top">
+      {{> header}}
+      <section class="cta" style="color: white"> <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-7">
+             <div class="header-content">
+              <div class="header-content-inner" style="text-align:left">
+                <h1> 
+                 {{siteName}} is an <strong>open source</strong> user and team subscription boilerplate. 
+               </h1>  
+               <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user subscription system. </h3>
+               <h3 style="color: #c7c7c7">Fraternate is <strong style="color: white">open-source</strong>, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
+               <div style="padding-top: 25px">
+                <div class="btn-group btn-group-lg" role="group">
+                  <a href="/signup" class="btn btn-primary">Get Started</a>
+                  <a href="/users" class="btn btn-default">View User List</a>
                 </div>
-
-                 <div style="text-align: center;padding-top: 25px">
-                    <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
-                     <a class="github-button" href="https://github.com/Isithelo/{{siteName}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{siteName}} on GitHub">Star</a> 
-                  </a>
-                </div>
-                 <div style="text-align: center;padding-top: 25px">
-<div style="text-align: center;"><pre>npm install fraternate</pre></div>
-                </div>
-
-
+              </div>
+              <div style="text-align: center;padding-top: 25px">
+                <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
+                <a class="github-button" href="https://github.com/Isithelo/{{siteName}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{siteName}} on GitHub">Star</a> 
+              </a>
             </div>
-          </div>
-        </div>
-        <div class="col-sm-5">
-          <div class="header-content" style="padding-top: 25px">
-            <div class="header-content-inner">
-              {{> signuphomepage}}
+            <div style="text-align: center;padding-top: 25px">
+              <div style="text-align: center;"><pre>npm install fraternate</pre></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-7">
+      <div class="col-sm-5">
+        <div class="header-content" style="padding-top: 25px">
+          <div class="header-content-inner">
+            {{> signuphomepage}}
+          </div>
         </div>
       </div>
     </div>
-  </section>
+    <div class="row">
+      <div class="col-sm-7">
+      </div>
+    </div>
+  </div>
+</section>
+<section id="users" class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>The Framework.</h1>
+        <p>Designed and built with the following open source software.</p>
+      </div> 
 
- <section id="users" class="features">
-      <div class="container">
-        <div class="row">
-           
-          <div class="col-md-12 text-center">
-            <h1>Payment Methods.</h1>
-            <p>Monthly and yearly subscription payment structure for your clients.</p>
-          </div> 
-          <div class="col-md-6 text-center">
- 
-<p style="padding-top: 35px"> 
-<a href="https://www.braintreepayments.com/" target="_blank">
-  <img style="max-width: 155px" src="/img/logo/braintree.png">   
+      <div class="col-md-3 text-center" >
+        <p style="padding-top: 35px" > 
+          <a href="https://nodejs.org/" target="_blank">
+            <img style="max-width: 155px;height: 55px"  src="/img/logo/node.png">   
+          </a>
+        </p>
+        <p>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.</p>
+      </div>
 
-  </a>
+      <div class="col-md-3 text-center" >
+        <p style="padding-top: 35px" > 
+          <a href="https://www.mongodb.com/" target="_blank">
+            <img style="max-width: 155px;height: 55px"  src="/img/logo/mongdb.png"> 
+          </a>
+          <p>MongoDB is a free and open-source cross-platform document-oriented database program.</p>
+        </p>
+      </div>
 
-</p>
-<p>Limit range of available countries. Customization and management conducted on the node.js sever.</p>
- 
-          </div>
-          <div class="col-md-6 text-center">
- 
-<p style="padding-top: 35px"> 
-  <a href="https://www.paypal.com" target="_blank">
-<img src="/img/logo/download.png"> 
+      <div class="col-md-3 text-center" >
+        <p style="padding-top: 35px" > 
+          <a href="https://expressjs.com/" target="_blank">
+            <img style="max-width: 155px;height: 55px"  src="/img/logo/express.png"> 
+          </a>
+          <p>Express.js, or simply Express, is a web application framework for Node.js,</p>
+        </p>
+      </div>
 
-  </a>
-<p>Basic PayPal management of payments. Most of the customization of values and subscription options covered on the PayPal site.</p>
+      <div class="col-md-3 text-center" >
+        <p style="padding-top: 35px" > 
+          <a href="http://handlebarsjs.com/" target="_blank">
+            <img style="max-width: 155px;height: 55px"  src="/img/logo/handlebars.png"> 
+          </a>
+          <p>Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.</p>
+        </p>
+      </div>
 
- 
-</p>
 
- 
-          </div>
-
-        </div>
-        </div>
-    </section>
-
+    </div>
+  </div>
+</section>
 <hr>
-
- <section id="users" class="features">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
- <h1>Thanks to our users and organizations.</h1>
- <p style="padding-bottom: 15px">Thanks to everyone helping to test and feedback on the site. </p>
-<p style="padding-top: 35px"> 
-
-<span class="fa-stack fa-lg fa-5x">
-  <i class="fa fa-square-o fa-stack-2x"></i>
-  <i class="fa fa-thumbs-o-up fa-stack-1x"></i>
-</span>
-
- 
-</p>
-
- <div class="btn-group" role="group" aria-label="...">
-  <a href="/users" target="_blank" type="button" class="btn btn-lg btn-default"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
-  <a href="/organizations" target="_blank" type="button" class="btn btn-lg btn-default"><i class="fa fa-users" aria-hidden="true"></i> Organizations</a>
-
-</div> 
-          </div>
-        </div>
-        </div>
-    </section>
-
+<section id="users" class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Payment Methods.</h1>
+        <p>Monthly and yearly subscription payment structure for your clients.</p>
+      </div> 
+      <div class="col-md-6 text-center">
+        <p style="padding-top: 35px"> 
+          <a href="https://www.braintreepayments.com/" target="_blank">
+            <img style="max-width: 155px" src="/img/logo/braintree.png">   
+          </a>
+        </p>
+        <p>Limit range of available countries. Customization and management conducted on the node.js sever.</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <p style="padding-top: 35px"> 
+          <a href="https://www.paypal.com" target="_blank">
+            <img src="/img/logo/download.png"> 
+          </a>
+          <p>Basic PayPal management of payments. Most of the customization of values and subscription options covered on the PayPal site.</p>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 <hr>
-
-
+<section id="users" class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+       <h1>Thanks to our users and organizations.</h1>
+       <p style="padding-bottom: 15px">Thanks to everyone helping to test and feedback on the site. </p>
+       <p style="padding-top: 35px"> 
+        <span class="fa-stack fa-lg fa-5x">
+          <i class="fa fa-square-o fa-stack-2x"></i>
+          <i class="fa fa-thumbs-o-up fa-stack-1x"></i>
+        </span>
+      </p>
+      <div class="btn-group" role="group" aria-label="...">
+        <a href="/users" target="_blank" type="button" class="btn btn-lg btn-default"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
+        <a href="/organizations" target="_blank" type="button" class="btn btn-lg btn-default"><i class="fa fa-users" aria-hidden="true"></i> Organizations</a>
+      </div> 
+    </div>
+  </div>
+</div>
+</section>
+<hr>
 <section style="text-align: center;"> 
   <div class="container">
     <h1>Fraternate is the second phase of a user project management system for NodeJS. </h1>
@@ -189,7 +202,6 @@
           </div>
         </div>
       </div>
-      
       <div class="col-md-3" style="text-align: center; ">
         <div class="panel panel-default" style="min-height: 260px">
           <div class="panel-body">
@@ -223,7 +235,7 @@
     <a href="/signin" class="btn btn-default btn-lg" >Sign in!</a>  
   </div>
 </section>
-    {{> footer}}
-    {{> analytics}}
+{{> footer}}
+{{> analytics}}
 </body>
 </html>
