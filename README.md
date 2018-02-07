@@ -13,30 +13,44 @@ Fraternate is completely open source.
 
 
 
-<h4>User Control</h4>
-<ul>
-<li>Sign in / Login</li>
-<li>Signup</li>
-<li>Oauth GitHub / Google</li>
-<li>Unique Usernames</li>
-<li>Recaptcha</li>
-<li>Forgot Password</li>
-<li>Delete Account</li>
-<li>Public Profile</li>
-<li>Profile Pictures</li>
-<li>Email Notifications</li>
-</ul>
-<h4>Organization Control</h4>
-<ul>
-<li>Create Organization</li>
-<li>Delete Organization</li>
-<li>Invite to Organization</li>
-<li>Request Invite to Organization</li>
-<li>Edit Memberships</li>
-<li>Unique Organization Names</li>
-<li>Public Organization Profile</li>
-</ul>
+    <div class="row">
+      <div class="col-md-4">
+        <h4>User Control</h4>
+        <ul>
+          <li>Sign in / Login</li>
+          <li>Signup</li>
+          <li>Oauth GitHub / Google</li>
+          <li>Unique Usernames</li>
+          <li>Recaptcha</li>
+          <li>Forgot Password</li>
+          <li>Delete Account</li>
+          <li>Public Profile</li>
+          <li>Profile Pictures</li>
+          <li>Email Notifications</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Organization Control</h4>
+        <ul>
+          <li>Create Organization</li>
+          <li>Delete Organization</li>
+          <li>Invite to Organization</li>
+          <li>Request Invite to Organization</li>
+          <li>Edit Memberships</li>
+          <li>Unique Organization Names</li>
+          <li>Public Organization Profile</li>
+        </ul>
+      </div>
+            <div class="col-md-4">
+        <h4>Subscription Payments</h4>
+        <ul>
+          <li>Braintree</li>
+          <li>PayPal</li>
+          <li>PayFast</li>
 
+        </ul>
+      </div>
+    </div>
 
 
 <h3>Installation Instructions</h3>
@@ -61,6 +75,7 @@ expressjs
 
 <p>Sign up for GitHub, install the windows GitHub client then clone the Fraternate repository.</p>
 <p>Clone the repository on your hard drive, using the "clone or download" button on the GitHub front page for Fraternate.</p>
+<pre>https://github.com/Isithelo/Fraternate.git</pre>
 <p>Once downloaded, extract to the directory of your choice. For example:</p>
 
 <pre>C:\Fraternate</pre>
@@ -77,32 +92,11 @@ expressjs
 
 <pre>npm install</pre>
 
-<p>To bring in the favicon (tab icons) server, use the following at the command prompt to install the favicon module.</p>
-
-<pre>npm install serve-favicon</pre>
-
-<p>To make life much easier, install nodemon. Nodemon provides some welcome server management for troublesome server crashes, type into the cmd(command) prompt:</p>
-
-<pre>npm install -g nodemon</pre>
-
-<p>To communicate between the mongo server and the client side, expressjs needs to be installed. type into the cmd prompt</p>
-
-<pre>npm install express</pre>
-
-<p>To send mails from the signup and contact page, nodemailer needs to be installed. type into the cmd prompt</p>
-
-<pre>npm install nodemailer</pre>
-
-
 <p>Robomongo is a very useful tool for viewing the mongodb database structure. Install from their website.</p>
 
 <p>Download and install from the mongodb homepage.</p>
 
 <pre><a href="https://robomongo.org/">https://robomongo.org/</a></pre>
-
-<p>To ensure non-robotic users sign in and signup, install the express recaptcha package.</p>
-
-<pre>npm install express-recaptcha -save</pre>
 
 
 <h3>The .ENV File.</h3>
@@ -131,24 +125,48 @@ MAIL_PASSWORD='--- add your details here ---'
 
 <p>Issues with starting the server on the first installation is likely due to missing NPM modules, If the server is crashing try installation the following modules independently.</p>
 
-<pre>npm install morgan
-npm install compression
-npm install method-override
-npm install express-session
-npm install express-flash
-npm install body-parser
-npm install express-validator
-npm install dotenv
-npm install express-handlebars
-npm install passport
-npm install mongoose
-npm install async
-npm install nodemailer
-npm install crypto
-npm install bcrypt-nodejs
-npm install passport-google-oauth
-npm install passport-local
-npm install passport-github
+<pre>
+  {
+  "name": "Fraternate",
+  "version": "1.0.0",
+  "description": "My app description",
+  "scripts": {
+    "deploy": "npm test && git push heroku master",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "braintree": "^2.5.0",
+    "compression": "^1.7.1",
+    "crypto": "0.0.3",
+    "dotenv": "^2.0.0",
+    "express": "^4.16.2",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^3.0.0",
+    "express-recaptcha": "^2.3.0",
+    "express-session": "^1.15.6",
+    "express-validator": "^2.21.0",
+    "flash": "^1.1.0",
+    "fraternate": "^1.1.14",
+    "heavylifting": "^1.2.12",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.13.10",
+    "morgan": "^1.9.0",
+    "nodemailer": "^2.7.2",
+    "passport": "^0.3.2",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.4.5"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "6.11.1"
+  }
+}
+
 </pre>
 
 <p>If you are getting stuck, this is a port of the quality work done on Megaboilerplate. Here are the installation instructions for&nbsp;<a href="https://github.com/sahat/megaboilerplate#express">Megaboilerplate</a></p>
