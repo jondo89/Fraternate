@@ -1,0 +1,92 @@
+  {{#if user}}
+  <div class="col-md-2" style="text-align: right">
+    <div class="btn-group" role="group" aria-label="..." id="issues" >
+      <button type="button" class="btn btn-default btn-sm" id="plusWindow"><i class="fa fa-plus-square-o" aria-hidden="true"></i>    </button>
+        <button type="button" class="btn btn-default btn-sm" id="minusWindow"><i class="fa fa-minus-square-o" aria-hidden="true"></i>   </button>
+ 
+ 
+ 
+    </div>
+  </div>  
+
+
+
+
+  <script type="text/javascript">
+ 
+ 
+//////////////////////////////// 
+//////  PAGE NAV EDIT    //////
+//////////////////////////////
+function pageNavEdit(ids){
+  if (user=='superadmin') {
+    var html =''
+    console.log( 'Tempalte Name : views/partials/tools' )
+    html+='<li role="separator" class="divider"></li>'
+    html +='<li> <a href="#" data-toggle="modal" data-target="#myModal" onclick="editRaw()" title="Edit this item raw"><i class="fa fa-file-code-o" aria-hidden="true"></i>  Edit this Nav item</a></li>'
+    //html +='<li><a href="#" data-toggle="modal" data-target="#myModal" onclick="newMenuItem()" title="Add items"><i class="fa fa-plus" aria-hidden="true"></i>  Add Nav Menu Item</a></li>'
+    $("#toolsList").append(html)
+  }
+}
+
+
+
+//////////////////////////////////////
+////////    GET FORM BY ID  /////////
+////////////////////////////////////
+function newMenuItems(formdata,idItem,raw,parentid,injectParentid,headings){
+  var headings = JSON.stringify(headings)
+  jQuery.ajax({
+    'url': '/heavylifting/getform?formdata='+formdata+'&idItem='+idItem+'&raw='+raw+'&parentid='+parentid+'&headings='+headings,
+    'async': true,
+    'global': false,
+    'success': function (dataSchemaObject) {
+      $('#formAreaModal').html(dataSchemaObject)
+    }
+  });
+}
+
+////////////////////////////////////////////////////
+////////    BUTTON CLICK ADD NEW DB ITEM  /////////
+//////////////////////////////////////////////////
+function newMenuItem(parentid){
+  newMenuItems(Formids,'','use',databaseid,'',navmenuHeadings)
+}
+
+///////////////////////////////////////////////////
+////////    BUTTON CLICK EDIT RAW DB ITEM  ///////
+/////////////////////////////////////////////////
+function editRaw(parentid){
+  newMenuItems(Formids,databaseid,'raw',databaseid,'',navmenuHeadings)
+}
+</script>
+{{/if}}
+
+
+
+
+
+{{#unless user}}
+
+  <div class="col-md-2" style="text-align: right">
+    <div class="btn-group" role="group" aria-label="..."  >
+      <!-- Split button -->         
+      <button type="button" class="btn btn-default btn-sm" id="plusWindow"><i class="fa fa-plus-square-o" aria-hidden="true"></i>    </button>
+        <button type="button" class="btn btn-default btn-sm" id="minusWindow"><i class="fa fa-minus-square-o" aria-hidden="true"></i>   </button>
+    </div>
+  </div>  
+
+<script type="text/javascript">
+/////////////////////////////////// 
+//////  JSTREE ITEM EDIT    //////
+/////////////////////////////////
+function treeNavEdit(location){
+}
+//////////////////////////////// 
+//////  PAGE NAV EDIT    //////
+//////////////////////////////
+function pageNavEdit(ids){
+ 
+}
+</script>
+{{/unless}}
