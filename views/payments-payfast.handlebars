@@ -27,19 +27,29 @@
     </div>
 </div>
 <div class="col-md-9" style="min-height: 850px">
- 
-  
- 
-
-
     <h3>PayFast Payments</h3>
     <div class="row">
      <div class="col-md-9">
        <p>The details to follow describe the process of creation of receiving payments using Payfast. The IPN (Instant Payment Notification) from the Payfast server is then received and saved on the MongoDb Database.
       </p>
 
-Payfast supports a sandbox enviroment , allowing for testing of transactions.
+Payfast supports a sandbox environment , allowing for testing of transactions.
 <a href="https://sandbox.payfast.co.za/" target="_blank">PayFast Sandbox</a>
+
+
+<h3>
+.ENV
+</h3>
+<p>Ensure your .env in the root directory of your localhost includes the following details from your PayFast account.</p>
+ <pre>
+MERCHANTIDPAYFAST = 'blablabla'
+MERCHANTKEY = 'blablabla'
+PASSPHRASEPAYFASE = 'blablabla'
+</pre>
+
+
+  
+
 
 
     </div>
