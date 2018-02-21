@@ -1,6 +1,8 @@
 var crypto = require('crypto');
 var bcrypt = require('bcrypt-nodejs');
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+  , Schema = mongoose.Schema
+  , ObjectId = Schema.ObjectId;
 
 ///////////////////////////////////////////////
 ////     SET YOUR APP.JSON DETAILS        //// 
