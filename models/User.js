@@ -28,6 +28,7 @@ var userSchema = new mongoose.Schema({
   plan: {
           name: String,//The plan type saved on braintree
           braintreeid: String, //The plan ID saved on braintree
+          payfast :Schema.Types.Mixed,
         },
   paypalsubscriber : String, //true or false
   phone: String,
