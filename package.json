@@ -21,7 +21,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^2.21.0",
     "flash": "^1.1.0",
-    "fraternate": "^1.1.36",
+    "fraternate": "^1.1.37",
     "heavylifting": "^1.2.19",
     "method-override": "^2.3.10",
     "moment": "^2.20.1",
