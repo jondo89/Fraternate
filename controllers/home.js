@@ -29,8 +29,10 @@ if (req.user) {
       componentlistParseall : req.componentlistParseall,
       items:req.items, //list of all heavy-lifting DB entires
       itemsParse:req.itemsParse,//list of all heavy-lifting DB entires
+      homejs : 'home'
     });
 } else {
+ 
   res.render('home', {
     layout: false
   });
