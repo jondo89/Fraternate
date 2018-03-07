@@ -12,7 +12,7 @@
       <a class="navbar-brand" href="/">{{siteName}}</a>
     </div>
     <!-- Expanded navigation -->
-    <div class="navbar-collapse collapse in" aria-expanded="true">
+ 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <!-- Main navigation -->
@@ -29,19 +29,19 @@
         </li> 
         <li>
           <a href="/transactions">Braintree</a>
-        </li> <li><a href="/issues/view">Issues</a></li>
+        </li><li><a href="/issues/view">Issues</a></li>
         <!-- Custom Content goes here. -->
       </ul>
       <ul class="nav navbar-nav navbar-right" id="deploy">
         <!-- Custom Content goes here. -->
         {{#if user}}
-        <li>
-          <a  href="#" id="64e4afba-10de-0003-686d-d6e1781e19f0" data-idform="59e837ba9399ad427c493d4f" data-parent="5a3e642f056b871f8c1316cd" data-toggle="modal" data-target="#myModal" onclick="deployFormIssues(this.id)" title="Create a new issue"><i class="fa fa-exclamation" aria-hidden="true"></i> New Issue</a>
-        </li>
         <li class="dropdown" data-toggle="tooltip" data-placement="right" title="Create new.">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus" aria-hidden="true"></i> <span class="caret"></span></a>
           <ul class="dropdown-menu" id="component">  
-            <li><a href="/organizations/new">New Organization</a></li>
+            <li><a href="/organizations/new-payfast">New Organization</a></li>
+            <li>
+              <a href="#" id="64e4afba-10de-0003-686d-d6e1781e19f0" data-idform="59e837ba9399ad427c493d4f" data-parent="5a3e642f056b871f8c1316cd" data-toggle="modal" data-target="#myModal" onclick="deployFormIssues(this.id)" title="Create a new issue"> New Issue</a>
+            </li>            
           </ul>
         </li>
         {{/if}}
@@ -57,26 +57,26 @@
             <i class="caret"></i>
           </a>
           <ul class="dropdown-menu"  id="usermenu"> 
-            <li><a >Signed in as <strong>{{user.username}}</strong>  </a></li>
+            <li><a >Signed in as <strong>{{user.username}}</strong></a></li>
             <li class="divider"></li>    
             <li><a href="/users/{{user.username}}">Your Profile</a></li>
             <li><a href="/users/{{user.username}}/settings/profile">Settings</a></li>
             <li><a href="/introduction">Instructions</a></li>
             <li class="divider"></li>  
- 
             <li><a href="/signout">Sign out</a></li>
           </ul>
         </li>
         {{else}}
         <li style="display: inline-flex;color: grey;"><a href="/signin">Sign in</a> <p>or</p> <a href="/signup">Sign up</a> 
-        {{/if}}
-        <!-- Custom Content goes here. -->
-      </ul>
-    </div>
+          {{/if}}
+          <!-- Custom Content goes here. -->
+        </ul>
+      </div>
+    
+    <!-- /.navbar-collapse -->
   </div>
-  <!-- /.navbar-collapse -->
-</div>
-<!-- /.container-fluid -->
+ 
+  <!-- /.container-fluid -->
 </nav>
 
 

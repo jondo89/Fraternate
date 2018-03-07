@@ -35,6 +35,39 @@
   {{> header}}
   <section class="cta" style="color: white"> <div class="overlay"></div>
     <div class="container">
+          <div id='toToppo' style="z-index: 1000;  position:relative"><a href="#" title="Scroll to top of page."><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i></a></div>
+          <style type="text/css">
+          #toToppo a {
+            padding: 5px 5px;
+            background: #000;
+            color: #fff;
+            position: fixed;
+            z-index: -15px;
+            bottom: 15px;
+            right: 15px;
+            display: none;
+            text-decoration: none;
+            border-radius: 5px
+          }
+        </style>
+        <script type="text/javascript">
+          $(document).ready(function(){
+  //Check to see if the window is top if not then display button
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 100) {
+      $('#toToppo a').fadeIn();
+    } else {
+      $('#toToppo a').fadeOut();
+    }
+  });
+  //Click event to scroll to top
+  $('#toToppo a').click(function(){
+    $('html, body').animate({scrollTop : 0},600);
+    return false;
+  });
+  
+});
+</script>      
       <div class="row">
         <div class="col-sm-7">
          <div class="header-content">
@@ -54,7 +87,7 @@
             <div style="text-align: center;padding-top: 25px">
               <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
               <p></p>
-              <a class="github-button" href="https://github.com/Isithelo/{{siteName}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{siteName}} on GitHub">Star</a> 
+          <a class="github-button" href="https://github.com/Isithelo/{{siteName}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{siteName}} on GitHub">Star</a> 
             </a>
           </div>
         </div>
@@ -225,63 +258,7 @@
 </section>
 <hr>
 <section style="text-align: center;"> 
-  <div class="container">
-    <h5>Fraternate is the second phase of a user project management system for Node.js. </h5>
-    <h3>Modelled on the GitHub project management system and aimed to allow as may application scenarios as possible.</h3>
- <p></p>
-    <div class="row" style="padding-top: 15px">
-      <div class="col-md-3" style="text-align: center;">
-        <div class="panel panel-default" style="min-height: 260px">
-          <div class="panel-body"><h5>Phase 1</h5>
-            <a href="https://semini.herokuapp.com/" target="_blank" style="text-decoration: none;">
-              <img  style="max-width: 65px" src="/img/logo/semini.png" alt="..." >
-              <p></p>
-              <h3>Semini</h3>  <p style="color:black">Database primer and form creator.</p>
-              <p><a href="https://github.com/Isithelo/Semini" target="_blank">Semini Repo</a></p>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3" style="text-align: center;">
-        <div class="panel panel-default" style="min-height: 260px">
-          <div class="panel-body"><h5>Phase 2</h5>
-            <a href="https://fraternate.herokuapp.com/" target="_blank" style="text-decoration: none;">
-              <img  style="max-width: 65px" src="/img/logo/fraternate.png" alt="..." >
-              <p></p>
-              <h3>Fraternate</h3>  <p style="color:black">Team and User Management System (Including Payments).</p>
-              <p><a href="https://github.com/Isithelo/Fraternate" target="_blank">Fraternate Repo</a></p>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3" style="text-align: center; ">
-        <div class="panel panel-default" style="min-height: 260px">
-          <div class="panel-body">
-            <h5>Phase 3</h5>
-            <a href="https://wrasse.herokuapp.com/" target="_blank"  style="text-decoration: none;">
-              <img  style="max-width: 65px" src="/img/logo/wrasse.png" alt="...">
-              <p></p>
-              <h3>Wrasse</h3>  <p style="color:black">Issue tracking and commenting system.</p>
-              <p><a href="https://github.com/Isithelo/Wrasse" target="_blank">Wrasse Repo</a></p>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3" style="text-align: center;  ">
-        <div class="panel panel-default" style="min-height: 260px">
-          <div class="panel-body">
-            <h5>Phase 4</h5>
-            <a href="https://heavy-lifting.herokuapp.com/" target="_blank"  style="text-decoration: none;">
-              <img  style="max-width: 65px" src="/img/logo/heavy-lifting.png" alt="...">
-              <p></p>
-              <h3>Heavy-lifting</h3>  <p style="color:black">Bulk cataloguing and design system.</p>
-              <p><a href="https://github.com/Isithelo/Heavy-lifting" target="_blank">Heavy-lifting Repo</a></p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
   <div style="text-align: center;padding-top: 100px" >
     <a href="/signup" class="btn btn-primary btn-lg" >Sign up!</a> <p></p> <p>Get started by testing the interface. You will need to sign in first.</p>
   </div>

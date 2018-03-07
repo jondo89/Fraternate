@@ -20,10 +20,9 @@ var schemaOptions = {
   }
 };
 
-
-
 var userSchema = new mongoose.Schema({
   name: String,
+  lastname: String,
   email: { type: String, unique: true},
   password: String,
   bio: String,
@@ -37,6 +36,7 @@ var userSchema = new mongoose.Schema({
   fax: String,
   braintreeid:String,//Used to query the braintree customer payment details.
   username: String,
+  firstsignup: String,
   passwordResetToken: String,
   permission: String,//Administrator/Editor/Author/Contributor/Subscriber
   passwordResetExpires: Date,
@@ -61,12 +61,13 @@ function signupEmail(user){
   var port = process.env.MAIL_PORT
   var useremail = process.env.MAIL_USERNAME
   var passwords = process.env.MAIL_PASSWORD
+  var host = process.env.MAIL_HOST
   var temp = {}
   'use strict';
   var nodemailer = require('nodemailer');
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport({
-  host: 'mail.isithelo.com',
+  host: host,
   tls: {
     rejectUnauthorized: false
   },
@@ -77,9 +78,9 @@ var transporter = nodemailer.createTransport({
     }
   }); 
 var mailOptions = {
-  from: user.name + ' ' + '<'+ user.email + '>', // sender address
+  from: user.username + ' ' + '<'+ user.email + '>', // sender address
   to: process.env.MAIL_USERNAME, // list of receivers
-  subject: '✔ A user has edited their information. | '+ sitename, // Subject line
+  subject: '✔ A user has edited their information '+ sitename + '.', // Subject line
   html:  '<h2>The following user has been edited.</h2><p>Code :</p> <pre>'+user+'</pre>',
 }
 // send mail with defined transport object

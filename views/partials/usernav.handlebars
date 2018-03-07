@@ -1,13 +1,36 @@
+            <div class="row">           
+                  <div class="col-md-4">
+                    <a href="/users/{{user.username}}">
+                        {{#if user.image}}
+                        <div onError="this.onerror=null;this.src='{{this.gravatar}}';"  id="googlepic" style="border-radius:15px!important;width: 100%;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid; "></div>
+                        {{else}}
+                        <img src="{{user.gravatar}}" style="width: 100%;border-radius:15px;border: 1px;border-color: #d8d8d8;border-style: solid; " class="media-object">
+                        {{/if}}
+                  </a>
+            </div>
+            <div class="col-md-8">
+              <a href="/users/{{user.username}}" style="color: black;text-decoration: none">
+                  <h3>{{user.name}} {{user.lastname}} <small>{{user.username}}</small></h3>
+            </a>
+      </div>
+      <div class="col-md-12" style="padding-top: 15px">
             <div class="panel panel-default">
-            	<div class="panel-heading">
-            		Personal settings 
-            	</div>
-            	<ul class="list-group">
-            		<a class="list-group-item {{#if profile}}active{{/if}}" href="/users/{{user.username}}/settings/profile">Profile</a>
-            		<a class="list-group-item {{#if account}}active{{/if}}" href="/users/{{user.username}}/settings/account">Account</a>
-            		<a class="list-group-item {{#if organizations}}active{{/if}}" href="/users/{{user.username}}/settings/organizations">Organizations</a>
-            		<a class="list-group-item {{#if billing}}active{{/if}}" href="/users/{{user.username}}/settings/billing">Billing - Braintree</a>
+                  <div class="panel-heading">
+                        Personal settings 
+                  </div>
+                  <ul class="list-group">
+                        <a class="list-group-item {{#if profile}}active{{/if}}" href="/users/{{user.username}}/settings/profile">Profile</a>
+                        <a class="list-group-item {{#if account}}active{{/if}}" href="/users/{{user.username}}/settings/account">Account</a>
+                        <a class="list-group-item {{#if organizations}}active{{/if}}" href="/users/{{user.username}}/settings/organizations">Organizations</a>
+                        <a class="list-group-item {{#if billing}}active{{/if}}" href="/users/{{user.username}}/settings/billing">Billing - Braintree</a>
                         <a class="list-group-item {{#if billing-paypal}}active{{/if}}" href="/users/{{user.username}}/settings/billing-paypal">Billing - PayPal</a>
-                        <a class="list-group-item {{#if billing-payfast}}active{{/if}}" href="/users/{{user.username}}/settings/billing-payfast">Billing - PayFast</a>
-            	</ul>
+                        <a class="list-group-item {{#if billing-payfast}}active{{/if}}" href="/users/{{user.username}}/settings/billing-payfast">Billing</a>
+                  </ul>
             </div>  
+      </div>   
+</div>  
+<script type="text/javascript">
+    var text = '{{user.image}}'
+    text =text.replace("sz&#x3D;50", "sz&#x3D;200");
+    $('#googlepic').html('<img src="'+text+'" style="width: 100%;border-radius:15px;" class="media-object">')
+</script>

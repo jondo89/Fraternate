@@ -91,3 +91,14 @@ body {
   }
 }
 
+.label-primary {
+    background-color: #0366d6;
+    border: 2px solid white;
+}
+
+.ql-toolbar.ql-snow {
+    
+    border-radius: 4px!important;
+}
+
+ 
