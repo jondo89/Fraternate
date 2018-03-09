@@ -67,7 +67,7 @@ If you would like to install Fraternate on your local development machine Frater
 
 Install Node.js Download and install from the Node.js homepage.
 
-<https://nodejs.org/en/">https://nodejs.org/en/>
+<https://nodejs.org/en>
 
 Install MongodB | follow the set-up instructions on the website. (For Windows, the trick is to create the `C:/data/db directory` then run `mongod.exe`). When in doubt the documentation on the site is very good. Download and install from the MongodB homepage.
 
@@ -76,9 +76,7 @@ Install MongodB | follow the set-up instructions on the website. (For Windows, t
 Sign up for GitHub, install the windows GitHub client then clone the Fraternate repository.
 Clone the repository on your hard drive, using the "clone or download" button on the GitHub front page for Fraternate.
 
-```
-https://github.com/Isithelo/Fraternate.git
-```
+<https://github.com/Isithelo/Fraternate.git>
 
 Once downloaded, extract to the directory of your choice. For example:
 
