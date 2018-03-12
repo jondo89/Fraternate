@@ -1,107 +1,118 @@
-<h1><a href="https://fraternate.herokuapp.com/" target="_blank">VIEW THE DEMO</a></h1>
+# Fraternate
 
-<h3>What is Fraternate?</h3>
-<p>Fraternate is a standalone copy of the GitHub user management system. Designed using a mongodB, NodeJS, expressjs and Handlebarsjs MVC (model view controller).</p>
-<p>Fraternate should be used as a barebones boilerplate that can be modified to integrate into your sites custom content and allowing for a complete user management system.
-This website has a direct copy hosted on GitHub to allow users to copy the functionality directly. </p>
-<p>Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.</p>
+### [VIEW THE DEMO](https://fraternate.herokuapp.com)
 
-<h4 >MIT License - 100 % Open Source</h4>
+## What is Fraternate?
+
+Fraternate is a standalone copy of the GitHub user management system. Designed using a MongodB, NodeJS, Express.js and Handlebarsjs MVC (model view controller).
+
+Fraternate should be used as a barebones boilerplate that can be modified to integrate into your sites custom content and allowing for a complete user management system.
+
+This website has a direct copy hosted on GitHub to allow users to copy the functionality directly.
+
+Follow the installation instructions to download, create a local deployment and begin development of your app with prebuilt user and organizational control. Including commercial integration to allow for paid subscription services.
+
+### MIT License - 100% Open Source
+
 Fraternate is completely open source.
 
-<div style="width: 100%;padding: 55px;text-align: center;"><pre>NPM INSTALL FRATERNATE</pre></div>
+## Install
 
+```bash
+npm install fraternate
+```
 
+## Features
 
-<div class="row">
-<div class="col-md-4">
-<h4>User Control</h4>
-<ul>
-<li>Sign in / Login</li>
-<li>Signup</li>
-<li>Oauth GitHub / Google</li>
-<li>Unique Usernames</li>
-<li>Recaptcha</li>
-<li>Forgot Password</li>
-<li>Delete Account</li>
-<li>Public Profile</li>
-<li>Profile Pictures</li>
-<li>Email Notifications</li>
-</ul>
-</div>
-<div class="col-md-4">
-<h4>Organization Control</h4>
-<ul>
-<li>Create Organization</li>
-<li>Delete Organization</li>
-<li>Invite to Organization</li>
-<li>Request Invite to Organization</li>
-<li>Edit Memberships</li>
-<li>Unique Organization Names</li>
-<li>Public Organization Profile</li>
-</ul>
-</div>
-<div class="col-md-4">
-<h4>Subscription Payments</h4>
-<ul>
-<li>Braintree</li>
-<li>PayPal</li>
-<li>PayFast</li>
-</ul>
-</div>
-</div>
+#### User Control
 
+* Sign in / Login
+* Signup
+* Oauth GitHub / Google
+* Unique Usernames
+* Recaptcha
+* Forgot Password
+* Delete Account
+* Public Profile
+* Profile Pictures
+* Email Notifications
 
-<h3>Installation Instructions</h3>
-<p>If you would like to install Fraternate on your local development machine Fraternate requires the following components:</p>
+#### Organization Control
 
-<pre>
-Node.js
-MongodB
-The GitHub Fraternate repo
-NPM
-expressjs
-</pre>
-<h3>In more detail.</h3>
+* Create Organization
+* Delete Organization
+* Invite to Organization
+* Request Invite to Organization
+* Edit Memberships
+* Unique Organization Names
+* Public Organization Profile
 
-<p>Install Node.js Download and install from the Node.js homepage.</p>
+#### Subscription Payments
 
-<pre><a href="https://nodejs.org/en/">https://nodejs.org/en/</a>&nbsp;</pre>
+* Braintree
+* PayPal
+* PayFast
 
-<p>Install mongodB | follow the set-up instructions on the website. (The trick is to create the c:/data/db directory then run mongod.exe). When in doubt the documentation on the site is very good. Download and install from the mongodB homepage.</p>
+### Installation Instructions
 
-<pre><a href="https://www.mongodb.com/">https://www.mongodb.com/</a>&nbsp;</pre>
+If you would like to install Fraternate on your local development machine Fraternate requires the following components:
 
-<p>Sign up for GitHub, install the windows GitHub client then clone the Fraternate repository.</p>
-<p>Clone the repository on your hard drive, using the "clone or download" button on the GitHub front page for Fraternate.</p>
-<pre>https://github.com/Isithelo/Fraternate.git</pre>
-<p>Once downloaded, extract to the directory of your choice. For example:</p>
+* Node.js
+* MongodB
+* The GitHub Fraternate repo
+* npm
+* expressjs
 
-<pre>C:\Fraternate</pre>
+### In more detail.
 
-<p>With node.js installed, the use of the NPM (Node Package Manager) service is now available from your command prompt, go into the directory where Fraternate was cloned using your preferred command prompt (DOS interface). For example:</p>
+Install Node.js Download and install from the Node.js homepage.
 
-<pre>cd\Fraternate</pre>
+<https://nodejs.org/en>
 
-<p>When you are at the command prompt in the correct directory, type in the following:</p>
+Install MongodB | follow the set-up instructions on the website. (For Windows, the trick is to create the `C:/data/db directory` then run `mongod.exe`). When in doubt the documentation on the site is very good. Download and install from the MongodB homepage.
 
-<pre>npm install npm@latest -g</pre>
+<https://www.mongodb.com>
 
-<p>The NPM service will now download and install into the cloned directory. The NPM service will now download and install into the cloned directory. When completed, enter the following:</p>
+Sign up for GitHub, install the windows GitHub client then clone the Fraternate repository.
+Clone the repository on your hard drive, using the "clone or download" button on the GitHub front page for Fraternate.
 
-<pre>npm install</pre>
+<https://github.com/Isithelo/Fraternate.git>
 
-<p>Robomongo is a very useful tool for viewing the mongodb database structure. Install from their website.</p>
+Once downloaded, extract to the directory of your choice. For example:
 
-<p>Download and install from the mongodb homepage.</p>
+```
+C:\Fraternate
+```
 
-<pre><a href="https://robomongo.org/">https://robomongo.org/</a></pre>
+With node.js installed, the use of the npm (Node Package Manager) service is now available from your command prompt, go into the directory where Fraternate was cloned using your preferred command prompt (DOS interface). For example:
 
+```
+cd Fraternate
+```
 
-<h3>The .ENV File.</h3>
-<p>All of the magic on your localhost is managed by the .ENV file , here you would add your smtp host setting , recaptcha keys etc. Some example values are shown below.</p>
-<p>When installation is done on Heroku , the keys should be added to the Settings tab , in the "reveal config variable" area.</p>
-<pre>
+When you are at the command prompt in the correct directory, type in the following:
+
+`npm install npm@latest -g`
+
+The npm service will now download and install into the cloned directory. The npm service will now download and install into the cloned directory. When completed, enter the following:
+
+```bash
+npm install
+```
+
+RoboMongo is a very useful tool for viewing the mongodb database structure. Install from their website.
+
+Download and install from the mongodb homepage:
+
+<https://robomongo.org>
+
+### The `.env` File
+
+All of the magic on your localhost is managed by the `.env` file, here you would add your SMTP host setting, ReCaptcha keys etc. Some example values are shown below.
+
+When installation is done on Heroku, the keys should be added to the Settings tab, in the "reveal config variable" area.
+
+```ini
 SESSION_SECRET='6681esdf3a9cb922b14ff4b5b3a9b03f95ba520e017f5a23453f6e2792965d4e063'
 
 MONGODB='localhost'
@@ -118,14 +129,14 @@ SECRET_KEY='6Le2aCcUAAAAANzOY5iqXP94Kc76sas8FsZr1kxBMMZ'
 MAIL_PORT='451'
 MAIL_USERNAME='bla@bla.com'
 MAIL_PASSWORD='--- add your details here ---'
-</pre>
+```
 
-<h3>Troubleshooting</h3>
+### Troubleshooting
 
-<p>Issues with starting the server on the first installation is likely due to missing NPM modules, If the server is crashing try installation the following modules independently.</p>
+Issues with starting the server on the first installation is likely due to missing npm modules, If the server is crashing try installation the following modules independently.
 
-<pre>
-  {
+```json
+{
   "name": "Fraternate",
   "version": "1.0.0",
   "description": "My app description",
@@ -165,19 +176,20 @@ MAIL_PASSWORD='--- add your details here ---'
     "node": "6.11.1"
   }
 }
+```
 
-</pre>
+If you are getting stuck, this is a port of the quality work done on Megaboilerplate. Here are the installation instructions for [Megaboilerplate](https://github.com/sahat/megaboilerplate#express)
 
-<p>If you are getting stuck, this is a port of the quality work done on Megaboilerplate. Here are the installation instructions for&nbsp;<a href="https://github.com/sahat/megaboilerplate#express">Megaboilerplate</a></p>
+If you are still having trouble use the contact page , or add an issue on the GitHub Repo.
 
-<p>If you are still having trouble use the contact page , or add an issue on the GitHub Repo.</p>
+### Server Installation.
 
-<h3>Server Installation.</h3>
+Here are a few points to consider when uploading onto the Heroku server.
 
-<p>Here are a few points to consider when uploading onto the Heroku server.</p>
+#### Server crash due to missing .env file.
 
-Server crash due to missing .env file.
+The .env file contains all of the sites api and secret keys. Ensure that it exists on the server.
 
-<pre>The .env file contains all of the sites api and secret keys. Ensure that it exists on the server.</pre>
+## License
 
- 
+MIT
