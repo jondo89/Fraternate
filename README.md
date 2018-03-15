@@ -63,6 +63,10 @@ If you would like to install Fraternate on your local development machine Frater
 * npm
 * expressjs
 
+### Note.
+
+Fraternate is comprised of 2 parts; the (long term) standalone npm module, and a copy of this website on GitHub. As the website and npm module are intertwined at the moment, it is best to start with a fork of the GitHub repository and figure out what you would like to keep and throw away from there..
+
 ### In more detail.
 
 Install Node.js Download and install from the Node.js homepage.
@@ -113,22 +117,35 @@ All of the magic on your localhost is managed by the `.env` file, here you would
 When installation is done on Heroku, the keys should be added to the Settings tab, in the "reveal config variable" area.
 
 ```ini
-SESSION_SECRET='6681esdf3a9cb922b14ff4b5b3a9b03f95ba520e017f5a23453f6e2792965d4e063'
+MAILGUN_USERNAME='postmaster@sandbox76aafffasdfasdaa6647bde82cd8fe0.mailgun.org'
+MAILGUN_PASSWORD='f8738823asdfffdsaef64eb'
+
+SESSION_SECRET='6681e3a9cb922b14ff4b5asdfassddfasdf23453f6e2792965d4e063'
 
 MONGODB='localhost'
 
-GOOGLE_ID='942595912716-lrvbstvgdfd8em4sugjmvsu3jk6p6tgo0m74.apps.googleusercontent.com'
-GOOGLE_SECRET='9G5ZoRffKQ-cKiT9M0Ahsb2E4g'
+GOOGLE_ID='94259591sdf2716-lrvbstv8em4sugjmvs3asdvasdfu3jk6p6tgo0m74.apps.googleusercontent.com'
+GOOGLE_SECRET='9G5ZoRsdfsvKQ-cKiT9M0sdfAhsb2E4g'
 
-GITHUB_ID='800aa9e14a3asd6b3e981f2'
-GITHUB_SECRET='a87511fe094gdffde0b71de968691cbdb23265cf4f0'
+GITHUB_ID='800afdfd1f2'
+GITHUB_SECRET='a875sdfsdfcbdb23265cf4f0'
 
-SITE_KEY='6Le2aCcUAAAAAO8g693sddE9uMACIv7L-DeAbDZc67-'
-SECRET_KEY='6Le2aCcUAAAAANzOY5iqXP94Kc76sas8FsZr1kxBMMZ'
+SITE_KEY='6Le2acvsdfUAAAAAO8gaargn67-'
+SECRET_KEY='6Le2aCcUsdftyjXP94Kc768FhbZr1kxBMMZ'
 
-MAIL_PORT='451'
-MAIL_USERNAME='bla@bla.com'
-MAIL_PASSWORD='--- add your details here ---'
+MAIL_PORT='587'
+MAIL_USERNAME='xxxx@xxxx.com'
+MAIL_HOST='xxx.xxxx.com'
+MAIL_PASSWORD='xxsdasdasdasd'
+
+MERCHANTID = 'xxcvdfgdfgdf'
+PUBLICKEY = 'asdfghjasdf'
+PRIVATEKEY = 'sdfrerewerasdf'
+
+MERCHANTIDPAYFAST = 'dfgsq243r'
+MERCHANTKEYPAYFAST = 'asdhdfhyhjtdj'
+PASSPHRASEPAYFAST = 'asdf4tsgdfgsdfg'
+URLPAYFAST = 'https://sandbox.payfast.co.za/eng/process'
 ```
 
 ### Troubleshooting

@@ -72,28 +72,35 @@
         <div class="col-sm-7">
          <div class="header-content">
           <div class="header-content-inner" style="text-align:left">
+<div class="col-md-12">
             <h1 style="font-size: 52px;">A user and organization subscription management boilerplate. 
             </h1>
+
             <div style="text-align: center;padding-top: 25px">
-              <div style="text-align: center;"><code style="padding: 5px 50px 5px 50px">npm install fraternate</code></div>
+              <div style="t
+              ext-align: center;"><code style="padding: 5px 50px 5px 50px">npm install fraternate</code></div>
             </div>
             <h3 style="color: #c7c7c7">Fraternate is a standalone copy of the GitHub user subscription system. </h3>
             <h3 style="color: #c7c7c7">Fraternate is <strong style="color: white">open-source</strong>, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
+           
             <div style="padding-top: 25px">
               <div class="btn-group btn-group-lg" role="group">
                 <a href="/signup" class="btn btn-custom">Get Started</a>
                 <a href="/users" class="btn btn-default">View User List</a>
               </div>
             </div>
+
             <div style="text-align: center;padding-top: 25px">
               <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
               <p></p>
           <a class="github-button" href="https://github.com/Isithelo/{{siteName}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{siteName}} on GitHub">Star</a> 
-            </a>
+          
           </div>
+ </div>
         </div>
       </div>
     </div>
+
 
 
     <div class="col-sm-5">
@@ -103,12 +110,8 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-7">
-    </div>
-  </div>
-</div>
+  </div> 
+
 </section>
 <section id="users" class="features">
   <div class="container">
@@ -160,9 +163,9 @@
     </div>
 
       <div class="col-md-12 text-center" style="padding-top: 55px">
-        <a href="https://github.com/Isithelo/Fraternate" target="_blank" class="btn btn-lg btn-primary"><i class="fa fa-github"></i> Fraternate Repository</a>
+        <a href="https://github.com/Isithelo/Fraternate" target="_blank" class="btn btn-lg btn-primary"><i class="fab fa-github"></i> Fraternate Repository</a>
         <p></p>
-        <code>A full copy of this website is available to download and install on GitHub.</code>
+        <code>Fraternate is comprised of 2 parts; the (long term) standalone npm module, and this copy of the hosted website on GitHub. As the website and npm module are intertwined at the moment, it is best to start with a fork of the GitHub repository and figure out what you would like to keep and throw away from there.</code>
       </div> 
   </div>
 </section>
@@ -206,6 +209,11 @@
           <p>Google Analytics,Google Analytics is a freemium web analytics service offered by Google that tracks and reports website traffic.</p>
         </p>
       </div>
+
+      <div class="col-md-12 text-center" style="padding-top: 55px">
+        <code>Security keys and passcodes are stored on the Heroku server or on the .ENV file for localhost servers.</code>
+      </div> 
+
     </div>
   </div>
 </section>
@@ -241,6 +249,11 @@
           <p>PayFast is the go-to ecommerce & online payment gateway in South Africa. We make it easy to process payments so individuals, businesses & NPOs get paid.</p>
         </p>
       </div>
+
+      <div class="col-md-12 text-center" style="padding-top: 55px">
+        <code>Someone needs to get started with writing an open source payment gateway , there seem to be limits with functionality and documentation and countries of operation.</code>
+      </div> 
+
     </div>
   </div>
 </section>
@@ -259,13 +272,8 @@
   </div>
 </div>
 </section>
-<hr>
-<section style="text-align: center;"> 
  
-  <div style="text-align: center; " >
-    <a href="/signup" class="btn btn-primary btn-lg" >Sign up!</a> <p></p> <p>Get started by testing the interface. You will need to sign in first.</p>
-  </div>
-</section>
+
 {{> footer}}
 {{> analytics}}
 </body>
