@@ -1,4 +1,14 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
+ <style type="text/css">
+@media screen and (max-width: 600px) {
+  .g-recaptcha {
+    transform:scale(0.77);
+    -webkit-transform:scale(0.77);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+  }
+}
+</style>
 <div class="login-container container">
 
   <div class="panel panel-default">
@@ -48,7 +58,7 @@
   <small class="text-muted">Use at least one letter, one numeral, and seven characters.</small>
 </div>
 <div class="form-group" >  
-  <div class="g-recaptcha" data-callback="enableBtn" data-sitekey="{{sitekey}}" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
+  <div class="g-recaptcha" data-callback="enableBtn" data-sitekey="{{sitekey}}"></div>
 </div>
 <div class="form-group">
   <small class="text-muted">By clicking "Sign up for {{siteName}}",  up, you agree to the <a href="/terms">Terms of Service</a> and <a href="/Privacy">Privacy Statement</a>.  We’ll occasionally send you account related emails.</small>
