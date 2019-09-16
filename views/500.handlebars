@@ -1,4 +1,11 @@
- 
+ <!DOCTYPE html>
+ <html>
+ <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{pagetitle}}</title>
+  {{> css}}
   <style type="text/css">
     .outer{
       background-color: rgba(0,0,0,0.5);
@@ -6,33 +13,46 @@
       -ms-filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
     }
   </style>
- 
-      <div class="col-md-12">
+</head>
+<body>
+  
+  {{> header}}
+  <div >
+   <div class="container" style="padding-top:6px " >
+    <div class="row">
+      <div class="col-md-6" >
+        <h1 id="descriptions"></h1>
+        <p id="details"></p>
+      </div>
+      <div class="col-md-6  text-right">
+      </div>
+    </div>
+  </div> 
+</div>
+<div class="cta-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" style="padding-top: 95px">
         <div class="well outer" style="color: white">
          <h1> 
            ERROR 500
          </h1>
          <h1> 
-           Server Error Reporting.
+           Oops something went wrong...
+
          </h1>
- 
-
-
+         <p style="padding-top: 15px"> 
+          Use the navigation menu to browse the site.
+        </p>
       </div>
     </div>
-    <div class="col-md-12" style="padding-top: 15px" style="overflow: scroll;">
-         {{#if messages.info}}
-        <div role="alert" class="alert alert-info">
-          {{#each messages.info}}
-            <div>{{msg}}</div>
-          {{/each}}
-        </div>
-      {{/if}}
-      {{#if messages.error}}
-      <strong>Error:</strong>
-        <div role="alert" class="alert alert-danger">
-          {{#each messages.error}}
-            <div>{{msg}}</div>
-          {{/each}}
-        </div>
-      {{/if}} </div>
+  </div>
+</div>
+</div>
+
+
+{{> footer}}
+{{> analytics}}
+</body>
+</html>
+

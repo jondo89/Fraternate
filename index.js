@@ -15,7 +15,13 @@ var recaptcha = require('express-recaptcha');
 var braintree = require("braintree");
 
 // Load environment variables from .env file
+if (dotenv.load()) {
 dotenv.load();
+}  else {
+  console.log('\x1b[36m%s\x1b[0m','Fraternate requires a .env file for user permission management. All of the magic on your localhost is managed by the .env file , here you would add your smtp email host setting , recaptcha keys etc. Some example values are shown below. When installation is done on Heroku , the keys should be added to the Settings tab , in the "reveal config variable" area. To get started , simply create the .env file in the root directory (e.g c:/fraternate/) of your app. Then copy and paste the data below into this file. All edits can be done at a later stage. Note: this file has no name, and only a .env extension . If it is not working likely you have windows configured to hide file extensions, and the file is defaulting to .env.txt rather than the required .env. View the installation instructions for an example set of user keys.')
+  return process.kill(process.pid);
+}
+
 
 //Primary app variable.
 var app = express();
@@ -87,9 +93,16 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(compression());
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expressValidator());
+
+//This pumps up the payload to accomidate larger data sets
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+//extend
+app.use(bodyParser.json({limit: '200mb'}));
+app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
+ 
+
+//app.use(expressValidator());//this worked then did not , no idea why.
 app.use(methodOverride('_method'));
 app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
 app.use(flash());
@@ -118,6 +131,7 @@ var partialsDir = ['views/partials']
 ////       ROUTING        //// 
 /////////////////////////////
 
+
 ///////////////////////////////////////////////
 ////       FRATERNATE NPM MODULE          //// 
 /////////////////////////////////////////////
@@ -140,7 +154,7 @@ app.use('/', heavylifting);
 ///////   HANDLEBARS HELPERS    ////////
 ///////////////////////////////////////
 var hbs = exphbs.create({
-  defaultLayout: 'main',
+  defaultLayout: __dirname+'/views/layouts/main',
   partialsDir:partialsDir,
   helpers: {
     ifeq: function(a, b, options) {
@@ -202,7 +216,7 @@ app.use(function(err, req, res, next) {
   // maybe also log the request so you have more debug information
   //log.error(err, req);
   // during development you may want to print the errors to your console
-  console.log(err.stack);
+  console.log(err.stack,"trigger 500 errors");
   req.flash('error', { msg: JSON.stringify(err)});
   // send back a 500 with a generic message
   res.status(500);
