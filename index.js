@@ -15,14 +15,9 @@ var recaptcha = require('express-recaptcha');
 var braintree = require("braintree");
 
 // Load environment variables from .env file
-if (dotenv.load()) {
-dotenv.load();
-}  else {
-  console.log('\x1b[36m%s\x1b[0m','Fraternate requires a .env file for user permission management. All of the magic on your localhost is managed by the .env file , here you would add your smtp email host setting , recaptcha keys etc. Some example values are shown below. When installation is done on Heroku , the keys should be added to the Settings tab , in the "reveal config variable" area. To get started , simply create the .env file in the root directory (e.g c:/fraternate/) of your app. Then copy and paste the data below into this file. All edits can be done at a later stage. Note: this file has no name, and only a .env extension . If it is not working likely you have windows configured to hide file extensions, and the file is defaulting to .env.txt rather than the required .env. View the installation instructions for an example set of user keys.')
-  return process.kill(process.pid);
-}
-
-
+ 
+dotenv.config()
+ 
 //Primary app variable.
 var app = express();
 
