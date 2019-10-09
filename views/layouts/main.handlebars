@@ -11,32 +11,31 @@
 </head>
 <body>
   {{> javascript}}
-  {{> hljavacommon}} 
-  {{> header}}
-  <style type="text/css">
-  .dt-buttons {
-    padding-top: 15px;
-  }
-</style>
-<div class="container" style="padding-top:55px" >    
- {{{body}}}
-</div>
-{{#if user}}
-<!-- Modal -->
-<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-lg" role="document">
-    <div class="modal-content">
-     <div class="modal-body">
-      <div id="pickerArea"  ></div>
-      <div id="formAreaModal">
- <div style="text-align:center;padding:25px">
-<i class="fa fa-spinner fa-spin fa-fw"></i><span class=" ">Loading...</span>
-</div>
-
-      </div>  
+  {{#if bs4}}
+  {{> headerbs4}}
+  <div class="container-fluid" style=" " >  
+    {{else}}
+    {{> masthead}}
+    {{> header}}
+    <div class="container" style="padding-top:55px" >  
+      {{/if}}
+      {{{body}}}
+    </div>
+    {{#if user}}
+    <!-- Modal -->
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+         <div class="modal-body">
+          <div id="pickerArea"  ></div>
+          <div id="formAreaModal">
+           <div style="text-align:center;padding:25px">
+            <i class="fa fa-spinner fa-spin fa-fw"></i><span class=" ">Loading...</span>
+          </div>
+        </div>  
+      </div>
     </div>
   </div>
-</div>
 </div>
 <div class="modal bs-example-modal-sm" tabindex="-1" id="myModal-sm" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm" role="document">
@@ -44,14 +43,13 @@
      <div class="modal-body">
       <div id="pickerArea-sm"  ></div>
       <div id="formAreaModal-sm">
+       <div style="text-align:center;padding:25px">
+        <i class="fa fa-spinner fa-spin fa-fw"></i><span class=" ">Loading...</span>
+      </div>
 
- <div style="text-align:center;padding:25px">
-<i class="fa fa-spinner fa-spin fa-fw"></i><span class=" ">Loading...</span>
-</div>
- 
-      </div>  
-    </div>
+    </div>  
   </div>
+</div>
 </div>
 </div>
 {{/if}}

@@ -9,10 +9,10 @@
   }
 }
 </style>
-<div class="login-container container">
+<div class="">
 
-  <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="card">
+    <div class="card-body">
       {{#if messages.error}}
       <div role="alert" class="alert alert-danger">
         {{#each messages.error}}
@@ -25,7 +25,7 @@
         <div class="form-group">   
           <input type="text" name="username" id="username" placeholder="Pick a username" class="form-control" data-validate='{
           "title":"Text",  
-          "alpha": true,
+          "alphaNumeric": true,
           "required": {"message": "Username may only contain alphanumeric characters."}
         }' >
       </div>
@@ -64,9 +64,9 @@
   <small class="text-muted">By clicking "Sign up for {{siteName}}",  up, you agree to the <a href="/terms">Terms of Service</a> and <a href="/Privacy">Privacy Statement</a>.  We’ll occasionally send you account related emails.</small>
 </div>
 
-<div class="btn-toolbar text-center" style="color: black">
-  <button type="submit" id="button1" class="btn btn-primary">Sign up for {{siteName}}</button>
-  <a href="/auth/google" class="btn btn-default">Sign in with Google</a>
+<div class="btn-toolbar text-center" style="color: black;text-align: center;">
+  <button type="submit" id="button1" class="btn btn-primary mr-1" data-toggle="tooltip" data-html="true" title="Please correct the item in red.">Sign up for {{siteName}}</button>
+  <a href="/auth/google" class="btn btn-outline-secondary mr-1">Sign in with Google</a>
 </div>
 
 
@@ -110,8 +110,10 @@ form.auto-approve {
     var errorItems = $('.has-error', this);
     if (errorItems.length > 0) {
       $('html, body').animate({
-        scrollTop: $(errorItems[0]).offset().top
+
+        scrollTop: $('.auto-approve').offset().top
       }, 500);
+      $('#button1').tooltip()
       event.preventDefault();
     }
   });
@@ -159,7 +161,9 @@ form.auto-approve {
   console.log($(this).val());
 }); */
 
-
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 document.getElementById("button1").disabled = true;
 function enableBtn(){
   document.getElementById("button1").disabled = false;

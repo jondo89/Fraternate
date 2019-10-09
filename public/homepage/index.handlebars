@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{{siteName}}</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="homepage/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/custom.css" rel="stylesheet">
+
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="homepage/device-mockups/device-mockups.min.css">
+
+  <!-- Custom styles for this template -->
+  <link href="homepage/css/new-age.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+
+
+ <script async defer src="https://buttons.github.io/buttons.js"></script>
+ {{>headerbs4}}
+ {{>javascript}}
+
+
+ <div id='toToppo' style="z-index: 1000;  position:relative"><a href="#" title="Scroll to top of page."><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i></a></div>
+ <style type="text/css">
+  #toToppo a {
+    padding: 5px 5px;
+    background: #000;
+    color: #fff;
+    position: fixed;
+    z-index: -15px;
+    bottom: 15px;
+    right: 15px;
+    display: none;
+    text-decoration: none;
+    border-radius: 5px
+  }
+</style>
+<script type="text/javascript">
+  $(document).ready(function(){
+                //Check to see if the window is top if not then display button
+                $(window).scroll(function(){
+                  if ($(this).scrollTop() > 100) {
+                    $('#toToppo a').fadeIn();
+                  } else {
+                    $('#toToppo a').fadeOut();
+                  }
+                });
+                //Click event to scroll to top
+                $('#toToppo a').click(function(){
+                  $('html, body').animate({scrollTop : 0},600);
+                  return false;
+                });
+              });
+            </script>
+            <header class="masthead">
+              <div class="container h-100">
+                <div class="row h-100">
+                  <div class="col-lg-7 my-auto">
+                    <div class="header-content mx-auto">
+
+                      <h1 class="display-1">A user and organization subscription management boilerplate. </h1>
+                      <p class="lead">Fraternate is a standalone copy of the GitHub user subscription system.
+                      Fraternate is open-source, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin. Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for flexibility.</p>
+
+                      <div class="btn-group btn-group-lg" role="group">
+                        <a href="/signup" role="button" class="btn btn-outline-warning">Get Started</a>
+                        <a href="/users" role="button" class="btn btn-outline-light">View Users</a>
+                      </div>
+                      <div style="padding-top: 25px">
+                        <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
+                        <p></p>
+                        <a class="github-button" href="https://github.com/Isithelo/{{siteName}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{siteName}} on GitHub">Star</a> 
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-lg-5 my-auto">
+                   {{> signuphomepage}}  
+                 </div>
+               </div>
+             </div>
+           </header>
+  <div class="container">
+           <section >
+                <h5 class="display-3">The Documentation.</h5>
+                <h3>Browse to the documentation page for details on how to run on your PC, as well as installation and web deployment options.</h3>
+                <div>
+                  <a class="btn btn-outline-success btn-lg mt-5 mb-5" href="/installation" target="_blank">Instructions</a>   
+                </div>
+
+ 
+
+</section>
+ </div>
+<hr>
+ <div class="container">
+<section>
+    <h5 class="display-3">The Framework.</h5>
+                  <h3>Designed and built with the following packages.</h3>
+                <div class="row mt-5">
+                  <div class="col-3" >
+                    <p> 
+                      <a href="/installation" target="_blank">
+                        <img style="max-width: 155px;height: 55px"  src="/img/logo/node.png">   
+                      </a>
+                    </p>
+                    <p>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.</p>
+                    <code>You need to download and install on your PC to run the localhost.</code>
+                  </div>
+
+                  <div class="col-3" >
+                    <p> 
+                      <a href="/installation" target="_blank">
+                        <img style="max-width: 155px;height: 55px"  src="/img/logo/mongdb.png"> 
+                      </a>
+                      <p>MongoDB is a free and open-source cross-platform document-oriented database program.</p>
+                      <code>You need to download and install on your PC to run the localhost.</code>
+                    </p>
+                  </div>
+                  <div class="col-3" >
+                    <p> 
+                      <a href="/installation" target="_blank">
+                        <img style="max-width: 155px;height: 55px"  src="/img/logo/express.png"> 
+                      </a>
+                      <p>Express.js, or simply Express, is a web application framework for Node.js,</p>
+                      <code>This is included in the Fraternate GitHub Repo.</code>
+                    </p>
+                  </div>
+
+                  <div class="col-3" >
+                    <p> 
+                      <a href="/installation" target="_blank">
+                        <img style="max-width: 155px;height: 55px"  src="/img/logo/handlebars.png"> 
+                      </a>
+                      <p>Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.</p>
+                      <code>This is included in the Fraternate GitHub Repo.</code>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+        </div>    
+<hr>
+<div class="container">
+<section>
+  <div class="row">  
+    <div class="col-4">
+      <a href="https://getbootstrap.com/" target="_blank"><img class="img-fluid" src="/img/bs5.jpg"></a>
+    
+  </div>
+    <div class="col-8">
+      <h5 class="display-3">Built with Bootstrap 4.</h5>
+                  <p>Build responsive, mobile-first projects on the web with the world’s most popular front-end component library.</p>
+
+<p>Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.</p>
+                 
+    </div> 
+  </div>
+
+    
+            </section>
+        </div>  
+        <hr>
+<section>
+      <div class="container" style="padding-top: 55px;text-align: center;">
+        <a href="https://github.com/Isithelo/Fraternate" target="_blank" class="btn btn-lg btn-outline-primary mb-3"><i class="fab fa-github"></i> Fraternate Repository</a>
+        <p></p>
+        <code>Fraternate is comprised of 2 parts; the (long term) standalone npm module, and this copy of the hosted website on GitHub. As the website and npm module are intertwined at the moment, it is best to start with a fork of the GitHub repository and figure out what you would like to keep and throw away from there.</code>
+      </div> 
+         </section>   
+
+<hr>
+<section id="users" class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 ">
+        <h5 class="display-3">External Integrations.</h5>
+        <h3>Supports the following external integrations.</h3>
+      </div> 
+      <div class="col-3" >
+        <p style="padding-top: 35px" > 
+          <a href="/integration" target="_blank">
+            <img style="max-width: 155px;height: 55px"  src="/img/logo/reCAPTCHA_logo.png">   
+          </a>
+        </p>
+        <p>Google reCAPTCHA. reCAPTCHA is a CAPTCHA-like system designed to establish that a computer user is human and, at the same time, assist in the digitization of books.</p>
+      </div>
+      <div class="col-3" >
+        <p style="padding-top: 35px" > 
+          <a href="/integration" target="_blank">
+            <img style="max-width: 155px;height: 55px"  src="/img/logo/goauth.png"> 
+          </a>
+          <p>Google Oauth.Google APIs use the OAuth 2.0 protocol for authentication and authorization.</p>
+        </p>
+      </div>
+      <div class="col-3" >
+        <p style="padding-top: 35px" > 
+          <a href="/integration" target="_blank">
+            <img style="max-width: 155px;"  src="/img/logo/Github.png"> 
+          </a>
+          <p>GitHub Oauth. Learn how to register and set up permissions and authorization options for OAuth Apps.</p>
+        </p>
+      </div>
+      <div class="col-3" >
+        <p style="padding-top: 35px" > 
+          <a href="/integration" target="_blank">
+            <img style="max-width: 155px;height: 55px"  src="/img/logo/downloa2d.png"> 
+          </a>
+          <p>Google Analytics,Google Analytics is a freemium web analytics service offered by Google that tracks and reports website traffic.</p>
+        </p>
+      </div>
+
+      <div class="col-12" style="padding-top: 55px">
+        <code>Security keys and passcodes are stored on the Heroku server or on the .ENV file for localhost servers.</code>
+      </div> 
+
+    </div>
+  </div>
+</section>
+
+<hr>
+<section id="users" class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h5 class="display-3">Payment Methods.</h5>
+        <h3>Monthly and yearly subscription payment structure for your clients.</h3>
+      </div> 
+      <div class="col-4">
+        <p style="padding-top: 35px"> 
+          <a href="/payments" >
+            <img style="max-width: 155px" src="/img/logo/braintree.png">   
+          </a>
+        </p>
+        <p>Braintree, a division of PayPal, is a company based in Chicago that specializes in mobile and web payment systems for ecommerce companies.</p>
+      </div>
+      <div class="col-4">
+        <p style="padding-top: 35px"> 
+          <a href="/payments-paypal" >
+            <img src="/img/logo/download.png"> 
+          </a>
+          <p>Basic PayPal management of payments. Most of the customization of values and subscription options covered on the PayPal site.</p>
+        </p>
+      </div>
+      <div class="col-4">
+        <p style="padding-top: 35px"> 
+          <a href="/payments-payfast"  >
+            <img src="/img/logo/PayFast-logo.png" style="max-width:107px">
+          </a>
+          <p>PayFast is the go-to ecommerce & online payment gateway in South Africa. We make it easy to process payments so individuals, businesses & NPOs get paid.</p>
+        </p>
+      </div>
+
+      <div class="col-12" style="padding-top: 55px">
+        <code>Someone needs to get started with writing an open source payment gateway , there seem to be limits with functionality and documentation and countries of operation.</code>
+      </div> 
+
+    </div>
+  </div>
+</section>
+            <section class="cta">
+              <div class="cta-content">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-9">
+                     <h3 class="display-3" style="color: white">Open source MVC.<br>Lets start building together.</h3>
+                   </div>
+                   <div class="col-3 align-middle">
+                    <a href="/signup" class="btn btn-outline-light btn-lg">Let's get with the Demo.</a>
+                  </div>
+                </div>  
+              </div>
+            </div>
+            <div class="overlay"></div>
+          </section>
+
+<section id="users" class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+       <h5>Thanks to our users and organizations.</h5>
+       <h3 style="padding-bottom: 15px" class="display-3 mb-5">Thanks to everyone helping test and feedback on the site. </h3>
+       <div style="text-align: center;">
+        <a href="/users" target="_blank" role="button" class="btn btn-lg col-3 btn-outline-secondary"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
+        <a href="/organizations" target="_blank" role="button" class="btn col-3 btn-lg btn-outline-secondary"><i class="fa fa-users" aria-hidden="true"></i> Organizations</a>
+      </div> 
+    </div>
+  </div>
+</div>
+</section>
+
+          
+         {{>footer}}
+       </body>
+       </html>
