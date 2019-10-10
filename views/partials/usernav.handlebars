@@ -1,10 +1,10 @@
             <div class="row">           
-                  <div class="col-md-4">
+                  <div class="col-md-12">
                     <a href="/users/{{user.username}}">
                         {{#if user.image}}
-                        <div onError="this.onerror=null;this.src='{{this.gravatar}}';"  id="googlepic" style="border-radius:15px!important;width: 100%;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid; "></div>
+                        <div onError="this.onerror=null;this.src='{{this.gravatar}}';" class="img-fluid" id="googlepic"  ></div>
                         {{else}}
-                        <img src="{{user.gravatar}}" style="width: 100%;border-radius:15px;border: 1px;border-color: #d8d8d8;border-style: solid; " class="media-object">
+                        <img src="{{user.gravatar}}"   class="img-fluid">
                         {{/if}}
                   </a>
             </div>
@@ -14,16 +14,15 @@
             </a>
       </div>
       <div class="col-md-12" style="padding-top: 15px">
-            <div class="panel panel-default">
-                  <div class="panel-heading">
-                        Personal settings 
+<div class="card" >
+  <div class="card-header">
+                         Personal settings 
                   </div>
-                  <ul class="list-group">
+                  <ul class="list-group list-group-flush">
                         <a class="list-group-item {{#if profile}}active{{/if}}" href="/users/{{user.username}}/settings/profile">Profile</a>
                         <a class="list-group-item {{#if account}}active{{/if}}" href="/users/{{user.username}}/settings/account">Account</a>
                         <a class="list-group-item {{#if organizations}}active{{/if}}" href="/users/{{user.username}}/settings/organizations">Organizations</a>
-                        <a class="list-group-item {{#if billing}}active{{/if}}" href="/users/{{user.username}}/settings/billing">Billing - Braintree</a>
-                        <a class="list-group-item {{#if billing-paypal}}active{{/if}}" href="/users/{{user.username}}/settings/billing-paypal">Billing - PayPal</a>
+         
                         <a class="list-group-item {{#if billing-payfast}}active{{/if}}" href="/users/{{user.username}}/settings/billing-payfast">Billing</a>
                   </ul>
             </div>  
