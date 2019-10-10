@@ -53,7 +53,7 @@ db.once('open', function() {
   console.log('\x1b[36m%s\x1b[0m', 'mongoose connection ok')
   //compile the schema for mongoose
 });
-console.log('changes working')
+
 ////////////////////////////////////////////
 ///////   BRAINTREE INTEGRATION    ////////
 //////////////////////////////////////////
