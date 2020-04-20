@@ -6,20 +6,38 @@ var methodOverride = require('method-override');
 var session = require('express-session');
 var flash = require('express-flash');
 var bodyParser = require('body-parser');
+const { check, validationResult } = require('express-validator');
 
-var dotenv = require('dotenv');
-var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var recaptcha = require('express-recaptcha');
 var braintree = require("braintree");
+var helpers = require('handlebars-helpers')(['string']);
+var Handlebars = require("handlebars");
+var MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
 
-// Load environment variables from .env file
- 
-dotenv.config()
- 
 //Primary app variable.
 var app = express();
+ 
+
+//This pumps up the payload to accomidate larger data sets
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+//extend
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
+
+app.use(bodyParser.urlencoded({ extended: false }))
+if (process.env.NODE_ENV !== 'test') {
+/////////////////////////////////////////////
+///////   LOCALHOST PORT SETTING    ////////
+///////////////////////////////////////////
+app.set('port', process.env.PORT || 5000);
+
+}
+
+
 
 ///////////////////////////////////////
 ///////   FAVICON LOCATION    ////////
@@ -31,27 +49,28 @@ try {
   console.log('Favicon not found in the required directory.')
 }
 
+//You can also configure useCreateIndex by passing it through the connection options.
+mongoose.set('useCreateIndex', true);
+//To opt in to using the new topology engine, use the below line:
+mongoose.set('useUnifiedTopology', true);
+
 ////////////////////////////////////////////////////
 ///////   HEROKU VS LOCALHOST .ENV SWAP    ////////
 //////////////////////////////////////////////////
+
 if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
+  mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
 } else {
-  mongoose.connect(process.env.MONGODB);
+
+  var dotenv = require('dotenv');
+  dotenv.config()
+  mongoose.connect(process.env.MONGODB, {useNewUrlParser: true});
 }
 
 //Mongo error trap.
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
-});
-
-//Define the mongo enviroment
-var db = mongoose.connection;
-db.once('open', function() {
-  // we're connected!
-  console.log('\x1b[36m%s\x1b[0m', 'mongoose connection ok')
-  //compile the schema for mongoose
 });
 
 ////////////////////////////////////////////
@@ -68,7 +87,7 @@ var gateway = braintree.connect({
 ///////   HTTPS TRAFFIC REDIRECT    ////////
 ///////////////////////////////////////////
 // Redirect all HTTP traffic to HTTPS
- function ensureSecure(req, res, next){
+function ensureSecure(req, res, next){
   if(req.headers["x-forwarded-proto"] === "https"){
   // OK, continue
   return next();
@@ -80,22 +99,10 @@ if (app.get('env') == 'production') {
   app.all('*', ensureSecure);
 }
 
-/////////////////////////////////////////////
-///////   LOCALHOST PORT SETTING    ////////
-///////////////////////////////////////////
-app.set('port', process.env.PORT || 3000);
-
 
 app.use(compression());
 app.use(logger('dev'));
 
-//This pumps up the payload to accomidate larger data sets
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
-//extend
-app.use(bodyParser.json({limit: '200mb'}));
-app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
- 
 
 
 app.use(methodOverride('_method'));
@@ -103,10 +110,14 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitia
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(function(req, res, next) {
-  res.locals.user = req.user;
+  if(req.user){
+    res.locals.user = JSON.parse(JSON.stringify(req.user));
+  }
   next();
 });
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -116,16 +127,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 var myModule = require('./app.json');
 var sitename = myModule.sitename
 var website = myModule.website
+var description = myModule.description
 var repo = myModule.repo
 app.locals.sitename = sitename
 app.locals.website = website
 app.locals.repo = repo
+app.locals.description = description
 var partialsDir = ['views/partials']
+
+
+
 
 ///////////////////////////////
 ////       ROUTING        //// 
 /////////////////////////////
 
+///////////////////////////////////////////
+////       WRASSE NPM MODULE          //// 
+/////////////////////////////////////////
+var cleanerwrasse = require("cleaner-wrasse");
+//Append the partial directory inside the NPM module.
+partialsDir.push('./node_modules/cleaner-wrasse/views/partials')
+app.use('/', cleanerwrasse);
 
 ///////////////////////////////////////////////
 ////       FRATERNATE NPM MODULE          //// 
@@ -135,15 +158,21 @@ var fraternate = require("fraternate");
 partialsDir.push('./node_modules/fraternate/views/partials')
 app.use('/', fraternate);
 
-/////////////////////////////////////////////////
-////       HEAVYLIFTING NPM MODULE          //// 
-///////////////////////////////////////////////
-var heavylifting = require("heavylifting");
-//Append the partial directory inside the NPM module.
-partialsDir.push('./node_modules/heavylifting/views/partials')
-app.use('/', heavylifting);
- 
- 
+
+
+var exphbs = require('express-handlebars');
+//////////////////////////////////////////
+////        CREATE UNIQUE ID         //// 
+////////////////////////////////////////
+function create_uid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+  s4() + '-' + s4() + s4() + s4();
+}
 
 /////////////////////////////////////////
 ///////   HANDLEBARS HELPERS    ////////
@@ -152,17 +181,34 @@ var hbs = exphbs.create({
   defaultLayout: __dirname+'/views/layouts/main',
   partialsDir:partialsDir,
   helpers: {
-    ifeq: function(a, b, options) {
-      if (a === b) {
-        return options.fn(this);
+    ifEquals: function(arg1, arg2, options) {
+      return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    },
+    getNullsasblank :function(val) {
+      if(val === undefined ||val =='undefined') {
+        return "null";
       }
-      return options.inverse(this);
+      return val;
+    },
+    debug: function(optionalValue) {
+      console.log("Current Context");
+      console.log("====================");
+      console.log(this);
+
+      if (optionalValue) {
+        console.log("Value");
+        console.log("====================");
+        console.log(optionalValue);
+      }
     },
     toJSON : function(object) {
-      return JSON.stringify(object);
+      return JSON.stringify(object, null, 2);
     },
     partial: function (name) {
       return name;
+    },
+    uniqueid: function (uniqueid) {
+      return create_uid();
     },
     'dotdotdot' : function(str) {
       if (str) {
@@ -202,7 +248,8 @@ var hbs = exphbs.create({
   });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
- 
+
+
 /////////////////////////////
 ////       500          //// 
 /////////////////////////// 
@@ -250,10 +297,11 @@ if (app.get('env') === 'production') {
   });
 }
 
-app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
-});
 
+
+app.listen(app.get('port'), function() {
+  //console.log('Express server listening on port ' + app.get('port'));
+});
 
 module.exports = app;
 
