@@ -28,7 +28,7 @@
 
 
  <script async defer src="https://buttons.github.io/buttons.js"></script>
- {{>headerbs4}}
+ {{>header}}
  {{>javascript}}
 
 
@@ -88,7 +88,11 @@
                     </div>
                   </div>
                   <div class="col-lg-5 my-auto">
+                  
+                   {{#unless user}}
+
                    {{> signuphomepage}}  
+                   {{/unless}}
                  </div>
                </div>
              </div>

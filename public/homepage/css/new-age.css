@@ -272,3 +272,9 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 }
 
  
+.navbar-avatar-pic {
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
