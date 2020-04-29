@@ -1,438 +1,438 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:5000/</loc>
+    <loc>https://fraternate.herokuapp.com/</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users</loc>
+    <loc>https://fraternate.herokuapp.com/users</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations</loc>
+    <loc>https://fraternate.herokuapp.com/organizations</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/terms</loc>
+    <loc>https://fraternate.herokuapp.com/terms</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/Privacy</loc>
+    <loc>https://fraternate.herokuapp.com/Privacy</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/installation</loc>
+    <loc>https://fraternate.herokuapp.com/installation</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/integration</loc>
+    <loc>https://fraternate.herokuapp.com/integration</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/payments</loc>
+    <loc>https://fraternate.herokuapp.com/payments</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/payments-paypal</loc>
+    <loc>https://fraternate.herokuapp.com/payments-paypal</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/payments-payfast</loc>
+    <loc>https://fraternate.herokuapp.com/payments-payfast</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/introduction</loc>
+    <loc>https://fraternate.herokuapp.com/introduction</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/contact</loc>
+    <loc>https://fraternate.herokuapp.com/contact</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/privacy</loc>
+    <loc>https://fraternate.herokuapp.com/privacy</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/new/userlist</loc>
+    <loc>https://fraternate.herokuapp.com/issues/new/userlist</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/userlist</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/userlist</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/JonDavies</loc>
+    <loc>https://fraternate.herokuapp.com/users/JonDavies</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/asd</loc>
+    <loc>https://fraternate.herokuapp.com/users/asd</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/sadfdshfgh</loc>
+    <loc>https://fraternate.herokuapp.com/users/sadfdshfgh</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/ssd</loc>
+    <loc>https://fraternate.herokuapp.com/users/ssd</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/dfgdfg</loc>
+    <loc>https://fraternate.herokuapp.com/users/dfgdfg</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/jdav</loc>
+    <loc>https://fraternate.herokuapp.com/users/jdav</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/Jonathan</loc>
+    <loc>https://fraternate.herokuapp.com/users/Jonathan</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/KaraboMogotlane</loc>
+    <loc>https://fraternate.herokuapp.com/users/KaraboMogotlane</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/webmaster</loc>
+    <loc>https://fraternate.herokuapp.com/users/webmaster</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/TestUser</loc>
+    <loc>https://fraternate.herokuapp.com/users/TestUser</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/TestUser1</loc>
+    <loc>https://fraternate.herokuapp.com/users/TestUser1</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/DanielPek</loc>
+    <loc>https://fraternate.herokuapp.com/users/DanielPek</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/Eleobig</loc>
+    <loc>https://fraternate.herokuapp.com/users/Eleobig</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/ErrylessaRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/ErrylessaRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/ZoenvetefRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/ZoenvetefRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/KeagkuformRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/KeagkuformRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/PashazneelRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/PashazneelRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/PoeshazzheRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/PoeshazzheRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/NavomkaarRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/NavomkaarRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/TachaptaelRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/TachaptaelRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/SyuegoondRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/SyuegoondRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/BaadeosRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/BaadeosRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/honovWIX</loc>
+    <loc>https://fraternate.herokuapp.com/users/honovWIX</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/ChyuserRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/ChyuserRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/GakabvaorgRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/GakabvaorgRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/NeeplascheRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/NeeplascheRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/NiaklaoRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/NiaklaoRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/PoavsinkneRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/PoavsinkneRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/VeanloiRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/VeanloiRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/KyuodasasRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/KyuodasasRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/NoeszeyunsRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/NoeszeyunsRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/LuetmimkmoRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/LuetmimkmoRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/GayazhakkoRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/GayazhakkoRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/PayatakRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/PayatakRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/KinenaposkRona</loc>
+    <loc>https://fraternate.herokuapp.com/users/KinenaposkRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/new/orglist</loc>
+    <loc>https://fraternate.herokuapp.com/issues/new/orglist</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/orglist</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/orglist</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/Isithelo</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/Isithelo</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/</loc>
+    <loc>https://fraternate.herokuapp.com/users/</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/dfgdfg</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/dfgdfg</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/Isithelsdsss</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/Isithelsdsss</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/gggggggggg</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/gggggggggg</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/fgfg</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/fgfg</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/Isithesds</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/Isithesds</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-products-and-services</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-services</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-products-and-servicess</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-servicess</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-proddducts-and-services</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-proddducts-and-services</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-prosssducts-and-services</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-prosssducts-and-services</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/this-is-a-test-org</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/this-is-a-test-org</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/sdsdsd</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/sdsdsd</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/2222222222222222</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/2222222222222222</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/wqdq</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/wqdq</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/aaaaaaaaaaaaaaa</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/aaaaaaaaaaaaaaa</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/zzzzzzzz</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/zzzzzzzz</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/sdsdsdaaa</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/sdsdsdaaa</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/aad</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/aad</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-products-and-saaaaervices</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-saaaaervices</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/new/issuesview</loc>
+    <loc>https://fraternate.herokuapp.com/issues/new/issuesview</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/issuesview</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/issuesview</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/viewallajax</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/viewallajax</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/viewall</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/viewall</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/standalonenewpage</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/standalonenewpage</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/customprofile</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/customprofile</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/sitewide</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/sitewide</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/58da88e3db8ec8142c30e76b</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/58da88e3db8ec8142c30e76b</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/58d61ec07da56934d434b78d</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/58d61ec07da56934d434b78d</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/58d2111ed9c22811c4df3a07</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/58d2111ed9c22811c4df3a07</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/view/viewgroupajax</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/viewgroupajax</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/specifications</loc>
+    <loc>https://fraternate.herokuapp.com/specifications</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/domain</loc>
+    <loc>https://fraternate.herokuapp.com/domain</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/troubleshooting</loc>
+    <loc>https://fraternate.herokuapp.com/troubleshooting</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/licence</loc>
+    <loc>https://fraternate.herokuapp.com/licence</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/users/settings/profile</loc>
+    <loc>https://fraternate.herokuapp.com/users/settings/profile</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/new/customprofile</loc>
+    <loc>https://fraternate.herokuapp.com/issues/new/customprofile</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/JonDavies</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/JonDavies</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/asd</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/asd</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/sadfdshfgh</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/sadfdshfgh</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/ssd</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/ssd</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/dfgdfg</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/dfgdfg</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/jdav</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/jdav</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/Jonathan</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/Jonathan</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/KaraboMogotlane</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/KaraboMogotlane</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/webmaster</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/webmaster</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/TestUser</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/TestUser</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/TestUser1</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/TestUser1</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/DanielPek</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/DanielPek</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/Eleobig</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/Eleobig</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/ErrylessaRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/ErrylessaRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/ZoenvetefRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/ZoenvetefRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/KeagkuformRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/KeagkuformRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/PashazneelRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/PashazneelRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/PoeshazzheRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/PoeshazzheRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/NavomkaarRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/NavomkaarRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/TachaptaelRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/TachaptaelRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/SyuegoondRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/SyuegoondRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/BaadeosRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/BaadeosRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/honovWIX</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/honovWIX</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/ChyuserRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/ChyuserRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/GakabvaorgRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/GakabvaorgRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/NeeplascheRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/NeeplascheRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/NiaklaoRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/NiaklaoRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/PoavsinkneRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/PoavsinkneRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/VeanloiRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/VeanloiRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/KyuodasasRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/KyuodasasRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/NoeszeyunsRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/NoeszeyunsRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/LuetmimkmoRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/LuetmimkmoRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/GayazhakkoRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/GayazhakkoRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/PayatakRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/PayatakRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/issues/user/view/KinenaposkRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/KinenaposkRona</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/Isithelo/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/Isithelo/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/dfgdfg/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/dfgdfg/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/Isithelsdsss/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/Isithelsdsss/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/gggggggggg/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/gggggggggg/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/fgfg/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/fgfg/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/Isithesds/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/Isithesds/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-products-and-services/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-services/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-products-and-servicess/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-servicess/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-proddducts-and-services/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-proddducts-and-services/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-prosssducts-and-services/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-prosssducts-and-services/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/this-is-a-test-org/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/this-is-a-test-org/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/sdsdsd/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/sdsdsd/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/2222222222222222/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/2222222222222222/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/wqdq/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/wqdq/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/aaaaaaaaaaaaaaa/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/aaaaaaaaaaaaaaa/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/zzzzzzzz/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/zzzzzzzz/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/sdsdsdaaa/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/sdsdsdaaa/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/aad/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/aad/people</loc>
   </url>
   <url>
-    <loc>http://localhost:5000/organizations/isithelo-mining-products-and-saaaaervices/people</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-saaaaervices/people</loc>
   </url>
 </urlset>
