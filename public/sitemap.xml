@@ -4,19 +4,19 @@
     <loc>https://fraternate.herokuapp.com/</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations</loc>
-  </url>
-  <url>
     <loc>https://fraternate.herokuapp.com/issues/view</loc>
   </url>
   <url>
     <loc>https://fraternate.herokuapp.com/terms</loc>
   </url>
   <url>
+    <loc>https://fraternate.herokuapp.com/organizations</loc>
+  </url>
+  <url>
     <loc>https://fraternate.herokuapp.com/Privacy</loc>
+  </url>
+  <url>
+    <loc>https://fraternate.herokuapp.com/users</loc>
   </url>
   <url>
     <loc>https://fraternate.herokuapp.com/installation</loc>
@@ -43,115 +43,13 @@
     <loc>https://fraternate.herokuapp.com/privacy</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/new/userlist</loc>
+    <loc>https://fraternate.herokuapp.com/issues/new/issuesview</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/userlist</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/issuesview</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/JonDavies</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/asd</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/sadfdshfgh</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/ssd</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/dfgdfg</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/jdav</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/Jonathan</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/KaraboMogotlane</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/webmaster</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/TestUser</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/TestUser1</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/DanielPek</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/Eleobig</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/ErrylessaRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/ZoenvetefRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/KeagkuformRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/PashazneelRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/PoeshazzheRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/NavomkaarRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/TachaptaelRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/SyuegoondRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/BaadeosRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/honovWIX</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/ChyuserRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/GakabvaorgRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/NeeplascheRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/NiaklaoRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/PoavsinkneRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/VeanloiRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/KyuodasasRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/NoeszeyunsRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/LuetmimkmoRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/GayazhakkoRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/PayatakRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/users/KinenaposkRona</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/customprofile</loc>
   </url>
   <url>
     <loc>https://fraternate.herokuapp.com/issues/new/orglist</loc>
@@ -160,100 +58,70 @@
     <loc>https://fraternate.herokuapp.com/issues/view/orglist</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/Isithelo</loc>
+    <loc>https://fraternate.herokuapp.com/organizations/TestOrg</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/</loc>
+    <loc>https://fraternate.herokuapp.com/users/ubu</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/dfgdfg</loc>
+    <loc>https://fraternate.herokuapp.com/users/JonDavies</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/Isithelsdsss</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations/gggggggggg</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations/fgfg</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations/Isithesds</loc>
+    <loc>https://fraternate.herokuapp.com/issues/new/userlist</loc>
   </url>
   <url>
     <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-services</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-servicess</loc>
+    <loc>https://fraternate.herokuapp.com/users/</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-proddducts-and-services</loc>
+    <loc>https://fraternate.herokuapp.com/issues/view/userlist</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-prosssducts-and-services</loc>
+    <loc>https://fraternate.herokuapp.com/users/jack</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/this-is-a-test-org</loc>
+    <loc>https://fraternate.herokuapp.com/users/FarrukhZeb</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/sdsdsd</loc>
+    <loc>https://fraternate.herokuapp.com/users/H%C3%B2a%C4%90o%C3%A0nQuang</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/2222222222222222</loc>
+    <loc>https://fraternate.herokuapp.com/users/foo</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/wqdq</loc>
+    <loc>https://fraternate.herokuapp.com/users/mytest</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/aaaaaaaaaaaaaaa</loc>
+    <loc>https://fraternate.herokuapp.com/users/asda</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/zzzzzzzz</loc>
+    <loc>https://fraternate.herokuapp.com/users/TommyTycle</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/sdsdsdaaa</loc>
+    <loc>https://fraternate.herokuapp.com/users/pinupcasino</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/aad</loc>
+    <loc>https://fraternate.herokuapp.com/users/AlishaFAb</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-saaaaervices</loc>
+    <loc>https://fraternate.herokuapp.com/users/testuseronetwothree</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/new/issuesview</loc>
+    <loc>https://fraternate.herokuapp.com/users/test</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/issuesview</loc>
+    <loc>https://fraternate.herokuapp.com/users/farm</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/</loc>
+    <loc>https://fraternate.herokuapp.com/users/Moushaoutchi</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/viewallajax</loc>
+    <loc>https://fraternate.herokuapp.com/users/karabobright</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/viewall</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/standalonenewpage</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/customprofile</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/sitewide</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/58da88e3db8ec8142c30e76b</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/58d61ec07da56934d434b78d</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/58d2111ed9c22811c4df3a07</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/viewgroupajax</loc>
+    <loc>https://fraternate.herokuapp.com/users/pdk</loc>
   </url>
   <url>
     <loc>https://fraternate.herokuapp.com/specifications</loc>
@@ -268,171 +136,69 @@
     <loc>https://fraternate.herokuapp.com/licence</loc>
   </url>
   <url>
+    <loc>https://fraternate.herokuapp.com/organizations/TestOrg/people</loc>
+  </url>
+  <url>
     <loc>https://fraternate.herokuapp.com/users/settings/profile</loc>
   </url>
   <url>
     <loc>https://fraternate.herokuapp.com/issues/new/customprofile</loc>
   </url>
   <url>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/ubu</loc>
+  </url>
+  <url>
     <loc>https://fraternate.herokuapp.com/issues/user/view/JonDavies</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/asd</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/sadfdshfgh</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/ssd</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/dfgdfg</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/jdav</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/Jonathan</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/KaraboMogotlane</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/webmaster</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/TestUser</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/TestUser1</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/DanielPek</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/Eleobig</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/ErrylessaRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/ZoenvetefRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/KeagkuformRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/PashazneelRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/PoeshazzheRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/NavomkaarRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/TachaptaelRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/SyuegoondRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/BaadeosRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/honovWIX</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/ChyuserRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/GakabvaorgRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/NeeplascheRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/NiaklaoRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/PoavsinkneRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/VeanloiRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/KyuodasasRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/NoeszeyunsRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/LuetmimkmoRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/GayazhakkoRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/PayatakRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/KinenaposkRona</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations/Isithelo/people</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations/dfgdfg/people</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations/Isithelsdsss/people</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations/gggggggggg/people</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations/fgfg/people</loc>
-  </url>
-  <url>
-    <loc>https://fraternate.herokuapp.com/organizations/Isithesds/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/jack</loc>
   </url>
   <url>
     <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-services/people</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-servicess/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/FarrukhZeb</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-proddducts-and-services/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/H%C3%B2a%C4%90o%C3%A0nQuang</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-prosssducts-and-services/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/foo</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/this-is-a-test-org/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/mytest</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/sdsdsd/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/asda</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/2222222222222222/people</loc>
+    <loc>https://fraternate.herokuapp.com/users/%5Burl=http:/astra-electric.ru/?id_product=71&amp;controller=product%5D%D1%88%D0%B2%D0%B5%D0%BB%D0%BB%D0%B5%D1%80+%D0%BF+%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D0%B9+%D0%BF%D0%B5%D1%80%D1%84%D0%BE%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9%5B%2Furl%5D</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/wqdq/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/TommyTycle</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/aaaaaaaaaaaaaaa/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/pinupcasino</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/zzzzzzzz/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/AlishaFAb</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/sdsdsdaaa/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/testuseronetwothree</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/aad/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/test</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-saaaaervices/people</loc>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/farm</loc>
+  </url>
+  <url>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/Moushaoutchi</loc>
+  </url>
+  <url>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/karabobright</loc>
+  </url>
+  <url>
+    <loc>https://fraternate.herokuapp.com/issues/user/view/pdk</loc>
   </url>
 </urlset>
