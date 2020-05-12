@@ -1,14 +1,11 @@
 # Fraternate
 
-### [VIEW THE DEMO](https://wrasse.herokuapp.com) or
-### [VIEW THE DEMO](https://fraternate.herokuapp.com)
-
-### [VIEW THE NPM MODULE - FRATERNATE](https://www.npmjs.com/package/fraternate)
-### [VIEW THE NPM MODULE - CLEANER-WRASSE](https://www.npmjs.com/package/fraternate)
-
 ## What is Fraternate?
 
 Fraternate is a standalone copy of the GitHub user subscription system. Fraternate is open-source, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin. Download the Full stack boilerplate using Node.js Mongodb Express.js Handlebars.js from Github.
+
+### [VIEW THE DEMO - FRATERNATE](https://wrasse.herokuapp.com) or
+### [VIEW THE NPM MODULE - FRATERNATE](https://www.npmjs.com/package/fraternate)
 
 ## Features
 
