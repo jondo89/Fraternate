@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta charset="UTF-8">
+  <meta name="description" content="Fraternate is a standalone copy of the GitHub user subscription system. Fraternate is open-source, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin. Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for flexibility.">
+  <meta name="keywords" content="boilerplate,mongodB, NodeJS, expressjs , Handlebars.js">
+  <meta name="author" content="Jonathan Davies">
   <meta name="google-site-verification" content="V6ZQykcqytIxvH_JCfowxQfGXB9Qn-rgaQ-iIrtoW3c" />
   <title>{{siteName}}</title>
   <!-- Bootstrap core CSS -->
@@ -58,31 +58,67 @@
                     <div class="header-content mx-auto">
                       <h1 class="display-1">A user and organization subscription management boilerplate. </h1>
                       <p class="lead">Fraternate is a standalone copy of the GitHub user subscription system.
-                      Fraternate is open-source, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin. Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for flexibility.</p>
-                      <div class="btn-group btn-group-lg" role="group">
-                        <a href="/signup" role="button" class="btn btn-outline-warning">Get Started</a>
-                        <a href="/users" role="button" class="btn btn-outline-light">View Users</a>
-                      </div>
-                      <div style="padding-top: 25px">
-                        <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
-                        <p></p>
-                        <a class="github-button" href="https://github.com/Isithelo/{{siteName}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{siteName}} on GitHub">Star</a> 
+                        Fraternate is open-source, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin.  Download the Full stack boilerplate using Node.js Mongodb Express.js Handlebars.js from Github. <a target="_blank" href="https://github.com/jondo89/Fraternate">Download</a></p>
+                        <div class="btn-group btn-group-lg" role="group">
+                          <a href="/signup" role="button" class="btn btn-outline-warning">Try it</a>
+                          <a href="/users" role="button" class="btn btn-outline-light">View Users</a>
+                        </div>
+                        <div style="padding-top: 25px">
+                          <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
+                          <p></p>
+                          <a class="github-button" href="https://github.com/Isithelo/{{siteName}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{siteName}} on GitHub">Star</a> 
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-lg-5 my-auto">
-                    
-                   {{#unless user}}
-                   {{> signuphomepage}}  
-                   {{/unless}}
+                    <div class="col-lg-5 my-auto">
+
+                     {{#unless user}}
+                     {{> signuphomepage}}  
+                     {{/unless}}
+                   </div>
                  </div>
                </div>
-             </div>
-           </header>
-           <div class="container">
+             </header>
+             <div class="container">
+               <section  >
+                 <h1 class="display-3">This is a open-source boilerplate that can be downloaded from GitHub.</h1>
+
+                 <div class="container" style="padding-top: 55px;text-align: center;">
+                  <!-- Example split danger button -->
+                  <div class="btn-group">
+                    <a type="button" target="_blank" href="https://github.com/Isithelo/Fraternate" class="btn btn-lg btn-outline-primary"><i class="fab fa-github"></i>  Fraternate Repository</a>
+                    <button type="button" class="btn btn-lg btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" target="_blank" href="https://fraternate.herokuapp.com/">Demo Website</a>
+                      <a class="dropdown-item" target="_blank" href="https://github.com/Isithelo/Fraternate">Github Repository</a>
+                      <a class="dropdown-item" target="_blank" href="https://www.npmjs.com/package/fraternate">NPM Module</a>
+                    </div>
+                  </div>
+                  <!-- Example split danger button -->
+                  <div class="btn-group">
+                    <a type="button" target="_blank" href="https://github.com/Isithelo/wrasse" class="btn btn-lg btn-outline-primary"><i class="fab fa-github"></i>  Wrasse Repository</a>
+                    <button type="button" class="btn btn-lg btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" target="_blank" href="https://wrasse.herokuapp.com/">Demo Website</a>
+                      <a class="dropdown-item" target="_blank" href="https://github.com/Isithelo/wrasse">Github Repository</a>
+                      <a class="dropdown-item" target="_blank" href="https://www.npmjs.com/package/cleaner-wrasse">NPM Module</a>
+                    </div>
+                  </div><br><br>
+                                  <div ><code >Fraternate does the user management , wrasse the issue tracking.</code></div><br><br>
+                  <script src="https://opencollective.com/fraternate/donate/button.js" color="blue"></script>
+                  <p></p>
+                </div>
+              </section>
+            </div>
+            <hr>           
+            <div class="container">
              <section >
               <h5 class="display-3">The Documentation.</h5>
-              <h3>Browse to the documentation page for details on how to run on your PC, as well as installation and web deployment options.</h3>
+              <h3>Browse to the documentation page for details on how to run on your Localhost, as well as installation and web deployment options.</h3>
               <div>
                 <a class="btn btn-outline-success btn-lg mt-5 mb-5" href="/installation" target="_blank">Instructions</a>   
               </div>
@@ -154,14 +190,7 @@
           </section>
         </div>  
         <hr>
-        <section>
-          <div class="container" style="padding-top: 55px;text-align: center;">
-            <a href="https://github.com/Isithelo/Fraternate" target="_blank" class="btn btn-lg btn-outline-primary mb-3"><i class="fab fa-github"></i> Fraternate Repository</a>
-            <p></p>
-            <code>Fraternate is comprised of 2 parts; the (long term) standalone npm module, and this copy of the hosted website on GitHub. As the website and npm module are intertwined at the moment, it is best to start with a fork of the GitHub repository and figure out what you would like to keep and throw away from there.</code>
-          </div> 
-        </section>   
-        <hr>
+
         <section id="users" class="features">
           <div class="container">
             <div class="row">

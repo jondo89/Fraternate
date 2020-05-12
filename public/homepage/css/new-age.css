@@ -23,7 +23,7 @@ header.masthead {
   padding-bottom: 100px;
   color: #ffffff;
   background: url(../img/bg-pattern.png), #000000;
-  background: url(../img/bg-pattern.png), linear-gradient(to left, #de6464, #8264dc);
+  background: url(../img/bg-pattern.png), linear-gradient(to left, black,black);
 }
 
 header.masthead .header-content {
