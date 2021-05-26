@@ -36,7 +36,7 @@
     "express-validator": "^6.11.1",
     "finalhandler": "^1.1.2",
     "flash": "^1.1.0",
-    "fraternate": "^1.5.0",
+    "fraternate": "^1.5.2",
     "fresh": "^0.5.2",
     "grunt": "^1.4.0",
     "grunt-bump": "^0.8.0",
