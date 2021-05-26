@@ -51,7 +51,7 @@
     "grunt-zip": "^0.18.2",
     "handlebars-helpers": "^0.10.0",
     "handlebars.moment": "^1.0.4",
-    "heavylifting": "^1.8.21",
+    "heavylifting": "^1.8.22",
     "hooks-fixed": "^2.0.2",
     "http-errors": "^1.8.0",
     "ipaddr.js": "^1.9.1",
