@@ -1,12 +1,9 @@
 {
-  "name": "Fraternate",
+  "name": "fraternate",
   "version": "1.0.0",
-  "description": "My app description",
-  "scripts": {
-    "deploy": "npm test && git push heroku master",
-    "start": "node server.js",
-    "test:watch": "jest "
-  },
+  "siteDescription": "user and orginization managment",
+  "main": "index.js",
+  "repo": "https://github.com/fraternate/fraternate",
   "dependencies": {
     "@popperjs/core": "^2.9.2",
     "accepts": "^1.3.7",
@@ -18,9 +15,9 @@
     "braintree": "^2.24.0",
     "broken-link-checker": "^0.7.8",
     "browserify": "^16.5.2",
-    "bufferutil": "^4.0.3",
     "bytes": "^2.5.0",
     "chance": "^1.1.7",
+    "chromedriver": "^88.0.0",
     "cleaner-wrasse": "^1.3.6",
     "compressible": "^2.0.18",
     "compression": "^1.7.4",
@@ -52,7 +49,7 @@
     "grunt-zip": "^0.18.2",
     "handlebars-helpers": "^0.10.0",
     "handlebars.moment": "^1.0.4",
-    "heavylifting": "^1.8.22",
+    "heavylifting": "^1.8.21",
     "hooks-fixed": "^2.0.2",
     "http-errors": "^1.8.0",
     "ipaddr.js": "^1.9.1",
@@ -89,11 +86,18 @@
     "sitemap-to-array": "^6.0.0",
     "supertest": "^4.0.2",
     "uid-safe": "^2.1.5",
-    "utf-8-validate": "^5.0.5",
     "vary": "^1.1.2"
   },
-  "devDependencies": {},
-  "engines": {
-    "node": "6.11.1"
-  }
+  "devDependencies": {
+    "grunt-zip-directories": "^1.0.1",
+    "gulp": "^4.0.2",
+    "handlebars-helper-moment": "^0.2.0",
+    "jest": "^25.5.4",
+    "jest-editor-support": "^28.2.0"
+  },
+  "scripts": {
+    "test:watch": "jest "
+  },
+  "author": "",
+  "license": "ISC"
 }
