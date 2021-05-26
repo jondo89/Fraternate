@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		},
+		{
+			"path": "node_modules\\fraternate"
+		},
+		{
+			"path": "node_modules\\semini"
+		},
+		{
+			"path": "node_modules\\cleaner-wrasse"
+		},
+		{
+			"path": "node_modules\\heavylifting"
+		}
+	]
+}

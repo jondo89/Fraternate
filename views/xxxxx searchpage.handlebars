@@ -1,0 +1,170 @@
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3" style="min-height: 650px">
+			<h1 class="display-4 mt-5">
+				Search {{siteName}}
+			</h1>
+			<br><br>
+			<div class="form-inline my-2 my-lg-0" autocomplete="false">
+				<div class="dropdown" autocomplete="false">
+
+					<input data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="search" id="searchInput" type="text" class="form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus" data-hotkey="s,/" name="q" value="" placeholder="Search or jump to…" data-unscoped-placeholder="Search or jump to…" data-scoped-placeholder="Search or jump to…" autocapitalize="off" aria-autocomplete="list" aria-controls="jump-to-results" aria-label="Search or jump to…" spellcheck="false" autocomplete="off">
+
+
+					
+					<div class="dropdown-menu" aria-labelledby="searchInput" id="searchareaReturn" autocomplete="false">
+					</div>
+				</div>
+				<a href="/search" class="btn btn-outline-warning my-2 my-sm-0" id="searchIcon" ><i class="fas fa-search"></i></a>
+			</div>
+			<br>
+			<div id="searchDetails"></div>
+		</div>
+		<div class="col-md-9">
+			<div class="grid" id=returnArea >
+			</div>
+		</div>
+	</div> 
+</div>
+<style type="text/css">
+	/* 3 columns by default */
+	.grid-item { width: 100%; padding: 15px}
+
+	@media screen and (min-width: 768px) {
+		/* 5 columns for larger screens */
+		.grid-item { width: 25%; }
+	}
+</style>
+<script type="text/javascript">
+
+	
+
+	function printdata(dataSchemaObject){
+		if ($('.grid').masonry()) {
+			$('.grid').masonry('destroy')
+		}
+		
+
+
+		var checkLength = dataSchemaObject.length
+		if (checkLength>10) {
+			checkLength=10
+		}
+		html1=''
+		html1+='<h6 class="dropdown-header mb-2">The <strong>'+checkLength+'</strong> items match your search.</h6> '
+
+
+
+		for (var i = 0; i < checkLength; i++) {
+			html1+='<a class="dropdown-item" href="/'+dataSchemaObject[i].parentid+'/'+dataSchemaObject[i].elementID+'">'
+			html1+=dataSchemaObject[i].name +'<span class="ml-2 badge badge-secondary">'+dataSchemaObject[i].parentid+'</span>'
+			html1+='<a>'
+		}
+
+
+		$('#searchareaReturn').html(html1)
+		$('#returnArea').html('')
+		if (dataSchemaObject.length !=0) {
+			for (var i = 0; i < dataSchemaObject.length; i++) {
+				html=''
+				html+='<div class="grid-item">'
+				html+='<div class="card">'
+				if (dataSchemaObject[i].entry) {
+					if (dataSchemaObject[i].entry.image) {
+						html+='<img   src="'+dataSchemaObject[i].entry.image+'" class="card-img-top" alt="...">'	
+					}
+					if (dataSchemaObject[i].entry.Image) {
+						html+='<img   src="'+dataSchemaObject[i].entry.Image+'" class="card-img-top" alt="...">'	
+					}
+				}
+				html+='<div class="card-body">'
+				html+='<h5 class="card-title">'+dataSchemaObject[i].name+'</h5>'
+
+				if (dataSchemaObject[i].active =='false') {
+					html+='<span class="badge badge-danger">'
+					html+=dataSchemaObject[i].revision
+					html+='</span>'
+				} else {
+					html+='<span class="badge badge-success">'
+					html+=dataSchemaObject[i].revision
+					html+='</span>'
+				}
+				
+				html+='<span class="ml-1 badge badge-success">'
+				html+=dataSchemaObject[i].parentid
+				html+='</span>'
+				
+				
+				var trimlength =150
+				if (dataSchemaObject[i].detail.length>150) {
+					var string = dataSchemaObject[i].detail
+					console.log(';')
+					var trimmedString = string.substring(0, trimlength);
+					trimmedString+=' ...'
+					html+='<p class="mt-2 card-text">'+trimmedString+'</p>'
+				} else {
+					html+='<p class="mt-2 card-text">'+dataSchemaObject[i].detail+'</p>'
+				}
+				html+='<pre style="overflow:auto;max-height:150px">'+JSON.stringify(dataSchemaObject[i], undefined , 2)+'</pre>'
+				html+='<a class="btn btn-outline-primary btn-sm" href="/'+dataSchemaObject[i].parentid+'/'+dataSchemaObject[i].elementID+'">View item</a>'
+				html+='</div>'
+				html+='</div>'
+				html+='</div>'
+				$('#returnArea').append(html)
+			}
+		} else {
+			html=''
+			html+='<div class="alert alert-secondary mt-5" role="alert">'
+			html+='No search results found.'
+			html+='</div>  '				
+			$('#returnArea').html(html)
+		}
+	}
+///////////////////////////// 
+//////  INITIALISE    //////
+/////////////////////////// 
+$('document').ready(function(){
+	$('#searchIcon').html('<i class="fas fa-spinner fa-pulse"></i>')
+	jQuery.ajax({
+		'async': true,
+		'global': false,
+		'url': '/search/searchbar/?querykey='+'belt class',
+		'success': function (dataSchemaObject) { 
+			printdata(dataSchemaObject)
+			$('.grid').masonry({
+				// options
+				itemSelector: '.grid-item',
+//				columnWidth: 200,
+horizontalOrder: true,
+percentPosition: true,
+				//fitWidth: true
+
+			});
+			$('#searchIcon').html('<i class="fas fa-search"></i>')
+		}
+	});
+})
+$('#searchInput').on('keyup',function(){
+	$('#searchIcon').html('<i class="fas fa-spinner fa-pulse"></i>')
+	var temp = $(this).val()
+	jQuery.ajax({
+		'async': true,
+		'global': false,
+		'url': '/search/searchbar/?querykey='+temp,
+		'success': function (dataSchemaObject) {  
+			printdata(dataSchemaObject)
+			$('.grid').masonry({
+				// options
+				itemSelector: '.grid-item',
+				//columnWidth: 200,
+				horizontalOrder: true,
+				percentPosition: true,
+				//fitWidth: true
+			});
+			$('#searchIcon').html('<i class="fas fa-search"></i>')
+		}
+	});
+})
+</script>

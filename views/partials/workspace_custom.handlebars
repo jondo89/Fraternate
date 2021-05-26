@@ -1,0 +1,235 @@
+ 
+{{#unless user.bio}}
+<div class="card" style="">
+  <div class="card-body">
+   <h5 class="card-title">Introduce yourself</h5>
+   The easiest way to introduce yourself on {{sitename}} is by creating a profile about you! You can start here:
+   <br>
+   <p>
+    <p class="text-black" style="text-align: left;background-color: #f6f8fa;padding: 10px;border: 1px!important;border-radius: 5px">
+      - 👋 Hi, I’m @{{user.username}}<br>
+      - 👀 I’m interested in ...<br>
+      - 🌱 I’m currently learning ...<br>
+      - 💞️ I’m looking to collaborate on ...<br>
+      - 📫 How to reach me ...<br>
+    </p>  
+  </p>
+  <div style="text-align: right;">
+    <a class="btn btn-outline-primary btn-sm" href="/users/Bulkdoctor/settings/profile"><i class="far fa-edit"></i>  Complete your Profile</a>
+  </div>
+</div>
+</div>
+<br>
+{{/unless}}
+
+<div id="useritems"></div>
+<div class="modal fade" id="exampleModalLongHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Revision History</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="ModalbodyHistory">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  var user = '{{user._id}}'
+  var username = '{{user.username}}'
+  var ids_user ='{{user._id}}'
+/////////////////////////
+/////  INITIALIZE   ///// 
+/////////////////////////
+$(document).ready(function() {
+  getHistoryUser('{{route}}')
+});
+function getHistoryUser(route){
+  jQuery.ajax({
+    'url': '/'+route+'/gethistoryuser/'+user+'/10',
+    'async': true,
+    'global': false,
+    'success': function (dataSchemaObject) {
+      dataSchemaObject = JSON.parse(dataSchemaObject)
+      if (dataSchemaObject.length>1) {
+       printHistroy(dataSchemaObject, 'useritems') 
+     } else {
+    //  html=''
+     // html+='<div class="jumbotron">'
+    //  html+='<h1 class="display-4">Welcome to {{sitename}}</h1>'
+     // html+='<p class="lead">Use the workspace to create and management your conveyor design projects.</p>'
+    //  html+='<hr class="my-4">'
+    //  html+='<p>Get started by creating a new project or viewing the documentation page.</p>'
+    //  html+='<a class="btn btn-outline-secondary btn-lg" href="/documentation/introduction" role="button">Learn more</a>'
+     // html+='<a class="btn btn-success btn-lg ml-1" href="/templates/query/default/5fa10d3e80091480e4945714/" role="button">New Project</a>'
+     // html+='</div>'
+    //  html+='<h5>Site wide edits</h5>'
+     // html+='<div id="allitems"><i class="fas fa-spinner fa-spin"></i></div>'
+     // $('#useritems').html(html)
+     getHistory('{{route}}')
+   }
+ }
+});
+}
+function getHistory(route){
+  jQuery.ajax({
+    'url': '/'+route+'/gethistory/10',
+    'async': true,
+    'global': false,
+    'success': function (dataSchemaObject) {
+      dataSchemaObject = JSON.parse(dataSchemaObject)
+      printHistroy(dataSchemaObject, 'allitems')
+    }
+  });
+}
+function userPicLoadSingle(username,ids,uid_pic){
+  jQuery.ajax({
+    'url': '/profilepic/'+username,
+    'async': true,
+    'global': false,
+    'success': function (dataSchemaObject) {
+      $('#'+ids+'_pic_'+uid_pic).attr('src', JSON.parse(dataSchemaObject.image));
+      $('#'+ids+'_username_'+uid_pic).html( dataSchemaObject.username);
+      $('#'+ids+'_bio_'+uid_pic).html( dataSchemaObject.bio);
+    }
+  })
+}
+function create_uid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+  s4() + '-' + s4() + s4() + s4();
+}
+function printHistroy(items, location){
+  var html=''
+  if (location =='useritems') {
+    html+='<h5>Your latest project edits</h5>'
+  }
+  html+="<p style='text-align:right'>Showing "+items.length+" items</p>"
+  html+='<ul class="list-group">'
+  for (var i = 0; i < items.length; i++) {
+    var d = new Date(items[i].created);
+    var curr_date = d.getDate();
+      var curr_month = d.getMonth() + 1; //Months are zero based
+      var curr_year = d.getFullYear();
+      var temp = curr_date + "-" + curr_month + "-" + curr_year;
+      var uid_pic = create_uid()
+      html+='<div class="row" >'
+      html+='<div class="">'
+      html+= '<a href="/users/{{user.username}}">'
+      html+='<img src="" id="{{user._id}}_pic_'+uid_pic+'" class="img-fluid userpic_small " style="min-width:25px;max-width: 100%">'
+      html+='</a>'
+      html+='</div>'
+      html+='<div class="col">'
+      html+= '<a href="/users/{{user.username}}">'
+      html+='<strong class="card-title text-body mr-2" id="{{user._id}}_username_'+uid_pic+'"></strong>'
+      html+='</a>'
+      html+='<small>edited '+moment(items[i].created).fromNow()+' </small>'
+      userPicLoadSingle(username,ids_user,uid_pic)
+      html+='<li class="list-group-item" style="min-height:60px">'
+      if (items[i].entry.slug) {  
+        if (!items[i].elementID) {
+          items[i].elementID = items[i]._id
+        }
+
+        var slicelength =500
+        var slug = items[i].entry.slug
+        if (slug) {
+          if (slug.length>slicelength) {
+            slug = slug.slice(0, slicelength)+'...';    
+          }
+        }
+
+
+
+        html+= '<a  href="/workspace/id/'+items[i].elementID+'" type="button">'
+        html+= slug
+        html+= '</a>'
+        html+= '<br>'
+      }
+      html+= '<small><a href="" type="button" data-toggle="modal" id="'+items[i]._id+'_historyid" onclick="showJSONObject(this.id)" data-target="#exampleModalLongHistory">'
+      if (items[i].entry) {
+        if (items[i].entry.description) {
+          html+= items[i].entry.description
+        } else {
+          html+= items[i]._id
+        } 
+      } else  {
+        html+= items[i]._id
+      }
+      html+= '</a></small>'
+      if (items[i].active == "true") {
+        html+= ' <span class="badge badge-success">Active</span>'
+      } else {
+        html+= ' <span class="badge badge-secondary">Closed</span>'
+      }
+      html+= '<pre style="height:150px;display:none" id="'+items[i]._id+'_pre"> '
+      html+= JSON.stringify(items[i],undefined,2)
+      html+= '</pre>'
+      html+='</li><hr>'
+      html+='</div>'
+      html+='</div>'
+    }
+    html+='</ul>'
+    $('#'+location).html(html)
+  }
+  function showJSONObject(ids) {
+    var ids = ids.replace("_historyid",'');
+    var dataSet = $('#'+ids+'_pre').html()
+    dataSet = JSON.parse(dataSet)
+    delete dataSet.name_fuzzy
+    delete dataSet.detail_fuzzy
+    delete dataSet.__v
+    var html = ''
+    if (dataSet.entry) {
+      if (dataSet.entry.image) {
+        html+='<img src="'+dataSet.entry.image+'" style="width:25%">'
+      } 
+    }
+    if (dataSet.name) {
+      html+='<div><small><strong>Name :</strong> '+dataSet.name+'</small></div>'  
+    } 
+    if (dataSet.elementID) {
+      html+='<div><small><strong>elementID :</strong> <a href="/{{route}}/'+dataSet.elementID+'">'+dataSet.elementID+'</a></small></div>'
+      html+='<div><small><strong>id :</strong> <a href="/{{route}}/'+dataSet._id+'">'+dataSet._id+'</a></small></div>'
+    }else{
+      html+='<div><small><strong>id :</strong> <a href="/{{route}}/'+dataSet._id+'">'+dataSet._id+'</a></small></div>'
+    }
+    html+='<div><small><strong>childType :</strong> <a href="/{{route}}/'+dataSet.childType+'">'+dataSet.childType+'</a></small> </div>'
+    html+='<div><small><strong>parentid :</strong> <a href="/{{route}}/'+dataSet.parentid+'">'+dataSet.parentid+'</a></small></div>'
+    html+='<div><small><strong>Last edit :</strong> '+moment(dataSet.created).fromNow()+'</small></div>'
+    html+= ' <span class="badge badge-secondary">'+dataSet.revision+'</span>'
+    if (dataSet.active == "true") {
+      html+= ' <span class="badge badge-success">Active</span>'
+          html+= '<div style="text-align:right"><a href="/{{route}}/'+dataSet._id+'/revision-history" type="button" class="btn btn-outline-warning btn-sm" ><i class="fas fa-history"></i>  Revision History</a></div>'
+    } else {
+      html+= ' <span class="badge badge-secondary">Closed</span><small>'
+      html+= ' <br><br>'
+    html+= '<div style="text-align:right"><a href="/{{route}}/'+dataSet._id+'/revision-history" type="button" class="btn btn-outline-warning btn-sm" ><i class="fas fa-history"></i>  Revision History</a></div>'
+    }
+    html+= '<br>'
+    html+='<div class="card mt-2" style="font-size: small">'
+    html+='<div class="card-header">'
+    html+='<strong>'
+    html+= 'Object'
+    html+='</strong>'
+    html+='</div>'
+    html+='<div class="card-body" style= "height:350px;overflow:auto">'
+
+    html+= '<pre style=""  > '
+    html+= JSON.stringify(dataSet,undefined,2)
+    html+= '</pre>'
+    html+='</div>'
+    html+='</div>'
+    $('#ModalbodyHistory').html(html)
+  }
+</script>

@@ -1,39 +1,124 @@
+<style type="text/css">
+  .card-columns2 {
+    -webkit-column-count:2
+    -moz-column-count: 2;
+    column-count: 2;
+  } 
+</style>
 <div style="text-align: right;">
-	{{>issuebutton parentid="customprofile"}}
 </div>
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-	<li class="nav-item">
-		<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Open Issues</a>
-	</li>
-<!--<li class="nav-item">
-		<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Closed Issues</a>
-	</li>-->
-</ul>
-<div class="tab-content" id="myTabContent">
-	<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-		<div id="{{ids}}_2">
-		</div>
-	</div>
-	<!--<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-	</div>-->
-</div><br>
-<a href="/issues/user/view/{{userload.username}}" target="_blank" class="btn btn-outline-primary">View all comments</a>
-<script type="text/javascript">
-////////////////////////////////////////////////////////////
-////        CALL AJAX VIEW ISSUES BY USER TABLE        //// 
-//////////////////////////////////////////////////////////
-function viewallajax(location) {
-	jQuery('#'+location).html('<i class="fas fa-spinner fa-spin"></i>')
-	jQuery.ajax({
-		'async': true,
-		'global': false,                             
-		'url': '/issues/{{userload.username}}/ajaxview/',
-		'success': function (dataSchemaObject) {
-			jQuery('#'+location).html(dataSchemaObject)
-		}
-	});
-}
-$(document).ready(function () {
-	viewallajax('{{ids}}_2')
-})      
+<pre id="userJson" style="display: none">{{toJSON user}}</pre>
+<script type="text/javascript">  
+  {{#if user}}
+  var user_context_btn = $('#userJson').html()
+  user_context_btn = JSON.parse(user_context_btn)
+  {{/if}}
+  var contextMangagementVariable = {
+    ids : '{{user._id}}',
+    context : 'user'
+  }
+  var contextvariable = '{{{organizationsParse}}}'
+  var organizations = [
+  {{#each organizations}}
+  {
+    name : '{{this.entry.name}}',
+    {{#if this.entry.image}}
+    image : '{{this.entry.image}}',
+    {{else}}
+    image :"https://www.gravatar.com/avatar/{{this._id}}?s=32&d=retro&r=G"
+    {{/if}}
+    displayname : '{{dots 45 this.entry.displayname}}',
+    _id : '{{this._id}}',
+  },
+  {{/each}}
+  ]
+  var organization_name = '{{organization_name}}'
 </script>
+{{#if user}}
+{{>custom_projectlist}}
+{{/if}}
+{{#ifEquals user.username userload.username}}
+{{else}}
+<div id="cardProfile"><i class="fas fa-circle-notch fa-spin"></i></div>
+<script type="text/javascript">
+  viewpageajax('cardProfile','{{userload._id}}')
+  function viewpageajax(location,userid) {
+    loadingSpinner(location)
+    jQuery.ajax({
+      'async': true,
+      'global': false,
+      'url': '/templates/getlatestajaxbyparent_user/'+'5fa10d3e80091480e4945714'+'/'+userid+'/6',
+      'success': function (dataSchemaObject) {
+        printCards(location,dataSchemaObject)  
+      }
+    });
+  }
+  function loadingSpinner(location){
+    var html= ''
+    html+='<div id="loader-wrapper">'
+    html+='<div id="loader"></div>'
+    html+='</div>  '
+    $('#'+location).html(html)
+  }
+  function printCards(location,dataSchemaObject){
+//    console.log(dataSchemaObject)
+var html= ''
+html +='<div class="card-columns card-columns2">'
+html+='<div class="card bg-primary text-white text-center p-3" style="min-height: 150px">'
+html+='<blockquote class="blockquote mb-0">'
+html+='<p><p><i class="far fa-smile"></i>  Signed up.</p></p>'
+html+='<footer class="blockquote-footer text-white">'
+html+='<small>'
+html+='<cite title="Source Title">{{dateFormat userload.createdAt}}</cite>'
+html+='</small>'
+html+='</footer>'
+html+='</blockquote>'
+html+='</div>'
+for (var i = 0; i < dataSchemaObject.length; i++) {
+  var slicelength =100
+  if (dataSchemaObject[i].entry['5fa1501127d35c519c0c11f7']) {
+    var slicelength =100
+    var detail = dataSchemaObject[i].entry['5fa1501127d35c519c0c11f7']
+    if (detail) {
+      if (detail.length>slicelength) {
+        detail = detail.slice(0, slicelength)+'...';    
+      }
+    }
+  }
+  if (dataSchemaObject[i].entry['5fa1501a27d35c519c0c11f8']) {
+    var slicelength =200
+    var description = dataSchemaObject[i].entry['5fa1501a27d35c519c0c11f8']
+    if (description) {
+      if (description.length>slicelength) {
+        description = description.slice(0, slicelength)+'...';    
+      }
+    }
+  }
+  html+='<div class="card " >'
+  html+='<div class="card-body" style="">'
+  html+='<p class="card-title" style="color: grey"><small>Last Edit : '+dataSchemaObject[i].created+'</small></p>'
+  html+='<h5 class="card-title">'+detail+'</h5>'
+  if (dataSchemaObject[i].entry['5fa1501a27d35c519c0c11f8']) {
+   html+='<p class="card-text"><small>'+description+'</small> </p>' 
+ }
+ html+='</div>'
+ html+='</div>'
+}
+if (dataSchemaObject.length==0) {
+ html+='<div class="card  text-center" >'
+ html+='<div class="card-body" style="border-width: 1px; border-style: dashed; border-color: grey;padding:15px;border-radius: 2px;min-height: 150px">'
+ html+='<h5 class="card-title" style="color: grey"><small>This user has not created any designs.</small></h5>'
+ html+='</div>'
+ html+='</div>'
+ html+='</div>'  
+}
+$("#"+location).html(html);
+}
+</script>
+{{/ifEquals}}
+{{#if user}}
+{{else}}
+<div class="alert alert-warning" role="alert">
+  Sign up and add your profile to {{siteName}}.  <a href="/signup" class="btn btn-success ml-2">Sign up</a>
+</div>
+{{/if}}

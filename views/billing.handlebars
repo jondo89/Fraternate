@@ -1,0 +1,150 @@
+<style type="text/css">
+	.awesome {
+		padding: 2px;
+		text-align:center;
+		border-radius: 5px;
+		background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+	}
+</style>
+<h1>Billing Structure</h1>
+<hr>
+<div class="row">
+	<div class="col-md-3">
+		{{> navigation billing=true}}
+	</div>
+	<div class="col-md-9">
+		<h1>Plans for all workflows</h1>
+		{{siteName}} is free to use for public and open source designs. However, if you would like to work privately , the paid plans below are available.
+		<p></p>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="text-align: center;"><h4>Free Plan</h4></div>
+					<div class="panel-body" style="min-height: 275px;text-align: center;">
+						<h1 id="pricing">Free</h1>
+						<p>Includes:
+							<ul class="list-unstyled">
+								<li>Personal account</li>
+								<li>Unlimited public repositories</li>
+								<li>Unlimited collaborators</li>
+							</ul>
+							<small>Free open source team design is available.</small>		
+						</p>
+					</div>
+					<div class="panel-footer" style="text-align: center;"><a class="btn btn-default" href="/">Sign up</a></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="text-align: center;"><h4>Developer Plan</h4></div>
+					<div class="panel-body" style="min-height: 275px;text-align: center;">
+						<h1 id="pricing">R100 / month</h1>
+						<small>per month</small>
+						<p>Includes:
+							<ul class="list-unstyled">
+								<li>Personal account</li>
+								<li>Unlimited public repositories</li>
+								<li>Unlimited private repositories</li>
+								<li>Unlimited collaborators</li>
+							</ul>
+						</p>
+					</div>
+					<div class="panel-footer" style="text-align: center;"><a class="btn btn-success" href="/">Sign up</a></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="text-align: center;"><h4>Team Plan</h4></div>
+					<div class="panel-body" style="min-height: 275px;text-align: center;">
+						<h1 id="pricing">R1200 / month</h1>
+						<small>per user / month</small>
+						<p>Includes:
+							<ul class="list-unstyled">
+								<li>Organization account</li>
+								<li>Unlimited public repositories</li>
+								<li>Unlimited private repositories</li>
+								<li>Team and user permissions</li>
+								<li>Starting at $25 / month which includes your first 5 users.</li>
+							</ul>
+						</p>
+					</div>
+					<div class="panel-footer" style="text-align: center;"><a class="btn btn-success" href="/">Sign up your team</a></div>
+				</div>
+			</div>
+		</div>
+		<h3>Feature comparison</h3>
+		<p>All {{siteName}} plans include the tools and features teams rely on to manage projects, review designs, and build bill of quantites. Need more? Find the right plan for your team.</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Free Plan</th>
+					<th>Free Team Plan</th>
+					<th>Developer</th>
+					<th>Team Plan</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><h3>Support</h3></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>24/5 support with 8 hour response</td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+				</tr>
+				<tr>
+					<td>99.95% uptime SLA</td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+				</tr>
+
+				<tr>
+					<td><h3>Security</h3></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Two factor authentication <i class="fa fa-road" aria-hidden="true"></i></td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"></td>
+				</tr>
+				<tr>
+					<td>Team Permissions</td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+				</tr>
+				<tr>
+					<td>Organization permissions</td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+				</tr>
+				<tr>
+					<td>User actions audit log</td>
+					<td style="color: green;text-align: center;"></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+					<td style="color: green;text-align: center;"><i class="fa fa-check" aria-hidden="true"></i></td>
+				</tr>
+			</tbody>
+		</table>
+		<p><i class="fa fa-road" aria-hidden="true"></i> Items on the Road map.</p>
+		<div style="padding-top: 55px"></div>
+	</div>
+</div>

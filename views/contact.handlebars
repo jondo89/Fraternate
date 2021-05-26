@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="msvalidate.01" content="6F54F88A443C656EFB178CEF11C4E7E9" />
+  <meta name="google-site-verification" content="V6ZQykcqytIxvH_JCfowxQfGXB9Qn-rgaQ-iIrtoW3c" />
+  <title>{{pagetitle}}</title>
+  {{>css bootstrap=true}}
+  {{>javascript bootstrap=true recapture=true  }}
+</head>
+<style type="text/css">
+  @media screen and (max-width: 600px) {
+    .g-recaptcha {
+      transform:scale(0.77);
+      -webkit-transform:scale(0.77);
+      transform-origin:0 0;
+      -webkit-transform-origin:0 0;
+    }
+  }
+  .recaptch-placeholder{
+    min-height: 88px;
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 col-md-3"></div>
+      <div class="col-12 col-md-6">
+       <div style="text-align: center;" class="mt-4">
+        <a href="/">
+        {{#ifEquals themedark true}}
+        <img src="/img/Logo square inverse.png" style="height: 55px;border-radius: 50%">   
+        {{else}}
+        <img src="/img/Logo square 300x300.png" style="height: 55px;border-radius: 50%">    
+        {{/ifEquals}} 
+        </a>
+     </div>    
+     <div style="text-align: center;padding-bottom: 15px" class="mt-4">
+      <h4>Contact {{sitename}}</h4><p></p>
+      <a href="/terms">Terms</a>   |   <a href="/privacy">Privacy</a>   |   <a href="/contact" style="color: grey">Contact the {{siteName}} team</a>
+      <p></p>
+    </div>
+    <div>
+      {{#if messages.success}}
+      <div role="alert" class="alert alert-primary">
+        {{#each messages.success}}
+        <div>{{msg}}</div>
+        {{/each}}
+      </div>
+      {{/if}}
+      {{#if messages.error}}
+      <div role="alert" class="alert alert-danger">
+        {{#each messages.error}}
+        <div>{{msg}}</div>
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
+    <div class="card"  >
+      <div class="card-body">
+        <form method="POST" class="form-horizontal">
+          <div class="form-group">
+            <label for="name" class="col-md-12">Name</label>
+            <div class="col-md-12">
+              <input type="text" name="name" id="name" class="form-control" autofocus>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-md-12">Email</label>
+            <div class="col-md-12">
+              <input type="email" name="email" id="email" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message" class="col-md-12">How can we help?</label>
+            <div class="col-md-12">
+              <textarea name="message" placeholder="Please describe exactly what you’re trying to accomplish." id="message" rows="7" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="form-group">  
+           <div class="col-md-12">
+            <div class="form-group">  
+              <div class="g-recaptcha recaptacha-div-light" data-callback="enableBtn" data-sitekey="{{sitekey}}"></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+         <div class="col-md-12">
+          <button type="submit"  id="button1" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<div class="col-6 col-md-3"></div>
+</div>
+</div>
+<script type="text/javascript">
+ document.getElementById("button1").disabled = true;
+ function enableBtn(){
+  document.getElementById("button1").disabled = false;
+}
+</script>
+{{> analytics}}
+</body>
+</html>

@@ -1,0 +1,437 @@
+
+
+<script type="text/javascript">
+
+  var query   =  {{{query}}}
+  var query1  =  {{{query1}}}
+  var query2  =  {{{query2}}}
+  var query3  =  {{{query3}}} 
+  var query4  =  {{{query4}}}
+  var table
+
+  query3.sort(function(a, b) {
+    if (a.entry.order && b.entry.order) {
+      return parseFloat(a.entry.order) - parseFloat(b.entry.order);
+    }
+  });
+  query2.sort(function(a, b) {
+    return parseFloat(a.entry.order) - parseFloat(b.entry.order);
+  });
+
+/////////////////////////////
+////     DEBUG AREA     //// 
+///////////////////////////
+console.log( 'TABLEBROWSER LOADING' )
+console.log( '-------------------------' )
+console.log( 'query : ',query )
+console.log( 'query1 : ',query1 )
+console.log( 'query2 : ',query2 )
+console.log( 'query3 : ',query3 )
+console.log( 'query4 : ',query4 )
+console.log( '-------------------------' )
+console.log( 'TABLEBROWSER LOADING' )
+
+var tablelistdata  =  {{{query3}}} 
+var tableid = query.elementID
+$('#tableID').attr("id",tableid)
+
+
+ 
+console.log( 'Tools/new' )
+console.log( '-------------------------' )
+///////////////////////////////////////////////
+////  MODIFY THE IDS OF RELEVANT ITEMS    //// 
+/////////////////////////////////////////////
+function uniqueIdforchangeButton(){
+  $('#changeButtonComp').attr('id', query.childType);
+}
+
+$('document').ready(function(){
+  uniqueIdforchangeButton()
+})
+ 
+
+
+///////////////////////////////////////////////////
+////        REQUIRED FORMATING OF DATA        //// 
+/////////////////////////////////////////////////
+function dataFormatComp(){
+  for (var i = 0; i < query3.length; i++) {
+    query3[i].entry._id = query3[i].elementID 
+  }
+}
+
+///////////////////////// 
+//////   COMPS    //////
+/////////////////////// 
+function printcomp(){
+  var html =''
+  html +='<thead>'
+  html += '<tr>'
+  for (var i = 0; i < query2.length; i++) {
+   html +=    '<th>'
+   html += query2[i].entry.description 
+   html +=   '</th>'
+ }
+ html +=    '<th>'
+ html += '_id'
+ html +=   '</th>'
+ html += '</tr>'
+ html +='</thead>'
+ html +=  '<tbody>'
+ for (var j = 0; j < query3.length; j++) {
+   html +='<tr>' 
+   for (var i = 0; i < query2.length; i++) {
+    if (query3[j].entry[query2[i].elementID]) {
+     html +=    '<td>'
+     html += query3[j].entry[query2[i].elementID]
+     html +=   '</td>'
+   } else {
+     html +=    '<td>'
+     html += 'n/a'
+     html +=   '</td>'
+   }
+ }
+ html +=    '<td>'
+ html += query3[j].entry['_id']
+ html +=   '</td>'
+ html +='</tr>'
+}
+html += ' </tbody>'
+$('#'+tableid).html(html)
+}
+
+///////////////////////////// 
+//////  INITIALISE    //////
+/////////////////////////// 
+$('document').ready(function(){
+  dataFormatComp()
+  printcomp()
+  columnFiltersPulleys(tableid)
+  //start javascript
+ 
+
+  if (typeof activateCanvasIdlerSet === "function")
+{
+   activateCanvasIdlerSet()
+}
+  })
+
+function showhidefilter(){
+  ////////////////////////////////////////////////////////////////////
+////////////        Show Hide Column filter.             ///////////
+///////////////////////////////////////////////////////////////////
+var html=''
+html +='<table  class="table table-bordered table-condensed" style="width:100%"> <thead> <tr> <th>Target</th> <th>Search text</th>   <th>Show/hide Column</th> </tr> </thead><tbody> <tr id="filter_global"> <td>Global search</td> <td align="center"><input type="text" class="global_filter form-control" id="global_filter"></td>  <td align="center"> </td>  </tr>'
+$( "#"+tableid+" thead tr th" ).each(function( index ) {
+  var title = $(this).text();
+//remove the blank table header for plus sign
+if (title !=="") {
+  html +='<tr id="filter_col'+index+1+'" data-column="'+index+'">'
+  html +='<td>'+title+'</td>'
+  html +='<td align="center"><input type="text" class="column_filter form-control" id="col'+index+'_filter"></td>'
+  html +='<td align="center"><input type="checkbox" class="column-visible" data-column='+index+' id="col'+index+'_show" checked="checked"></td>'
+  html +='</tr>'
+}
+});
+html +='</tbody></table>'
+$('#searchtable').html(html)
+}
+
+////////////////////////////////////////////////////////////////////
+////////////        COMPLEX VIEW TOOLS     .             ///////////
+///////////////////////////////////////////////////////////////////
+function columnFiltersPulleys(ids){
+  table = $('#'+ids).DataTable({
+    'destroy':true,
+    "pagingType": "numbers",        dom: 'Bfrtip',
+    buttons: [
+    { extend: 'csv', text: 'Export to CSV' ,className:'btn btn-default btn-sm' ,filename: 'Data export' ,title: 'Table export'}, { extend: 'pdf', text: 'Export PDF' ,className:'btn btn-default btn-sm' ,filename: 'Data export' ,title: 'Table export'}
+    ]
+  });
+  // Add event listener for opening and closing details
+  jQuery('#'+tableid+' tbody').on('click', 'td.details-control', function () {
+    var tr = jQuery(this).closest('tr');
+    var row = table.row( tr );
+    if ( row.child.isShown() ) {
+          // This row is already open - close it
+          row.child.hide();
+          tr.removeClass('shown');
+        }
+        else {
+          // Open this row
+         //is is async , and the canvas is not rendered 
+         row.child(formatDefault(this.id))
+         row.child.show();
+         tr.addClass('shown');
+       }
+     });
+  showhidefilter()
+//////////////////////////////////////////////////////////
+////////////        PLOT OPTIONS.             ///////////
+//////////////////////////////////////////////////////////
+var html=''
+html +='<table  class="table table-bordered"> <thead> <tr> <th>Target</th> <th>Grouping</th> <th>X - axis</th><th>Y - axis</th> </tr> </thead><tbody> '
+$( "#"+tableid+" thead tr th" ).each(function( index ) {
+  var title = $(this).text();
+  switch (true){
+    case (title =="Face Width") :
+    html +='<tr id="filter_col'+index+1+'" data-column="'+index+'">'
+    html +='<td>'+title+'</td>'
+    html +='<td align="center"><input type="radio" class="column_group" data-title1="'+title+'" data-column1='+index+' id="col'+index+'_group" checked="checked"></td>'
+    html +='<td align="center"><input type="radio" class="column_xaxis" data-title2="'+title+'" data-column2='+index+' id="col'+index+'_xaxis"></td>'
+    html +='<td align="center"><input type="radio" class="column_yaxis" data-title3="'+title+'" data-column3='+index+' id="col'+index+'_yaxis"></td>'
+    html +='</tr>'
+    break;
+    case (title =="Wrap Angle") :
+    html +='<tr id="filter_col'+index+1+'" data-column="'+index+'">'
+    html +='<td>'+title+'</td>'
+    html +='<td align="center"><input type="radio" class="column_group" data-title1="'+title+'" data-column1='+index+' id="col'+index+'_group"></td>'
+    html +='<td align="center"><input type="radio" class="column_xaxis" data-title2="'+title+'" data-column2='+index+' id="col'+index+'_xaxis"  checked="checked"></td>'
+    html +='<td align="center"><input type="radio" class="column_yaxis" data-title3="'+title+'" data-column3='+index+' id="col'+index+'_yaxis"></td>'
+    html +='</tr>'
+    break;
+    case (title =="Belt Width") :
+    html +='<tr id="filter_col'+index+1+'" data-column="'+index+'">'
+    html +='<td>'+title+'</td>'
+    html +='<td align="center"><input type="radio" class="column_group" data-title1="'+title+'" data-column1='+index+'  id="col'+index+'_group"></td>'
+    html +='<td align="center"><input type="radio" class="column_xaxis" data-title2="'+title+'" data-column2='+index+' id="col'+index+'_xaxis"></td>'
+    html +='<td align="center"><input type="radio" class="column_yaxis" data-title3="'+title+'" data-title='+title+' data-column3='+index+' id="col'+index+'_yaxis" checked="checked"></td>'
+    html +='</tr>'
+    break;
+    case (title =="") :
+    break;
+    default :
+    html +='<tr id="filter_col'+index+1+'" data-column="'+index+'">'
+    html +='<td>'+title+'</td>'
+    html +='<td align="center"><input type="radio" class="column_group" data-title1="'+title+'" data-column1='+index+' id="col'+index+'_group"></td>'
+    html +='<td align="center"><input type="radio" class="column_xaxis" data-title2="'+title+'" data-column2='+index+' id="col'+index+'_xaxis"></td>'
+    html +='<td align="center"><input type="radio" class="column_yaxis" data-title3="'+title+'" data-column3='+index+' id="col'+index+'_yaxis"></td>'
+    html +='</tr>'
+    break;
+  }
+});
+html +='</tbody></table>'
+$('#graphingtable').html(html)
+
+function filterGlobal () {
+  $('#'+tableid).DataTable().search(
+    $('#global_filter').val(),
+    $('#global_regex').prop('checked'),
+    $('#global_smart').prop('checked')
+    ).draw();
+}
+function filterColumn ( i ) {
+  $('#'+tableid).DataTable().column( i ).search(
+    $('#col'+i+'_filter').val(),
+    $('#col'+i+'_regex').prop('checked'),
+    $('#col'+i+'_smart').prop('checked')
+    ).draw();
+
+}
+$('input.global_filter').on( 'keyup click', function () {
+  filterGlobal();
+} );
+$('input.column_filter').on( 'keyup click', function () {
+  filterColumn( $(this).parents('tr').attr('data-column') );
+  drawGraph(table.rows( { search:'applied' } ).data(),xAxisColumn,yAxisColumn,grouping,xaxisLabel,yaxisLabel)
+  $('#spans').html(table.rows( { search:'applied' } ).data().length)
+} );
+ //this needs to be here because of the define table as datables variable. Possibly could be imporved.
+//toggle visibility of columns
+$('input.column-visible').on( 'keyup click', function (e) {
+         // Get the column API object
+         var column = table.column( $(this).attr('data-column') );
+        // Toggle the visibility
+        column.visible( ! column.visible() );
+      });
+
+var grouping =  1;
+var xAxisColumn =  3;
+var yAxisColumn =  4;
+var xaxisLabel = 'Idler Roll Diameter (mm)'
+var yaxisLabel = 'Idler Roll Length (mm)'
+     //Plot initiaors
+     drawGraph(table.rows( { search:'applied' } ).data(),xAxisColumn,yAxisColumn,grouping,xaxisLabel,yaxisLabel)
+     $('#spans').html(table.rows( { search:'applied' } ).data().length)
+//toggle grouping of graph
+$('input.column_group').on( 'keyup click', function (e) {
+         // Get the column API object
+         var column = $(this).attr('data-column1');
+        // Toggle the visibility
+        //console.log('group = ',column)
+        grouping = column;
+        drawGraph(table.rows( { search:'applied' } ).data(),xAxisColumn,yAxisColumn,grouping,xaxisLabel,yaxisLabel)
+        $('#spans').html(table.rows( { search:'applied' } ).data().length)
+        //Radio Button Controls
+        $('input.column_group').prop('checked', false);
+        $(this).prop('checked', true);
+      });
+//toggle xaxis
+$('input.column_xaxis').on( 'keyup click', function (e) {
+         // Get the column API object
+         var column = $(this).attr('data-column2');
+        //get title text
+        var title = $(this).attr('data-title2');
+        // Toggle the visibility
+        //console.log('xaxis = ',column)
+        xAxisColumn=column;
+        //console.log(title)
+        xaxisLabel = title
+        drawGraph(table.rows( { search:'applied' } ).data(),xAxisColumn,yAxisColumn,grouping,xaxisLabel,yaxisLabel)
+        $('#spans').html(table.rows( { search:'applied' } ).data().length)
+        //Radio Button Controls
+        $('input.column_xaxis').prop('checked', false);
+        $(this).prop('checked', true);
+      });
+//toggle yaxis
+$('input.column_yaxis').on( 'keyup click', function (e) {
+         // Get the column API object
+         var column = $(this).attr('data-column3');
+         //get title text
+         var title = $(this).attr('data-title3');
+        // Toggle the visibility
+        //console.log('yaxis = ',column)
+        yAxisColumn = column;
+        //console.log(title)
+        yaxisLabel = title
+        drawGraph(table.rows( { search:'applied' } ).data(),xAxisColumn,yAxisColumn,grouping,xaxisLabel,yaxisLabel)
+        //Radio Button Controls
+        $('input.column_yaxis').prop('checked', false);
+        $(this).prop('checked', true);
+      });
+}
+
+
+
+///////////////////////////////////////////////////////////////
+////////////        GRAPH DRAW FOR BELTING         ///////////
+/////////////////////////////////////////////////////////////
+function drawGraph(data,xAxisColumn,yAxisColumn,grouping,xaxisLabel,yaxisLabel){
+  var xAxis = [];
+  var yAxis = [];
+  var series = [];
+  var groups = [];
+//unique elemets function
+for (var i = 0; i < data.length; i++) {
+  for (key in data[i]){
+    if (key == grouping) {
+      groups.push(data[i][key])
+    }
+  }
+}
+//Unique removal functions
+function unique(list) {
+  var result = [];
+  $.each(list, function(i, e) {
+    if ($.inArray(e, result) == -1) result.push(e);
+  });
+  return result;
+}
+var colours = [
+'rgba(67,224,177,0.5)',
+'rgba(3,85,159,0.5)',
+'rgba(88,206,228,0.5)',
+'rgba(234,38,42,0.5)'
+]
+
+groups = unique(groups)
+for (var i = 0; i < groups.length; i++) {
+  var numberSeries=[]
+  for (var j = 0; j < data.length; j++) {
+    for (key in data[j])
+      if (data[j][key] == groups[i]) {
+        //console.log(data[j][key] )
+        for (key2 in data[j]){
+          if (key2 == xAxisColumn) {
+            xAxis = (parseFloat(data[j][key2]))
+          }
+          if (key2 == yAxisColumn) {
+            yAxis = (parseFloat(data[j][key2]))
+          }
+          numberSeries.push([xAxis,yAxis])
+        }
+      }
+    }
+    series.push({
+      name: groups[i],
+      color: colours[i],
+      data: numberSeries,
+      marker: {
+        radius: 4,
+        symbol: 'circle'
+      },
+    })
+  }
+//plot the high chart
+plotHightChart(series,xaxisLabel,yaxisLabel)
+}
+
+
+
+///////////////////////////////////////////////////////////////
+////////////        GRAPH DRAW FOR BELTING         ///////////
+/////////////////////////////////////////////////////////////
+function plotHightChart(data,xaxisLabel,yaxisLabel) {
+  $('#highCharts').highcharts({
+    chart: {
+      type: 'scatter',
+      zoomType: 'xy'
+    },
+    title: {
+      text: 'Component Graph'
+    },
+    credits: false,        
+    xAxis: {
+      title: {
+        enabled: true,
+        text: xaxisLabel
+      },
+      startOnTick: true,
+      endOnTick: true,
+      showLastLabel: true
+    },
+    yAxis: {
+      title: {
+        text: yaxisLabel
+      }
+    },
+    legend: {
+      layout: 'vertical',
+      align: 'left',
+      verticalAlign: 'top',
+      x: 100,
+      y: 70,
+      floating: true,
+      backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+      borderWidth: 1
+    },
+    plotOptions: {
+      scatter: {
+        marker: {
+          radius: 5,
+          states: {
+            hover: {
+              enabled: true,
+              lineColor: 'rgb(100,100,100)'
+            }
+          }
+        },
+        states: {
+          hover: {
+            marker: {
+              enabled: false
+            }
+          }
+        },
+        tooltip: {
+          headerFormat: '<b>{series.name}</b><br>',
+          pointFormat: '{point.x} Units, {point.y} Units'
+        }
+      }
+    },
+    series: data 
+  });
+}
+
+</script>

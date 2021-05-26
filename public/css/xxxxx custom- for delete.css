@@ -1,0 +1,110 @@
+/* Use this CSS File to manage your custom CSS.
+/* ------------------------- */
+
+.well {
+ position: relative;
+ padding: 32px;
+ text-align: center;
+ background-color: #fafbfc;
+ border: 1px solid #e1e4e8;
+ border-radius: 3px;
+ box-shadow: inset 0 0 10px rgba(27,31,35,0.05);
+
+}
+
+body {
+  background-image: linear-gradient(180deg, rgba(27,31,35,0.065), rgba(27,31,35,0)) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 200px !important;
+}
+
+.btn-primary {
+  color: #0366d6;
+  background-color: #ffffff;
+  border-color: #0366d6;
+}
+.btn-primary:focus, .btn-primary.focus {
+  color: #fff;
+  background-color: #0366d6;
+  border-color: #0366d6;
+}
+
+.btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #0366d6;
+  border-color: #0366d6;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0366d6;
+  border-color: #0366d6;
+}
+
+.btn-success:active, .btn-success:hover, .btn-success:focus, .btn-success.selected, [open]>.btn-success {
+  background-color: #279f43;
+  background-image: none;
+  border-color: rgba(27,31,35,0.5);
+  box-shadow: inset 0 0.15em 0.3em rgba(27,31,35,0.15);
+}
+
+
+.btn-custom {
+  color: #fff;
+  background-color: #0366d6;
+  border-color: #ccc;
+}
+.btn-custom:focus, .btn-custom.focus {
+  color: #333;
+  background-color: white;
+  border-color: #ccc;
+}
+
+.btn-custom:active, .btn-custom.active, .open > .dropdown-toggle.btn-custom {
+  color: #333;
+  background-color: white;
+  border-color: #ccc;
+}
+
+.btn-custom:hover {
+  color: #333;
+  background-color: white;
+  border-color: #ccc;
+}
+
+.orgnew-container {
+  padding-top: 15px;
+  max-width: 755px;
+}
+
+.navbar-nav > li > p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+  margin: 0 0 0px;
+}
+
+@media (min-width: 768px){
+  .navbar-nav > li > p {
+    padding-top: 15px;
+    margin: 0 0 0px;
+  }
+}
+
+.label-primary {
+    background-color: #0366d6;
+    border: 2px solid white;
+}
+
+.ql-toolbar.ql-snow {
+    
+    border-radius: 4px!important;
+}
+
+ .alert-success {
+  color: white;
+  background-color: #0366d6;
+  background-image: none;
+  border-color: #0366d6;
+  box-shadow: inset 0 0.15em 0.3em rgba(27,31,35,0.15);
+}

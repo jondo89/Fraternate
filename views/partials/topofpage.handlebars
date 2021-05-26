@@ -1,0 +1,21 @@
+     <div id='toToppo' style="z-index: 1000;  position:relative"><a href="#" title="Scroll to top of page.">
+      <i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
+    </a>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+                //Check to see if the window is top if not then display button
+                $(window).scroll(function(){
+                  if ($(this).scrollTop() > 100) {
+                    $('#toToppo a').fadeIn();
+                  } else {
+                    $('#toToppo a').fadeOut();
+                  }
+                });
+                //Click event to scroll to top
+                $('#toToppo a').click(function(){
+                  $('html, body').animate({scrollTop : 0},600);
+                  return false;
+                });
+              });
+            </script>

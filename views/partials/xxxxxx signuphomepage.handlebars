@@ -1,0 +1,175 @@
+<script rel="preconnect" defer src='https://www.google.com/recaptcha/api.js'></script>
+<style type="text/css">
+  @media screen and (max-width: 600px) {
+    .g-recaptcha {
+      transform:scale(0.77);
+      -webkit-transform:scale(0.77);
+      transform-origin:0 0;
+      -webkit-transform-origin:0 0;
+    }
+  }
+</style>
+<div class="">
+
+  <div class="card">
+    <div class="card-body">
+      {{#if messages.error}}
+      <div role="alert" class="alert alert-danger">
+        {{#each messages.error}}
+        <div>{{msg}}</div>
+        {{/each}}
+      </div>
+      {{/if}}
+      <form method="POST" action="/signup" class="auto-approve">
+        <div class="form-group">   
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" placeholder="Pick a username" class="form-control" data-validate='{
+          "title":"Text",  
+          "alphaNumeric": true,
+          "required": {"message": "Username may only contain alphanumeric characters."}
+        }' >
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" data-validate='{
+        "title":"Email",
+        "email": true
+      }' placeholder="Email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Password" class="form-control"
+      data-validate='{
+      "title":"Password",
+      "strength": {
+      "min": 8,
+      "bonus": 10,
+      "messages": {
+      "isMinimum": "{title} must be a minimum of {min} characters",
+      "hasLower": "{title} must have at least 1 lower case character",
+      "hasUpper": "{title} must have at least 1 upper case character",
+      "hasNumber": "{title} must have at least 1 number",
+      "hasSpecial": "{title} must have at least 1 special character"
+    },
+    "message":"{title} must be a minimum of {min} characters, must have an upper case character,1 special character and at least a number"
+  }
+}'
+>
+</div> 
+<div class="form-group">
+  <small class="text-muted">Use at least one letter, one numeral, and seven characters.</small>
+</div>
+<div class="form-group" >  
+  <div class="g-recaptcha" data-callback="enableBtn" data-sitekey="{{sitekey}}"></div>
+</div>
+<div class="form-group">
+  <small class="text-muted">By clicking "Sign up for {{siteName}}",  up, you agree to the <a href="/terms">Terms of Service</a> and <a href="/Privacy">Privacy Statement</a>.  We’ll occasionally send you account related emails.</small>
+</div>
+
+<div class="btn-toolbar text-center" style="color: black;text-align: center;">
+  <button type="submit" id="button1" class="btn btn-primary mr-1" data-toggle="tooltip" data-html="true" title="Please correct the item in red.">Sign up for {{siteName}}</button>
+  <a href="/auth/google" class="btn btn-outline-secondary mr-1">Sign in with Google</a>
+</div>
+
+
+
+</form>
+
+
+
+</div>
+</div>
+<p class="text-center">
+  Already have an account? <a style="color: white" href="/signin"><strong >Sign in</strong></a>
+</p>
+</div>
+
+<style type="text/css">
+  form.auto-approve {
+    .form-group {
+      .error-text {
+        opacity: 0;
+        color: #d9534f;
+        transition: opacity 0.5s linear;
+      }
+      &.has-error .error-text {
+        opacity: 1;
+      }
+    }
+  }
+</style>
+
+
+<script type="text/javascript">
+
+  $('form.auto-approve [data-validate]').blur(function () {
+    validate(this);
+  });
+
+
+  $('form.auto-approve').submit(function (event) {
+    validate(this);
+    var errorItems = $('.has-error', this);
+    if (errorItems.length > 0) {
+      $('html, body').animate({
+
+        scrollTop: $('.auto-approve').offset().top
+      }, 500);
+      $('#button1').tooltip()
+      event.preventDefault();
+    }
+  });
+
+
+  function validate(item) {
+    if ($(item).is('form')) {
+      $.each($('form.auto-approve [data-validate]'), function () {validate(this)});
+      return;
+    }
+
+    var result = approve.value(getValue(item), $(item).data('validate'));
+    if (!result.approved) {
+      var errors = "";
+      for (var error in result.errors) {
+        errors = result.errors[error] + "<br/>";
+      }
+      var errorDiv = $("<div class='control-label error-text'></div>").html(errors);
+      $(item).closest('.form-group').find('.error-text').remove();
+      $(item).closest('.form-group').append(errorDiv).addClass('has-error');
+    } else {
+      $(item).closest('.form-group').removeClass('has-error').find('.error-text').remove();
+    }
+  }
+
+  function getValue(item) {
+  // input types button, reset, submit, hidden, and image don't really make sense to validate, so I didn't test them
+  
+  // radio buttons
+  if ($(item).is('[type=radio]')) {
+    var name = $(item).attr('name');
+    return $('input[name=' + name + ']:checked').val();
+  }
+  
+  // checkboxes
+  if ($(item).is('[type=checkbox]')) {
+    return $(item).is(':checked');
+  }
+  
+  // textarea, select, input(text, checkbox, color, date, datetime-local, email, file, month, number, password, range, search, tel, time, url, week)
+  return $(item).val();
+};
+
+/* $('#week').change(function () {
+  console.log($(this).val());
+}); */
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+document.getElementById("button1").disabled = true;
+function enableBtn(){
+  document.getElementById("button1").disabled = false;
+}
+</script>
+
+

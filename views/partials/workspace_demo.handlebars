@@ -1,0 +1,32 @@
+ 
+
+
+<div class="container-fluid " >
+	<div id="tablecontainer"></div>	
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		assyNavclick('tablecontainer','5fa377acd8dc167f702cba09')
+	});
+	function assyNavclick(location,ids) {
+  	//example url
+  	///assemblies/queryajax/editassemblyajax/5b869e191f2b7c2fece13602?layout1=test
+  	url ='components/queryajax/editassemblyajax_demo/'+ids+'?layout1=test'
+  	loadingSpinner(location)
+  	jQuery.ajax({
+  		'async': true,
+  		'global': false,
+  		'url': url,
+  		'success': function (dataSchemaObject) {
+  			jQuery('#'+location).html(dataSchemaObject)
+  		}
+  	});
+  }
+  function loadingSpinner(location){
+  	var html= ''
+  	html+='<div id="loader-wrapper">'
+  	html+='<div id="loader"></div>'
+  	html+='</div>  '
+  	$('#'+location).html(html)
+  }
+</script>

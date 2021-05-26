@@ -1,0 +1,224 @@
+ <div>
+  <label class="checkbox-inline">
+    <input type="checkbox" id="toggle-event"   data-toggle="toggle" data-on='<span class="glyphicon glyphicon-time" aria-hidden="true"></span> ' data-off='<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'  data-onstyle="default"> Revision History
+  </label>
+</div>
+<p></p>
+<div class="row">
+  <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div id="loading">
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div id="formArea"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var objectType = "{{objectType}}"
+var tableloadID = create_uid()
+
+
+
+//////////////////////////////////////////
+////        CREATE UNIQUE ID         //// 
+////////////////////////////////////////
+function create_uid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+  s4() + '-' + s4() + s4() + s4();
+}
+
+///////////////////////////////////////////////
+////  MODIFY THE IDS OF RELEVANT ITEMS    //// 
+/////////////////////////////////////////////
+jQuery('#loading').attr("id",tableloadID+'_table');
+jQuery('#toggle-event').attr("id",tableloadID+'_toggle');
+
+/////////////////////////////////////////////////////////////////////////////
+////////  EVENT LISTNER ON THE TOOGGLE FOR REMOVING THE COMPONETNS   ///////
+///////////////////////////////////////////////////////////////////////////
+$('#'+tableloadID+'_toggle').change(function() {
+  //This function is defined in the component navigation template.
+  getCollectionData(objectType,$(this).prop('checked'))
+})
+
+///////////////////////////// 
+//////  INITIALISE    //////
+/////////////////////////// 
+$('document').ready(function(){
+ getCollectionData(objectType )
+})
+
+///////////////////////////////
+//////  GET THE TABLE   //////
+/////////////////////////////
+function getCollectionData(objectType,toggle){
+  jQuery.ajax({
+    'url': '/getCollectionData?objectType='+objectType+'&showall='+toggle,
+    'async': true,
+    'global': false,
+    'success': function (dataSchemaObject) {
+      tablelistdata = jQuery.parseJSON( dataSchemaObject );
+ 
+      tableload(tablelistdata)
+    }
+  }); 
+}
+
+///////////////////////////////
+//////  LOAD THE TABLE  //////
+/////////////////////////////
+function tableload(tablelistdata) {
+  var tempVarID = tableloadID+'tableloadID'
+  var headings =  ['name' ]//,'userID']
+//inject the ID html table into the page.
+$('#'+tableloadID+'_table').html('<table id="'+tempVarID+'" class="table table-bordered table-compressed table-hover" cellspacing="0" width="100%"></table>')
+//error message text
+var html = ''
+html += '<div class="alert alert-danger" role="alert"> '
+html += '<strong>'
+html += 'Oh snap!'
+html += '</strong> '
+html += 'Table error , Please let us know about this.'
+html += '</div>'
+//client side error check for the tables.
+if (tablelistdata !== null) {
+  if (tablelistdata.length !== 0) {
+    htmlData (tablelistdata,tempVarID,headings)
+    loadTablesHere(tempVarID)
+  } else {
+    $('#'+tableloadID+'_table').html(html)
+  }
+} else {
+  $('#'+tableloadID+'_table').html(html)
+}
+};
+
+//////////////////////////////////////
+////////    HTML FOR TABLE  /////////
+////////////////////////////////////
+function htmlData (data,id,headings){
+  html = ''
+  html += '<thead><tr>'
+  for (var i = 0; i < headings.length; i++) {
+    html += '<th>'
+    html+=headings[i]
+    html += '</th>'
+  }
+  html += '<th  style="width:1px"></th></tr></thead>'
+  html += '<tbody>'
+  for (var i = 0; i < data.length; i++) {
+    html += '<tr>'
+    for (var j = 0; j < headings.length; j++) {
+      html += '<td style=" vertical-align:middle">'
+      html += data[i][headings[j]]
+      html += '</td>'
+    }
+    html += '<td class="details-control" style="text-align:center;vertical-align:middle;min-width:220px "  >'
+    html +='<div class="btn-group" role="group" aria-label="...">'
+    html += '<button type="button" class="btn btn-default"  id="'+data[i]['_id']+'_use">Use</button>'
+    html += '<button type="button" class="btn btn-default"  id="'+data[i]['_id']+'_edit">Edit</button>'
+    html += '<button type="button" class="btn btn-default"  id="'+data[i]['_id']+'_raw">Raw</button>'
+    html += '<button type="button" class="btn btn-danger"  id="'+data[i]['_id']+'_delete" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>'
+
+    html +='</div>'
+    html += '</td>'
+    html += '</tr>'
+  }
+  html += '<tbody>'
+  $('#'+id).html(html)
+} 
+
+/////////////////////////////////////
+//////  ACTIVATE DATATABLES   //////
+///////////////////////////////////
+function loadTablesHere(id){
+  table = jQuery('#'+id).DataTable({
+    'destroy':true,
+    "pagingType": "numbers",
+//  'order': [[ 2, 'asc' ]] ,
+});
+//Add event listener for opening and closing details
+jQuery('#'+id +' tbody').on('click', 'td div button', function () {
+  var ids = this.id
+//This routing is key to database functionality.
+switch(true){
+  case(ids.search("_use") >1):
+  ids = ids.replace("_use","");
+  getTheForm(ids,'','use')
+  break;
+  case(ids.search("_edit") >1):
+  ids = ids.replace("_edit","");
+  getTheForm('',ids,'edit')
+  break;
+  case(ids.search("_raw") >1):
+  ids = ids.replace("_raw","");
+  getTheForm('',ids,'raw')
+  break;  
+  case(ids.search("_delete") >1):
+  ids = ids.replace("_delete","");
+  deleteEntryModal(ids)
+  break;   
+}
+});
+}
+
+/////////////////////////////////////////
+////////  GET THE FORM   ///////////////
+///////////////////////////////////////
+function getTheForm(formdata,idItem,raw){
+ jQuery.ajax({
+  'url': '/getform?formdata='+formdata+'&idItem='+idItem+'&raw='+raw,
+  'async': true,
+  'global': false,
+  'success': function (dataSchemaObject) {
+    $('#formArea').html(dataSchemaObject)
+  }
+});
+}
+
+///////////////////////////////// 
+//////  DELETE ENTRY     ///////
+/////////////////////////////// 
+function deleteEntryModal(id){
+  html = ''
+  html +='<div class="row" style="width:100%;text-align:center">'
+  html +='<i class="fa fa-question-circle fa-4x" aria-hidden="true" ></i>'
+  html += '<h3>Are you sure you what to do this ?</h3>'
+  html += '<p>This action cannot be undone.</p>'
+  html +='<div class="btn-group" role="group" aria-label="..." style="">'
+  html +='  <button type="button" class="btn btn-danger" onclick="deleteEntryYes('
+  html +="'"
+  html +=id
+  html +="'"
+  html +=')">Confirm</button>'
+  html +='</div>'
+  html +='</div>'
+  $('#modal-body').html(html)
+}
+
+///////////////////////////////// 
+//////  DELETE ENTRY     ///////
+/////////////////////////////// 
+function deleteEntryYes(idItem){
+ jQuery.ajax({
+  'url': '/deleteentry?idItem='+idItem,
+  'async': true,
+  'global': false,
+  'success': function (dataSchemaObject) {
+    $('#formArea').html(dataSchemaObject)
+  }
+});
+}
+
+
+</script>

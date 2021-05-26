@@ -1,0 +1,75 @@
+{{> hljavacommon}}
+<div class="container">
+<h1 class="display-2">An Introduction</h1>
+ <br>
+<div class="row">
+	<div class="col-md-3">
+		<div id="leftpanel"></div>
+	</div>
+	<div class="col-md-9">
+		<div id="rightpanel"></div>
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+	var dataset
+	 var user = JSON.parse(JSON.stringify('{{user.permission}}'))
+	$( document ).ready(function() {
+      //the get get from inputs for all page loading.
+      jQuery.ajax({
+      	'async': true,
+      	'global': false,
+      	'url': '/components/querythis?querykey='+"parentid"+'&queryinput='+"5a5835558fea2b391cff4c77",
+      	'success': function (dataSchemaObject) {   
+      		dataset = dataSchemaObject
+      		leftPanel(dataset)
+      		$('#'+dataSchemaObject[0].elementID).click()
+      	}
+      });
+  });
+
+	function leftPanel(data){
+		var html=''	
+		html+='<div class="list-group">	'
+		for (var i = 0; i < data.length; i++) {
+			html+='<a style="cursor: pointer;" href="#"	 class="list-group-item list-group-item-action" id="'+data[i].elementID+'" onclick="rightpanel(this.id)">'
+			html+=data[i].entry['5a5835e28fea2b391cff4c7d'] 
+			html+='</a>'
+		}
+		html+='</div>'
+		$('#leftpanel').html(html)
+		$('div a.list-group-item').click(function(e) {
+			$that = $(this);
+			$('div a.list-group-item').removeClass('active');
+			$that.addClass('active');
+		});
+	}
+
+	function rightpanel(data){
+		var html=''
+		for (var i = 0; i < dataset.length; i++) {
+			if (dataset[i].elementID==data){
+				$('#rightpanel').html('')
+				html+=dataset[i].entry['5a5835f98fea2b391cff4c7e']
+				if (user=='superadmin') {
+					html+='<p></p><button type="button" href="" class="btn btn-outline-success" id="'+create_uid()+'" data-toggle="modal" data-target="#myModal" data-form="'+'5a5835cc8fea2b391cff4c7b'+'" data-parentid="'+dataset[i].parentid+'" data-routing="'+'configuration'+'" data-ids="'+dataset[i].elementID+'" onclick="editItem(this.id)">Edit Item</button> '
+				}
+				$('#rightpanel').html(html)
+			}
+		}
+	}
+
+	function editItem(idItem){
+		var formid = $( "#"+idItem ).data( "form");
+		var parentid = $( "#"+idItem ).data( "parentid");
+		var routing = $( "#"+idItem ).data( "routing");
+		var ids = $( "#"+idItem ).data( "ids");
+		loadformModal(formid,ids,'componentedit',parentid,'',{"elementID" : ids},'formAreaModal',routing)
+	}
+</script>
+
+
+</div>

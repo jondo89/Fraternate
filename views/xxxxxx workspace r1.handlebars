@@ -1,0 +1,90 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<meta charset="utf-8">
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<meta name="description" content="{{sitedescription}}">
+ 	<meta name="author" content="{{author}}">
+ 	<meta name="msvalidate.01" content="6F54F88A443C656EFB178CEF11C4E7E9" />
+ 	<meta name="google-site-verification" content="V6ZQykcqytIxvH_JCfowxQfGXB9Qn-rgaQ-iIrtoW3c" />  
+ 	<meta name="flattr:id" content="ljw99y">
+ 	<title>{{pagetitle}}</title>
+ 	{{>css fontawesome=true bootstrap=true jstree=true datatable=true bootstrap-select=true quillbootstrap=true}}
+ 	{{>javascript  googlemaps=true bootstrap=true datatable=true fontawesome=true jstree=true readmore=true selectpicker=true quill=true}}
+ </head>
+ <body  style="background: #f9f9f9;height: 100vh">
+	{{#if user}}
+ 	<!-- Modal -->
+ 	<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myModal">
+ 		<div class="modal-dialog modal-lg" role="document">
+ 			<div class="modal-content">
+ 				<div class="modal-body"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+ 					<div id="modal-body"></div>
+ 					<div id="formAreaModal">
+ 						<div style="text-align: center">
+ 							<pre><i class="fa fa-spinner fa-spin fa-fw"></i><span class=" ">Loading...</span></pre>
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div> 
+ 	{{/if}}
+ 	{{> navigation}}
+ 	<style type="text/css">
+ 		.dt-buttons {
+ 			padding-top: 15px;
+ 		}
+ 		.background-main{
+ 		}
+ 	</style>
+ 	<div class="container-fluid no-float h-100 background-main" >
+ 		<!-- ids is the location of the nav menu.-->
+ 		<div class="row no-float h-100">
+ 			<div class="col-md-3 no-float border-right" style="background:white">
+ 				<div style="text-align: left"><br>
+ 					{{>workspace_context_btn  organization_name=organization_name}}
+ 				</div>
+ 				<hr>
+ 				<div id="view_org_btn"></div>
+ 				<form class="form-inline ">
+ 					<div id="inputSearchWorkspace"></div>
+ 				</form>
+ 				<br>
+ 				{{>workspace_toolbar ids='assemblies'}}
+ 				<br><br>
+ 				{{>workspace_projectlist}}
+ 				<div id="assemblies">
+ 				</div>
+ 				<hr>
+
+
+
+
+								<h5 class="display-4" style="font-size: x-large;">Customization</h5>
+								<small><p>Configure your assembly and report input fields.</p></small>
+								<div id="Customization">
+								</div>
+								{{>docs_ajax_page  ids='Customization' collectionSet='customization'}}	
+
+
+									
+								</div>
+							
+
+
+
+ 			<div class="col-md-9 no-float h-100testc" id="tablecontainer" style="padding: 0px">
+ 				{{>workspacesplash route='database'}}
+ 			</div>
+
+ 
+
+ 		</div>
+ 		{{> topofpage}}
+ 	</div>
+ 	{{> analytics}}
+ </body>
+ </html>
+

@@ -1,0 +1,48 @@
+    <!-- Single button -->
+    <p></p>
+    <div class="btn-group">
+    	<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{#if user.image}}
+        <img src="{{user.image}}" class="navbar-avatar-pic mr-1" style="border-radius: 2px;max-width: 30px">
+        {{else}}
+        <img src="{{user.gravatar}}" class="navbar-avatar-pic mr-1" style="border-radius: 2px;max-width: 30px">
+        {{/if}}
+        <span>{{dotdotdot user.username}}</span>   <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+       <a href="/users/{{user.username}}" class="dropdown-item"  style="text-align: right; ">
+        <span class="media" style="color: grey">
+          <span class="mr-2">{{dotdotdot user.username}} </span>
+          {{#if user.image}}
+          <img src="{{user.image}}" class="navbar-avatar-pic mr-1" style="border-radius: 2px;max-width: 25px">
+          {{else}}
+          <img src="{{user.gravatar}}" class="navbar-avatar-pic mr-1" style="border-radius: 2px;max-width: 25px">
+          {{/if}}  
+        </span>
+      </a>
+      {{#if organizations}}
+      <div class="dropdown-divider"></div>
+      {{#each organizations}}
+      <a class="dropdown-item mr-1" href="/organizations/{{this.entry.name}}" > 
+        <span class="media">
+          {{#if this.entry.image}}
+          <img onerror="this.src='{{this.gravatar}}'"" src="{{this.entry.image}}"  style="max-width: 25px">
+          {{else}}
+          <img src="{{this.gravatar}}"  style="max-width: 25px">
+          {{/if}}
+          {{#if this.entry.displayname}}
+          <span class="ml-2"> {{dotdotdot this.entry.displayname}}</span>
+          {{else}}
+          <span class="ml-2"> {{dotdotdot this.entry.name}}</span> 
+          {{/if}}
+        </span>
+      </a>
+      {{/each}}
+      {{/if}}
+      <div class="dropdown-divider"></div>
+      {{#if organizations}}
+      <a class="dropdown-item mr-1" href="/users/{{user.username}}/settings/organizations"><i class="fa fa-users" aria-hidden="true"></i> Manage Organizations</a> 
+      {{/if}}
+      <a class="dropdown-item mr-1" href="/organizations/new-payfast"><i class="fa fa-plus" aria-hidden="true"></i> Create Organizations</a> 
+    </div>
+  </div>

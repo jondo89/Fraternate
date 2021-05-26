@@ -1,21 +1,61 @@
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
- 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
-<script type='text/javascript' src='https://cdn.datatables.net/r/dt/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,b-1.0.3,b-html5-1.0.3/datatables.min.js'></script>
-<script type='text/javascript' src='https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js'></script>
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.js?ver=1'></script>
-<script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script>
-<script defer type="text/javascript" src="//code.cloudcms.com/alpaca/1.5.22/bootstrap/alpaca.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
- 
-<script defer src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<!-- Javascript -->
 
+{{#ifEquals bootstrap true}}
+<script type="text/javascript" src="/jquery.min.js"  integrity=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"  integrity=""></script>
+{{/ifEquals}}
+{{#ifEquals handlebars true}}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+{{/ifEquals}}
+{{#ifEquals readmore true}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.1/readmore.min.js"></script>
+{{/ifEquals}}
+{{#ifEquals alpaca true}}
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/alpaca@1.5.27/dist/alpaca/bootstrap/alpaca.min.js"></script>
+{{/ifEquals}}
+{{#ifEquals googlemaps true}}
 <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAA8gCQ83YdkeNR3tTjcQRC-JkS57Y6OYY&#038;ver=4.6.1'></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/approvejs/3.1.2/approve.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+{{/ifEquals}}
+{{#ifEquals recapture true}}
+<script src='https://www.google.com/recaptcha/api.js?'></script>
+{{/ifEquals}}
+{{#ifEquals datatable true}}
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.24/b-1.7.0/b-html5-1.7.0/b-print-1.7.0/datatables.min.js"></script>
+
+{{/ifEquals}}
+{{#ifEquals jstree true}}
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.2/jstree.min.js'></script>
+{{/ifEquals}}
+{{#ifEquals cropper true}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/3.1.4/cropper.min.js"></script>
+{{/ifEquals}}
+{{#ifEquals selectpicker true}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+{{/ifEquals}}
+{{#ifEquals approve true}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/approvejs/3.1.2/approve.min.js"></script>
+{{/ifEquals}}
+{{#ifEquals moment true}}
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+{{/ifEquals}}
+{{#ifEquals mathjs true}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.1/math.js"></script>
+{{/ifEquals}}
+{{#ifEquals quill true}}
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js"></script>
+{{/ifEquals}}
+{{#if homejs}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/master/dist/progressbar.js"></script>
+<script type="text/javascript" src="/js/bundle.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script> 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.1/readmore.min.js"></script>
+ {{else}}
+
+{{/if}}
+ 
+
  

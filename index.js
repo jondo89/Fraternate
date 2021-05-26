@@ -6,39 +6,21 @@ var methodOverride = require('method-override');
 var session = require('express-session');
 var flash = require('express-flash');
 var bodyParser = require('body-parser');
-const { check, validationResult } = require('express-validator');
-
+var dotenv = require('dotenv');
+var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var recaptcha = require('express-recaptcha');
 var braintree = require("braintree");
-var helpers = require('handlebars-helpers')(['string']);
+var helpers = require('handlebars-helpers')(['string','moment']);
 var Handlebars = require("handlebars");
 var MomentHandler = require("handlebars.moment");
+var moment = require("moment");
 MomentHandler.registerHelpers(Handlebars);
 
+dotenv.config()
 //Primary app variable.
 var app = express();
- 
-
-//This pumps up the payload to accomidate larger data sets
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
-//extend
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
-
-app.use(bodyParser.urlencoded({ extended: false }))
-if (process.env.NODE_ENV !== 'test') {
-/////////////////////////////////////////////
-///////   LOCALHOST PORT SETTING    ////////
-///////////////////////////////////////////
-app.set('port', process.env.PORT || 4000);
-
-}
-
-
-
 ///////////////////////////////////////
 ///////   FAVICON LOCATION    ////////
 /////////////////////////////////////
@@ -48,29 +30,29 @@ try {
 } catch (err){
   console.log('Favicon not found in the required directory.')
 }
-
 //You can also configure useCreateIndex by passing it through the connection options.
 mongoose.set('useCreateIndex', true);
 //To opt in to using the new topology engine, use the below line:
 mongoose.set('useUnifiedTopology', true);
-
 ////////////////////////////////////////////////////
 ///////   HEROKU VS LOCALHOST .ENV SWAP    ////////
 //////////////////////////////////////////////////
-
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
 } else {
-
-  var dotenv = require('dotenv');
-  dotenv.config()
   mongoose.connect(process.env.MONGODB, {useNewUrlParser: true});
 }
-
 //Mongo error trap.
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
+});
+//Define the mongo enviroment
+var db = mongoose.connection;
+db.once('open', function() {
+  // we're connected!
+  console.log('\x1b[36m%s\x1b[0m',process.env.MONGODBNAME ,' : mongoose connection ok')
+  //compile the schema for mongoose
 });
 
 ////////////////////////////////////////////
@@ -82,7 +64,6 @@ var gateway = braintree.connect({
   publicKey: process.env.PUBLICKEY,
   privateKey: process.env.PRIVATEKEY
 });
-
 /////////////////////////////////////////////
 ///////   HTTPS TRAFFIC REDIRECT    ////////
 ///////////////////////////////////////////
@@ -98,58 +79,82 @@ res.redirect('https://'+req.hostname+req.url);
 if (app.get('env') == 'production') {
   app.all('*', ensureSecure);
 }
-
-
+/////////////////////////////////////////////
+///////   LOCALHOST PORT SETTING    ////////
+///////////////////////////////////////////
+app.set('port', process.env.PORT || parseFloat(process.env.LOCALHOSTPORT));
 app.use(compression());
 app.use(logger('dev'));
-
-
-
+//This pumps up the payload to accomidate larger data sets
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+//extend
+app.use(bodyParser.json({limit: '200mb'}));
+app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
+//app.use(expressValidator());//this worked then did not , no idea why.
 app.use(methodOverride('_method'));
 app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(function(req, res, next) {
+  res.locals.website = myModule.website
+  res.locals.logo = myModule.logo
   if(req.user){
     res.locals.user = JSON.parse(JSON.stringify(req.user));
+    res.locals.themedark = req.user.darkmode;
   }
-  next();
-});
-
+    res.locals.TRACKINGCODEGA = process.env.TRACKINGCODEGA;//expose the google analytics tracking code for use.
+    next();
+  });
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 ///////////////////////////////////////////////s
 ////     SET YOUR APP.JSON DETAILS        //// 
 /////////////////////////////////////////////
 var myModule = require('./app.json');
-var sitename = myModule.sitename
-var website = myModule.website
-var description = myModule.description
-var repo = myModule.repo
-app.locals.sitename = sitename
-app.locals.website = website
-app.locals.repo = repo
-app.locals.description = description
+
+//META SEO ITEMS
+app.locals.sitename = myModule.sitename
+app.locals.website = myModule.website
+app.locals.sitedescription = myModule.description
+app.locals.repo = myModule.repo
+app.locals.author = myModule.author
+app.locals.keywords = myModule.keywords
+app.locals.tagline = myModule.tagline
+
+//Define the partials directory
 var partialsDir = ['views/partials']
+//Set up css and javasciprt locals.
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use(express.static(__dirname + '/node_modules/jquery/dist'));
+app.use(express.static(__dirname + '/node_modules/popper.js/dist'));
 
 
-
-
+app.use(function(req, res, next) {
+  res.locals.siteversion = myModule.version
+  res.locals.sitedescription = myModule.description;
+  next();
+});
+//Message Flashing for saving etc.
+var flash = require('connect-flash');
+app.use(flash());
 ///////////////////////////////
 ////       ROUTING        //// 
 /////////////////////////////
-
-///////////////////////////////////////////
-////       WRASSE NPM MODULE          //// 
-/////////////////////////////////////////
-var cleanerwrasse = require("cleaner-wrasse");
-//Append the partial directory inside the NPM module.
-partialsDir.push('./node_modules/cleaner-wrasse/views/partials')
-app.use('/', cleanerwrasse);
-
+//////////////////////////////////////////////////////////////
+////       GET THE HEAVYLIFTING DATABASE STRUCTURE        //// 
+//////////////////////////////////////////////////////////////
+const fs = require('fs');//use the file system plugin 
+var rawdata = fs.readFileSync('./heavylifting.json'); // get the heavylifting json and parse into an object for use.
+var collections = JSON.parse(rawdata); 
+collections = collections.collections
+/////////////////////////////////////////////////////////
+////       USED FOR THE COLLECTION INJECTION        //// 
+///////////////////////////////////////////////////////
+app.use(function (req, res, next) {
+  res.locals.collections = collections
+  next();
+})
 ///////////////////////////////////////////////
 ////       FRATERNATE NPM MODULE          //// 
 /////////////////////////////////////////////
@@ -157,10 +162,75 @@ var fraternate = require("fraternate");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/fraternate/views/partials')
 app.use('/', fraternate);
+/////////////////////////////////////////////////
+////       HEAVYLIFTING NPM MODULE          //// 
+///////////////////////////////////////////////
+var heavylifting = require("heavylifting");
+//Append the partial directory inside the NPM module.
+partialsDir.push('./node_modules/heavylifting/views/partials')
+app.use('/', heavylifting);
 
+///////////////////////////////////////////////////
+////       CLEANER-WRASSE NPM MODULE          //// 
+/////////////////////////////////////////////////
+var cleaner_wrasse = require("cleaner-wrasse");
+//Append the partial directory inside the NPM module.
+partialsDir.push('./node_modules/cleaner-wrasse/views/partials')
+app.use('/', cleaner_wrasse);
+///////////////////////////////////////////////////
+////       SEMINI NPM MODULE          //// 
+/////////////////////////////////////////////////
+var semini = require("semini");
+//Append the partial directory inside the NPM module.
+partialsDir.push('./node_modules/semini/views/partials')
+app.use('/', semini);
+/////////////////////////////////
+////       HOME             //// 
+///////////////////////////////
 
+var organizationController = require("./node_modules/fraternate/controllers/organization");//In order to pass the user orginizational structure this needs to be here.
+var userController = require('./node_modules/fraternate/controllers/user');
+var HomeController = require('./controllers/home');
 
-var exphbs = require('express-handlebars');
+app.get('/',
+  organizationController.userorganizations,
+  HomeController.index
+  );
+app.get('/contact',
+  HomeController.contact
+  ); 
+
+app.get('/workspace',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace
+  ); 
+app.get('/workspace/org/:organization_name',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace
+  ); 
+app.get('/workspace/org/:organization_name/:slug',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace_projects
+  );
+app.get('/workspace/user/:username/:slug',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace_projects
+  );
+app.get('/workspace/org/:organization_name/:slug/:template',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace_projects_template
+  );
+app.get('/workspace/user/:username/:slug/:template',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace_projects_template
+  );
+ 
 //////////////////////////////////////////
 ////        CREATE UNIQUE ID         //// 
 ////////////////////////////////////////
@@ -181,6 +251,10 @@ var hbs = exphbs.create({
   defaultLayout: __dirname+'/views/layouts/main',
   partialsDir:partialsDir,
   helpers: {
+   
+    dateFormat: function(val) {
+      return moment(val).format("MMMM Do YYYY, h:mm:ss a Z z")
+    },
     ifEquals: function(arg1, arg2, options) {
       return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
     },
@@ -194,7 +268,6 @@ var hbs = exphbs.create({
       console.log("Current Context");
       console.log("====================");
       console.log(this);
-
       if (optionalValue) {
         console.log("Value");
         console.log("====================");
@@ -204,38 +277,31 @@ var hbs = exphbs.create({
     toJSON : function(object) {
       return JSON.stringify(object, null, 2);
     },
+    json: function(context) {
+          var temp = JSON.stringify(context)
+          try {
+          temp1 = JSON.parse(temp)
+          var temp2 = JSON.stringify(temp1)
+          } catch (err){
+          console.trace(context,temp,err)
+          var temp = context
+          }
+      return temp2;
+    },
     partial: function (name) {
       return name;
     },
     uniqueid: function (uniqueid) {
       return create_uid();
     },
-    'dotdotdot' : function(str) {
+    capitalizeFirst: function (str) {
+      return str[0].toUpperCase() + str.slice(1, str.length);
+    },
+    'dots' : function(arg1,str) {
       if (str) {
-        if (str.length > 16)
-          return str.substring(0,16) + '...';
+        if (str.length > arg1)
+          return str.substring(0,arg1) + '...';
         return str;}
-      },
-      'dotdotdotdot' : function(str) {
-        if (str) {
-          if (str.length > 200)
-            return str.substring(0,200) + '...';
-          return str;
-        }
-      },
-      'dotdotdotdotdot' : function(str) {
-        if (str) {
-          if (str.length > 400)
-            return str.substring(0,400) + '...';
-          return str;
-        }
-      },  
-      'dots' : function(str) {
-        if (str) {
-          if (str.length > 150)
-            return str.substring(0,150) + '...';
-          return str;
-        }
       },
       'profile' : function(str) {
         if (str) {
@@ -248,7 +314,6 @@ var hbs = exphbs.create({
   });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-
 
 /////////////////////////////
 ////       500          //// 
@@ -264,31 +329,27 @@ app.use(function(err, req, res, next) {
   res.status(500);
   res.redirect('/500');
 });
-
 /////////////////////////////
 ////       500          //// 
 ///////////////////////////
 app.get('/500', function(req, res){
   console.log('Calling the 500 error')
   res.render('500',{
-    siteName : sitename,
-    pagetitle : 'Error 500' + ' | '+sitename,
+    siteName : myModule.sitename,
+    pagetitle : 'Error 500' + ' | '+myModule.sitename,
     layout:false
   });
 }); 
-
 /////////////////////////////
 ////       404          //// 
 ///////////////////////////
 app.get('*', function(req, res){
-  res.render('404',{
-    siteName : sitename,
-    pagetitle : 'Error 404' + ' | '+sitename,
+  res.status(404).render('404',{
+    siteName : myModule.sitename,
+    pagetitle : 'Error 404' + ' | '+myModule.sitename,
     layout:false
   });
 });
-
-
 // Production error handler
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
@@ -296,13 +357,8 @@ if (app.get('env') === 'production') {
     res.sendStatus(err.status || 500);
   });
 }
-
-
-
 app.listen(app.get('port'), function() {
-  //console.log('Express server listening on port ' + app.get('port'));
+  console.log('Express server listening on port ' + app.get('port'));
 });
 
 module.exports = app;
-
-

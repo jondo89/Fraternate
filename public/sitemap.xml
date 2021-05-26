@@ -1,204 +1,975 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fraternate.herokuapp.com/</loc>
+    <loc>https://www.shiftbulk.com/</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view</loc>
+    <loc>https://www.shiftbulk.com/database/search</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/terms</loc>
+    <loc>https://www.shiftbulk.com/database</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations</loc>
+    <loc>https://www.shiftbulk.com/shop</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/Privacy</loc>
+    <loc>https://www.shiftbulk.com/components</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users</loc>
+    <loc>https://www.shiftbulk.com/terms</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/installation</loc>
+    <loc>https://www.shiftbulk.com/Privacy</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/integration</loc>
+    <loc>https://www.shiftbulk.com/tools</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/payments</loc>
+    <loc>https://www.shiftbulk.com/documentation</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/payments-paypal</loc>
+    <loc>https://www.shiftbulk.com/documentation/feature-requests</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/payments-payfast</loc>
+    <loc>https://www.shiftbulk.com/users</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/introduction</loc>
+    <loc>https://www.shiftbulk.com/organizations</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/contact</loc>
+    <loc>https://www.shiftbulk.com/issues/open</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/privacy</loc>
+    <loc>https://www.shiftbulk.com/privacy</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/new/issuesview</loc>
+    <loc>https://www.shiftbulk.com/community-guidelines</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/issuesview</loc>
+    <loc>https://www.shiftbulk.com/contact</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/customprofile</loc>
+    <loc>https://www.shiftbulk.com/documentation/search</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/new/orglist</loc>
+    <loc>https://www.shiftbulk.com/templates/search</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/orglist</loc>
+    <loc>https://www.shiftbulk.com/shop/search</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/TestOrg</loc>
+    <loc>https://www.shiftbulk.com/forms/search</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/ubu</loc>
+    <loc>https://www.shiftbulk.com/configuration/search</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/JonDavies</loc>
+    <loc>https://www.shiftbulk.com/customization/search</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/new/userlist</loc>
+    <loc>https://www.shiftbulk.com/components/search</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-services</loc>
+    <loc>https://www.shiftbulk.com/database/contracts</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/</loc>
+    <loc>https://www.shiftbulk.com/database/conveyor-belting-data</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/view/userlist</loc>
+    <loc>https://www.shiftbulk.com/database/conveyor-design</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/jack</loc>
+    <loc>https://www.shiftbulk.com/database/conveyor-idlers</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/FarrukhZeb</loc>
+    <loc>https://www.shiftbulk.com/database/deliverables</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/H%C3%B2a%C4%90o%C3%A0nQuang</loc>
+    <loc>https://www.shiftbulk.com/database/drawings</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/foo</loc>
+    <loc>https://www.shiftbulk.com/database/dust-suppression-systems</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/mytest</loc>
+    <loc>https://www.shiftbulk.com/database/estimating</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/asda</loc>
+    <loc>https://www.shiftbulk.com/database/general-items</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/TommyTycle</loc>
+    <loc>https://www.shiftbulk.com/database/glossary-terms</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/pinupcasino</loc>
+    <loc>https://www.shiftbulk.com/database/materials-handling-equipment</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/AlishaFAb</loc>
+    <loc>https://www.shiftbulk.com/database/power-and-tension</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/testuseronetwothree</loc>
+    <loc>https://www.shiftbulk.com/database/power-packs</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/test</loc>
+    <loc>https://www.shiftbulk.com/database/projects</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/farm</loc>
+    <loc>https://www.shiftbulk.com/database/pulley-data</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/Moushaoutchi</loc>
+    <loc>https://www.shiftbulk.com/database/quality-management</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/karabobright</loc>
+    <loc>https://www.shiftbulk.com/database/specifications</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/pdk</loc>
+    <loc>https://www.shiftbulk.com/database/take-ups</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/specifications</loc>
+    <loc>https://www.shiftbulk.com/database/transfer-chutes</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/domain</loc>
+    <loc>https://www.shiftbulk.com/database/assumptions</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/troubleshooting</loc>
+    <loc>https://www.shiftbulk.com/database/conditions-of-contract1</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/licence</loc>
+    <loc>https://www.shiftbulk.com/database/general-inclusions-and-exclusions1</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/TestOrg/people</loc>
+    <loc>https://www.shiftbulk.com/database/inclusions-and-exclusions1</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/settings/profile</loc>
+    <loc>https://www.shiftbulk.com/database/information-required1</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/new/customprofile</loc>
+    <loc>https://www.shiftbulk.com/database/limitations1</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/ubu</loc>
+    <loc>https://www.shiftbulk.com/database/precedence-deviations-and-conflicts</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/JonDavies</loc>
+    <loc>https://www.shiftbulk.com/database/belt-class</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/jack</loc>
+    <loc>https://www.shiftbulk.com/database/belt-cover-application</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/organizations/isithelo-mining-products-and-services/people</loc>
+    <loc>https://www.shiftbulk.com/database/belt-cover-thickness</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/FarrukhZeb</loc>
+    <loc>https://www.shiftbulk.com/database/belt-cover-type</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/H%C3%B2a%C4%90o%C3%A0nQuang</loc>
+    <loc>https://www.shiftbulk.com/database/belt-modulus</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/foo</loc>
+    <loc>https://www.shiftbulk.com/database/belt-types</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/mytest</loc>
+    <loc>https://www.shiftbulk.com/database/belt-width</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/asda</loc>
+    <loc>https://www.shiftbulk.com/database/splice-type</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/users/%5Burl=http:/astra-electric.ru/?id_product=71&amp;controller=product%5D%D1%88%D0%B2%D0%B5%D0%BB%D0%BB%D0%B5%D1%80+%D0%BF+%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D0%B9+%D0%BF%D0%B5%D1%80%D1%84%D0%BE%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9%5B%2Furl%5D</loc>
+    <loc>https://www.shiftbulk.com/database/bearing-deflection-limits</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/TommyTycle</loc>
+    <loc>https://www.shiftbulk.com/database/bearing-life</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/pinupcasino</loc>
+    <loc>https://www.shiftbulk.com/database/belt-sag</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/AlishaFAb</loc>
+    <loc>https://www.shiftbulk.com/database/friction-factor-goodyear</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/testuseronetwothree</loc>
+    <loc>https://www.shiftbulk.com/database/gear-reducer-efficiency</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/test</loc>
+    <loc>https://www.shiftbulk.com/database/induction-motor-efficiency</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/farm</loc>
+    <loc>https://www.shiftbulk.com/database/motor-fos</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/Moushaoutchi</loc>
+    <loc>https://www.shiftbulk.com/database/power-factor-cos-</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/karabobright</loc>
+    <loc>https://www.shiftbulk.com/database/transition-idler-types</loc>
   </url>
   <url>
-    <loc>https://fraternate.herokuapp.com/issues/user/view/pdk</loc>
+    <loc>https://www.shiftbulk.com/database/bearing-housings</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/idler-bearings</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/idler-circlips</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/idler-frame-design</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/idler-roll-material</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/idler-roll-sizes</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/idler-seals</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/5e78298891589e4c88c1c7dd</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/idler-shaft-series</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/idler-type</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/idlers-diameters</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/number-of-rolls</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/wing-roll-angles</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/dust-suppression-and-wash-water</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/electrical-deliverables</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/fire-detection-and-suppression-system</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/general-deliverables</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/mechanical-deliverables</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/project-methodology</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/quality-assurance-deliverables</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/structural-and-civil-deliverables</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/general-notes-electrical</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/general-notes-flooring</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/general-notes-limitations</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/general-notes-machining</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/general-notes-platework</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/general-notes-steelwork</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/general-notes-surface-treatment</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/dust-suppression-system-categories</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/nozzle-types</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/cost-units</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/man-hour-costing</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/project-teams</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/applications</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/conveyor-categories</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/conveyor-components-groups</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/dog-housing</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/electrical-infrastructure</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/fiery-mines</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/hard-commodities</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/material</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/reference-documents</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/units</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/utility-frequencies</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/suppliers</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/abbreviations-and-acronyms</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/glossary</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/categories</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/design-capacity-scenarios</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/drive-friction-factors</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/equipment-types</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/mass-of-rotating-parts-carry</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/mass-of-rotating-parts-return</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/starting-mechanisms</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/fluid-couplings-data</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/fluid-couplings2</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/fluid-coupling-sizes</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/input-coupling-efficiency</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/gear-reducers</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/low-speed-shaft-extension</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/low-speed-shaft-type</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/extra-cooling</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/reducer-ratios</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/gear-units-variations</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/gear-reducer-mounting</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/induction-motor-data</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/output-power</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/motor-rotation</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/terminal-box-locations</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/weg-catalogue</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/motor-poles</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/iec-frame-types</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/iec-efficiency-classes</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/cooling-system-classifications</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/motor-enclosure-types</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/supply-voltage</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/mechanical-couplings</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/flange-couplings</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/flange-coupling-shaft-diameters</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/feasibility-level</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/appendices</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/index</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/functional-specification</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/wbs-breakdown</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/wbs-structure</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/bearing-centers</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/bearing-centers-type</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/hubs-and-bushing</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/journal-shaft-diameters</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/lagging-materials</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/lagging-patterns</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/pulley-diameters</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/pulley-types</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/shaft-diameters</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/standard-pulley-dimensions</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/standard-shaft-dimensions</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/type-of-end-disk</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/type-of-locking-element</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/lessons-learned</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/quality-management-documentation</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/quality-management-system</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/report-and-drawing-templates</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/spreadsheets</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/check-list</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/document-register</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/governing-codes-regulations</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/standards-and-specifications</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/take-up-movement</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/take-up-type</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/chute-design-categories</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/chute-hatch-design-types</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/chute-types</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/wear-liners</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-cleaning-systems</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-illumination</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-joining</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-safety-equipment</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-support-systems</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-tracking-systems</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/dust-suppression-products</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/fire-detection-and-suppression</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/material-storage</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/power-pack-components</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/take-up-assembly</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/transfer-chute-products</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/walkways</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/wheel-drive-systems</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/conveyor-belt-ploughs</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/stage-1-belt-scraper</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/stage-2-belt-scraper</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/flood-lights</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/lighting-mounting</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/mechanical-joins</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/audio-visual-alarms</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/electronic-conventional-sounder</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-misalignment-detectors</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-misalignment</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-rip-detectors</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-rip-detectors-device</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-speed-sensors</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-speed-sensor</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/tachometer-relay</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-tear-detectors</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/tear-detectors-mechanical</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-arrestors</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/controller-systems</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/conveyor-primary-device</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/head-end-control-unit</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/conveyor-trip-switches</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/pigtails</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/pull-switches-pull-keys</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/metal-detectors</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/metal-detection-devices</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/impact-idler-systems</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/slider-skega-beds</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/carry-belt-tracking-systems</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/return-belt-tracking-systems</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/buffer-water-tank</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/liquid-nozzles</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/pump-station</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/fire-extinguisher</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/level-measurement</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/flange-coupling</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/low-speed-holdback</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/load-cell-units</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/load-cells-products</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/screw-take-ups</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/screw-take-up-products</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/sheaves-products</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/vertical-sheaves</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/horizontal-sheaves</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/winch-arrangements</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/motorized-hand-winches</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/take-up-winches</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/wire-rope-products</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/general-engineering-wire-rope-wrc</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/wire-ropes-for-winches-and-hoists</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/belt-sealing-systems</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/chute-sealing-system</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/blocked-chute-probes</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/tilt-switch</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/microwave-switch</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/chute-flange-sealing</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/chute-flange-sealer</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/dog-house-sheeting</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/handrails</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/hinge-kits</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/shop/rail-wheel-drives</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/conveyor-belting</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/design-criteria</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/design-parameters</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/idler-components</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/power-pack-criteria</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/pulleys</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/special-components</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/ply-belting</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/steel-cord-belting</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/belt-cleaning-arrangements</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/conveyor-chute-components</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/pedestrian-crossing-criteria</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/pull-keys</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/spares</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/belt-speed1</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/conveyor-installation</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/conveyor-system</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/design-scenarios</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/drive-system-details</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/idlers</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/materials</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/operating-hours</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/operations</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/power-and-tensions</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/take-up</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/carry-idlers</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/troughing-3-roll-garland</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/troughing-5-roll</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/impact-5-roll</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/picking-centre-roll</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/troughing-2-roll</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/impact-3-roll</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/impact-2-roll</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/1-roll-flat-carry</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/troughing-3-roll</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/idler-rolls</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/idler-roll-sets</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/idler-structure</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/idler-feet</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/idler-h-frames</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/idler-stringers</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/idler-trestles</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/return-idlers</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/1-roll-extended-return</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/1-roll-flat-return</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/2-roll-v-return</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/fluid-couplings</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/gear-units</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/high-speed-couplings</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/induction-motors</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/tru-line-flange-coupling</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/lagging-types</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/pulley-components</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/drive-head</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/components/wheel-drives</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/collections</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/design-system</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/introduction</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/issue-tracking</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/required-site-testing</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/road-map</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/components-page</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/database-page</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/shop-page</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/documentation/workspace-page</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/issues/closed</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/Blank</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/www.ringspann.co.za</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/Health%20,%20Safety%20and%20the%20Environment</loc>
+  </url>
+  <url>
+    <loc>https://www.shiftbulk.com/database/AATC000170</loc>
   </url>
 </urlset>

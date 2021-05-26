@@ -1,50 +1,51 @@
  <!DOCTYPE html>
  <html>
  <head>
+
+
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="{{sitedescription}}">
+  <meta name="author" content="{{author}}">
   <meta name="msvalidate.01" content="6F54F88A443C656EFB178CEF11C4E7E9" />
   <meta name="google-site-verification" content="V6ZQykcqytIxvH_JCfowxQfGXB9Qn-rgaQ-iIrtoW3c" />  
-    <meta name="flattr:id" content="ljw99y">
-    <script data-ad-client="ca-pub-4051238795083187" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta name="flattr:id" content="ljw99y">
+  <meta name="theme-color" content="#212529"/>
   <title>{{pagetitle}}</title>
-  {{> css}}
+  {{>structureddata}}
+  {{>css fontawesome=true bootstrap=true jstree=true datatable=true bootstrap-select=true quillbootstrap=true}}
+  {{>javascript bootstrap=true datatable=true fontawesome=true jstree=true readmore=true selectpicker=true quill=true}}
 </head>
 <body>
- 
-  {{> javascript}}
-  {{> header}}
-  <style type="text/css">
-    .dt-buttons {
-      padding-top: 15px;
-    }
-  </style>
-  <div class="container" style="padding-top:55px" >
-   {{{body}}}
- </div>
- {{#if user}}
- <!-- Modal -->
- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myModal">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-body"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       <div id="modal-body"></div>
-       <div id="formAreaModal">
-        <div style="text-align: center">
-          <pre><i class="fa fa-spinner fa-spin fa-fw"></i><span class=" ">Loading...</span></pre>
+
+
+  {{#if user}}
+  <!-- Modal -->
+  <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myModal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <div id="modal-body"></div>
+         <div id="formAreaModal">
+          <div style="text-align: center">
+            <pre><i class="fa fa-spinner fa-spin fa-fw"></i><span class=" ">Loading...</span></pre>
+          </div>
         </div>
       </div>
     </div>
-   
   </div>
-</div>
 </div> 
 {{/if}}
-{{> footer}}
+{{> navigation}}
+
+<div class="container-fluid" >
+  {{{body}}}
+  {{> topofpage}}
+</div>
 {{> analytics}}
+{{> footer}}
 </body>
 </html>
 

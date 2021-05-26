@@ -1,8 +1,10 @@
 {
   "name": "Fraternate",
-  "description": "",
+  "description": "A user and organization subscription management boilerplate.",
+  "tagline" : "A user and organization subscription management boilerplate.",
   "sitename" : "Fraternate",
   "website" : "https://fraternate.herokuapp.com/",
+    "logo":"/img/Logo square inverse 300x300.png",
   "repo" : "https://github.com/Isithelo/Fraternate",
   "scripts": {
   },

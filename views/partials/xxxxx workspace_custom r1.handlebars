@@ -1,0 +1,95 @@
+<style type="text/css">
+  .card-columns2 {
+    -webkit-column-count:3
+    -moz-column-count: 3;
+    column-count: 3;
+  } 
+</style>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Overview</a>
+  </li>
+<!--
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+  </li>
+-->
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <br>
+    <div id="cardProfile"><i class="fas fa-circle-notch fa-spin"></i></div>
+    <script type="text/javascript">
+      viewpageajax('cardProfile','{{user._id}}')
+      function viewpageajax(location,userid) {
+        loadingSpinner(location)
+        jQuery.ajax({
+          'async': true,
+          'global': false,
+          'url': '/templates/getlatestajaxbyparent_user/'+'5fa10d3e80091480e4945714'+'/'+userid+'/6',
+          'success': function (dataSchemaObject) {
+            printCards(location,dataSchemaObject)  
+          }
+        });
+      }
+      function loadingSpinner(location){
+        var html= ''
+        html+='<div id="loader-wrapper">'
+        html+='<div id="loader"></div>'
+        html+='</div>  '
+        $('#'+location).html(html)
+      }
+      function printCards(location,dataSchemaObject){
+//    console.log(dataSchemaObject)
+var html= ''
+html +='<div class="card-columns card-columns2">'
+html+='<div class="card bg-primary text-white text-center p-3" style="min-height: 150px">'
+html+='<blockquote class="blockquote mb-0">'
+html+='<p><p><i class="far fa-smile"></i>  Welcome to {{sitename}}.</p></p>'
+html+='<footer class="blockquote-footer text-white">'
+html+='<small>'
+html+='<cite title="Source Title">Signed up  {{dateFormat user.createdAt}}</cite>'
+html+='</small>'
+html+='</footer>'
+html+='</blockquote>'
+html+='</div>'
+for (var i = 0; i < dataSchemaObject.length; i++) {
+ html+='<div class="card " >'
+ html+='<div class="card-body" style="">'
+ html+='<p class="card-title" style="color: grey"><small>Last Edit : '+dataSchemaObject[i].created+'</small></p>'
+ html+='<h5 class="card-title"><a href="#" id="'+dataSchemaObject[i].elementID+'_clickid" onclick="assyNavclick_project_list(this.id)" class="">'+dataSchemaObject[i].entry['5fa1501127d35c519c0c11f7']+'</a></h5>'
+ if (dataSchemaObject[i].entry['5fa1501a27d35c519c0c11f8']) {
+   html+='<p class="card-text"><small>'+dataSchemaObject[i].entry['5fa1501a27d35c519c0c11f8']+'</small> </p>' 
+ }
+ 
+     //html+='<p class="card-text"><span class="badge badge-primary">'+dataSchemaObject[i]._id+'</span> </p>'
+     html+='</div>'
+     html+='</div>'
+   }
+   html+='<div class="card  text-center" >'
+   html+='<div class="card-body" style="border-width: 1px; border-style: dashed; border-color: grey;padding:15px;border-radius: 2px;min-height: 350px">'
+   html+='<h5 class="card-title" style="color: grey"><small>Get started by creating a design , or experiment with the demo conveyor.</small></h5>'
+   html+='<h5 class="card-title display-4 mt-4">Create a New Design</h5>'
+   html+='<p class="card-text mt-5"><small>Start designing   <i class="fas fa-arrow-right"></i>  </small><a href="#"  onclick="ajaxNavigationForm('+"'tablecontainer'"+')" class="btn btn-success my-2 my-sm-0 mr-1"><i class="far fa-folder-open" ></i> New Project</a></p>'
+   html+='</div>'
+   html+='</div>'
+   html+='</div>'
+   $("#"+location).html(html);
+ }
+
+</script>
+{{#if user}}
+{{else}}
+<div class="alert alert-warning" role="alert">
+  Sign up and add your profile to {{siteName}}.  <a href="/signup" class="btn btn-success ml-2">Sign up</a>
+</div>
+{{/if}}
+</div>
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+</div>
+<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+</div>
+</div>

@@ -1,0 +1,453 @@
+<script rel="preconnect" type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAA8gCQ83YdkeNR3tTjcQRC-JkS57Y6OYY&#038;ver=4.6.1'></script> 
+  <style type="text/css">
+  #map_canvas{
+    height: 250px;
+  }
+</style>
+<div class="row">
+<div class="col-6">
+  <p></p>
+   <h3>Get Started</h3>
+ <p>Get started by creating an operation and a conveyor.</p>
+  <div > <div class="btn-group" role="group" aria-label="...">
+  <a href="/components/query/default/58fdb5100c8b981ccc7c242c" role="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> New Operation</a>
+  <a href="/components/query/default/5902cfc1d8bc512b40c9b172" role="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> New Conveyor</a>
+  </div>
+</div>
+<p></p>
+<p>Filter Data </p>
+   <div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-users" ></i> Public</button>
+  <button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-user"></i> Private</button>
+  </div>
+<p></p>
+</div>
+  <div class="col-6">
+    <div style="padding-top: 15px">
+      <div id="map_canvas"></div>
+      <p></p>
+    </div>
+  </div>
+  <div class="col-12">
+    <div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li  class="nav-item" role="presentation"><a  class="nav-link active" href="#OperationsTab" aria-controls="OperationsTab" role="tab" data-toggle="tab">Operations <img src="https://maps.google.com/mapfiles/ms/icons/blue-dot.png"  alt="Mining operation map marker" style="height:20px"></a></li>
+        <li  class="nav-item" role="presenttion"><a  class="nav-link" href="#ConveyorsTab" aria-controls="ConveyorsTab" role="tab" data-toggle="tab">Conveyors <img src="https://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="Mining conveyor map marker" style="height:20px"></a></li>
+        </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tab-pane" class="tab-pane fade show active" id="OperationsTab">
+         <p></p>
+         <p>The table below shows the collection of operations on Shiftbulk. </p>
+         <table id="operationTable" class="table  table-hover  table-bordered" cellspacing="0" width="100%" style="">
+          <thead>
+            <tr>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div role="tab-pane" class="tab-pane" id="ConveyorsTab">
+       <p></p>
+       <p>The table below shows the collection of conveyors on Shiftbulk.</p>
+       <table id="conveyorTable" class="table table-hover table-bordered" cellspacing="0" width="100%" style="">
+        <thead>
+          <tr>
+            <th>Conveyor Name</th>
+            <th>Operation</th>                        
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+   
+</div>
+ 
+<script type="text/javascript">
+  $('#filters').html('')
+  var map;
+  var infoWindows = Array();
+  var markers = [];
+  var markerStorageArray = [];
+  var operations =[]
+  var conveyors =[]
+  var infowindow = new google.maps.InfoWindow({});
+  //bouunding box for zoom variable
+  var latlngbounds = new google.maps.LatLngBounds();
+var users = []
+  {{#each user}}
+ 
+ users.push("{{this}}")
+ 
+  {{/each}}
+   
+// A $( document ).ready() block.
+$( document ).ready(function() {
+      //the get get from inputs for all page loading.
+      jQuery.ajax({
+        'async': true,
+        'global': false,
+        'url': '/components/query/querythis?querykey='+"parentid"+'&queryinput='+"5902cfc1d8bc512b40c9b172",
+        'success': function (dataSchemaObject) {   
+          conveyorData = rebuildCV(dataSchemaObject)
+          buildDataCV()
+          loadTablesCV()
+          initialize();
+        }
+      });
+      jQuery.ajax({
+        'async': true,
+        'global': false,
+        'url': '/components/query/querythis?querykey='+"parentid"+'&queryinput='+"58fdb5100c8b981ccc7c242c",
+        'success': function (dataSchemaObject) {   
+          operationData = rebuildOP(dataSchemaObject)
+          buildDataOP()
+          loadTablesOP()
+          initialize();
+        }
+      });
+    });
+//restructure the data from the server into the table formating.
+function buildDataCV() {
+  if (conveyorData.length != 0 ) { 
+    for (var i = 0; i < conveyorData.length; i++) {
+      conveyors.push([conveyorData[i]["Name"],  parseFloat(conveyorData[i]["Latitude"]),parseFloat(conveyorData[i]["Longitude"]),conveyorData[i]["Operation"],conveyorData[i]["User"]])
+    }
+  }
+}
+//restructure the data from the server into the table formating.
+function buildDataOP() {
+  if (operationData.length != 0 ) {
+    for (var i = 0; i < operationData.length; i++) {
+      operations.push([operationData[i]["Name"],    parseFloat(operationData[i]["Latitude"]),parseFloat(operationData[i]["Longitude"]),operationData[i]["Name"],operationData[i]["User"]])
+    }
+  }
+}
+//The format of the information from the database , although great for databasing , does not suit most javascript intergration viewers and apps. so needs to be changed. Great....
+function rebuildCV(data){
+//poulate the array
+var temp = []
+for (var i = 0; i < data.length; i++) {
+  temp.push({
+    '_id': data[i].elementID,
+    'Name': data[i].entry['5902d04ed8bc512b40c9b179'],
+    'Latitude':  data[i].entry['5902d044d8bc512b40c9b177'],
+    'Longitude':  data[i].entry['5902d049d8bc512b40c9b178'],
+    'Operation':  data[i].entry['5902d054d8bc512b40c9b17a'],
+    'Conveyor Name' :  data[i].entry['5902d04ed8bc512b40c9b179'],
+    'User' :  data[i].userID
+  })
+}
+return temp
+}
+//The format of the information from the database , although great for databasing , does not suit most javascript intergration viewers and apps. so needs to be changed. Great....
+function rebuildOP(data){
+//poulate the array
+var temp = []
+for (var i = 0; i < data.length; i++) {
+  temp.push({
+    '_id': data[i].elementID,
+    'Name': data[i].entry['58fdb4d10c8b981ccc7c2429'],
+    'Latitude':  data[i].entry['58fdb49e0c8b981ccc7c2424'],
+    'Longitude':  data[i].entry['58fdb4b20c8b981ccc7c2426'],
+    'User' :  data[i].userID
+  })
+}
+return temp
+}
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(0, 0);
+  var myOptions = {
+    zoom : 1,
+    center: latlng,
+    mapTypeId: google.maps.MapTypeId.MAPS
+  }
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  //bouunding box for zoom variable
+  latlngbounds = new google.maps.LatLngBounds();
+  setMarkersConveyors(conveyors)
+  setMarkersOperations(operations)
+  //zoom fit variable
+  map.fitBounds(latlngbounds);
+}
+//conveyors
+function setMarkersConveyors(locationsCV) {
+  if (locationsCV.length!= null) {
+    for (var j = 0; j < locationsCV.length; j++) {
+      var temp = locationsCV[j];
+      var myLatLng2 = new google.maps.LatLng(parseFloat(temp[1]),parseFloat( temp[2]));
+//bounding box stroage area.
+latlngbounds.extend(myLatLng2);
+var content = "<h5>Conveyor Name : "+locationsCV[j][0]+"<h5>" +
+"<p>Latitude : "+locationsCV[j][1]+" <p>" +
+"<p>Longitude : "+locationsCV[j][2]+"</p>" +
+"<p>Operation : "+locationsCV[j][3]+"</p>"
+//"<p>User : "+locationsCV[j][4]+"</p>"
+var marker = new google.maps.Marker({
+  position: myLatLng2,
+  map: map,
+  icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',        
+  animation: google.maps.Animation.DROP,
+  title: temp[0],
+  info : content,
+  infoWindowIndex : j //<---Thats the extra attribute
+});
+var infoWindow = new google.maps.InfoWindow({
+  content : content
+});
+google.maps.event.addListener(marker, 'click', function () {
+  infowindow.setContent(this.info);
+  infowindow.open(map, this);
+});
+infoWindows.push(infoWindow);
+// Push marker to markers array
+markers.push(marker);
+}
+}  
+}
+//operations
+function setMarkersOperations(locations) {
+  if (locations.length!= null) {
+    for (var i = 0; i < locations.length; i++) {
+      var temps = locations[i];
+      var myLatLng = new google.maps.LatLng(parseFloat(temps[1]),parseFloat( temps[2]));
+//bounding box stroage area.
+latlngbounds.extend(myLatLng);
+var content = "<h5>Operation Name: "+locations[i][0]+"<h5>" +
+"<p>Latitude : "+locations[i][1]+" <p>" +
+"<p>Longitude : "+locations[i][2]+"</p>" 
+//"<p>User : "+locations[i][4]+"</p>"
+var marker1 = new google.maps.Marker({
+  position: myLatLng,
+  map: map,
+  icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',        
+  animation: google.maps.Animation.DROP,
+  title: temps[0],
+  info : content,
+  infoWindowIndex : i //<---Thats the extra attribute
+});
+var infoWindow = new google.maps.InfoWindow({
+  content : content
+});
+google.maps.event.addListener(marker1, 'click', function () {
+  infowindow.setContent(this.info);
+  infowindow.open(map, this);
+});
+infoWindows.push(infoWindow);
+// Push marker to markers array
+markers.push(marker1);
+}
+} 
+}
+//here is the array filter for the data set
+$('#filterOps').change(function(){
+  var operations =[]
+  var conveyors =[]
+// Loop through markers and set map to null for each
+for (var i=0; i<markers.length; i++) {
+  markers[i].setMap(null);
+}
+// Reset the markers array - filter operations
+markers = [];
+var filterArray = $('#filterOps .selectpicker').val()
+if (filterArray != null){
+// Reset the markers array - filter conveyor
+for (var i = 0; i < conveyorData.length; i++) {
+  for (var j = 0; j < filterArray.length; j++) {
+    if (filterArray[j] == conveyorData[i]["Name"]) {
+      conveyors.push([conveyorData[i]["Name"],  parseFloat(conveyorData[i]["486"]),parseFloat(conveyorData[i]["487"])])
+    }
+  }
+}
+//bouunding box for zoom variable
+latlngbounds = new google.maps.LatLngBounds();
+setMarkersOperations(operations)
+setMarkersConveyors(conveyors)
+//zoom fit variable
+map.fitBounds(latlngbounds);
+}
+})
+//here is the array filter for the data set
+$('#filterConv').change(function(){
+  var operations =[]
+  var conveyors =[]
+// Loop through markers and set map to null for each
+for (var i=0; i<markers.length; i++) {
+  markers[i].setMap(null);
+}
+// Reset the markers array - filter operations
+markers = [];
+var filterArray = $('#filterConv .selectpicker').val()
+if (filterArray != null){
+// Reset the markers array - filter conveyor
+for (var i = 0; i < conveyorData.length; i++) {
+  for (var j = 0; j < filterArray.length; j++) {
+    if (filterArray[j] == conveyorData[i]["Name"]) {
+      conveyors.push([conveyorData[i]["Name"],  parseFloat(conveyorData[i]["486"]),parseFloat(conveyorData[i]["487"])])
+    }
+  }
+}
+}
+//bouunding box for zoom variable
+latlngbounds = new google.maps.LatLngBounds();
+setMarkersOperations(operations)
+setMarkersConveyors(conveyors)
+//zoom fit variable
+map.fitBounds(latlngbounds);
+})
+function loadTablesCV() {
+///////////////////////////////////////
+///////   CONVEYOR TABLE   ///////////
+/////////////////////////////////////
+//console.log(conveyorData)
+var html = ""
+for (var i = 0; i < conveyorData.length; i++) {
+  html += '<tr id="'+conveyorData[i]["_id"]+'" onclick="viewzoomCV(this.id)">'
+  html += '<td>'+conveyorData[i]["Name"]+'</td>'
+  html += '<td>'+conveyorData[i]['Operation']+'</td>'    
+ // html += '<td >'+'<div class="profile_pic_small" data-userid="'+conveyorData[i]['User']+'" data-loaded="false"></div>'+'</td>'
+  html += '</tr>'
+}
+$('#conveyorTable tbody').html(html)
+var tableCV = $('#conveyorTable').DataTable({
+  "destroy":true,
+  "pagingType": "numbers",
+});
+homePics()
+} 
+function loadTablesOP() {
+////////////////////////////////////////
+///////   OPERATION TABLE   ///////////
+//////////////////////////////////////
+var html = ""
+for (var i = 0; i < operationData.length; i++) {
+  html += '<tr id="'+operationData[i]['_id']+'" onclick="viewzoomOP(this.id)">'
+  html += '<td>'+operationData[i]['Name']+'  </td>'
+ // html += '<td >'+'<div class="profile_pic_small" data-userid="'+operationData[i]['User']+'" data-loaded="false"></div>'+'</td>'
+  html += '</tr>'
+}
+$('#operationTable tbody').html(html)
+var table = $('#operationTable').DataTable({
+  "destroy":true,
+  "pagingType": "numbers",
+});
+// Add event listener for opening and closing details 
+homePics()
+} 
+/////////////////////////////////////////////
+////////   BRING IN ALL PROFILE PICS ///////
+///////////////////////////////////////////
+function homePics(){
+  $('.profile_pic_small').each(function(index ){
+    var ids = $(this).data('userid')
+    if ($(this).data('loaded')==false) {
+      var location = this
+      jQuery.ajax({
+        'url': '/profilepic?ids='+ids,
+        'async': true,
+        'global': false,
+        'success': function (dataSchemaObject) {
+         var dataSchemaObject = JSON.parse(dataSchemaObject)
+         var html=''
+         if (dataSchemaObject) {
+          if (dataSchemaObject.username) {
+            html+='<div class="row">'
+            html+='<div class="col-xs-3 col-4">'
+            html+='<a href="/users/'+dataSchemaObject.username+'" class="thumbnail">'
+            html+='<img src="'+dataSchemaObject.image+'">'
+            html+='</a>'
+            html+='</div>'
+            html+='<div class="col-xs-3 col-8">'
+            html+='<a href="/users/'+dataSchemaObject.username+'" >'
+            html+=''+dataSchemaObject.username+''
+            html+='</a>'
+            html+='</div>'
+            html+='</div>'
+          }
+        } else {
+          html+=''
+        }
+        $(location).html(html)
+      },'error' : function(err){
+        console.log(err)
+      }
+    });
+      $(this).data('loaded','true')
+    } else {
+      console.log($(this).data('userid'),' : pic loaded')
+    }
+  })
+}
+////////////////////////////////////////////////////////////////////
+////////////        FORMIDABLE VIEW EXTRA DETAIL         ///////////
+///////////////////////////////////////////////////////////////////
+function formatDefaultconveyors ( d ) {
+  // `d` is the original data object for the row
+  var html=''
+  html='<h4>Options</h4>'
+  html += '<div id="'+d+'_content" style="padding-top:0px;text-align:left">'
+  html += '<div class="btn-group" role="group" aria-label="..." style="padding-bottom:15px">'
+  html += '<button type="button" class="btn btn-outline-secondary" id="'+d+'" onclick="viewzoomCV(this.id)" data-toggle="tooltip" data-placement="top" title="View conveyor."><img src="https://maps.google.com/mapfiles/ms/icons/yellow-dot.png" style="height:15px;"> View</button>'
+  html += '</div>'
+  html += '<div class="btn-group" role="group" aria-label="..." style="padding-bottom:15px;padding-left:15px">'
+  html += '<button type="button" class="btn btn-outline-secondary" id="'+d+'" onclick="getconveyorDefault(id)"  data-toggle="modal" data-target="#myModal" data-toggle="tooltip" data-placement="top" title="Edit ths item.">Modify</button>'
+  html += '<button type="button" class="btn btn-outline-secondary" data-_id="'+d+'" id="'+d+'_downloadlink" data-toggle="modal" data-target="#myModal" onclick="deleteConveyormodal(this.id)"  data-toggle="tooltip" data-placement="top" title="Delete this item">Delete</button>'
+  html += '</div>'
+  html += '</div>'
+  return html;
+}
+////////////////////////////////////////////////////////////////////
+////////////        FORMIDABLE VIEW EXTRA DETAIL         ///////////
+///////////////////////////////////////////////////////////////////
+function formatDefaultoperations ( d ) {
+  //console.log('entering formatDefault')
+  // `d` is the original data object for the row
+  var html=''
+  html='<h4>Options</h4>'
+  html += '<div id="'+d+'_content" style="padding-top:0px;text-align:left">'
+  html += '<div class="btn-group" role="group" aria-label="..." style="padding-bottom:15px">'
+  html += '<button type="button" class="btn btn-outline-secondary" id="'+d+'" onclick="viewzoomOP(this.id)" data-toggle="tooltip" data-placement="top" title="View operation."><img src="https://maps.google.com/mapfiles/ms/icons/blue-dot.png" style="height:15px"> View</button>'
+  html += '</div>'
+  html += '<div class="btn-group" role="group" aria-label="..." style="padding-bottom:15px;padding-left:15px">'
+  html += '<button type="button" class="btn btn-outline-secondary" id="'+d+'" onclick="getoperationDefault(id)"  data-toggle="modal" data-target="#myModal" data-toggle="tooltip" data-placement="top" title="Edit ths item.">Modify</button>'
+  html += '<button type="button" class="btn btn-outline-secondary" data-_id="'+d+'" id="'+d+'_downloadlink" data-toggle="modal" data-target="#myModal" onclick="deleteOperationmodal(this.id)"  data-toggle="tooltip" data-placement="top" title="Delete this item">Delete</button>'
+  html += '</div>'
+  html += '</div>'
+  return html;
+}
+////////////////////////////////////////// 
+//////  MAP  ZOOM VIEW CONVEYORS   //////
+/////////////////////////////////////////
+function viewzoomCV(_id){
+  for (var i = 0; i < conveyorData.length; i++) {
+    if (_id == conveyorData[i]['_id']) {
+      console.log()
+      var latLng = new google.maps.LatLng(conveyorData[i]['Latitude'], conveyorData[i]['Longitude']);
+      map.panTo(latLng);
+      map.setZoom(16);
+      map.setMapTypeId('hybrid');
+    }
+  }
+}
+////////////////////////////////////////// 
+//////  MAP  ZOOM VIEW OPERATIONS   //////
+/////////////////////////////////////////
+function viewzoomOP(_id){
+ _id = _id.replace('', '');
+ for (var i = 0; i < operationData.length; i++) {
+  if (_id == operationData[i]['_id']) {
+    console.log()
+    var latLng = new google.maps.LatLng(operationData[i]['Latitude'], operationData[i]['Longitude']);
+    map.panTo(latLng);
+    map.setZoom( 13);
+    map.setMapTypeId('hybrid');
+  }
+}
+}
+</script>

@@ -1,0 +1,159 @@
+
+redundant
+redundant
+redundant
+redundant
+redundant
+redundant
+redundant
+redundant
+redundant
+redundant
+redundant
+
+
+<nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="full-width" id="headerload"></div>
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="/" style="padding: 8px 0px 5px 11px">
+        <img alt="{{siteName}}" src="/img/Logo square inverse 50x50.png" style="height: 35px;width:35px;padding: 5px"> 
+      </a> 
+      <a class="navbar-brand" href="/">{{siteName}}</a>
+    </div>
+    <!-- Expanded navigation -->
+ 
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+        <!-- Main navigation -->
+        <ul class="nav navbar-nav"  style="overflow:auto;">
+          <!-- Custom Content goes here. -->
+          <li>
+            <a href="/database/view" >Database</a>
+          </li> 
+          <li>
+            <a href="/components/view">Components</a>
+          </li> 
+          <li>
+            <a href="/shop/view">Shop</a>
+          </li> 
+ 
+ 
+
+          <!-- Custom Content goes here. -->
+        </ul>
+        <ul class="nav navbar-nav navbar-right" id="deploy">
+          <!-- Custom Content goes here. -->
+          {{#unless user}}
+          <!-- Custom Content goes here. -->
+          <li>
+            <a href="/introduction">Introduction</a>
+          </li> 
+          <!-- Custom Content goes here. -->
+          {{/unless}}
+          <!-- Custom Content goes here. -->
+          <!-- Custom Content goes here. -->
+          {{#if user}}
+
+          <li>
+            <a href="/assemblies/view">Assemblies</a>
+          </li> 
+          <li>
+            <a href="/tools/view" >Tools</a>
+            <!--LEGACY <a href="/scada/view">Data Analysis</a>-->
+          </li> 
+          <li class="dropdown" data-toggle="tooltip" data-placement="right" title="Create new.">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus" aria-hidden="true"></i> <span class="caret"></span></a>
+            <ul class="dropdown-menu" id="component">  
+              <li><a href="/organizations/new-payfast">New Organization</a></li>
+            </ul>
+          </li>
+          {{/if}}
+          <!-- Custom Content goes here. -->
+          <!-- Custom Content goes here. -->
+          {{#if user}}
+          <li class="dropdown" data-toggle="tooltip" data-placement="right" title="View profile and more.">
+            <a href="#" data-toggle="dropdown" class="navbar-avatar dropdown-toggle" >
+              {{#if user.image}}
+              <img src="{{user.image}}" class="navbar-avatar-pic" style="border-radius: 2px">
+              {{else}}
+              <img src="{{user.gravatar}}" class="navbar-avatar-pic" style="border-radius: 2px">
+              {{/if}}
+              <i class="caret"></i>
+            </a>
+            <ul class="dropdown-menu"  id="usermenu"> 
+              <li><a >Signed in as <strong>{{user.username}}</strong>  </a></li>
+              <li class="divider"></li>    
+              <li><a href="/users/{{user.username}}">Your Profile</a></li>
+              <li><a href="/users/{{user.username}}/settings/profile">Settings</a></li>
+              <li><a href="/introduction">Introduction</a></li>
+              <li class="divider"></li>  
+              <li><a href="/issues/view">Issues</a></li>
+              <li class="divider"></li>  
+              <li><a href="/signout">Sign out</a></li>
+            </ul>
+          </li>
+          {{else}}
+             <li style="display: inline-flex;color: grey;"><a href="/signin">Sign in</a> <p>or</p> <a href="/signup">Sign up</a> 
+          {{/if}}
+          <!-- Custom Content goes here. -->
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+    
+ 
+
+  <!-- /.container-fluid -->
+</nav>
+<style type="text/css">
+#headerload {
+  width: 100%;
+  height: 1px;
+  padding: 0px;
+}
+
+#headerload > svg {
+  width: 100%;
+  display: block; height: 4px;
+}
+</style>
+
+<script type="text/javascript">
+  var progressBar = new ProgressBar.Line('#headerload', {
+    easing: 'easeInOut',
+    from: {color: '#ef4e7b'},
+    to: {color: '#0366d6'},
+    duration: 1400,fill: 'rgba(0, 0, 0, 0.5)',
+    step: (state, bar) => {
+      bar.path.setAttribute('stroke', state.color);
+    }
+  });
+  progressBar.animate(1.0, {
+    duration: 800
+  }, function() {
+    $('#headerload').html('')
+  });
+
+
+
+</script>
+{{#if user}}
+
+
+
+<script type="text/javascript">
+ var user = JSON.parse(JSON.stringify('{{user.permission}}'))
+///////////////////////////// 
+//////  INITIALISE    //////
+/////////////////////////// 
+$( document ).ready(function() {
+  if (user=='superadmin') {
+    $("#usermenu").append('<li class="divider"></li> <li><a href="/configuration/view"><i class="fa fa-cog" aria-hidden="true"></i> Configuration</a></li><li><a href="/forms/view"><i class="fa fa-cog" aria-hidden="true"></i> Forms</a></li>')
+  }
+});
+</script>
+{{/if}}

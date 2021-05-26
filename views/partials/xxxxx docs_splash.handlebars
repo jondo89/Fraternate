@@ -1,0 +1,32 @@
+<div class="row">
+  {{#if navmenu.0.entry.image}}
+  <div class="col-9">
+    {{else}}
+    {{#if navmenu.0.image}}
+    <div class="col-9">
+      {{else}}
+      <div class="col-12">
+       {{/if}}
+       {{/if}}
+    
+      <p class="lead">
+        {{dots 555 navmenu.0.entry.detail}}
+      </p>
+    </div>
+    {{#if navmenu.0.entry.image}}
+    <div class="col-3" style="text-align: right;">  
+      <img class="img-thumbnail rounded " style="border-color:black;padding: 0px" src="{{navmenu.0.entry.image}}">    
+    </div>
+    {{/if}}
+    {{#if navmenu.0.image}}
+    <div class="col-3" style="text-align: right;">  
+      <img class="img-thumbnail rounded " style="border-color:black;padding: 0px" src="{{navmenu.0.image}}">    
+    </div>
+    {{/if}}
+    <div class="col-md-12">
+      <br>
+      {{>docs_groupcollection}}
+    </div>
+  </div>
+  <nav>
+    <br>

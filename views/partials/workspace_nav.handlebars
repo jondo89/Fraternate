@@ -1,0 +1,59 @@
+
+  <div class="container-fluid workspace-tab-header" >
+    <div class="row"  >
+      <div class="col-md-8 m">
+        <ul class="list-inline mt-3 ml-2">
+          <li class="list-inline-item">
+            <i class="far fa-file-alt"></i>
+          </li>
+          <li class="list-inline-item">
+            {{#if organization_name}}  
+            <h5 style="font-weight: 400">
+              <a href="/workspace/org/{{organization_name}}">
+                {{organization_name}}
+              </a>
+            </h5>
+            {{else}}
+            <h5>
+              <a href="/workspace/">
+                {{username}}
+              </a>
+            </h5>
+            {{/if}}
+          </li>
+          <li class="list-inline-item">/
+          </li>
+          <li class="list-inline-item">
+            {{#if organization_name}}  
+            <h5>
+              <a href="/workspace/org/{{organization_name}}/{{slug}}">
+                {{dots 55 slug}}
+              </a>
+            </h5>
+            {{else}}
+            <h5>
+              <a href="/workspace/user/{{username}}/{{slug}}">
+                {{dots 55 slug}}
+              </a>
+            </h5>
+            {{/if}}
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 text-right">
+        <br>
+        {{>issuebutton parentid=slug}}
+      </div>
+    </div>
+    <ul class="nav nav-tabs mt-2">
+      <li class="nav-item">
+        <a class="nav-link {{#if assembly}}active{{/if}}" href="/workspace/{{#if organization_name}}org/{{organization_name}}{{else}}user/{{username}}{{/if}}/{{slug}}"><i class="fas fa-cogs"></i> Assembly</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{#if revision}}active{{/if}}" href="/workspace/{{#if organization_name}}org/{{organization_name}}{{else}}user/{{username}}{{/if}}/{{slug}}/issues" tabindex="-1" aria-disabled="true"><i class="fas fa-history"></i> Revision History</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{#if capacity}}active{{/if}}" href="/workspace/{{#if organization_name}}org/{{organization_name}}{{else}}user/{{username}}{{/if}}/{{slug}}/belt-capacity" tabindex="-1" aria-disabled="true">  Belt Capacity</a>
+      </li>
+    </ul>
+  </div>

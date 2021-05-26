@@ -1,6 +1,8 @@
 User-Agent: *
 Disallow: 
 Disallow: /users/
+Disallow: /assemblies/
+Disallow: /tools/
 Disallow: /organizations/
 Disallow: /signin
 Disallow: /signup
@@ -17,6 +19,7 @@ Disallow: /contact/
 Disallow: /account/
 Disallow: /signup/
 Disallow: /issues/new/
+Disallow: /issues/view/
 Disallow: /issues/view/issues/
 Disallow: /signin/
 Disallow: /signin/
@@ -27,4 +30,4 @@ Disallow: /unlink/
 Disallow: /auth/
 Disallow: /licence/
 
-Sitemap: https://fraternate.herokuapp.com/sitemap.xml
+Sitemap: https://www.shiftbulk.com/sitemap.xml

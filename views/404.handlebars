@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Error 404 | {{siteName}}</title>
-  {{> css}}
+  <title>Error 404 | {{sitename}}</title>
+  {{>css fontawesome=true bootstrap=true }}
+  {{>javascript bootstrap=true }}
   <style type="text/css">
     .outer{
       background-color: rgba(0,0,0,0.5);
@@ -16,39 +17,79 @@
 </head>
 <body>
   {{> javascript}}
-  {{> header}}
-  <div >
-   <div class="container" style="padding-top:6px " >
-    <div class="row">
-      <div class="col-md-6" >
-        <h1 id="descriptions"></h1>
-        <p id="details"></p>
+  {{> navigation}}
+<style type="text/css">
+  * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+#notfound {
+  position: relative;
+  height: 100vh;
+}
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.notfound {
+  max-width: 920px;
+  width: 100%;
+  line-height: 1.4;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.notfound .notfound-404 {
+  position: absolute;
+  height: 100px;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: -1;
+}
+.notfound .notfound-404 h1 {
+  font-family: 'Maven Pro', sans-serif;
+  color: #ececec;
+  font-weight: 900;
+  font-size: 276px;
+  margin: 0px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+@media only screen and (max-width: 480px) {
+  .notfound .notfound-404 h1 {
+    font-size: 162px;
+  }
+  .notfound h2 {
+    font-size: 26px;
+  }
+}
+</style>
+  <div id="notfound">
+    <div class="notfound">
+      <div class="notfound-404">
+        <h1>404</h1>
       </div>
-      <div class="col-md-6  text-right">
-      </div>
-    </div>
-  </div> 
-</div>
-<div class="cta-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12" style="padding-top: 95px">
-        <div class="well outer" style="color: white">
-         <h1> 
-           ERROR 404
-         </h1>
-         <h1> 
-           This is not the page you are looking for...
-         </h1>
-         <p style="padding-top: 15px"> 
-          Use the navigation menu to browse the site.
-        </p>
-      </div>
+      <h2 class="display-1">We are sorry, Page not found!</h2>
+      <p>The page you are looking for might have been removed, had its name changed or is temporarily unavailable.</p>
+      <a class="btn btn-outline-primary btn-lg" href="/">Back To Homepage</a>
     </div>
   </div>
-</div>
-</div>
+{{> footer}}
 {{> analytics}}
 </body>
 </html>
-

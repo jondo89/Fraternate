@@ -1,0 +1,47 @@
+<div class="row">
+  {{#if navmenu.0.entry.image}}
+  <div class="col-9">
+    {{else}}
+    {{#if navmenu.0.image}}
+    <div class="col-9">
+      {{else}}
+      <div class="col-12">
+       {{/if}}
+       {{/if}}
+       <h1 class="display-4" style="min-height: 67px" >
+        {{#unless navmenu.0.entry.icon}}
+        <span class="doc_html_icon">
+          <i class="display-4 far fa-folder-open"></i> 
+        </span>
+        {{else}}
+        <span class="doc_html_icon">
+          <i class="display-4 {{navmenu.0.entry.icon}}"></i> 
+        </span>
+        {{/unless}}      
+        {{#if navmenu.0.entry.descriptionpage}}
+        {{navmenu.0.entry.descriptionpage}}
+        {{else}}
+        {{navmenu.0.name}}
+        {{/if}}   
+      </h1>
+      <p class="lead">
+        {{dots 555 navmenu.0.entry.detail}}
+      </p>
+    </div>
+    {{#if navmenu.0.entry.image}}
+    <div class="col-3" style="text-align: right;">  
+      <img class="img-thumbnail rounded " style="border-color:black;padding: 0px" src="{{navmenu.0.entry.image}}">    
+    </div>
+    {{/if}}
+    {{#if navmenu.0.image}}
+    <div class="col-3" style="text-align: right;">  
+      <img class="img-thumbnail rounded " style="border-color:black;padding: 0px" src="{{navmenu.0.image}}">    
+    </div>
+    {{/if}}
+    <div class="col-md-12">
+      <br>
+      {{>docs_groupcollection}}
+    </div>
+  </div>
+  <nav>
+    <br>

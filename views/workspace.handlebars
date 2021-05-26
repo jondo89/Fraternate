@@ -1,0 +1,85 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<meta charset="utf-8">
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<meta name="description" content="{{sitedescription}}">
+ 	<meta name="author" content="{{author}}">
+ 	<meta name="msvalidate.01" content="6F54F88A443C656EFB178CEF11C4E7E9" />
+ 	<meta name="google-site-verification" content="V6ZQykcqytIxvH_JCfowxQfGXB9Qn-rgaQ-iIrtoW3c" />  
+ 	<meta name="flattr:id" content="ljw99y">
+ 	<title>{{pagetitle}}</title>
+ 	{{>css fontawesome=true bootstrap=true jstree=true datatable=true bootstrap-select=true quillbootstrap=true}}
+ 	{{>javascript  googlemaps=true bootstrap=true datatable=true fontawesome=true jstree=true readmore=true selectpicker=true quill=true moment=true}}
+ </head>
+ <body  style=" height: 100vh">
+ 	{{#if user}}
+ 	<!-- Modal -->
+ 	<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myModal">
+ 		<div class="modal-dialog modal-lg" role="document">
+ 			<div class="modal-content">
+ 				<div class="modal-body"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+ 					<div id="modal-body"></div>
+ 					<div id="formAreaModal">
+ 						<div style="text-align: center">
+ 							<pre><i class="fa fa-spinner fa-spin fa-fw"></i><span class=" ">Loading...</span></pre>
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div> 
+ 	{{/if}}
+ 	{{> navigation}}
+ 	<style type="text/css">
+ 		.dt-buttons {
+ 			padding-top: 15px;
+ 		}
+ 		.background-main{
+ 		}
+ 	</style>
+ 	<div class="container-fluid no-float h-100 background-main" >
+ 		<!-- ids is the location of the nav menu.-->
+ 		<div class="row no-float h-100">
+ 			<div class="col-md-3 no-float border-right" >
+ 				<div class="container">
+ 					<div style="text-align: left"><br>
+ 						{{>workspace_context_btn  organization_name=organization_name}}
+ 					</div>
+ 					<div id="view_org_btn"></div>
+ 					<form class="form-inline ">
+ 						<div id="inputSearchWorkspace"></div>
+ 					</form>
+ 					{{>workspace_toolbar ids='assemblies'}}
+ 					{{>workspace_projectlist}}
+ 					<div id="assemblies">
+ 					</div>
+ 				</div>
+ 			</div>
+ 			<div class="col-md-7 no-float h-100testc" id="tablecontainer" style="padding: 0px">
+ 				{{>workspacesplash route='database'}}
+ 			</div>
+ 			<div class="col-md-2 bg-dark no-float h-100testc " id="tablecontainer" style="padding: 0px">
+ 		 
+ 				<div class="container">
+ 					<div class="card mb-4">
+ 						<div class="card-body bg-dark text-light" style="text-align: center;">
+ 							<a class="" href="https://www.bulkdoctor.com" target="_blank">
+ 								<img class="border border-dark" src="/img/ads/bulkdoctor_vertical.png" style="border-radius: 1px;max-width: 100%">				
+ 							</a>
+ 							<hr class="text-light"> 
+ 							<small class="">
+ 								<a href="/contact">{{sitename}} Ads</a> contact us to have your product added to the shop.
+ 							</small>
+ 						</div>
+ 					</div>
+ 				</div>
+ 				
+ 			</div>
+ 		</div>
+ 		{{> topofpage}}
+ 	</div>
+ 	{{> analytics}}
+ </body>
+ </html>

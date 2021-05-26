@@ -1,0 +1,331 @@
+ 
+
+<style type="text/css">
+	@media screen and (max-width: 600px) {
+		.heatmap {
+			visibility: hidden;
+			clear: both;
+			float: left;
+			margin: 10px auto 5px 20px;
+			width: 28%;
+			display: none;
+		}
+	}
+	
+</style>
+<div class="row">
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+		<li  class="nav-item" role="presentation">
+			<a class="nav-link active" href="#issues" aria-controls="issues" role="tab" data-toggle="tab">Issues</a>
+		</li>
+		{{#ifEquals user.username userload.username}}
+		<li  class="nav-item" role="presentation">
+			<a class="nav-link" href="#home" aria-controls="home" role="tab" data-toggle="tab">Activity</a>
+		</li>
+		<li  class="nav-item" role="presentation">
+			<a class="nav-link" href="#billing" aria-controls="billing" role="tab" data-toggle="tab">Billing</a>
+		</li>
+		{{/ifEquals}}
+	</div>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+	<div role="tabpanel" class="tab-pane active" id="issues">	
+		<br>
+		<div id="{{ids}}_2">
+			<div class="mt-2" style="text-align: center;"><br><i class="fas fa-spinner fa-spin fa-1x fa-fw"></i><span>Loading...</span></div>
+		</div>
+		<script type="text/javascript">
+////////////////////////////////////////////////////////////
+////        CALL AJAX VIEW ISSUES BY USER TABLE        //// 
+//////////////////////////////////////////////////////////
+function viewallajax(location) {
+	jQuery('#'+location).html('<i class="fas fa-spinner fa-spin"></i>')
+	jQuery.ajax({
+		'async': true,
+		'global': false,                             
+		'url': '/issues/{{userload.username}}/ajaxview/',
+		'success': function (dataSchemaObject) {
+			jQuery('#'+location).html(dataSchemaObject)
+		}
+	});
+}
+$(document).ready(function () {
+	viewallajax('{{ids}}_2')
+})      
+</script>
+</div>		
+ 
+<div role="tabpanel" class="tab-pane " id="home">	
+	<div class="heatmap">
+		<h3>Recent Contributions.<small>Click on the item to view the days contributions.</small></h3>
+		<div class="card" >
+			<div class="card-body">
+				<div id="cal-heatmap" style="text-align: center;"></div>
+				<div id="loadings" style="text-align: center;"><br><i class="fas fa-spinner fa-spin fa-1x fa-fw"></i><span>Loading...</span></div>
+			</div>
+		</div>
+	</div>
+	<h3>Recent activity <small>Details of your interaction on the site are shown below.</small></h3> 
+	<div>
+		<div id="recentActivity">
+			<div id="loadings" style="text-align: center;">
+				<br>
+				<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i><span>Loading...</span>
+			</div>
+		</div>
+	</div>
+</div>
+<div role="tabpanel" class="tab-pane" id="profile">
+</div>
+<div role="tabpanel" class="tab-pane" id="billing">
+	{{>billinghistory}}
+</div>		
+<div role="tabpanel" class="tab-pane" id="messages">...</div>
+<div role="tabpanel" class="tab-pane" id="settings">...</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	var userid = '{{{userload._id}}}'
+	var itemsParse 
+	var componentlistParse 
+	var componentlistParseall 
+	var userorgcomplistParse 
+///////////////////////////// 
+//////  INITIALISE    //////
+/////////////////////////// 
+$( document ).ready(function() {
+	//getuserdeteails()
+});
+function getuserdeteails(){
+	jQuery.ajax({
+		'async': true,
+		'global': false,
+		'url': '/database/getuserdetails/'+userid,
+		'success': function (dataSchemaObject) {
+			//console.log(dataSchemaObject)
+			itemsParse = JSON.parse(dataSchemaObject.itemsParse)
+			//componentlistParse = JSON.parse(dataSchemaObject.componentlistParse)
+			//componentlistParseall = JSON.parse(dataSchemaObject.componentlistParseall)
+			//userorgcomplistParse = JSON.parse(dataSchemaObject.userorgcomplistParse)
+			heatmap()
+			recentActivity()
+		}
+	});
+}
+function componentList(){
+//User Components innto table
+var temp = []
+var count =0
+var htms = ''
+var htmpublic = ''
+var htmprivate = ''
+for (var i = 0; i < componentlistParse.length; i++) {
+	for (var j = 0; j < componentlistParseall.length; j++) {
+		if (componentlistParse[i].elementID == componentlistParseall[j].parentid) {
+			if (componentlistParseall[j].visibility == 'private') {
+				htms += '<tr><td><a>'+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
+				htmprivate += '<tr><td><a>'+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
+			} else {
+				htms += '<tr><td><a>'+componentlistParse[i].name+'</a></td></tr>'
+				htmpublic += '<tr><td><a>'+componentlistParse[i].name+'</a></td></tr>'
+			}
+			temp.push(componentlistParseall[j]+' / '+componentlistParse[i].name)
+		}
+	}
+}
+count = temp.length
+//org componentns by user into form
+var temp = []
+var html = ''
+var htmlpublic = ''
+var htmlprivate = ''
+for (var i = 0; i < componentlistParse.length; i++) {
+	for (var j = 0; j < userorgcomplistParse.length; j++) {
+		if (componentlistParse[i].elementID == userorgcomplistParse[j].parentid) {
+			if (userorgcomplistParse[j].visibility == 'private') {
+				html += '<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
+				htmlprivate +='<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a>   <span class="label label-success">Private</span></td></tr>'
+			} else {
+				html += '<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a></td></tr>'
+				htmlpublic +='<tr><td><a>'+userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name+'</a></td></tr>'
+			}
+			temp.push(userorgcomplistParse[j].organizationowner+' / '+componentlistParse[i].name)
+		}
+	}
+}
+if (count + temp.length == 0) {       
+	var html = '<tr><td><a>No Components</a></td></tr>'
+	var htmlpublic = '<tr><td><a>No Components</a></td></tr>'
+	var htmlprivate = '<tr><td><a>No Components</a></td></tr>'
+}  else {
+	$('#components').show();
+}
+$('#componentstable').append(htms)
+$('#componentstablePublic').append(htmpublic)
+$('#componentstablePrivate').append(htmprivate)
+$('#componentstable').append(html)
+$('#componentstablePublic').append(htmlpublic)
+$('#componentstablePrivate').append(htmlprivate)
+//component count
+$('#compcount').html(count + temp.length)
+var table = jQuery('#componentstable').DataTable({
+	'destroy':true,
+	"pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
+//  'order': [[ 2, 'asc' ]] ,
+});
+var table = jQuery('#componentstablePublic').DataTable({
+	'destroy':true,
+	"pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
+//  'order': [[ 2, 'asc' ]] ,
+});
+var table = jQuery('#componentstablePrivate').DataTable({
+	'destroy':true,
+	"pagingType": "numbers",   "bLengthChange": false, "dom": '<lf<t>ip>',"bInfo" : false
+//  'order': [[ 2, 'asc' ]] ,
+});
+}
+///////////////////////////// 
+//////  HEAT MAP      //////
+/////////////////////////// 
+function heatmap(){
+	console.log(itemsParse)
+	$('#loading').html('<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i><span>Loading...</span>')
+	var parserData = function (data) {
+		var dataJSON = {};
+		for(var i=0; i<data.length; i++) {
+    var date = new Date(data[i].created); // Date of activity 
+    var sec = date.getTime()/1000; // Convert to sec
+    // Pair "Key-Value" for calendar data
+    sec=sec.toFixed(0)
+    if(dataJSON[sec]) {
+    	dataJSON[sec]++;
+    } else {
+    	dataJSON[sec] = 1;
+    }
+}
+$('#loadings').html('')
+console.log(dataJSON)
+return dataJSON;
+}
+$('#jsons').html('hewere',JSON.stringify(itemsParse, null, 2))
+var cal = new CalHeatMap();
+cal.init({
+	itemSelector: "#cal-heatmap",
+	domain: "month",
+	subDomain: "day",
+	legendColors: {
+		empty: "#ededed",
+		min: "#ededed",
+		max: "#0366d6"
+	},
+	//cellSize: 20,
+	//subDomainTextFormat: "%d",
+	range: 9,
+  start:moment.utc(moment().subtract(8, 'months')).valueOf(),//get moment less range -1 months , then convert to UTC value of for cal heat map.
+   data: itemsParse, // Dates Array
+   afterLoadData: parserData      // Parser function
+});
+}
+function recentActivity(){
+	if (itemsParse) {
+		var html = ''
+		html += '<table class="table  table-bordered" id="recentActivityTable">'
+		html += '<thead>'
+		html += '<tr>'
+		html += '<th>'
+		html += '</th>'
+		html += '<th>'
+		html += 'Date'
+		html += '</th>'
+		html += '<th style="text-align:center">'
+		html += 'Function'
+		html += '</th>'
+		html += '</tr>'
+		html += '</thead>'
+		html += '<tbody>'
+		for (var i = itemsParse.length - 1; i >= 0; i--) {
+			html += '<tr>'
+			html += '<td class="details-control" style="text-align:center;vertical-align:middle; " id="'+itemsParse[i]._id+'" data-parentid="" data-childType=""><i class="fa fa-plus-square" aria-hidden="true" ></i></td>'
+			html += '<td>'
+			html += itemsParse[i].created
+			html += '</td>'
+			html += '<td  style="text-align:center">'
+			switch (true){
+				case (itemsParse[i].revision == 'created'):
+				html +='<span class="label label-success">'
+				html += itemsParse[i].revision
+				html +='</span>'
+				break;
+				case (itemsParse[i].revision == 'deleted'):
+				html +='<span class="label label-danger">'
+				html += itemsParse[i].revision
+				html +='</span>'
+				break;
+				case (itemsParse[i].revision == 'updated'):
+				html +='<span class="label label-primary">'
+				html += itemsParse[i].revision
+				html +='</span>'
+				break;
+				default : 
+				html +='<span class="label label-default">'
+				html += itemsParse[i].revision
+				html +='</span>'
+				break ;
+			}
+			html += '</td>'
+			html += '</tr>'
+		}
+		html += '</tbody>'
+		html += '</table>'
+		$('#recentActivity').html(html)
+		var table = jQuery('#recentActivityTable').DataTable({
+			'destroy':true,
+			"pagingType": "numbers"
+  //  'order': [[ 2, 'asc' ]] ,
+});
+  //Add event listener for opening and closing details
+  jQuery('#recentActivityTable tbody').on('click', 'td.details-control', function () {
+  	var tr = jQuery(this).closest('tr');
+  	var row = table.row( tr );
+  	if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();//////////////////////////////////////
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            //it is async , and the canvas is not rendered 
+            row.child(formatDefault(this.id))
+            row.child.show();
+            tr.addClass('shown');
+            // Warning Duplicate IDs
+            $('[id]').each(function(){
+            	var ids = $('[id="'+this.id+'"]');
+            	if(ids.length>1 && ids[0]==this){
+            		$( this ).css( "color", "red" )
+            		$( this ).css( "background", "green" )
+            		console.warn('Multiple IDs #'+this.id);
+            	}
+            });
+        }
+    });
+}
+}
+////////////////////////////////////////////////////////////////////
+////////////        FORMIDsABLE VIEW EXTRA DETAIL         ///////////
+///////////////////////////////////////////////////////////////////
+function formatDefault ( d ) {
+  // `d` is the original data object for the row
+  var html=''
+  for (var i = itemsParse.length - 1; i >= 0; i--) { 
+  	if (d == itemsParse[i]._id) {
+  		html += '<pre>'+JSON.stringify(itemsParse[i].entry, null, 2)+'</pre>'
+  	}
+  }
+  return html;
+}
+</script>

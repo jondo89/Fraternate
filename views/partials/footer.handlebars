@@ -1,65 +1,123 @@
- 
- 
-
- <style type="text/css">
-@media screen and (max-width: 600px) {
-  .mobilehide {
-    visibility: hidden;
-    clear: both;
-    float: left;
-    margin: 10px auto 5px 20px;
-    width: 28%;
-    display: none;
+<style type="text/css">
+  @media screen and (max-width: 600px) {
+    .mobilehide {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      width: 28%;
+      display: none;
+    }
   }
-}
 </style>
- 
-<hr>
- 
-<div class="container" style="padding-top: 45px;padding-bottom: 75px">
+<div class="container-fluid" style="padding-top: 45px;padding-bottom: 75px">
+
   <div class="row">
-   <div class="col-md-3 mobilehide" style="">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <hr>
+     <div class="row">
+      <div class="col-md-5" style="">
+        <a href="/" class="text-body" style="font-size: 25px;text-decoration: none">
+          <h1 class="display-2 "> {{siteName}} </h1>
+        </a>  
+        <p>{{sitedescription}}  <span class="badge badge-warning">{{siteversion}}</span></p>
+        <p>
+          Built with the 
+          <a target="_blank" rel="noopener" href="https://github.com/jondo89/fraternate">Fraternate </a> user framework 
+        </p>
+      </div>
+      <div class="col-md-2 mobilehide" style="">
+        {{#if collections}}
+        <h5>Collections</h5>
+        {{else}}
+        {{/if}}
+        <ul class="list-unstyled">
+          {{#each collections}}
+          {{#ifEquals this.navmenu1 'true'}}
+          <li >
+            <a href="/{{@key}}">{{this.pagetitle}}</a>
+          </li>
+          {{else}}
+          {{/ifEquals}}
+          {{/each}}
+        </ul>
+        <h5>Tools</h5>
+        <ul class="list-unstyled">
+          {{#each collections}}
+          {{#ifEquals this.navmenu2 'true'}}
+          <li >
+            <a href="/{{@key}}">{{this.pagetitle}}</a>
+          </li>
+          {{else}}
+          {{/ifEquals}}
+          {{/each}}
+        </ul>
+        <h5>Documentation</h5>
+        <ul class="list-unstyled">
+          {{#each collections}}
+          {{#ifEquals this.navmenu4 'true'}}
+          <li >
+            <a href="/{{@key}}">{{this.pagetitle}}</a>
+          </li>
+          {{else}}
+          {{/ifEquals}}
+          {{/each}}
 
-    <h4>Introduction</h4>
-    <ul>
-      <li><a href="/introduction">Introduction</a></li>
-     </ul>    
+      <li >
+            <a href="/documentation/feature-requests">Feature Requests</a>
+          </li>
+
+
+        </ul>  
+      </div>
+      <div class="col-md-2 mobilehide" style="">
+       {{#unless user}}
+       <h5>Sign up to get started!</h5>
+       <span><small><p><a href="/signup" class="btn btn-outline-success">Sign up</a> its free.</p></small></span>
+       {{/unless}}
+       <h5>Site Details</h5>
+       <ul class="list-unstyled">
+        <li><a href="/users">People</a></li>
+        <li><a href="/organizations">Organizations</a></li>
+      </ul>       
+    </div>
+
+    <div class="col-md-2 mobilehide " style="">
+      <div class="issue_demo">
+      <h5>Issues </h5><p>List of issues on ShiftBulk.</p>
+      <ul class="list-unstyled">
+        <li><a href="/issues/open">Issues</a></li>
+      </ul> 
+      </div>
+      <h5>T & C's</h5>
+      <ul  class="list-unstyled">
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/privacy">Privacy</a> </li>
+        <li><a href="/community-guidelines">Community Guidelines</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="col-md-3 mobilehide" style="">
-   <h4>Collaborate <small>Would you like to contribute?</small></h4>
-   <ul>
-    <li> <a href="/contact">Contact us</a></li>
-  </ul>
-  <h4>Site Details</h4>
-  <ul>
-    <li><a href="/users">Users</a></li>
-    <li><a href="/organizations">Organizations</a></li>
-  </ul>
-</div>
-<div class="col-md-3 mobilehide" style="">
-  {{#unless user}}
-  <h4>Sign up to get started!</h4>
-  <span><small><p><a href="/signup" class="btn btn-success">Sign up</a>  Sign up its free.</p></small></span>
-  {{/unless}}
-  <h4>Issues <small>List your issues with the interface.</small></h4>
-  <ul>
-    <li><a href="/issues/view">Issues</a></li>
-  </ul> 
-</div>
-<div class="col-md-3" style="">
-  <a href="/" style="font-size: 25px;text-decoration: none;color: black">
-    <h3><img src="/img/Logo square 300x300.png" style="height: 35px"> Fratenate</h3>
-    <p></p>
-  </a>   
-  <p>
-    An <a href="https://isithelo.com/" target="_blank"> Isithelo Technical Solutions </a> Production  
-    <p><p>
-      Built with <a target="_blank" href="https://github.com/Isithelo/Heavy-lifting">Heavy-lifting</a>           
-    </p>
-    <h4>More details</h4>
-    <a href="/terms">Terms</a> | <a href="/privacy">Privacy</a> | <a href="/contact">Contact</a>
+  <div class="row">
+    <div class="col-md-10 mobilehide" style="">
+      <h5>Collaborate </h5><p>Please feel free to contact us if you would like to work jointly on an activity or project.</p>
+      <ul class="list-unstyled">
+        <li> <a href="/contact">Contact us</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <small>© 2020 {{siteName}}</small>
+    </div>  
   </div>
+</div>
+<div class="col-md-2"></div>
 </div>
 </div>
 
- 
+
+
+
+
+
+
+

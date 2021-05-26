@@ -1,0 +1,83 @@
+redundant
+redundant
+redundant
+redundant
+redundant
+redundant
+redundant
+
+redundant
+
+<div class="row" style="padding-top: 25px" >
+  <div class="col-10">
+
+
+<ul class="list-unstyled">
+  <li class="media">
+
+
+      {{#if organization.entry.image}}
+              <a href="/organizations/{{organization.entry.name}}">
+            <img onerror="this.src='{{organization.gravatar}}'"" src="{{organization.entry.image}}" class="mr-3" style="max-width: 200px;border-radius: 15px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+          </a>
+      {{else}}
+          <a href="/organizations/{{organization.entry.name}}">
+            <img src="{{organization.gravatar}}" class="mr-3" style="max-width: 200px;border-radius: 15px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+          </a>
+      {{/if}}
+
+ 
+ 
+    <div class="media-body">
+      
+
+       <h1 class="display-4">{{organization.entry.displayname}} </h1>
+
+       <h5 class="mt-0 mb-1">{{dotdotdot organization.entry.name}}</h5>
+        <p>{{dotdotdotdotdot organization.entry.description }}</p>
+
+
+        {{#if organization.entry.company}}
+        <div style="">
+          <i class="fa fa-users" aria-hidden="true"></i>  {{dotdotdot organization.entry.company}} 
+        </div >
+        {{/if}}
+
+
+        {{#if organization.entry.location}}
+        <div style="">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>   {{dotdotdot organization.entry.location }} 
+        </div>
+        {{/if}}
+
+
+        {{#if organization.entry.displayemail}}
+        <div style="">
+          <i class="far fa-envelope"></i>   <a style="color: grey" href="mailto:{{organization.entry.displayemail}}">{{dotdotdotdot organization.entry.displayemail}}</a>
+          </div>
+          {{/if}}
+
+
+          {{#if organization.entry.url}}
+          <div style="">   
+            <i class="fa fa-link" aria-hidden="true"></i>   <a style="color: grey" href="http://{{organization.entry.url}}" target="_blank">{{dotdotdotdot organization.entry.url}}</a>  
+          </div>
+          {{/if}}
+
+
+
+
+    </div>
+  </li>
+
+ 
+    </div>
+    <div class="col-2">
+      {{#if user}}
+      <div style="text-align: right;">
+       {{> button-org-user }}
+     </div>
+     {{/if}}
+   </div>
+ </div>
+<p></p>

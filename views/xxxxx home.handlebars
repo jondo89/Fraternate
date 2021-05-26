@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{> css}}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="msvalidate.01" content="6F54F88A443C656EFB178CEF11C4E7E9" />
+  <meta name="google-site-verification" content="V6ZQykcqytIxvH_JCfowxQfGXB9Qn-rgaQ-iIrtoW3c" />  
+  <title>{{siteName}}</title>
+  <style type="text/css">
+  .outer{
+    background-color: rgba(0,0,0,0.5);
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
+    -ms-filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1,startColorStr="#E6FFFFFF",endColorStr="#E6FFFFFF");
+  }
+  .recaptch-placeholder{
+    min-height: 88px;
+  }
+  section.features .feature-item i {
+    font-size: 75px;
+  }
+</style>
+      <!-- Place this tag in your head or just before your close body tag. -->
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <script src='https://www.google.com/recaptcha/api.js'></script>
+      <!-- Place this tag in your head or just before your close body tag. -->
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      {{> javascript}}
+    </head>
+    <body id="page-top">
+{{#if bs4}}
+{{> header}}
+{{else}}
+  {{> masthead}}
+{{> header}}
+{{/if}}
+      <section class="cta" style="color: white"> <div class="overlay"></div>
+        <div class="container">
+          <div id='toToppo' style="z-index: 1000;  position:relative"><a href="#" title="Scroll to top of page."><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i></a></div>
+            <style type="text/css">
+            #toToppo a {
+                          padding: 5px 5px;
+                          background: #000;
+                          color: #fff;
+                          position: fixed;
+                          z-index: -15px;
+                          bottom: 15px;
+                          right: 15px;
+                          display: none;
+                          text-decoration: none;
+                          border-radius: 5px
+                        }
+            </style>
+            <script type="text/javascript">
+              $(document).ready(function(){
+                //Check to see if the window is top if not then display button
+                $(window).scroll(function(){
+                  if ($(this).scrollTop() > 100) {
+                  $('#toToppo a').fadeIn();
+                  } else {
+                  $('#toToppo a').fadeOut();
+                  }
+                });
+                //Click event to scroll to top
+                $('#toToppo a').click(function(){
+                  $('html, body').animate({scrollTop : 0},600);
+                  return false;
+                });
+              });
+            </script>
+<div class="row">
+  <div class="col-sm-7"> 
+   <div class="header-content">
+    <div class="header-content-inner" style="text-align:left">
+<div class="col-md-12">
+
+
+      <h1 style="font-size: 72px;"> 
+        Built for Conveyor Engineers in the <strong>mining</strong>  sector. <small><span class="label label-primary">v 0.8</span></small>
+      </h1>
+      <h2> 
+        This is <strong>Open source</strong> belt conveyor design.  
+      </h2>   
+      <h3>Create detailed design and purchasing schedules for your conveyor system.</h3>
+      <div style="padding-top: 15px">
+        <div class="btn-group btn-group-lg" role="group">
+          <a href="/signup" class="btn btn-custom">Get Started.</a>
+          <a href="#conveyors" role="button" class="btn btn-secondary">View Conveyors.</a>
+        </div>
+        <p></p>
+        <p></p>
+      </div>
+
+      
+</div>
+    </div>
+  </div>
+</div>
+<div class="col-sm-5">
+  <div class="header-content" style="padding-top: 25px">
+    <div class="header-content-inner">
+      {{> signuphomepage}}
+    </div>
+  </div>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-7">
+  </div>
+</div>
+</div>
+</section>
+
+
+
+<section id="features" class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-heading">
+         <h5>The database and design system.</h5>
+         <h1>Built for Belt Conveyor Designers and Maintenance Teams.</h1>
+         <div class="col-md-8 col-md-offset-2">
+           <p class="text-muted">Build your conveyor from ground up, assembling conveyor components from open databases. Use these components to assembly your conveyor system, and run optimizations on costs, suppliers and mechanical design.</p> 
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6" >
+            <div class="col-md-4" >
+             <a href="/database/docs" class="btn btn-success btn-lg"><i class="fa fa-database "></i> Database</a>
+             <p></p></div>  
+             <div class="col-md-8" >
+              <p class="text-muted">The database contains discrete elements of conveyor system that can be stored on the site. These elements are used throughout the site as list entries form groups, sets of components and data entries.</p><p></p>
+            </div>
+          </div>
+          <div class="col-md-6" >
+            <div class="col-md-4" >
+             <a href="/components/docs" class="btn btn-success btn-lg"><i class="fa fa-cog" aria-hidden="true"></i> Components</a>
+             <p></p>
+           </div>
+           <div class="col-md-8" >
+            <p class="text-muted">The components page allows for the creation, viewing, updating and deleting of items on this site. Use the components to create new assembly structures for later use in reporting.</p><p></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+       <div class="col-md-6" >
+        <div class="col-md-4" >
+          <a href="/shop/docs" class="btn btn-success btn-lg"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shop</a>
+          <p></p>
+        </div>
+        <div class="col-md-8" >
+          <p class="text-muted">The shop contains all of the equipment to be used in purchasing schedules on this site. Please contact us via email if you would like to incorporate your product into this list.</p><p></p>
+        </div>
+      </div>
+      <div class="col-md-6" >
+        <div class="col-md-4" >
+         <a href="/assemblies/docs" h class="btn btn-success btn-lg"> <i class="fa fa-cogs" aria-hidden="true"></i> Assemblies</a>
+         <p></p>
+       </div>
+       <div class="col-md-8" >
+        <p class="text-muted">The assembly page allows for the combination of all site entries in complex reporting structures. Build contracts, create purchasing instructions and build equipment.</p><p></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="login" class="cta1">
+  <div class="cta-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <h2>Open source machines.<br>Start building.</h2>
+        </div>
+        <div class="col-md-3" style="text-align: center;padding-top: 60px"><a href="/signup" class="btn btn-custom btn-lg">Let's Get Started.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="overlay"></div>
+</section>
+
+<section id="conveyors" >
+  <div class="section-heading" style="text-align: center">
+    <h5>Conveyors and Operations.</h5>
+    <h1>Better Visibility on Equipment</h1>
+    <p class="text-muted">How many conveyors are there on my plant, where are they located and what are their design parameters ? </p>
+    <p style="padding-top: 25px"></p>
+     <div class="container" style="text-align:left">
+    {{> homeconveyor}}
+  </div>  
+  </div>
+</section>
+
+ 
+<section id="login" class="cta2">
+  <div class="cta-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <h2>Create reports by combining components and database elements.</h2>
+        </div>
+        <div class="col-md-3" style="text-align: center;padding-top: 60px"><a href="/assemblies/docs" class="btn btn-custom btn-lg">View a Sample Report.</a>
+          <p><small style="color: white">Beta 0.7</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="overlay"></div>
+</section>
+{{> footer}}
+{{> analytics}}
+</body>
+</html>

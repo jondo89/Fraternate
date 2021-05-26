@@ -1,0 +1,302 @@
+ /* Use this CSS File to manage your custom CSS.
+/* ------------------------- */
+.well {
+ position: relative;
+ padding: 32px;
+text-align: justify;
+ background-color: #fafbfc;
+ border: 1px solid #e1e4e8;
+ border-radius: 3px;
+ box-shadow: inset 0 0 10px rgba(27,31,35,0.05);
+}
+body {
+  background-image: linear-gradient(180deg, rgba(27,31,35,0.065), rgba(27,31,35,0)) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 200px !important;
+}
+ 
+.orgnew-container {
+  padding-top: 15px;
+  max-width: 755px;
+}
+.navbar-nav > li > p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+  margin: 0 0 0px;
+}
+@media (min-width: 768px){
+  .navbar-nav > li > p {
+    padding-top: 15px;
+    margin: 0 0 0px;
+  }
+}
+.label-primary {
+    background-color: #0366d6;
+    border: 2px solid white;
+}
+.ql-toolbar.ql-snow {
+    
+    border-radius: 4px!important;
+}
+ .alert-success {
+  color: white;
+  background-color: #0366d6;
+  background-image: none;
+  border-color: #0366d6;
+  box-shadow: inset 0 0.15em 0.3em rgba(27,31,35,0.15);
+}
+.btn-custom {
+  color: #fff;
+  background-color: #0366d6;
+  border-color: #ccc;
+}
+.btn-custom:focus, .btn-custom.focus {
+  color: #333;
+  background-color: white;
+  border-color: #ccc;
+}
+.btn-custom:active, .btn-custom.active, .open > .dropdown-toggle.btn-custom {
+  color: #333;
+  background-color: white;
+  border-color: #ccc;
+}
+.btn-custom:hover {
+  color: #333;
+  background-color: white;
+  border-color: #ccc;
+}
+.isDisabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.isDisabled > a {
+  color: currentColor;
+  display: inline-block;  /* For IE11/ MS Edge bug */
+  pointer-events: none;
+  text-decoration: none;
+}
+.cropit-preview {
+  /* You can specify preview size in CSS */
+  width: 350;
+  height: 350;
+}
+ 
+   #searchclear {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
+  }
+    .cropper-canvas, .cropper-wrap-box {
+    overflow: hidden;
+    display: none;
+}
+ 
+.notsupershown{
+ 
+}
+.supershown td:first-child:::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+     font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f007";
+  }
+.bubble
+{
+position: relative;
+padding: 0px;
+background: #FFFFFF;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+border: #7F7F7F solid 1px;
+}
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 8px 12px 8px 0;
+border-color: transparent #f5f5f5;
+display: block;
+width: 0;
+z-index: 1;
+left: -12px;
+top: 16px;
+}
+.bubble:before
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 8px 12px 8px 0;
+border-color: transparent #7F7F7F;
+display: block;
+width: 0;
+z-index: 0;
+left: -13px;
+top: 16px;
+}
+  #toToppo a {
+    padding: 5px 5px;
+    background: #000;
+    color: #fff;
+    position: fixed;
+    z-index: -15px;
+    bottom: 15px;
+    right: 15px;
+    display: none;
+    text-decoration: none;
+    border-radius: 5px
+  }
+  .alpaca-field-object {
+    padding: 0px !important;
+}
+.error-text{
+  color: red;
+}
+ /* ASSEMBLY CSS */
+  .dt-buttons{
+    padding-bottom: 15px;
+  }
+  tr.selected {
+    background-color: #337ab7;
+    color: white;
+  }
+  .table-hover > tbody > tr.selected:hover {
+    background-color: #337ab7;
+    color: white;
+  }
+  .spinner {
+    width: 80px;
+    margin-bottom: 13px;
+  }
+  .spinner input {
+    text-align: right;
+  }
+  .input-group-btn-vertical {
+    position: relative;
+    white-space: nowrap;
+    width: 1%;
+    vertical-align: middle;
+    display: table-cell;
+  }
+  .input-group-btn-vertical > .btn {
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+    margin-left: -1px;
+    position: relative;
+    border-radius: 0;
+  }
+  .input-group-btn-vertical > .btn:first-child {
+    border-top-right-radius: 4px;
+  }
+  .input-group-btn-vertical > .btn:last-child {
+    margin-top: -2px;
+    border-bottom-right-radius: 4px;
+  }
+  .input-group-btn-vertical i {
+    position: absolute;
+    top: 0;
+    left: 4px;
+  }
+  .fa-plus {
+    margin-top: 3px;
+    font-size: 10px !important;
+  }
+  .fa-minus {
+    margin-top: 4px;
+    font-size: 10px !important;
+  }
+  .selectable:hover{
+    background-color: #e2e2e2;
+  }
+  nav[data-toggle='toc'] {
+    margin-top: 30px;
+  }
+  /* small screens */
+  @media (max-width: 768px) {
+    /* override the Affix plugin so that the navigation isn't sticky */
+    nav.affix[data-toggle='toc'] {
+      position: static;
+    }
+    /* PICK ONE */
+    /* don't expand nested items, which pushes down the rest of the page when navigating */
+    nav[data-toggle='toc'] .nav .active .nav {
+      display: none;
+    }
+    /* alternatively, if you *do* want the second-level navigation to be shown (as seen on this page on mobile), use this */
+    nav[data-toggle='toc'] .nav .nav {
+      display: block;
+    }
+  }
+  .spinner {
+    width: 100px;
+    margin-bottom: 0px!important;
+  }
+  .spinner input {
+    text-align: right;
+  }
+  .special {
+    width: 100px;
+    margin-bottom: 0px!important;
+  }
+  .special input {
+    text-align: right;
+  }
+  .input-group-btn-vertical {
+    position: relative;
+    white-space: nowrap;
+    width: 1%;
+    vertical-align: middle;
+    display: table-cell;
+  }
+  .input-group-btn-vertical > .btn {
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 4px !important;
+    font-size: 6px;
+    margin-left: -1px;
+    position: relative;
+    border-radius: 0;
+  }
+  .input-group-btn-vertical > .btn:first-child {
+    border-top-right-radius: 4px;
+  }
+  .input-group-btn-vertical > .btn:last-child {
+    margin-top: -2px;
+    border-bottom-right-radius: 4px;
+  }
+  .input-group-btn-vertical i{
+    position: absolute;
+    top: 0;
+    left: 4px;
+  }
+  .modal-body {
+    max-height: calc(100vh - 143px);
+    overflow-y: auto; 
+  }
+  /* ASSEMBLY CSS */
+  .btn-xsc {
+    font-size: 25px
+  }
+  .rm-link{
+    color: #007bff!important;
+  }
+
+
+
+  
