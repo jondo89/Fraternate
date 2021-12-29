@@ -4,7 +4,7 @@
 
 Fraternate is a standalone copy of the GitHub user subscription system. Fraternate is open-source, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin. Download the Full stack boilerplate using Node.js Mongodb Express.js Handlebars.js from Github.
 
-### [VIEW THE DEMO - FRATERNATE](https://wrasse.herokuapp.com) or
+### [VIEW THE DEMO - FRATERNATE](https://fraternate.herokuapp.com/) or
 ### [VIEW THE NPM MODULE - FRATERNATE](https://www.npmjs.com/package/fraternate)
 
 ## Features
