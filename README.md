@@ -40,7 +40,7 @@ Fraternate is a standalone copy of the GitHub user subscription system. Fraterna
 All of the magic on your localhost is managed by the `.env` file, here you would add your SMTP host setting, ReCaptcha keys etc. Some example values are shown below.
 
 When installation is done on Heroku, the keys should be added to the Settings tab, in the "reveal config variable" area.
-
+```
 MAILGUN_USERNAME=''
 MAILGUN_PASSWORD=''
 SESSION_SECRET=''
