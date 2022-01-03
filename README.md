@@ -19,6 +19,9 @@ Fraternate is a standalone copy of the GitHub user subscription system. Fraterna
   * Node.js installed and running.
 * open the localhost i.e http://localhost:2000/
 
+## Required Empty Database Configuration
+Limited time has been spent on zero data configuration, and this is a work in progress. If you do fork this and try, let me know where you get stuck  , and Ill push changes to suit.
+
 ## Features
 
 #### User Control
