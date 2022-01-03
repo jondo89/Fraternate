@@ -4,9 +4,7 @@
 
 Fraternate is a standalone copy of the GitHub user subscription system. Fraternate is open-source, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin. Download the Full stack boilerplate using Node.js Mongodb Express.js Handlebars.js from Github.
 
-### [VIEW THE DEMO - FRATERNATE](https://fraternate.herokuapp.com/) or
-### [VIEW THE NPM MODULE - FRATERNATE](https://www.npmjs.com/package/fraternate)
-
+### [VIEW THE DEMO - FRATERNATE](https://fraternate.herokuapp.com/) 
 ## Features
 
 #### User Control
@@ -32,12 +30,6 @@ Fraternate is a standalone copy of the GitHub user subscription system. Fraterna
 * Unique Organization Names
 * Public Organization Profile
 
-#### Subscription Payments
-
-* Braintree
-* PayPal
-* PayFast
-
 #### Issue Tracking
 
 * Stand alone issue/comment system
@@ -49,36 +41,39 @@ All of the magic on your localhost is managed by the `.env` file, here you would
 
 When installation is done on Heroku, the keys should be added to the Settings tab, in the "reveal config variable" area.
 
-```ini
-MAILGUN_USERNAME='postmaster@sandbox76aafffasdfasdaa6647bde82cd8fe0.mailgun.org'
-MAILGUN_PASSWORD='f8738823asdfffdsaef64eb'
-
-SESSION_SECRET='6681e3a9cb922b14ff4b5asdfassddfasdf23453f6e2792965d4e063'
-
-MONGODB='localhost'
-
-GOOGLE_ID='94259591sdf2716-lrvbstv8em4sugjmvs3asdvasdfu3jk6p6tgo0m74.apps.googleusercontent.com'
-GOOGLE_SECRET='9G5ZoRsdfsvKQ-cKiT9M0sdfAhsb2E4g'
-
-GITHUB_ID='800afdfd1f2'
-GITHUB_SECRET='a875sdfsdfcbdb23265cf4f0'
-
-SITE_KEY='6Le2acvsdfUAAAAAO8gaargn67-'
-SECRET_KEY='6Le2aCcUsdftyjXP94Kc768FhbZr1kxBMMZ'
-
-MAIL_PORT='587'
-MAIL_USERNAME='xxxx@xxxx.com'
-MAIL_HOST='xxx.xxxx.com'
-MAIL_PASSWORD='xxsdasdasdasd'
-
-MERCHANTID = 'xxcvdfgdfgdf'
-PUBLICKEY = 'asdfghjasdf'
-PRIVATEKEY = 'sdfrerewerasdf'
-
-MERCHANTIDPAYFAST = 'dfgsq243r'
-MERCHANTKEYPAYFAST = 'asdhdfhyhjtdj'
-PASSPHRASEPAYFAST = 'asdf4tsgdfgsdfg'
-URLPAYFAST = 'https://sandbox.payfast.co.za/eng/process'
+MAILGUN_USERNAME=''
+MAILGUN_PASSWORD=''
+SESSION_SECRET=''
+MONGODB=''
+MONGODBNAME=''
+MONGODBU=''
+MONGODBP=''
+MONGODBURI=''
+GOOGLE_ID=''
+GOOGLE_SECRET=''
+API_KEY=''
+TRACKINGCODEGA=''
+GITHUB_ID=''
+GITHUB_SECRET=''
+SITE_KEY=''
+SECRET_KEY=''
+MAIL_PORT=''
+MAIL_USERNAME=''
+MAIL_HOST=''
+MAIL_PASSWORD=''
+MERCHANTID=''
+PUBLICKEY=''
+PRIVATEKEY=''
+MERCHANTIDPAYFAST=''
+MERCHANTKEYPAYFAST=''
+PASSPHRASEPAYFAST=''
+URLPAYFAST=''
+LOCALHOSTPORT='4000'
+WEBSITE='http://localhost:4000'
+VERIFICATION_GOOGLE = ''
+ROOTFOLDER=''
+DEBUG='true'
+DARKMODE = 'true'
 ```
 
 The .env file contains all of the sites api and secret keys. Ensure that it exists on the server.
