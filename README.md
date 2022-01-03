@@ -5,6 +5,20 @@
 Fraternate is a standalone copy of the GitHub user subscription system. Fraternate is open-source, start by deploying as a boilerplate directly off GitHub , or use the npm module as a standalone plugin. Download the Full stack boilerplate using Node.js Mongodb Express.js Handlebars.js from Github.
 
 ### [VIEW THE DEMO - FRATERNATE](https://fraternate.herokuapp.com/) 
+
+## Installation
+* Download the github file.
+* Unzip into a new directory.
+* Using your preferred command line editor , run NPM INSTALL.
+* create your .env file in the root of the working folder structure (Copy the details below as the framework to get the site working).
+* Add all of the relevant keys , passwords , usernames etc to the .env file. This is not configured to be user friendly , and will likely require a bit of messing around. 
+* Run nodemon on the command prompt to start the server. 
+* You will need the following items configured and functioning:
+  * Mongodb installed and running on the localhost.
+  * NPM installed and running.
+  * Node.js installed and running.
+* open the localhost i.e http://localhost:2000/
+
 ## Features
 
 #### User Control
