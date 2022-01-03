@@ -281,4 +281,32 @@ input {
 }
 
 
+   .table_cell_not_zero{
+    background-color: #007bff
+  }
+  .table_cell_not_zero a{
+    color: white!important;
+  }
+  .table_cell_not_zero i{
+    color: white!important;
+  }
+  .table_cell_not_zero button{
+    border-color:  white!important;
+  }
+  .table_cell_not_zero a:hover{
+    color: rgb(255 255 254 / 70%)!important
+  }
+  .table_cell_not_zero input{
+  border-color:  white!important;
+  }
+
+  
+  .htCore  {
+ color: black;
  
+  }
+
+ 
+  .card-columns {
+   column-count: 4;
+ }

@@ -5,6 +5,11 @@ var mongoose = require('mongoose')
   , ObjectId = Schema.ObjectId;
 
 ///////////////////////////////////////////////
+////     sssssssssssssssssssssssssssss       //// 
+/////////////////////////////////////////////
+
+
+///////////////////////////////////////////////
 ////     SET YOUR APP.JSON DETAILS        //// 
 /////////////////////////////////////////////
 //Not working ? try double dots on the json url..
@@ -50,7 +55,8 @@ var userSchema = new mongoose.Schema({
   google: String,
   publicemail:String,
   github: String,
-  vk: String
+  darkmode: Boolean,  
+  vk: String,
 }, schemaOptions);
 
 
@@ -80,7 +86,7 @@ var transporter = nodemailer.createTransport({
 var mailOptions = {
   from: user.username + ' ' + '<'+ user.email + '>', // sender address
   to: process.env.MAIL_USERNAME, // list of receivers
-  subject: '✔ A user has edited their information '+ sitename + '.', // Subject line
+  subject: '✔ A user has edited their information on '+ sitename + '.', // Subject line
   html:  '<h2>The following user has been edited.</h2><p>Code :</p> <pre>'+user+'</pre>',
 }
 // send mail with defined transport object

@@ -1,3 +1,5 @@
+ <div data-templatename="custom.handlebars" data-filenamesemini="C:\shiftbulk\views\partials\custom.handlebars"></div>
+
 <style type="text/css">
   .card-columns2 {
     -webkit-column-count:2
@@ -94,9 +96,19 @@ for (var i = 0; i < dataSchemaObject.length; i++) {
       }
     }
   }
+
+
+ var d = new Date(dataSchemaObject[i].created);
+ var curr_date = d.getDate();
+ var curr_month = d.getMonth() + 1;
+ var curr_year = d.getFullYear();
+ var temp = curr_date + "-" + curr_month + "-" + curr_year;
+
+
+
   html+='<div class="card " >'
   html+='<div class="card-body" style="">'
-  html+='<p class="card-title" style="color: grey"><small>Last Edit : '+dataSchemaObject[i].created+'</small></p>'
+  html+='<p class="card-title" style="color: grey"><small>Last Edit : '+temp+'</small></p>'
   html+='<h5 class="card-title">'+detail+'</h5>'
   if (dataSchemaObject[i].entry['5fa1501a27d35c519c0c11f8']) {
    html+='<p class="card-text"><small>'+description+'</small> </p>' 
@@ -122,3 +134,4 @@ $("#"+location).html(html);
   Sign up and add your profile to {{siteName}}.  <a href="/signup" class="btn btn-success ml-2">Sign up</a>
 </div>
 {{/if}}
+
