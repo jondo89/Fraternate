@@ -40,7 +40,7 @@
     "flash": "^1.1.0",
     "fraternate": "^1.5.24",
     "fresh": "^0.5.2",
-    "grunt": "^1.4.1",
+    "grunt": "^1.5.3",
     "grunt-bump": "^0.8.0",
     "grunt-concurrent": "^3.0.0",
     "grunt-nodemon": "^0.4.2",
