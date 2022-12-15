@@ -29,7 +29,7 @@
     "debug": "^2.6.9",
     "dotenv": "^2.0.0",
     "etag": "^1.8.1",
-    "express": "^4.17.2",
+    "express": "^4.17.3",
     "express-flash": "^0.0.2",
     "express-flash-messages": "^0.1.1",
     "express-handlebars": "^3.1.0",
